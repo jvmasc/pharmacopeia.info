@@ -334,6 +334,14 @@
     .source-card p { margin: 0; font-size: 14px; }
 
     /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       FIGURE CARDS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .figure-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .figure-card { overflow: hidden; background: #f7f7f2; border: 1px solid rgba(231,234,223,.16); border-radius: var(--radius-xl); box-shadow: var(--shadow); }
+    .figure-card img { display: block; width: 100%; background: #fff; }
+    .figure-card figcaption { padding: 14px 16px 16px; color: var(--muted); font-size: 14px; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
        FOOTER
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     footer {
@@ -354,7 +362,7 @@
     @media (max-width: 1000px) { .axis-grid { grid-template-columns: repeat(2, 1fr); } .grid-3 { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 760px) {
       nav { display: none; }
-      .grid-2, .grid-3, .axis-grid { grid-template-columns: 1fr; }
+      .grid-2, .grid-3, .axis-grid, .figure-grid { grid-template-columns: 1fr; }
       .section-head { display: block; }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -373,6 +381,7 @@
       </a>
       <nav aria-label="Navegação principal">
         <a href="../../index.html#matriz">Matriz</a>
+        <a href="#figuras">Figuras</a>
         <a href="#eixos">8 eixos</a>
         <a href="#evidencia">Evidência</a>
         <a href="#fontes">Fontes</a>
@@ -424,6 +433,34 @@
         <article class="summary-card"><span class="status hypothesis">hipótese biofísica</span><b>Mitocôndria/redox</b><p>Dados experimentais em altas concentrações indicam efeito mitocondrial em certos modelos; a interpretação de "sintonia" em baixa dose é hipótese, não consenso.</p></article>
         <article class="summary-card"><span class="status investigational">investigacional</span><b>CISS / spin</b><p>A leitura como antena macrocíclica e filtro de spin é uma heurística Kruse/PKA a ser marcada como fronteira, não como farmacologia estabelecida.</p></article>
         <article class="summary-card"><span class="status guarded">prudência</span><b>Janela clínica</b><p>Risco, interação e contexto importam mais que entusiasmo. A ficha pública não transforma molécula em protocolo individual.</p></article>
+      </div>
+    </section>
+
+    <section id="figuras" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker"><span class="dot"></span> Figuras didáticas</div>
+          <h2>Fundo branco, traço limpo, leitura farmacológica.</h2>
+        </div>
+        <p>Imagens minimalistas para apoiar a ficha: arquitetura molecular, mecanismo clássico, mapa farmacológico e interface biofísica. São esquemas educacionais, não estruturas químicas completas nem protocolo clínico.</p>
+      </div>
+      <div class="figure-grid">
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/ivermectina/gpt/ivermectina-01-molecula-gpt.png" alt="Imagem editorial GPT da molécula da ivermectina em fundo branco" loading="lazy" />
+          <figcaption>Molécula da ivermectina: figura editorial GPT/OpenAI em estilo farmacologia clássica.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/ivermectina/gpt/ivermectina-02-canal-cloro-gpt.png" alt="Mecanismo clássico da ivermectina em canal de cloro glutamato-dependente" loading="lazy" />
+          <figcaption>Mecanismo clássico: canal de Cl⁻ glutamato-dependente em invertebrados.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/ivermectina/gpt/ivermectina-03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico da ivermectina com lipofilicidade, fígado, P-gp e janela clínica" loading="lazy" />
+          <figcaption>Mapa farmacológico: lipofilicidade, barreiras, fígado e prudência clínica.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/ivermectina/gpt/ivermectina-04-interface-biofisica-gpt.png" alt="Interface biofísica da ivermectina com água, membrana e espectro" loading="lazy" />
+          <figcaption>Interface biofísica: água, membrana e espectro como perguntas de pesquisa.</figcaption>
+        </figure>
       </div>
     </section>
 
