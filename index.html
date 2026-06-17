@@ -5,41 +5,100 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pharmacopeia.info — Atlas Biofísico das Moléculas</title>
   <meta name="description" content="Atlas de análise biofísica de medicamentos, moléculas, suplementos e intervenções: luz, água, deutério, spin, mitocôndria, redox, campo magnético e janela clínica." />
+
+  <!-- Anti-FOWT: aplica o tema guardado ANTES de qualquer render -->
+  <script>
+  (function () {
+    var saved = localStorage.getItem('ph-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', saved);
+  })();
+  </script>
+
   <style>
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       TEMA LIGHT (white/biofílico) — PADRÃO
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     :root {
-      color-scheme: dark;
-      --bg: #07100f;
-      --bg-2: #0b1413;
-      --surface: #10201e;
-      --surface-2: #142a27;
-      --ink: #e7eadf;
-      --muted: #a8b5aa;
-      --quiet: #74827b;
-      --line: rgba(231, 234, 223, .14);
-      --line-strong: rgba(215, 168, 79, .45);
-      --solar: #d7a84f;
-      --bio: #65c7c0;
-      --mag: #8a6ee8;
-      --danger: #d8816a;
-      --ok: #98c379;
+      color-scheme: light;
+
+      --bg:        #FAF9F5;
+      --bg-2:      #F2EFE8;
+      --surface:   #FFFFFF;
+      --surface-2: #F7F5EF;
+
+      --ink:       #1C2420;
+      --muted:     #4A5A54;
+      --quiet:     #7A8E87;
+
+      --line:        rgba(28, 36, 32, .10);
+      --line-strong: rgba(184, 131, 42, .50);
+
+      --solar: #B8832A;
+      --bio:   #2B8A84;
+      --mag:   #5B4DB8;
+      --danger: #C0522E;
+      --ok:     #3A7D44;
+
       --radius-xl: 28px;
       --radius-lg: 20px;
       --radius-md: 14px;
-      --shadow: 0 24px 80px rgba(0, 0, 0, .42);
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+      --shadow: 0 4px 24px rgba(28, 36, 32, .08), 0 1px 4px rgba(28, 36, 32, .05);
+      --shadow-hover: 0 8px 40px rgba(28, 36, 32, .12), 0 2px 8px rgba(28, 36, 32, .06);
+
+      --header-bg: rgba(250, 249, 245, .88);
+      --body-bg:
+        radial-gradient(ellipse at 18% 0%,  rgba(184, 131, 42, .11), transparent 38rem),
+        radial-gradient(ellipse at 84% 8%,  rgba(43, 138, 132, .09), transparent 34rem),
+        radial-gradient(ellipse at 50% 96%, rgba(91, 77, 184, .07),  transparent 40rem),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg) 62%, var(--bg-2) 100%);
+
+      --mono:  ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans:  Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       TEMA DARK — override
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    html[data-theme="dark"] {
+      color-scheme: dark;
+
+      --bg:        #07100f;
+      --bg-2:      #0b1413;
+      --surface:   #10201e;
+      --surface-2: #142a27;
+
+      --ink:       #e7eadf;
+      --muted:     #a8b5aa;
+      --quiet:     #74827b;
+
+      --line:        rgba(231, 234, 223, .14);
+      --line-strong: rgba(215, 168, 79, .45);
+
+      --solar: #d7a84f;
+      --bio:   #65c7c0;
+      --mag:   #8a6ee8;
+      --danger: #d8816a;
+      --ok:     #98c379;
+
+      --shadow: 0 24px 80px rgba(0, 0, 0, .42);
+      --shadow-hover: 0 24px 80px rgba(0, 0, 0, .55);
+
+      --header-bg: rgba(7, 16, 15, .72);
+      --body-bg:
+        radial-gradient(circle at 14% 0%,  rgba(215, 168, 79, .18), transparent 32rem),
+        radial-gradient(circle at 86% 14%, rgba(101, 199, 192, .14), transparent 30rem),
+        radial-gradient(circle at 50% 100%, rgba(138, 110, 232, .10), transparent 34rem),
+        linear-gradient(180deg, var(--bg), var(--bg-2) 52%, #060b0a);
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
-      background:
-        radial-gradient(circle at 14% 0%, rgba(215, 168, 79, .18), transparent 32rem),
-        radial-gradient(circle at 86% 14%, rgba(101, 199, 192, .14), transparent 30rem),
-        radial-gradient(circle at 50% 100%, rgba(138, 110, 232, .10), transparent 34rem),
-        linear-gradient(180deg, var(--bg), var(--bg-2) 52%, #060b0a);
+      background: var(--body-bg);
       color: var(--ink);
       font-family: var(--sans);
       line-height: 1.55;
@@ -48,13 +107,17 @@
     a { color: inherit; }
     .shell { width: min(1180px, calc(100% - 36px)); margin: 0 auto; }
 
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       HEADER / NAV
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     header {
       position: sticky;
       top: 0;
       z-index: 20;
-      backdrop-filter: blur(18px);
-      background: rgba(7, 16, 15, .72);
+      backdrop-filter: blur(20px) saturate(1.3);
+      background: var(--header-bg);
       border-bottom: 1px solid var(--line);
+      box-shadow: 0 1px 0 var(--line);
     }
     .nav {
       min-height: 72px;
@@ -70,33 +133,73 @@
       text-decoration: none;
       letter-spacing: -.02em;
       font-weight: 700;
+      color: var(--ink);
     }
     .mark {
       width: 34px;
       height: 34px;
-      border: 1px solid var(--line-strong);
+      border: 1.5px solid var(--line-strong);
       border-radius: 50%;
       display: grid;
       place-items: center;
       position: relative;
       color: var(--solar);
-      box-shadow: 0 0 30px rgba(215,168,79,.14);
+      background: var(--surface);
     }
     .mark::before,
     .mark::after {
       content: "";
       position: absolute;
-      border: 1px solid rgba(101,199,192,.42);
+      border: 1px solid rgba(43, 138, 132, .50);
       border-radius: 50%;
       inset: 7px 2px;
       transform: rotate(35deg);
     }
-    .mark::after { transform: rotate(-35deg); border-color: rgba(138,110,232,.38); }
+    .mark::after { transform: rotate(-35deg); border-color: rgba(91, 77, 184, .42); }
+
+    html[data-theme="dark"] .mark::before { border-color: rgba(101, 199, 192, .42); }
+    html[data-theme="dark"] .mark::after  { border-color: rgba(138, 110, 232, .38); }
+
+    .mark-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--solar);
+      position: relative;
+      z-index: 1;
+    }
+
     nav { display: flex; gap: 18px; color: var(--muted); font-size: 14px; }
-    nav a { text-decoration: none; }
+    nav a { text-decoration: none; transition: color .15s ease; }
     nav a:hover { color: var(--ink); }
 
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       BOTÃO DE TOGGLE DE TEMA
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .theme-btn {
+      cursor: pointer;
+      border: 1px solid var(--line-strong);
+      background: rgba(255, 255, 255, .05);
+      color: var(--solar);
+      border-radius: 999px;
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      font-size: 16px;
+      transition: border-color .18s ease, background .18s ease;
+      flex-shrink: 0;
+    }
+    .theme-btn:hover {
+      background: rgba(184, 131, 42, .10);
+      border-color: var(--line-strong);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       HERO
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     .hero { padding: 86px 0 54px; }
+
     .kicker {
       display: inline-flex;
       align-items: center;
@@ -106,12 +209,24 @@
       font-size: 12px;
       text-transform: uppercase;
       letter-spacing: .16em;
-      border: 1px solid rgba(215, 168, 79, .26);
+      border: 1px solid rgba(184, 131, 42, .30);
       border-radius: 999px;
-      padding: 8px 12px;
+      padding: 8px 14px;
+      background: rgba(184, 131, 42, .07);
+    }
+    html[data-theme="dark"] .kicker {
+      border-color: rgba(215, 168, 79, .26);
       background: rgba(215, 168, 79, .06);
     }
-    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--solar); box-shadow: 0 0 18px var(--solar); }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--solar);
+      box-shadow: 0 0 18px var(--solar);
+    }
+
     h1 {
       margin: 26px 0 22px;
       max-width: 980px;
@@ -120,13 +235,16 @@
       line-height: .94;
       letter-spacing: -.055em;
       font-weight: 520;
+      color: var(--ink);
     }
+
     .lead {
       max-width: 820px;
       color: var(--muted);
       font-size: clamp(18px, 2vw, 23px);
     }
     .lead strong { color: var(--ink); font-weight: 650; }
+
     .hero-grid {
       margin-top: 42px;
       display: grid;
@@ -134,44 +252,72 @@
       gap: 22px;
       align-items: stretch;
     }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       CARDS BASE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     .thesis, .boundary, .card, .axis-detail, .molecule-card, .notice {
-      background: linear-gradient(180deg, rgba(16,32,30,.92), rgba(13,24,23,.86));
+      background: var(--surface);
       border: 1px solid var(--line);
       border-radius: var(--radius-xl);
       box-shadow: var(--shadow);
+      transition: box-shadow .22s ease;
     }
+
     .thesis { padding: 30px; position: relative; overflow: hidden; }
     .thesis::after {
       content: "";
       position: absolute;
+      right: -60px;
+      top: -60px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(43, 138, 132, .10), transparent 70%);
+      pointer-events: none;
+    }
+    html[data-theme="dark"] .thesis::after {
       right: -70px;
       top: -70px;
       width: 220px;
       height: 220px;
-      border-radius: 50%;
       background: radial-gradient(circle, rgba(101,199,192,.16), transparent 68%);
     }
     .thesis p { margin: 0; font-family: var(--serif); font-size: clamp(24px, 3.1vw, 38px); line-height: 1.15; letter-spacing: -.025em; }
     .thesis em { color: var(--solar); font-style: normal; }
+
     .boundary { padding: 24px; display: grid; gap: 14px; }
     .boundary h2, section h2 { margin: 0; font-family: var(--serif); letter-spacing: -.03em; font-size: 30px; }
+
     .lane {
       border: 1px solid var(--line);
       border-radius: 18px;
       padding: 16px;
-      background: rgba(255,255,255,.025);
+      background: var(--surface-2);
+      transition: border-color .18s ease, background .18s ease;
     }
-    .lane b { display: block; margin-bottom: 4px; }
+    .lane:hover {
+      border-color: rgba(43, 138, 132, .35);
+      background: rgba(43, 138, 132, .04);
+    }
+    .lane b { display: block; margin-bottom: 4px; color: var(--ink); }
     .lane span { color: var(--muted); font-size: 14px; }
 
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       CRITIQUE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     .critique {
       padding: 28px;
       display: grid;
       grid-template-columns: .78fr 1.22fr;
       gap: 24px;
       align-items: start;
-      border-color: rgba(101,199,192,.22);
+      border-color: rgba(43, 138, 132, .28);
+      background: linear-gradient(135deg, rgba(43, 138, 132, .04) 0%, var(--surface) 60%);
       box-shadow: none;
+    }
+    html[data-theme="dark"] .critique {
+      border-color: rgba(101, 199, 192, .22);
     }
     .critique .label {
       font-family: var(--mono);
@@ -189,7 +335,11 @@
       gap: 12px;
     }
 
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       SECTIONS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     section { padding: 54px 0; }
+
     .section-head {
       display: flex;
       justify-content: space-between;
@@ -199,104 +349,218 @@
     }
     .section-head p { margin: 0; max-width: 660px; color: var(--muted); }
 
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       MATRIX — 8 eixos
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     .matrix {
       display: grid;
       grid-template-columns: .92fr 1.08fr;
       gap: 22px;
       align-items: start;
     }
-    .axis-list {
-      display: grid;
-      gap: 10px;
-    }
+    .axis-list { display: grid; gap: 10px; }
+
     .axis-button {
       cursor: pointer;
       width: 100%;
       text-align: left;
       color: var(--ink);
       border: 1px solid var(--line);
-      background: rgba(16,32,30,.72);
+      background: var(--surface);
       border-radius: 18px;
       padding: 16px;
       display: grid;
       grid-template-columns: auto 1fr auto;
       gap: 14px;
       align-items: center;
-      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease;
       min-height: 70px;
+      box-shadow: var(--shadow);
     }
-    .axis-button:hover { transform: translateY(-1px); border-color: rgba(215,168,79,.38); background: rgba(20,42,39,.86); }
-    .axis-button.active { border-color: var(--line-strong); background: linear-gradient(135deg, rgba(215,168,79,.16), rgba(101,199,192,.08)); }
-    .axis-num { font-family: var(--mono); color: var(--solar); font-size: 12px; }
+    .axis-button:hover {
+      transform: translateY(-2px);
+      border-color: rgba(184, 131, 42, .40);
+      background: rgba(184, 131, 42, .04);
+      box-shadow: var(--shadow-hover);
+    }
+    html[data-theme="dark"] .axis-button:hover {
+      border-color: rgba(215, 168, 79, .38);
+      background: rgba(20, 42, 39, .86);
+    }
+    .axis-button.active {
+      border-color: var(--line-strong);
+      background: linear-gradient(135deg, rgba(184, 131, 42, .10) 0%, rgba(43, 138, 132, .06) 100%);
+      box-shadow: 0 2px 16px rgba(184, 131, 42, .14);
+    }
+    html[data-theme="dark"] .axis-button.active {
+      background: linear-gradient(135deg, rgba(215,168,79,.16), rgba(101,199,192,.08));
+      box-shadow: none;
+    }
+    .axis-num   { font-family: var(--mono); color: var(--solar); font-size: 12px; }
     .axis-title { font-weight: 750; letter-spacing: -.01em; }
-    .axis-tag { color: var(--quiet); font-family: var(--mono); font-size: 11px; text-transform: uppercase; }
-    .axis-detail { padding: 28px; min-height: 524px; position: sticky; top: 96px; }
+    .axis-tag   { color: var(--quiet); font-family: var(--mono); font-size: 11px; text-transform: uppercase; }
+
+    .axis-detail {
+      padding: 28px;
+      min-height: 524px;
+      position: sticky;
+      top: 96px;
+      background: var(--surface);
+      background-image: radial-gradient(ellipse at 88% 4%, rgba(184, 131, 42, .08), transparent 50%);
+    }
+    html[data-theme="dark"] .axis-detail {
+      background-image: none;
+    }
     .axis-detail h3 { font-family: var(--serif); font-size: clamp(32px, 4vw, 54px); line-height: 1; letter-spacing: -.045em; margin: 8px 0 16px; }
     .axis-detail .tagline { color: var(--bio); font-family: var(--mono); font-size: 13px; text-transform: uppercase; letter-spacing: .12em; }
     .axis-detail p { color: var(--muted); font-size: 17px; }
+
     .question-box {
       margin: 22px 0;
-      border-left: 2px solid var(--solar);
+      border-left: 2.5px solid var(--solar);
       padding: 2px 0 2px 18px;
       color: var(--ink);
       font-family: var(--serif);
       font-size: 24px;
       line-height: 1.2;
+      background: linear-gradient(90deg, rgba(184, 131, 42, .05), transparent 80%);
+      border-radius: 0 4px 4px 0;
     }
+    html[data-theme="dark"] .question-box {
+      background: none;
+    }
+
     .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px; }
     .mini {
       border: 1px solid var(--line);
       border-radius: 16px;
       padding: 14px;
-      background: rgba(255,255,255,.025);
+      background: var(--surface-2);
     }
-    .mini b { display: block; font-size: 13px; color: var(--ink); margin-bottom: 6px; }
+    .mini b    { display: block; font-size: 13px; color: var(--ink); margin-bottom: 6px; }
     .mini span { color: var(--muted); font-size: 13px; }
 
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       MOLECULES
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     .molecules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .molecule-card { padding: 20px; box-shadow: none; min-height: 210px; }
+
+    .molecule-card {
+      padding: 20px;
+      box-shadow: var(--shadow);
+      min-height: 210px;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .molecule-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
     .molecule-card h3 { margin: 0 0 10px; font-size: 22px; letter-spacing: -.02em; }
-    .molecule-card p { margin: 0 0 16px; color: var(--muted); font-size: 14px; }
+    .molecule-card p  { margin: 0 0 16px; color: var(--muted); font-size: 14px; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       STATUS TAGS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     .status {
       display: inline-flex;
       border-radius: 999px;
       border: 1px solid var(--line);
-      padding: 6px 9px;
+      padding: 6px 10px;
       font-family: var(--mono);
       font-size: 11px;
       text-transform: uppercase;
       color: var(--muted);
+      margin-bottom: 14px;
     }
-    .ready { color: var(--ok); border-color: rgba(152,195,121,.34); background: rgba(152,195,121,.08); }
-    .sensitive { color: var(--danger); border-color: rgba(216,129,106,.34); background: rgba(216,129,106,.08); }
-    .candidate { color: var(--bio); border-color: rgba(101,199,192,.34); background: rgba(101,199,192,.08); }
-    .internal { color: var(--mag); border-color: rgba(138,110,232,.34); background: rgba(138,110,232,.08); }
+    .ready     { color: var(--ok);     border-color: rgba(58, 125, 68, .38);  background: rgba(58, 125, 68, .07);  }
+    .sensitive { color: var(--danger); border-color: rgba(192, 82, 46, .38);  background: rgba(192, 82, 46, .07);  }
+    .candidate { color: var(--bio);    border-color: rgba(43, 138, 132, .38); background: rgba(43, 138, 132, .07); }
+    .internal  { color: var(--mag);    border-color: rgba(91, 77, 184, .38);  background: rgba(91, 77, 184, .07);  }
 
-    .notice { padding: 26px; box-shadow: none; border-color: rgba(215,168,79,.24); }
+    html[data-theme="dark"] .ready     { border-color: rgba(152,195,121,.34); background: rgba(152,195,121,.08); }
+    html[data-theme="dark"] .sensitive { border-color: rgba(216,129,106,.34); background: rgba(216,129,106,.08); }
+    html[data-theme="dark"] .candidate { border-color: rgba(101,199,192,.34); background: rgba(101,199,192,.08); }
+    html[data-theme="dark"] .internal  { border-color: rgba(138,110,232,.34); background: rgba(138,110,232,.08); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       NOTICE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .notice {
+      padding: 26px;
+      box-shadow: none;
+      border-color: rgba(184, 131, 42, .30);
+      background: linear-gradient(135deg, rgba(184, 131, 42, .06) 0%, var(--surface) 70%);
+    }
+    html[data-theme="dark"] .notice {
+      border-color: rgba(215, 168, 79, .24);
+      background: var(--surface);
+    }
     .notice h2 { margin-bottom: 8px; }
-    .notice p { color: var(--muted); margin: 0; }
+    .notice p  { color: var(--muted); margin: 0; }
 
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       BUTTONS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+
     .button {
       min-height: 46px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      padding: 12px 16px;
+      padding: 12px 20px;
       border-radius: 999px;
-      border: 1px solid var(--line-strong);
-      background: rgba(215,168,79,.12);
+      border: 1.5px solid var(--line-strong);
+      background: rgba(184, 131, 42, .10);
       color: var(--ink);
       text-decoration: none;
       font-weight: 700;
+      font-size: 14px;
+      transition: background .18s ease, border-color .18s ease, transform .15s ease, box-shadow .18s ease;
     }
-    .button.secondary { border-color: var(--line); background: rgba(255,255,255,.03); color: var(--muted); }
+    html[data-theme="dark"] .button {
+      background: rgba(215, 168, 79, .12);
+    }
+    .button:hover {
+      background: rgba(184, 131, 42, .18);
+      border-color: rgba(184, 131, 42, .70);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(184, 131, 42, .16);
+    }
+    .button.secondary {
+      border-color: var(--line);
+      background: var(--surface-2);
+      color: var(--muted);
+    }
+    html[data-theme="dark"] .button.secondary {
+      background: rgba(255, 255, 255, .03);
+    }
+    .button.secondary:hover {
+      border-color: rgba(43, 138, 132, .40);
+      background: rgba(43, 138, 132, .06);
+      color: var(--ink);
+      box-shadow: 0 4px 16px rgba(43, 138, 132, .10);
+    }
 
-    footer { padding: 44px 0 70px; color: var(--quiet); border-top: 1px solid var(--line); }
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       FOOTER
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    footer {
+      padding: 44px 0 70px;
+      color: var(--quiet);
+      border-top: 1px solid var(--line);
+      background: var(--bg-2);
+    }
     footer .shell { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-    footer code { font-family: var(--mono); color: var(--muted); }
+    footer strong { color: var(--muted); }
+    footer code   { font-family: var(--mono); color: var(--quiet); font-size: 13px; }
 
+    section + section { border-top: 1px solid var(--line); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       RESPONSIVE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     @media (max-width: 900px) {
       nav { display: none; }
       .hero-grid, .matrix, .critique { grid-template-columns: 1fr; }
@@ -308,7 +572,7 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, html { scroll-behavior: auto !important; transition: none !important; }
+      *, html { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
     }
   </style>
 </head>
@@ -316,7 +580,9 @@
   <header>
     <div class="shell nav">
       <a class="brand" href="#top" aria-label="Pharmacopeia.info">
-        <span class="mark" aria-hidden="true"></span>
+        <span class="mark" aria-hidden="true">
+          <span class="mark-dot"></span>
+        </span>
         <span>Pharmacopeia.info</span>
       </a>
       <nav aria-label="Navegação principal">
@@ -325,6 +591,10 @@
         <a href="#atlas">Moléculas</a>
         <a href="#limites">Limites</a>
       </nav>
+      <button id="themeToggle" class="theme-btn" type="button" aria-label="Alternar tema">
+        <span class="theme-icon theme-icon-sun">&#9728;</span>
+        <span class="theme-icon theme-icon-moon" style="display:none">&#9790;</span>
+      </button>
     </div>
   </header>
 
@@ -359,7 +629,7 @@
         </div>
         <div>
           <p><strong>Uma parte da farmacologia moderna testa moléculas em roedores noturnos e depois tenta extrapolar para humanos diurnos.</strong> A Pharmacopeia não descarta esses dados; ela os reclassifica. O problema não é usar modelo animal. O problema é esquecer que o modelo tem cronobiologia, retina, melanina, campo, metabolismo e ecologia luminosa diferentes.</p>
-          <p>Nas notas Kruse sobre tetraciclinas e ivermectina, a crítica aparece como eixo central: modelos de roedores noturnos vivem no escuro, têm mecânica circadiana invertida e não representam diretamente o “motor de luz” humano. Por isso, cada ficha do atlas deve perguntar: o estudo mediu a molécula no tempo biológico correto, sob qual espectro luminoso, em qual campo magnético, com qual estado redox e com que tradução real para o humano?</p>
+          <p>Nas notas Kruse sobre tetraciclinas e ivermectina, a crítica aparece como eixo central: modelos de roedores noturnos vivem no escuro, têm mecânica circadiana invertida e não representam diretamente o "motor de luz" humano. Por isso, cada ficha do atlas deve perguntar: o estudo mediu a molécula no tempo biológico correto, sob qual espectro luminoso, em qual campo magnético, com qual estado redox e com que tradução real para o humano?</p>
           <div class="critique-points" aria-label="Pontos de extrapolação animal-humano">
             <div class="mini"><b>O que o dado animal mostra</b><span>Toxicidade, mecanismo, sinal farmacológico ou hipótese inicial em um organismo específico.</span></div>
             <div class="mini"><b>O que ele não prova sozinho</b><span>Janela clínica humana, resposta circadiana, interação com luz solar, deutério, magnetismo e terreno redox.</span></div>
@@ -416,7 +686,7 @@
         <article class="molecule-card">
           <span class="status candidate">candidato forte</span>
           <h3>Lítio / GLP-1</h3>
-          <p>Material já aparece como “fármacos biofísicos”. Bom eixo para explicar janela terapêutica sem transformar a home em protocolo clínico.</p>
+          <p>Material já aparece como "fármacos biofísicos". Bom eixo para explicar janela terapêutica sem transformar a home em protocolo clínico.</p>
         </article>
         <article class="molecule-card">
           <span class="status sensitive">sensível / interno</span>
@@ -442,13 +712,44 @@
   </footer>
 
   <script>
-    const axes = [
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       THEME TOGGLE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    var themeToggle = document.getElementById('themeToggle');
+    var sunIcon  = themeToggle.querySelector('.theme-icon-sun');
+    var moonIcon = themeToggle.querySelector('.theme-icon-moon');
+
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('ph-theme', theme);
+      if (theme === 'dark') {
+        sunIcon.style.display  = '';
+        moonIcon.style.display = 'none';
+        themeToggle.setAttribute('aria-label', 'Mudar para tema claro');
+      } else {
+        sunIcon.style.display  = 'none';
+        moonIcon.style.display = '';
+        themeToggle.setAttribute('aria-label', 'Mudar para tema escuro');
+      }
+    }
+
+    applyTheme(localStorage.getItem('ph-theme') || 'light');
+
+    themeToggle.addEventListener('click', function () {
+      var current = document.documentElement.getAttribute('data-theme');
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       MATRIZ DE 8 EIXOS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    var axes = [
       {
         title: 'Origem geográfica', tag: 'solo · latitude · história', accent: 'solar',
         question: 'De que ambiente físico esta molécula veio antes de entrar na farmácia?',
         body: 'A origem não é folclore. Solo, fungo, bactéria, planta, latitude, altitude, vulcanismo, sazonalidade e história industrial carregam pistas sobre que campo físico moldou a molécula.',
         reads: ['Organismo ou processo de origem', 'Latitude, magnetismo, sol e ecologia local'],
-        warns: ['Evitar “natural = seguro”', 'Separar origem histórica de indicação clínica']
+        warns: ['Evitar "natural = seguro"', 'Separar origem histórica de indicação clínica']
       },
       {
         title: 'Arquitetura molecular', tag: 'forma · carga · membrana', accent: 'bio',
@@ -462,7 +763,7 @@
         question: 'A molécula conversa com alguma janela de luz biologicamente relevante?',
         body: 'O painel pergunta se há cromóforo, absorção UV-A/UV-B/visível/IR, emissão, fotossensibilidade ou ausência significativa de interação óptica. Às vezes o dado mais importante é o que a molécula não absorve.',
         reads: ['Picos UV/Vis/IR e fotossensibilidade', 'Relação com melanina, POMC e pele'],
-        warns: ['Não chamar tudo de “fotônico”', 'Distinguir espectro medido de hipótese funcional']
+        warns: ['Não chamar tudo de "fotônico"', 'Distinguir espectro medido de hipótese funcional']
       },
       {
         title: 'Água/EZ/deutério', tag: 'interface · exclusão · isótopos', accent: 'bio',
@@ -501,31 +802,33 @@
       }
     ];
 
-    const list = document.getElementById('axisList');
-    const detail = document.getElementById('axisDetail');
+    var accentColor = { solar: 'var(--solar)', bio: 'var(--bio)', mag: 'var(--mag)' };
 
-    function renderButtons(activeIndex = 0) {
-      list.innerHTML = axes.map((axis, i) => `
-        <button class="axis-button ${i === activeIndex ? 'active' : ''}" type="button" data-axis="${i}" aria-pressed="${i === activeIndex}">
-          <span class="axis-num">${String(i + 1).padStart(2, '0')}</span>
-          <span class="axis-title">${axis.title}</span>
-          <span class="axis-tag">${axis.tag}</span>
-        </button>
-      `).join('');
+    var list   = document.getElementById('axisList');
+    var detail = document.getElementById('axisDetail');
+
+    function renderButtons(activeIndex) {
+      list.innerHTML = axes.map(function (axis, i) {
+        return '<button class="axis-button ' + (i === activeIndex ? 'active' : '') + '" type="button" data-axis="' + i + '" aria-pressed="' + (i === activeIndex) + '">' +
+          '<span class="axis-num">' + String(i + 1).padStart(2, '0') + '</span>' +
+          '<span class="axis-title">' + axis.title + '</span>' +
+          '<span class="axis-tag">' + axis.tag + '</span>' +
+          '</button>';
+      }).join('');
     }
 
     function renderDetail(index) {
-      const axis = axes[index];
-      detail.innerHTML = `
-        <div class="tagline">Painel ${String(index + 1).padStart(2, '0')} · ${axis.tag}</div>
-        <h3>${axis.title}</h3>
-        <div class="question-box">${axis.question}</div>
-        <p>${axis.body}</p>
-        <div class="detail-grid">
-          <div class="mini"><b>O que ler</b><span>${axis.reads[0]}<br>${axis.reads[1]}</span></div>
-          <div class="mini"><b>Guardrail</b><span>${axis.warns[0]}<br>${axis.warns[1]}</span></div>
-        </div>
-      `;
+      var axis  = axes[index];
+      var color = accentColor[axis.accent] || 'var(--solar)';
+      detail.innerHTML =
+        '<div class="tagline" style="color:' + color + '">Painel ' + String(index + 1).padStart(2, '0') + ' · ' + axis.tag + '</div>' +
+        '<h3>' + axis.title + '</h3>' +
+        '<div class="question-box" style="border-left-color:' + color + '">' + axis.question + '</div>' +
+        '<p>' + axis.body + '</p>' +
+        '<div class="detail-grid">' +
+          '<div class="mini"><b>O que ler</b><span>' + axis.reads[0] + '<br>' + axis.reads[1] + '</span></div>' +
+          '<div class="mini"><b>Guardrail</b><span>' + axis.warns[0] + '<br>' + axis.warns[1] + '</span></div>' +
+        '</div>';
     }
 
     function setActive(index) {
@@ -533,8 +836,8 @@
       renderDetail(index);
     }
 
-    list.addEventListener('click', (event) => {
-      const button = event.target.closest('button[data-axis]');
+    list.addEventListener('click', function (event) {
+      var button = event.target.closest('button[data-axis]');
       if (!button) return;
       setActive(Number(button.dataset.axis));
     });
