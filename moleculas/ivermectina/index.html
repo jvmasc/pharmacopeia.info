@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ivermectina — Pharmacopeia.info</title>
+  <meta name="description" content="Ficha educacional de leitura biofísica da ivermectina: origem, arquitetura molecular, luz, água, CISS, mitocôndria, campo magnético e janela clínica." />
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #07100f;
+      --bg-2: #0b1413;
+      --surface: #10201e;
+      --surface-2: #142a27;
+      --ink: #e7eadf;
+      --muted: #a8b5aa;
+      --quiet: #74827b;
+      --line: rgba(231, 234, 223, .14);
+      --line-strong: rgba(215, 168, 79, .45);
+      --solar: #d7a84f;
+      --bio: #65c7c0;
+      --mag: #8a6ee8;
+      --danger: #d8816a;
+      --ok: #98c379;
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --shadow: 0 24px 80px rgba(0, 0, 0, .42);
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 12% 0%, rgba(215, 168, 79, .18), transparent 32rem),
+        radial-gradient(circle at 88% 10%, rgba(101, 199, 192, .14), transparent 32rem),
+        radial-gradient(circle at 48% 100%, rgba(138, 110, 232, .10), transparent 34rem),
+        linear-gradient(180deg, var(--bg), var(--bg-2) 52%, #060b0a);
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.55;
+    }
+    a { color: inherit; }
+    .shell { width: min(1180px, calc(100% - 36px)); margin: 0 auto; }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(7, 16, 15, .72);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; letter-spacing: -.02em; font-weight: 700; }
+    .mark { width: 34px; height: 34px; border: 1px solid var(--line-strong); border-radius: 50%; display: grid; place-items: center; position: relative; color: var(--solar); box-shadow: 0 0 30px rgba(215,168,79,.14); }
+    .mark::before, .mark::after { content: ""; position: absolute; border: 1px solid rgba(101,199,192,.42); border-radius: 50%; inset: 7px 2px; transform: rotate(35deg); }
+    .mark::after { transform: rotate(-35deg); border-color: rgba(138,110,232,.38); }
+    nav { display: flex; gap: 18px; color: var(--muted); font-size: 14px; }
+    nav a { text-decoration: none; }
+    nav a:hover { color: var(--ink); }
+    .hero { padding: 76px 0 42px; }
+    .kicker { display: inline-flex; align-items: center; gap: 10px; color: var(--solar); font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: .16em; border: 1px solid rgba(215, 168, 79, .26); border-radius: 999px; padding: 8px 12px; background: rgba(215, 168, 79, .06); }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--solar); box-shadow: 0 0 18px var(--solar); }
+    h1 { margin: 26px 0 22px; max-width: 980px; font-family: var(--serif); font-size: clamp(48px, 8vw, 104px); line-height: .92; letter-spacing: -.06em; font-weight: 520; }
+    .lead { max-width: 860px; color: var(--muted); font-size: clamp(18px, 2vw, 23px); }
+    .lead strong { color: var(--ink); font-weight: 650; }
+    section { padding: 48px 0; }
+    .grid-2 { display: grid; grid-template-columns: 1.05fr .95fr; gap: 22px; align-items: start; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .panel, .notice, .axis-card, .source-card, .summary-card { background: linear-gradient(180deg, rgba(16,32,30,.92), rgba(13,24,23,.86)); border: 1px solid var(--line); border-radius: var(--radius-xl); box-shadow: var(--shadow); }
+    .panel { padding: 28px; }
+    .panel h2, section h2 { margin: 0 0 14px; font-family: var(--serif); letter-spacing: -.035em; font-size: clamp(30px, 4vw, 52px); line-height: 1; }
+    .panel p, .notice p, .axis-card p, .source-card p, .summary-card p { color: var(--muted); }
+    .summary-card { padding: 18px; box-shadow: none; min-height: 170px; }
+    .summary-card b { display: block; margin-bottom: 8px; color: var(--ink); }
+    .status { display: inline-flex; border-radius: 999px; border: 1px solid var(--line); padding: 6px 9px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; color: var(--muted); }
+    .established { color: var(--ok); border-color: rgba(152,195,121,.34); background: rgba(152,195,121,.08); }
+    .hypothesis { color: var(--bio); border-color: rgba(101,199,192,.34); background: rgba(101,199,192,.08); }
+    .investigational { color: var(--solar); border-color: rgba(215,168,79,.34); background: rgba(215,168,79,.08); }
+    .guarded { color: var(--danger); border-color: rgba(216,129,106,.34); background: rgba(216,129,106,.08); }
+    .section-head { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 22px; }
+    .section-head p { margin: 0; max-width: 680px; color: var(--muted); }
+    .axis-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .axis-card { padding: 18px; box-shadow: none; min-height: 230px; }
+    .axis-card .num { font-family: var(--mono); color: var(--solar); font-size: 12px; letter-spacing: .12em; }
+    .axis-card h3 { margin: 10px 0 8px; font-size: 20px; letter-spacing: -.02em; }
+    .axis-card p { font-size: 14px; margin: 0; }
+    .axis-card small { display: block; margin-top: 12px; color: var(--quiet); font-family: var(--mono); font-size: 11px; text-transform: uppercase; line-height: 1.45; }
+    .notice { padding: 26px; box-shadow: none; border-color: rgba(215,168,79,.24); }
+    .warning { border-color: rgba(216,129,106,.38); background: linear-gradient(180deg, rgba(53,26,22,.82), rgba(18,24,23,.86)); }
+    .button { min-height: 46px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 16px; border-radius: 999px; border: 1px solid var(--line-strong); background: rgba(215,168,79,.12); color: var(--ink); text-decoration: none; font-weight: 700; }
+    .button.secondary { border-color: var(--line); background: rgba(255,255,255,.03); color: var(--muted); }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+    .source-card { padding: 18px; box-shadow: none; }
+    .source-card h3 { margin: 0 0 8px; }
+    .source-card p { margin: 0; font-size: 14px; }
+    footer { padding: 44px 0 70px; color: var(--quiet); border-top: 1px solid var(--line); }
+    footer .shell { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    footer code { font-family: var(--mono); color: var(--muted); }
+    @media (max-width: 1000px) { .axis-grid { grid-template-columns: repeat(2, 1fr); } .grid-3 { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 760px) { nav { display: none; } .grid-2, .grid-3, .axis-grid { grid-template-columns: 1fr; } .section-head { display: block; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="shell nav">
+      <a class="brand" href="../../index.html" aria-label="Pharmacopeia.info">
+        <span class="mark" aria-hidden="true"></span>
+        <span>Pharmacopeia.info</span>
+      </a>
+      <nav aria-label="Navegação principal">
+        <a href="../../index.html#matriz">Matriz</a>
+        <a href="#eixos">8 eixos</a>
+        <a href="#evidencia">Evidência</a>
+        <a href="#fontes">Fontes</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero shell">
+      <div class="kicker"><span class="dot"></span> Ficha 01 · molécula</div>
+      <h1>Ivermectina</h1>
+      <p class="lead"><strong>A bula vê um antiparasitário.</strong> A Pharmacopeia lê uma lactona macrocíclica de origem microbiana, lipofílica, com ação em canais, membranas, poros nucleares, mitocôndria, água interfacial e janela ambiental. Esta ficha organiza o que é estabelecido, o que é hipótese biofísica plausível e o que permanece investigacional.</p>
+      <div class="cta-row">
+        <a class="button" href="#eixos">Ler pelos 8 eixos</a>
+        <a class="button secondary" href="../../index.html#atlas">Voltar ao atlas</a>
+      </div>
+    </section>
+
+    <section class="shell">
+      <div class="grid-2">
+        <article class="panel">
+          <h2>A tese pública</h2>
+          <p>A ivermectina não precisa ser vendida como panaceia para merecer atenção. A sua importância está no cruzamento entre farmacologia clássica e terreno biológico: origem no solo, arquitetura macrocíclica, lipofilicidade, interação com canais e membranas, sinalização imune, poro nuclear e metabolismo mitocondrial.</p>
+          <p>No vocabulário da Pharmacopeia: ela é uma molécula que exige leitura de <strong>ambiente</strong>, <strong>interface</strong> e <strong>janela clínica</strong>, não apenas receptor e dose.</p>
+        </article>
+        <aside class="notice warning">
+          <h2>Guardrail clínico</h2>
+          <p>Esta página é educacional. Não fornece dose, ciclo, prescrição, compra, substituição de acompanhamento médico ou recomendação individual. Ivermectina é medicamento; riscos, interações, gravidez, peso, fígado, SNC, coinfecções e contexto epidemiológico pertencem à avaliação profissional.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="resumo" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker"><span class="dot"></span> Leitura rápida</div>
+          <h2>Quatro camadas antes de qualquer protocolo.</h2>
+        </div>
+        <p>A ficha pública separa mecanismo aceito, leitura biofísica, hipóteses Kruse/PKA e prudência clínica para evitar tanto reducionismo quanto propaganda terapêutica.</p>
+      </div>
+      <div class="grid-3">
+        <article class="summary-card"><span class="status established">estabelecido</span><b>Antiparasitário</b><p>Ação clássica ligada a canais de cloro glutamato-dependentes em invertebrados, com hiperpolarização e paralisia do parasita.</p></article>
+        <article class="summary-card"><span class="status established">estabelecido</span><b>Molécula lipofílica</b><p>A estrutura macrocíclica favorece interação com membranas e compartimentos lipídicos; isso ajuda a explicar parte da amplitude biológica.</p></article>
+        <article class="summary-card"><span class="status hypothesis">hipótese biofísica</span><b>Interface água/membrana</b><p>Hidroxilas, éteres, lactona e dissacarídeo tornam plausível investigar hidratação, água interfacial e microambiente dielétrico.</p></article>
+        <article class="summary-card"><span class="status hypothesis">hipótese biofísica</span><b>Mitocôndria/redox</b><p>Dados experimentais em altas concentrações indicam efeito mitocondrial em certos modelos; a interpretação de “sintonia” em baixa dose é hipótese, não consenso.</p></article>
+        <article class="summary-card"><span class="status investigational">investigacional</span><b>CISS / spin</b><p>A leitura como antena macrocíclica e filtro de spin é uma heurística Kruse/PKA a ser marcada como fronteira, não como farmacologia estabelecida.</p></article>
+        <article class="summary-card"><span class="status guarded">prudência</span><b>Janela clínica</b><p>Risco, interação e contexto importam mais que entusiasmo. A ficha pública não transforma molécula em protocolo individual.</p></article>
+      </div>
+    </section>
+
+    <section id="eixos" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker"><span class="dot"></span> Matriz Pharmacopeia</div>
+          <h2>Ivermectina pelos oito eixos.</h2>
+        </div>
+        <p>A mesma molécula é lida por origem, forma, luz, água, spin, mitocôndria, campo e prudência clínica. Cada eixo tem um estatuto epistemológico diferente.</p>
+      </div>
+      <div class="axis-grid">
+        <article class="axis-card"><span class="num">01 · origem</span><h3>Solo japonês</h3><p>Derivada de avermectinas de <em>Streptomyces avermitilis</em>, isolado em Kawana/Itō, Shizuoka. A ficha usa a origem como pista ecológica, não como prova terapêutica.</p><small>Estado: histórico estabelecido + leitura geográfica investigacional</small></article>
+        <article class="axis-card"><span class="num">02 · arquitetura</span><h3>Macrociclo 16 membros</h3><p>Lactona macrocíclica, mistura B1a/B1b, com dissacarídeo. A forma 3D contrasta com moléculas planares como tetraciclinas.</p><small>Estado: estrutura estabelecida; função antena = hipótese</small></article>
+        <article class="axis-card"><span class="num">03 · espectro</span><h3>UV / NIR</h3><p>O PKA interpreta o dieno conjugado e modos vibracionais do anel como possíveis pistas ópticas. A página pública marca isso como investigação espectral, não claim clínico.</p><small>Estado: hipótese a validar com espectroscopia</small></article>
+        <article class="axis-card"><span class="num">04 · água</span><h3>Hidratação e interface</h3><p>A densidade de aceitadores/doadores de ligação de hidrogênio permite perguntar como a molécula altera hidratação local, membranas e poros.</p><small>Estado: plausível; EZ/deutério exigem cautela</small></article>
+        <article class="axis-card"><span class="num">05 · CISS</span><h3>Quiralidade e spin</h3><p>A ivermectina é quiral e opera em interfaces. A ponte com CISS, neuromelanina e ATP-sintase é lente Kruse/PKA, útil para formular perguntas.</p><small>Estado: investigacional</small></article>
+        <article class="axis-card"><span class="num">06 · redox</span><h3>Mitocôndria</h3><p>Estudos em células tumorais mostram disfunção mitocondrial em certos contextos. A tradução para restauração redox humana depende de dose, terreno e evidência clínica.</p><small>Estado: dados pré-clínicos + interpretação prudente</small></article>
+        <article class="axis-card"><span class="num">07 · campo</span><h3>Latitude e ambiente</h3><p>A ficha pergunta se luz solar real, geografia, magnetismo e indoor/nnEMF mudam resposta. Isso é variável de pesquisa, não critério público de prescrição.</p><small>Estado: heurística ambiental</small></article>
+        <article class="axis-card"><span class="num">08 · janela</span><h3>Quando não usar</h3><p>O eixo mais importante é limite: contraindicações, interações, gravidez, SNC, fígado, contexto parasitário e supervisão profissional.</p><small>Estado: prudência clínica obrigatória</small></article>
+      </div>
+    </section>
+
+    <section id="evidencia" class="shell">
+      <div class="grid-2">
+        <article class="panel">
+          <h2>Modelo animal: pista, não sentença</h2>
+          <p>Ensaios pré-clínicos ajudam a detectar mecanismo, toxicidade, sinal farmacológico e hipótese inicial. Mas a Pharmacopeia não aceita extrapolação automática de roedores noturnos para humanos solares, diurnos, com outra retina, cronobiologia, ecologia luminosa e campo ambiental.</p>
+          <p>Para a ivermectina, isso significa perguntar: o modelo mediu luz, tempo biológico, estado redox, campo magnético, deutério, membrana, microbioma e terreno — ou apenas uma variável bioquímica isolada?</p>
+        </article>
+        <article class="panel">
+          <h2>Camadas de evidência</h2>
+          <p><strong>Verde:</strong> descoberta, estrutura, ação antiparasitária, Nobel 2015, mecanismos clássicos e parte dos efeitos em canais/receptores.</p>
+          <p><strong>Ciano:</strong> interações com importina, P2X4/α7-nAChR, mitocôndria em modelos específicos e hipóteses de interface membrana/água.</p>
+          <p><strong>Âmbar:</strong> antena macrocíclica, CISS, POMC mitocondrial, geografia magnética e leitura Kruse de excursão magnética.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="fontes" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker"><span class="dot"></span> Fontes internas e externas</div>
+          <h2>Base desta primeira ficha.</h2>
+        </div>
+      </div>
+      <div class="grid-3">
+        <article class="source-card"><h3>PKA · P03</h3><p><em>Protocolo Ivermectina — Antena Macrocíclica</em>. Usado como fonte interna para a matriz Kruse/PKA, com linguagem pública rebaixada para educação e hipótese.</p></article>
+        <article class="source-card"><h3>CPC 85 expandida</h3><p><em>A Ivermectina como Antena Macrocíclica</em>. Fonte da leitura geográfica, óptica, CISS, POMC e crítica metodológica a roedores noturnos.</p></article>
+        <article class="source-card"><h3>Livro PKA</h3><p><em>Ivermectina — 2ª Edição Biofísica</em>. Fonte da narrativa “faxineira do corpo”, terreno, biofísica abaixo da bioquímica e ponte com Peter Picolin.</p></article>
+        <article class="source-card"><h3>Ōmura & Crump</h3><p>História da descoberta, <em>Streptomyces avermitilis</em>, Kitasato, Merck e desenvolvimento das avermectinas/ivermectina.</p></article>
+        <article class="source-card"><h3>Wagstaff / Caly</h3><p>Importina α/β1 e importação nuclear como eixo experimental relevante, sem extrapolar automaticamente para uso clínico.</p></article>
+        <article class="source-card"><h3>Krause / Khakh</h3><p>P2X4 e α7-nAChR como pistas de canais/receptores e eixo colinérgico/vagal, mantidas como camada mecanística, não promessa terapêutica.</p></article>
+      </div>
+    </section>
+
+    <section class="shell">
+      <article class="notice">
+        <h2>Regra editorial desta ficha</h2>
+        <p>A Pharmacopeia publica perguntas melhores, não atalhos terapêuticos. Onde há consenso, dizemos consenso. Onde há mecanismo plausível, dizemos hipótese. Onde há Kruse/PKA, dizemos fronteira investigacional. Onde há paciente real, encaminhamos para avaliação individual.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">
+      <span><strong>Pharmacopeia.info</strong> — ficha 01 / ivermectina.</span>
+      <code>educacional · sem prescrição · matriz biofísica</code>
+    </div>
+  </footer>
+</body>
+</html>
