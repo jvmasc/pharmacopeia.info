@@ -761,15 +761,15 @@
       {
         title: 'Espectro UV/Vis/IR', tag: 'fotões · cromóforo · janela', accent: 'solar',
         question: 'A molécula conversa com alguma janela de luz biologicamente relevante?',
-        body: 'O painel pergunta se há cromóforo, absorção UV-A/UV-B/visível/IR, emissão, fotossensibilidade ou ausência significativa de interação óptica. Às vezes o dado mais importante é o que a molécula não absorve.',
+        body: 'As janelas biologicamente ativas são: UV-B (280–320 nm) → POMC/vitamina D/β-endorfina cutânea; UV-A (320–400 nm) → melanina, NO, antenas fotônicas; visível ~660 nm → hemoglobina/CCO; IR-A 830 nm e 1878 nm → CCO, DDW, bandgap da melanina (0,66 eV). O painel mede onde a molécula entra nesse mapa — e o que ela não absorve pode ser tão informativo quanto o que absorve.',
         reads: ['Picos UV/Vis/IR e fotossensibilidade', 'Relação com melanina, POMC e pele'],
         warns: ['Não chamar tudo de "fotônico"', 'Distinguir espectro medido de hipótese funcional']
       },
       {
         title: 'Água/EZ/deutério', tag: 'interface · exclusão · isótopos', accent: 'bio',
         question: 'A molécula organiza, perturba ou atravessa a água interfacial?',
-        body: 'Aqui entram água estruturada, EZ water, hidratação, KIE, deutério, água metabólica e interfaces. A pergunta central é se a molécula melhora ou degrada coerência aquosa no contexto certo.',
-        reads: ['Pontes de hidrogênio e hidratação', 'Possível efeito sobre deutério e água metabólica'],
+        body: 'KIE (Efeito Isotópico Cinético): deutério tem massa 2× maior que próton; em reações enzimáticas dependentes de tunelamento quântico, reage 6–10× mais devagar, degradando eficiência metabólica. Pelo Princípio de Landauer, adicionar massa atômica incorreta à base chain biológica tem custo entrópico irredutível — informação tem custo de energia. O painel pergunta se a molécula melhora ou degrada coerência aquosa e carga isotópica no contexto certo.',
+        reads: ['Pontes de hidrogênio e hidratação', 'Efeito sobre deutério, DDW e Princípio de Landauer'],
         warns: ['Separar hipótese de evidência direta', 'Evitar claims de DDW sem medição']
       },
       {
@@ -782,14 +782,14 @@
       {
         title: 'Mitocôndria/redox', tag: 'OxFos · ATP · ROS', accent: 'bio',
         question: 'Ela restaura fluxo de elétrons ou apenas força bioquímica contra um terreno ruim?',
-        body: 'Este painel cruza cadeia respiratória, ΔΨ, ATP-sintase, ROS/RNS, Warburg, NAD+/NADH, citocromo c oxidase, inflamação e produção de água metabólica.',
+        body: 'Estimulação aumenta fluxo sem melhorar eficiência — ATP sobe junto com ROS. Restauração melhora ΔΨ e aumenta produção de DDW endógena pela CCO — mais ATP com menos ROS. A diferença não está na dose, está no estado redox inicial: mesma molécula, terrenos opostos, resultados opostos.',
         reads: ['Efeito sobre OxFos, glicólise e ROS', 'Impacto em membrana mitocondrial e redox'],
         warns: ['Não confundir estímulo com restauração', 'Janela depende do estado redox inicial']
       },
       {
         title: 'Campo magnético/latitude', tag: 'geografia · AAS · ambiente', accent: 'mag',
         question: 'A molécula depende de campo, sol e ambiente para funcionar como prometido?',
-        body: 'A mesma molécula pode ter comportamento diferente em campo robusto, AAS, indoor, nnEMF alto, baixa luz solar ou altitude. O ambiente físico entra como variável primária, não detalhe.',
+        body: 'A Anomalia do Atlântico Sul (AAS) reduz o campo magnético a menos de 35 µT em grande parte do Brasil, contra ~50 µT de linha de base global. Campo baixo afeta POMC, síntese de colágeno e dopamina — e muda o terreno em que qualquer molécula dependente de ambiente magnético competente vai operar. Indoor, nnEMF alto e baixa latitude solar amplificam o problema.',
         reads: ['Latitude, altitude, vulcanismo, AAS', 'nnEMF, indoor, exposição solar e campo local'],
         warns: ['Não universalizar resposta clínica', 'Não esquecer ambiente do paciente']
       },
