@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-label="Ivermectina · arquitetura molecular">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <style>
+    .title { font: 600 54px Georgia, 'Times New Roman', serif; fill:#161616; letter-spacing:-1px; }
+    .subtitle { font: 24px Arial, Helvetica, sans-serif; fill:#555; }
+    .label { font: 23px Arial, Helvetica, sans-serif; fill:#202020; }
+    .small { font: 18px Arial, Helvetica, sans-serif; fill:#555; }
+    .tiny { font: 15px Arial, Helvetica, sans-serif; fill:#777; }
+    .mono { font: 17px 'Courier New', monospace; fill:#444; }
+    .line { stroke:#1f1f1f; stroke-width:4; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+    .thin { stroke:#3a3a3a; stroke-width:2.4; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+    .dash { stroke:#707070; stroke-width:2.2; fill:none; stroke-dasharray:8 8; }
+    .soft { fill:#f7f7f4; stroke:#d9d9d2; stroke-width:2; }
+    .blue { stroke:#3d6f91; fill:none; }
+    .amber { stroke:#9a6b20; fill:none; }
+    .green { stroke:#5f7f48; fill:none; }
+    .box { fill:#fafafa; stroke:#d0d0c9; stroke-width:2; rx:18; }
+  </style>
+  <text x="80" y="90" class="title">Ivermectina · arquitetura molecular</text>
+  <text x="82" y="130" class="subtitle">Lactona macrocíclica, dissacarídeo e regiões funcionais</text>
+  
+  <text x="80" y="190" class="small">Esquema didático minimalista — não substitui estrutura química canônica.</text>
+  <g transform="translate(0,10)">
+    <path class="line" d="M470 365 C520 240, 720 190, 870 250 C1025 312, 1095 470, 1025 620 C955 765, 770 805, 610 735 C470 674, 405 515, 470 365 Z"/>
+    <path class="thin" d="M540 392 L610 312 M660 282 L750 282 M812 305 L895 365 M948 438 L952 535 M922 610 L840 690 M750 730 L650 705 M570 660 L510 570 M492 500 L510 425"/>
+    <circle cx="1030" cy="615" r="35" fill="#fff" stroke="#1f1f1f" stroke-width="4"/>
+    <text x="1015" y="624" class="label">O</text>
+    <path class="line" d="M1062 604 C1145 590, 1212 630, 1248 700"/>
+    <path class="thin" d="M1248 700 l78 -24 m-20 82 l-58 -58"/>
+    <text x="1190" y="795" class="label">lactona</text>
+    <g transform="translate(250 590)">
+      <polygon points="0,-45 40,-22 40,22 0,45 -40,22 -40,-22" class="soft"/>
+      <polygon points="75,-45 115,-22 115,22 75,45 35,22 35,-22" class="soft"/>
+      <text x="-50" y="86" class="label">dissacarídeo</text>
+    </g>
+    <path class="line" d="M365 600 C410 610, 450 630, 500 665"/>
+    <path class="amber" stroke-width="5" d="M615 304 L748 282 M840 692 L748 728"/>
+    <text x="455" y="260" class="label">dieno conjugado</text>
+    <path class="dash" d="M650 270 C690 245, 735 242, 775 266"/>
+    <text x="650" y="868" class="label">macrociclo de 16 membros</text>
+    <path class="dash" d="M635 835 C790 885, 975 818, 1060 678"/>
+    <text x="90" y="905" class="tiny">Pharmacopeia.info · figura educacional · fundo branco</text>
+  </g>
+
+</svg>

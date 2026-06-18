@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-label="Ivermectina · mecanismo clássico">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <style>
+    .title { font: 600 54px Georgia, 'Times New Roman', serif; fill:#161616; letter-spacing:-1px; }
+    .subtitle { font: 24px Arial, Helvetica, sans-serif; fill:#555; }
+    .label { font: 23px Arial, Helvetica, sans-serif; fill:#202020; }
+    .small { font: 18px Arial, Helvetica, sans-serif; fill:#555; }
+    .tiny { font: 15px Arial, Helvetica, sans-serif; fill:#777; }
+    .mono { font: 17px 'Courier New', monospace; fill:#444; }
+    .line { stroke:#1f1f1f; stroke-width:4; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+    .thin { stroke:#3a3a3a; stroke-width:2.4; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+    .dash { stroke:#707070; stroke-width:2.2; fill:none; stroke-dasharray:8 8; }
+    .soft { fill:#f7f7f4; stroke:#d9d9d2; stroke-width:2; }
+    .blue { stroke:#3d6f91; fill:none; }
+    .amber { stroke:#9a6b20; fill:none; }
+    .green { stroke:#5f7f48; fill:none; }
+    .box { fill:#fafafa; stroke:#d0d0c9; stroke-width:2; rx:18; }
+  </style>
+  <text x="80" y="90" class="title">Ivermectina · mecanismo clássico</text>
+  <text x="82" y="130" class="subtitle">Canal de cloro glutamato-dependente em invertebrados</text>
+  
+  <text x="80" y="190" class="small">Mecanismo farmacológico clássico em invertebrados: canal de Cl⁻ glutamato-dependente.</text>
+  <g transform="translate(0,20)">
+    <rect x="170" y="420" width="1260" height="95" rx="48" fill="#f2f2ee" stroke="#c9c9c0" stroke-width="2"/>
+    <path class="thin" d="M180 468 H1420"/>
+    <g transform="translate(720 350)">
+      <rect x="-80" y="10" width="160" height="235" rx="30" fill="#ffffff" stroke="#1e1e1e" stroke-width="4"/>
+      <path class="thin" d="M-38 35 C-10 90,-10 165,-38 220 M38 35 C10 90,10 165,38 220"/>
+      <text x="-86" y="-18" class="label">GluCl</text>
+      <text x="-112" y="276" class="small">canal aberto</text>
+    </g>
+    <g class="blue" stroke-width="4">
+      <path d="M720 210 C720 260,720 315,720 370" marker-end="url(#arrow)"/>
+      <path d="M670 230 C690 288,690 315,690 370" marker-end="url(#arrow)"/>
+      <path d="M770 230 C750 288,750 315,750 370" marker-end="url(#arrow)"/>
+    </g>
+    <defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#3d6f91"/></marker></defs>
+    <text x="640" y="195" class="label">Cl⁻ entra</text>
+    <text x="520" y="655" class="label">hiperpolarização → paralisia do parasita</text>
+    <rect x="1070" y="250" width="260" height="118" rx="18" class="box"/>
+    <text x="1100" y="295" class="label">Ivermectina</text>
+    <text x="1100" y="330" class="small">modula canais</text>
+    <path class="amber" stroke-width="4" d="M1070 340 C980 390,900 420,806 440" marker-end="url(#arrowAmber)"/>
+    <defs><marker id="arrowAmber" markerWidth="12" markerHeight="12" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#9a6b20"/></marker></defs>
+    <text x="90" y="905" class="tiny">Esquema público: mecanismo aceito, sem dose e sem protocolo individual.</text>
+  </g>
+
+</svg>

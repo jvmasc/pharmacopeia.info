@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-label="Ivermectina · interface biofísica">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <style>
+    .title { font: 600 54px Georgia, 'Times New Roman', serif; fill:#161616; letter-spacing:-1px; }
+    .subtitle { font: 24px Arial, Helvetica, sans-serif; fill:#555; }
+    .label { font: 23px Arial, Helvetica, sans-serif; fill:#202020; }
+    .small { font: 18px Arial, Helvetica, sans-serif; fill:#555; }
+    .tiny { font: 15px Arial, Helvetica, sans-serif; fill:#777; }
+    .mono { font: 17px 'Courier New', monospace; fill:#444; }
+    .line { stroke:#1f1f1f; stroke-width:4; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+    .thin { stroke:#3a3a3a; stroke-width:2.4; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+    .dash { stroke:#707070; stroke-width:2.2; fill:none; stroke-dasharray:8 8; }
+    .soft { fill:#f7f7f4; stroke:#d9d9d2; stroke-width:2; }
+    .blue { stroke:#3d6f91; fill:none; }
+    .amber { stroke:#9a6b20; fill:none; }
+    .green { stroke:#5f7f48; fill:none; }
+    .box { fill:#fafafa; stroke:#d0d0c9; stroke-width:2; rx:18; }
+  </style>
+  <text x="80" y="90" class="title">Ivermectina · interface biofísica</text>
+  <text x="82" y="130" class="subtitle">Água, membrana e espectro como perguntas de pesquisa</text>
+  
+  <text x="80" y="190" class="small">Leitura biofísica prudente: interface água–membrana–luz como pergunta de pesquisa.</text>
+  <g transform="translate(0,20)">
+    <path d="M150 565 C260 505,370 620,480 560 C590 500,700 620,810 560 C920 500,1030 620,1140 560 C1250 500,1360 620,1470 560 L1470 760 L150 760 Z" fill="#f3f8f7" stroke="#c8dddd" stroke-width="2"/>
+    <text x="185" y="735" class="label">água interfacial</text>
+    <rect x="150" y="455" width="1320" height="92" rx="46" fill="#f8f5ed" stroke="#d9cfbd" stroke-width="2"/>
+    <text x="185" y="510" class="label">membrana lipídica</text>
+    <g transform="translate(760 420)">
+      <path class="line" d="M-180 0 C-135 -110, 40 -145, 155 -70 C275 8,245 170,105 220 C-40 270,-220 150,-180 0 Z"/>
+      <path class="thin" d="M-115 -20 L-45 -85 L45 -95 L125 -40 M160 40 L112 135 L20 188 L-88 152 M-145 85 L-175 10"/>
+      <circle cx="180" cy="48" r="26" fill="#fff" stroke="#1f1f1f" stroke-width="3"/>
+      <text x="171" y="57" class="small">O</text>
+    </g>
+    <g class="amber" stroke-width="3">
+      <path d="M410 250 C520 320,640 350,740 405"/>
+      <path d="M500 225 C610 300,720 330,820 405"/>
+      <path d="M590 210 C705 290,810 325,910 405"/>
+    </g>
+    <text x="365" y="235" class="label">UV / NIR?</text>
+    <g class="blue" stroke-width="3">
+      <path d="M1080 292 C1000 340,948 390,900 457"/>
+      <path d="M1120 330 C1028 375,980 415,938 477"/>
+    </g>
+    <text x="1095" y="285" class="label">hidratação?</text>
+    <g class="green" stroke-width="3">
+      <path d="M640 705 C725 650,875 650,970 705"/>
+    </g>
+    <text x="607" y="825" class="label">Hipótese: microambiente dielétrico e água local.</text>
+    <text x="90" y="905" class="tiny">Marcação epistemológica: plausível/investigacional, não farmacologia estabelecida.</text>
+  </g>
+
+</svg>

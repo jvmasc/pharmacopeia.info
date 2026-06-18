@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-label="Ivermectina · mapa farmacológico">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <style>
+    .title { font: 600 54px Georgia, 'Times New Roman', serif; fill:#161616; letter-spacing:-1px; }
+    .subtitle { font: 24px Arial, Helvetica, sans-serif; fill:#555; }
+    .label { font: 23px Arial, Helvetica, sans-serif; fill:#202020; }
+    .small { font: 18px Arial, Helvetica, sans-serif; fill:#555; }
+    .tiny { font: 15px Arial, Helvetica, sans-serif; fill:#777; }
+    .mono { font: 17px 'Courier New', monospace; fill:#444; }
+    .line { stroke:#1f1f1f; stroke-width:4; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+    .thin { stroke:#3a3a3a; stroke-width:2.4; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+    .dash { stroke:#707070; stroke-width:2.2; fill:none; stroke-dasharray:8 8; }
+    .soft { fill:#f7f7f4; stroke:#d9d9d2; stroke-width:2; }
+    .blue { stroke:#3d6f91; fill:none; }
+    .amber { stroke:#9a6b20; fill:none; }
+    .green { stroke:#5f7f48; fill:none; }
+    .box { fill:#fafafa; stroke:#d0d0c9; stroke-width:2; rx:18; }
+  </style>
+  <text x="80" y="90" class="title">Ivermectina · mapa farmacológico</text>
+  <text x="82" y="130" class="subtitle">Distribuição, barreiras e janela de prudência clínica</text>
+  
+  <text x="80" y="190" class="small">Mapa de prudência: lipofilicidade, membrana, fígado, P-gp e SNC.</text>
+  <g transform="translate(0,25)">
+    <circle cx="805" cy="470" r="230" fill="#fbfbf8" stroke="#d0d0c8" stroke-width="3"/>
+    <text x="670" y="455" class="label">molécula</text>
+    <text x="628" y="493" class="label">lipofílica</text>
+    <path class="line" d="M760 542 C820 585,900 565,928 505"/>
+    <path class="line" d="M700 385 C775 330,900 340,960 410"/>
+    <g>
+      <rect x="180" y="315" width="330" height="120" rx="18" class="box"/>
+      <text x="215" y="360" class="label">Membranas</text>
+      <text x="215" y="395" class="small">compartimentos lipídicos</text>
+      <path class="thin" d="M510 380 C575 398,620 420,660 445" marker-end="url(#arrowB)"/>
+    </g>
+    <g>
+      <rect x="1070" y="315" width="330" height="120" rx="18" class="box"/>
+      <text x="1105" y="360" class="label">Fígado / CYP</text>
+      <text x="1105" y="395" class="small">metabolismo e interação</text>
+      <path class="thin" d="M1070 380 C1005 398,960 420,920 445" marker-end="url(#arrowB)"/>
+    </g>
+    <g>
+      <rect x="180" y="575" width="330" height="120" rx="18" class="box"/>
+      <text x="215" y="620" class="label">P-gp / barreiras</text>
+      <text x="215" y="655" class="small">proteção do SNC</text>
+      <path class="thin" d="M510 620 C590 590,635 555,670 520" marker-end="url(#arrowB)"/>
+    </g>
+    <g>
+      <rect x="1070" y="575" width="330" height="120" rx="18" class="box"/>
+      <text x="1105" y="620" class="label">Janela clínica</text>
+      <text x="1105" y="655" class="small">risco ≠ entusiasmo</text>
+      <path class="thin" d="M1070 620 C990 590,945 555,910 520" marker-end="url(#arrowB)"/>
+    </g>
+    <defs><marker id="arrowB" markerWidth="12" markerHeight="12" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#3a3a3a"/></marker></defs>
+    <text x="548" y="805" class="label">A molécula não é protocolo: contexto decide segurança.</text>
+    <text x="90" y="905" class="tiny">Figura educacional para ficha pública — sem recomendação terapêutica.</text>
+  </g>
+
+</svg>
