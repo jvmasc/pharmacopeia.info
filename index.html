@@ -523,6 +523,18 @@
     .notice p  { color: var(--muted); margin: 0; }
 
     /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       FOUNDATION — camada-zero
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .foundation {
+      border-left: 3px solid var(--solar);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      background: var(--surface-2);
+      padding: 20px 24px;
+      margin-bottom: 28px;
+    }
+    .foundation p { color: var(--muted); margin: 0; font-size: 14px; line-height: 1.65; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
        BUTTONS
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
@@ -626,12 +638,12 @@
   <main id="top">
     <section class="hero shell">
       <div class="kicker"><span class="dot"></span> Atlas biofísico das moléculas</div>
-      <h1>A farmacologia encontra o corpo vivo.</h1>
-      <p class="lead"><strong>A bula descreve receptor, dose e efeito adverso.</strong> A Pharmacopeia pergunta o que a molécula faz à luz, à água, ao deutério, à quiralidade, ao spin, às membranas, à mitocôndria, ao redox, ao campo magnético e à janela clínica.</p>
+      <h1>Quando a biofísica encontra a farmacologia.</h1>
+      <p class="lead"><strong>A bula descreve receptor, dose e efeito adverso.</strong> Esta Pharmacopeia pergunta o que a molécula faz à luz, à água, ao deutério, à quiralidade, ao spin, às membranas, à mitocôndria, ao redox, ao campo magnético e à janela clínica.</p>
 
       <div class="hero-grid">
         <article class="thesis">
-          <p>Não somos anti-fármaco. Somos contra analisar moléculas como se o corpo fosse apenas química dissolvida. <em>O corpo é também luz, água, campo, membrana e corrente.</em></p>
+          <p>Não somos anti-fármaco. Somos a favor de analisar moléculas pelo nível que a bula ainda não alcança — o que acontece antes do receptor, antes da dose, antes do efeito adverso. <em>O que a molécula faz à física do corpo.</em></p>
           <div class="cta-row">
             <a class="button" href="#matriz">Ler a matriz</a>
             <a class="button secondary" href="#atlas">Ver primeiras moléculas</a>
@@ -667,10 +679,15 @@
       <div class="section-head">
         <div>
           <div class="kicker"><span class="dot"></span> Matriz de leitura</div>
-          <h2>Oito painéis para uma molécula.</h2>
+          <h2>Nove painéis para uma molécula.</h2>
         </div>
-        <p>Cada ficha pública deve separar farmacologia convencional, interpretação biofísica, hipótese Kruse e prudência clínica. Clique nos eixos para ver o que cada painel deve perguntar.</p>
+        <p>Cada ficha pública deve separar farmacologia convencional, interpretação biofísica, hipótese Kruse e prudência clínica. O ambiente físico vem antes da molécula; a clínica vem por último. Clique nos eixos para ver o que cada painel deve perguntar.</p>
       </div>
+
+      <article class="foundation" aria-label="Camada-zero — metabolismo de estado sólido">
+        <div class="kicker"><span class="dot"></span> Camada-zero · metabolismo de estado sólido</div>
+        <p>Todos os painéis correm sobre uma rede elétrica de 4,6 mil milhões de anos: <strong>melanina</strong> roteia o fluxo de fótons e eletrões, <strong>ferredoxina</strong> (clusters [Fe-S]) tunela eletrões ao custo mínimo de entropia, e a <strong>CCO</strong> produz DDW como sinal de ordem — não como subproduto. A bioquímica é a sombra desta física de estado sólido. As perguntas nos nove painéis são perguntas sobre essa sombra.</p>
+      </article>
 
       <div class="matrix">
         <div class="axis-list" id="axisList" aria-label="Eixos da matriz biofísica"></div>
@@ -711,9 +728,23 @@
               <p>Versão lipofílica e sustentada da antena tetraciclínica: compartimento dérmico profundo, DHA, APOE, neuromelanina e construção prolongada.</p>
             </article>
             <article class="molecule-card">
+              <span class="status sensitive">próxima ficha</span>
+              <h3>Azul de metileno</h3>
+              <p>Janela vermelha (~660 nm), transportador de eletrões na cadeia respiratória, restauração de OxFos e fotobiomodulação mitocondrial direta — o exemplo mais limpo de molécula construtora de ordem.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="atlas-group">
+          <div class="atlas-group-head">
+            <h3>Moduladores condicionais</h3>
+            <p>Moléculas cuja janela de atuação é estreita e altamente dependente de terreno, ritual e contexto ambiental. Não constroem ordem diretamente; modulam um sinal específico sob condições muito precisas.</p>
+          </div>
+          <div class="molecules">
+            <article class="molecule-card">
               <span class="status sensitive">condicional</span>
               <h3>Tabaco / Nicotina</h3>
-              <p>Peça de fronteira para explicar contexto: antena quiral e modulação vagal apenas sob condições ambientais, rituais e clínicas muito específicas.</p>
+              <p>Antena quiral vagal: modula tónus parassimpático e sinalização colinérgica apenas sob condições ambientais, rituais e clínicas muito específicas. Janela estreitíssima — não universalizável.</p>
             </article>
           </div>
         </div>
@@ -758,11 +789,6 @@
             <p>Moléculas de alto interesse editorial que ainda precisam de ficha completa, revisão clínica e classificação pública cuidadosa.</p>
           </div>
           <div class="molecules">
-            <article class="molecule-card">
-              <span class="status candidate">candidato forte</span>
-              <h3>Azul de metileno</h3>
-              <p>Forte candidato a primeira ordem por janela vermelha, cadeia respiratória, OxFos e conexão direta com fotobiomodulação mitocondrial.</p>
-            </article>
             <article class="molecule-card">
               <span class="status candidate">candidato forte</span>
               <h3>GLP-1 / Ozempic</h3>
@@ -844,46 +870,46 @@
         warns: ['Evitar "natural = seguro"', 'Separar origem histórica de indicação clínica']
       },
       {
-        title: 'Arquitetura molecular', tag: 'forma · carga · membrana', accent: 'bio',
-        question: 'A forma da molécula permite atuar como antena, solvente, filtro, doador ou perturbação?',
-        body: 'Anéis conjugados, quiralidade, logP, grupos doadores/aceptores de elétrons, enxofre, metais, carbonilas e hidroxilas indicam onde a molécula se instala: água, membrana, proteína, mitocôndria ou interface.',
-        reads: ['Geometria, polaridade, logP, pKa', 'Centros quirais e acoplamento a membranas'],
-        warns: ['Não reduzir estrutura a desenho 2D', 'Não inferir uso clínico só pela forma']
+        title: 'Campo magnético/latitude', tag: 'geografia · AAS · cascata', accent: 'mag',
+        question: 'A molécula depende de campo, sol e ambiente para funcionar como prometido?',
+        body: 'O ambiente físico vem antes da molécula. A Anomalia do Atlântico Sul (AAS) reduz o campo magnético a menos de 35 µT em grande parte do Brasil, contra ~50 µT de linha de base global. A cascata é sequencial — não paralela: campo↓ → O₂ dissolvido↓ → bandgap da melanina (0,66 eV) falha → dopamina disruptiva → colapso de colágeno e POMC. Indoor, nnEMF alto e baixa latitude solar amplificam cada etapa. Qualquer molécula dependente de ambiente magnético competente opera dentro desta cascata.',
+        reads: ['Latitude, altitude, vulcanismo, AAS', 'nnEMF, indoor, exposição solar e campo local'],
+        warns: ['Não universalizar resposta clínica', 'Não esquecer ambiente do paciente']
       },
       {
-        title: 'Espectro UV/Vis/IR', tag: 'fotões · cromóforo · janela', accent: 'solar',
+        title: 'Espectro UV/Vis/IR', tag: 'fotões · cromóforo · POMC', accent: 'solar',
         question: 'A molécula conversa com alguma janela de luz biologicamente relevante?',
-        body: 'As janelas biologicamente ativas são: UV-B (280–320 nm) → POMC/vitamina D/β-endorfina cutânea; UV-A (320–400 nm) → melanina, NO, antenas fotônicas; visível ~660 nm → hemoglobina/CCO; IR-A 830 nm e 1878 nm → CCO, DDW, bandgap da melanina (0,66 eV). O painel mede onde a molécula entra nesse mapa — e o que ela não absorve pode ser tão informativo quanto o que absorve.',
-        reads: ['Picos UV/Vis/IR e fotossensibilidade', 'Relação com melanina, POMC e pele'],
+        body: 'As janelas biologicamente ativas são: UV-B (280–320 nm) → POMC: cliva em α-MSH (pigmentação, anti-inflamação), β-endorfina (analgesia) e ACTH (cortisol/eixo adrenal) — tradução literal de luz em sinal endócrino; UV-A (320–400 nm) → melanina, NO, antenas fotônicas; visível ~660 nm → hemoglobina/CCO; IR-A 830 nm e 1878 nm → CCO, DDW, bandgap da melanina (0,66 eV). O painel mede onde a molécula entra nesse mapa — e o que ela não absorve pode ser tão informativo quanto o que absorve.',
+        reads: ['Picos UV/Vis/IR e fotossensibilidade', 'Relação com POMC (α-MSH · β-endorfina · ACTH), melanina e pele'],
         warns: ['Não chamar tudo de "fotônico"', 'Distinguir espectro medido de hipótese funcional']
       },
       {
-        title: 'Água/EZ/deutério', tag: 'interface · exclusão · isótopos', accent: 'bio',
+        title: 'Água/EZ/deutério', tag: 'interface · exclusão · vórtices', accent: 'bio',
         question: 'A molécula organiza, perturba ou atravessa a água interfacial?',
-        body: 'KIE (Efeito Isotópico Cinético): deutério tem massa 2× maior que próton; em reações enzimáticas dependentes de tunelamento quântico, reage 6–10× mais devagar, degradando eficiência metabólica. Pelo Princípio de Landauer, adicionar massa atômica incorreta à base chain biológica tem custo entrópico irredutível — informação tem custo de energia. O painel pergunta se a molécula melhora ou degrada coerência aquosa e carga isotópica no contexto certo.',
-        reads: ['Pontes de hidrogênio e hidratação', 'Efeito sobre deutério, DDW e Princípio de Landauer'],
+        body: 'KIE (Efeito Isotópico Cinético): deutério tem massa 2× maior que próton; em reações enzimáticas dependentes de tunelamento quântico, reage 6–10× mais devagar, degradando eficiência metabólica. Pelo Princípio de Landauer, adicionar massa atômica incorreta à base chain biológica tem custo entrópico irredutível. O mecanismo de depleção são os três vórtices endógenos de fracionação isotópica: ATP-sintase (~9.000 rotações/min), coração e sistema ventricular/LCR — cada um separa deutério de próton por diferença de massa em fluxo vorticial. O painel pergunta se a molécula melhora ou degrada coerência aquosa e carga isotópica.',
+        reads: ['Pontes de hidrogênio e hidratação', 'Efeito sobre deutério, DDW e vórtices isotópicos (ATP-sintase · coração · LCR)'],
         warns: ['Separar hipótese de evidência direta', 'Evitar claims de DDW sem medição']
       },
       {
-        title: 'CISS/spin/quiralidade', tag: 'spin · hélice · seletividade', accent: 'mag',
+        title: 'CISS/spin/quiralidade', tag: 'spin · hélice · ferredoxina', accent: 'mag',
         question: 'A molécula filtra ou desorganiza corrente por seletividade de spin?',
-        body: 'O efeito CISS exige geometria, quiralidade, interfaces ordenadas e campo coerente. Este painel investiga se a molécula pode polarizar elétrons, acoplar a proteínas helicoidais, membranas ou melanina.',
-        reads: ['Centros quirais e interfaces helicoidais', 'Acoplamento a melanina, DHA, APOE, proteínas'],
+        body: 'O efeito CISS exige geometria, quiralidade, interfaces ordenadas e campo coerente. O circuito primordial subjacente: melanina controla o fluxo de fótons e eletrões, ferredoxina (clusters [Fe-S]) tunela eletrões ao custo mínimo — herdeiro do circuito radiossintético arqueano que ainda opera em cada mitocôndria. Este painel investiga se a molécula pode polarizar elétrons, acoplar a proteínas helicoidais, membranas ou melanina.',
+        reads: ['Centros quirais e interfaces helicoidais', 'Acoplamento a melanina, DHA, APOE, ferredoxina ([Fe-S])'],
         warns: ['Não usar CISS como metáfora vaga', 'Marcar claramente onde é hipótese Kruse']
       },
       {
-        title: 'Mitocôndria/redox', tag: 'OxFos · ATP · ROS', accent: 'bio',
+        title: 'Mitocôndria/redox', tag: 'OxFos · CCO · maser', accent: 'bio',
         question: 'Ela restaura fluxo de elétrons ou apenas força bioquímica contra um terreno ruim?',
-        body: 'Estimulação aumenta fluxo sem melhorar eficiência — ATP sobe junto com ROS. Restauração melhora ΔΨ e aumenta produção de DDW endógena pela CCO — mais ATP com menos ROS. A diferença não está na dose, está no estado redox inicial: mesma molécula, terrenos opostos, resultados opostos.',
-        reads: ['Efeito sobre OxFos, glicólise e ROS', 'Impacto em membrana mitocondrial e redox'],
+        body: 'Estimulação aumenta fluxo sem melhorar eficiência — ATP sobe junto com ROS. Restauração melhora ΔΨ e aumenta produção de DDW endógena pela CCO — mais ATP com menos ROS. A CCO opera como maser nanofluídico a 1878 nm, produzindo DDW com constante dielétrica ~160. A diferença não está na dose, está no estado redox inicial: mesma molécula, terrenos opostos, resultados opostos.',
+        reads: ['Efeito sobre OxFos, glicólise e ROS', 'CCO como maser (1878 nm) e produção de DDW endógena'],
         warns: ['Não confundir estímulo com restauração', 'Janela depende do estado redox inicial']
       },
       {
-        title: 'Campo magnético/latitude', tag: 'geografia · AAS · ambiente', accent: 'mag',
-        question: 'A molécula depende de campo, sol e ambiente para funcionar como prometido?',
-        body: 'A Anomalia do Atlântico Sul (AAS) reduz o campo magnético a menos de 35 µT em grande parte do Brasil, contra ~50 µT de linha de base global. Campo baixo afeta POMC, síntese de colágeno e dopamina — e muda o terreno em que qualquer molécula dependente de ambiente magnético competente vai operar. Indoor, nnEMF alto e baixa latitude solar amplificam o problema.',
-        reads: ['Latitude, altitude, vulcanismo, AAS', 'nnEMF, indoor, exposição solar e campo local'],
-        warns: ['Não universalizar resposta clínica', 'Não esquecer ambiente do paciente']
+        title: 'Arquitetura molecular', tag: 'forma · carga · membrana', accent: 'bio',
+        question: 'A forma da molécula permite atuar como antena, solvente, filtro, doador ou perturbação?',
+        body: 'Anéis conjugados, quiralidade, logP, grupos doadores/aceptores de elétrons, enxofre, metais, carbonilas e hidroxilas indicam onde a molécula se instala: água, membrana, proteína, mitocôndria ou interface. A arquitetura determina a janela de atuação — mas o ambiente físico determina se essa janela está aberta.',
+        reads: ['Geometria, polaridade, logP, pKa', 'Centros quirais e acoplamento a membranas'],
+        warns: ['Não reduzir estrutura a desenho 2D', 'Não inferir uso clínico só pela forma']
       },
       {
         title: 'Janela clínica', tag: 'sequência · prudência · aplicação', accent: 'solar',
@@ -891,6 +917,13 @@
         body: 'A janela clínica organiza ordem terapêutica: primeira ordem vs segunda ordem, terreno, contraindicações, interação, duração, sazonalidade, monitorização e quando não usar.',
         reads: ['Contexto, sequência e pré-requisitos', 'Riscos, contraindicações e monitorização'],
         warns: ['Sem dose individual pública', 'Encaminhar aplicação para avaliação clínica']
+      },
+      {
+        title: 'Nervo vago / exautor isotópico', tag: 'vago · deutério · desfragmentação', accent: 'bio',
+        question: 'A molécula toca no exautor de deutério do corpo?',
+        body: 'O nervo vago é o protocolo de desfragmentação isotópica in vivo: do trígono motor no quarto ventrículo desce pela laringe (fala depleta deutério), coração (batimento depleta deutério), diafragma (respiração é desfragmentação), estômago (pH 1,5 cospe deutério), até ao cólon transverso. Qualquer molécula que altere o tónus vagal está a mexer no exautor de deutério — e sem este mecanismo, florais de Bach, óleo de rícino e GLP-1 ficam sem chão físico.',
+        reads: ['Tónus vagal, HRV, frequência respiratória', 'Interação com pH gástrico, motilidade e eixo intestino-cérebro'],
+        warns: ['Não reduzir ao "parassimpático"', 'O mecanismo é físico (isotópico), não apenas autonômico']
       }
     ];
 
