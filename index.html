@@ -524,15 +524,354 @@
 
     /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
        FOUNDATION — camada-zero
+       Cascata de estado sólido: fluxo de energia
+       vertical, sequencial — não fluxograma.
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* Painel "física profunda" — fundo escuro FIXO, independente do tema.
+       Cria separação visual e deixa os glows espectrais brilhar. */
     .foundation {
-      border-left: 3px solid var(--solar);
-      border-radius: 0 var(--radius-md) var(--radius-md) 0;
-      background: var(--surface-2);
-      padding: 20px 24px;
+      position: relative;
+      background: #0d1f1d;
+      background-image:
+        radial-gradient(ellipse at 8% -10%,  rgba(255, 209, 102, .10), transparent 46%),
+        radial-gradient(ellipse at 50% 0%,   rgba(138, 110, 232, .07), transparent 50%),
+        radial-gradient(ellipse at 96% 110%, rgba(152, 195, 121, .10), transparent 48%);
+      border: 1px solid rgba(184, 131, 42, .20);
+      border-radius: var(--radius-lg);
+      padding: 26px 30px 24px;
       margin-bottom: 28px;
+      overflow: hidden;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .04),
+        0 18px 60px rgba(0, 0, 0, .38);
     }
-    .foundation p { color: var(--muted); margin: 0; font-size: 14px; line-height: 1.65; }
+    /* moldura tipo bancada: filete fino no topo */
+    .foundation::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 1px;
+      background: linear-gradient(90deg,
+        transparent, rgba(255, 209, 102, .55), rgba(101, 199, 192, .35), transparent);
+      pointer-events: none;
+    }
+    .foundation .kicker {
+      margin-bottom: 22px;
+      color: #FFD166;
+      border-color: rgba(255, 209, 102, .26);
+      background: rgba(255, 209, 102, .06);
+    }
+    .foundation .kicker .dot { background: #FFD166; box-shadow: 0 0 14px #FFD166; }
+
+    /* contentor do fluxo + tooltip lado a lado em tela larga */
+    .foundation-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    /* ── trilho energético SVG ───────────────── */
+    .foundation-flow {
+      width: 100%;
+      height: auto;
+      overflow: visible;
+      display: block;
+    }
+
+    /* conduta de fundo do trilho — linha fina, gradiente espectral */
+    .flow-conduit {
+      fill: none;
+      stroke: url(#conduitGrad);
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      opacity: .4;
+    }
+    /* partículas brilhantes que percorrem o trilho (esq → dir) */
+    .flow-particle {
+      offset-path: path('M86,96 L894,96');
+      offset-rotate: 0deg;
+    }
+    .flow-particle.run { animation: particleTravel 5s linear infinite; }
+    .flow-particle.p2.run { animation-delay: -1.7s; }
+    .flow-particle.p3.run { animation-delay: -3.4s; }
+    @keyframes particleTravel {
+      0%   { offset-distance: 0%;   opacity: 0; }
+      6%   { opacity: 1; }
+      94%  { opacity: 1; }
+      100% { offset-distance: 100%; opacity: 0; }
+    }
+
+    /* nós — cada um com forma/peso próprio */
+    .flow-node {
+      cursor: pointer;
+      outline: none;
+    }
+    .flow-node .node-body {
+      transition: filter .22s ease, transform .22s ease;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+    .flow-node:hover .node-body,
+    .flow-node:focus-visible .node-body {
+      filter: brightness(1.08) drop-shadow(0 0 10px currentColor);
+    }
+    .flow-node.active .node-body {
+      filter: brightness(1.12) drop-shadow(0 0 14px currentColor);
+    }
+    .flow-node:focus-visible .node-focus { opacity: 1; }
+    .node-focus {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.5;
+      stroke-dasharray: 3 3;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* anel radiante do nó de entrada (Luz) */
+    .flow-source-ring {
+      fill: none;
+      stroke: #FFD166;
+      stroke-width: 1.5;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+    /* raios da corona radiante do nó-fonte (Luz) */
+    .flow-corona {
+      stroke: #FFD166;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      transform-origin: 86px 96px;
+    }
+    .flow-corona.run { animation: coronaPulse 3s ease-in-out infinite; }
+    @keyframes coronaPulse {
+      0%, 100% { opacity: .35; transform: scale(.94); }
+      50%      { opacity: .9;  transform: scale(1.06); }
+    }
+    .flow-source-ring.run {
+      animation: sourcePulse 3s ease-out infinite;
+    }
+    @keyframes sourcePulse {
+      0%   { opacity: .7; transform: scale(1); }
+      70%  { opacity: 0;  transform: scale(1.7); }
+      100% { opacity: 0;  transform: scale(1.7); }
+    }
+
+    /* nome curto dentro da forma — branco, peso forte */
+    .flow-node-label {
+      font-family: var(--sans);
+      font-weight: 700;
+      letter-spacing: -.01em;
+      fill: #f3f5ee;
+      pointer-events: none;
+      dominant-baseline: central;
+    }
+    /* subtítulo em mono, por baixo da forma — cinza claro translúcido */
+    .flow-node-sub {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .02em;
+      fill: rgba(255, 255, 255, .45);
+      pointer-events: none;
+      dominant-baseline: central;
+    }
+
+    .flow-stage-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      fill: rgba(255, 255, 255, .3);
+      dominant-baseline: central;
+    }
+
+    /* ── tooltip descritivo ──────────────────── */
+    /* tooltip — também fundo escuro, borda da cor do nó ativo */
+    .flow-tooltip {
+      align-self: stretch;
+      min-height: 0;
+      padding: 18px 22px;
+      background: #0d1f1d;
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-left: 2px solid #FFD166;
+      border-radius: var(--radius-md);
+      transition: border-color .22s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .03);
+    }
+    .flow-tooltip .tooltip-hint {
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: rgba(255, 255, 255, .4);
+    }
+    .flow-tooltip b {
+      display: block;
+      font-family: var(--serif);
+      font-size: 19px;
+      letter-spacing: -.02em;
+      line-height: 1.2;
+      color: #f3f5ee;
+      margin: 8px 0 10px;
+    }
+    .flow-tooltip span {
+      font-size: 14.5px;
+      color: rgba(231, 234, 223, .7);
+      line-height: 1.6;
+    }
+    .flow-tooltip .tooltip-body.empty { color: rgba(255, 255, 255, .42); font-style: italic; }
+
+    /* ── mini-visualizações SVG por nó ─────────── */
+    .flow-tooltip-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+    .flow-tooltip-title {
+      font-family: var(--serif);
+      font-size: 19px;
+      letter-spacing: -.02em;
+      line-height: 1.2;
+      color: #f3f5ee;
+    }
+    .flow-tooltip-caption {
+      margin: 0;
+      font-size: 14px;
+      color: rgba(231, 234, 223, .7);
+      line-height: 1.5;
+    }
+    /* viz — fundo escuro, borda da cor do nó (definida inline por JS) */
+    .flow-viz {
+      width: 100%;
+      height: auto;
+      display: block;
+      overflow: visible;
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: var(--radius-md);
+      background: #07100f;
+      padding: 8px 0;
+    }
+
+    /* tipografia interna comum dos SVG — clara sobre fundo escuro */
+    .viz-label {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 700;
+      fill: #f3f5ee;
+      dominant-baseline: central;
+    }
+    .viz-sub {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      fill: rgba(255, 255, 255, .55);
+      letter-spacing: .02em;
+      dominant-baseline: central;
+    }
+    .viz-tick {
+      font-family: var(--mono);
+      font-size: 8.5px;
+      fill: rgba(255, 255, 255, .38);
+      dominant-baseline: central;
+    }
+    .viz-arrow     { stroke: rgba(255, 255, 255, .4); stroke-width: 1.6; fill: none; stroke-linecap: round; }
+    .viz-arrowhead { fill: rgba(255, 255, 255, .4); }
+    .viz-axis      { stroke: rgba(255, 255, 255, .12); stroke-width: 1; }
+
+    /* animações leves das vizualizações */
+    .viz-pulse-out {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: vizPulseOut 2.6s ease-out infinite;
+    }
+    @keyframes vizPulseOut {
+      0%   { opacity: .85; transform: translateY(0) scale(.5); }
+      70%  { opacity: 0;   transform: translateY(-22px) scale(1.3); }
+      100% { opacity: 0;   transform: translateY(-22px) scale(1.3); }
+    }
+    .viz-radiate {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: vizRadiate 2.8s ease-out infinite;
+    }
+    @keyframes vizRadiate {
+      0%   { opacity: .7; transform: scale(.7); }
+      75%  { opacity: 0;  transform: scale(1.8); }
+      100% { opacity: 0;  transform: scale(1.8); }
+    }
+    .viz-tunnel-particle {
+      offset-path: var(--tunnel-path);
+      filter: drop-shadow(0 0 3px #8a6ee8);
+      animation: vizTunnel 2.4s ease-in-out infinite;
+    }
+    /* a partícula fica translúcida ao atravessar a barreira (centro) */
+    @keyframes vizTunnel {
+      0%   { offset-distance: 0%;   opacity: 1; }
+      42%  { opacity: 1; }
+      50%  { offset-distance: 50%;  opacity: .12; }
+      58%  { opacity: 1; }
+      100% { offset-distance: 100%; opacity: 1; }
+    }
+    .viz-flow-dash {
+      stroke-dasharray: 6 8;
+      animation: vizDash 1.2s linear infinite;
+    }
+    @keyframes vizDash {
+      to { stroke-dashoffset: -14; }
+    }
+    /* hexágono melanina: brilho rítmico de absorção */
+    .viz-pulse-glow {
+      animation: vizPulseGlow 2.6s ease-in-out infinite;
+    }
+    @keyframes vizPulseGlow {
+      0%, 100% { filter: brightness(.9); }
+      50%      { filter: brightness(1.35) drop-shadow(0 0 6px #FFD166); }
+    }
+    /* anel de spin do elétron */
+    .viz-spin {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: vizSpin 2.2s linear infinite;
+    }
+    @keyframes vizSpin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    /* glint de emissão (CCO maser) */
+    .viz-glint {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: vizGlint 1.8s ease-in-out infinite;
+    }
+    @keyframes vizGlint {
+      0%, 100% { opacity: .2; transform: scale(.7); }
+      50%      { opacity: 1;  transform: scale(1.25); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .viz-tunnel-particle { offset-distance: 50%; }
+      .flow-particle { offset-distance: 50%; opacity: 1; }
+    }
+
+    /* rodapé citacional */
+    .flow-shadow-label {
+      font-family: var(--serif);
+      font-size: 13.5px;
+      color: rgba(255, 255, 255, .42);
+      margin: 22px 0 0;
+      font-style: italic;
+      text-align: right;
+      padding-right: 4px;
+    }
+
+    @media (max-width: 760px) {
+      .foundation-grid { gap: 16px; }
+      .flow-tooltip { min-height: 0; }
+    }
 
     /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
        BUTTONS
@@ -681,12 +1020,166 @@
           <div class="kicker"><span class="dot"></span> Matriz de leitura</div>
           <h2>Nove painéis para uma molécula.</h2>
         </div>
-        <p>Cada ficha pública deve separar farmacologia convencional, interpretação biofísica, hipótese Kruse e prudência clínica. O ambiente físico vem antes da molécula; a clínica vem por último. Clique nos eixos para ver o que cada painel deve perguntar.</p>
       </div>
 
-      <article class="foundation" aria-label="Camada-zero — metabolismo de estado sólido">
+      <article class="foundation" aria-label="Camada-zero — metabolismo de estado sólido" id="foundationPanel">
         <div class="kicker"><span class="dot"></span> Camada-zero · metabolismo de estado sólido</div>
-        <p>Todos os painéis correm sobre uma rede elétrica de 4,6 mil milhões de anos: <strong>melanina</strong> roteia o fluxo de fótons e eletrões, <strong>ferredoxina</strong> (clusters [Fe-S]) tunela eletrões ao custo mínimo de entropia, e a <strong>CCO</strong> produz DDW como sinal de ordem — não como subproduto. A bioquímica é a sombra desta física de estado sólido. As perguntas nos nove painéis são perguntas sobre essa sombra.</p>
+
+        <div class="foundation-grid">
+          <!-- Cascata de estado sólido: fluxo de energia horizontal (esquerda → direita, sequencial) -->
+          <svg class="foundation-flow" id="flowSvg" role="img"
+               aria-label="Cascata de energia de estado sólido: Luz → Melanina → Ferredoxina → CCO → DDW / Ordem biológica"
+               viewBox="0 0 980 210" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <!-- gradiente do trilho: solar → âmbar → violeta → teal → verde -->
+              <linearGradient id="conduitGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%"   stop-color="#FFD166"/>
+                <stop offset="26%"  stop-color="#B8832A"/>
+                <stop offset="52%"  stop-color="#8a6ee8"/>
+                <stop offset="76%"  stop-color="#65c7c0"/>
+                <stop offset="100%" stop-color="#98c379"/>
+              </linearGradient>
+
+              <!-- preenchimentos dos nós (radiais para dar volume luminoso) -->
+              <radialGradient id="fillLight" cx="42%" cy="38%" r="68%">
+                <stop offset="0%" stop-color="#FFE6A8"/>
+                <stop offset="55%" stop-color="#FFD166"/>
+                <stop offset="100%" stop-color="#d49a2e"/>
+              </radialGradient>
+              <radialGradient id="fillMelanina" cx="42%" cy="38%" r="70%">
+                <stop offset="0%" stop-color="#d9a24a"/>
+                <stop offset="60%" stop-color="#B8832A"/>
+                <stop offset="100%" stop-color="#7d5818"/>
+              </radialGradient>
+              <radialGradient id="fillFerredoxina" cx="42%" cy="38%" r="72%">
+                <stop offset="0%" stop-color="#a892f2"/>
+                <stop offset="58%" stop-color="#8a6ee8"/>
+                <stop offset="100%" stop-color="#5742b0"/>
+              </radialGradient>
+              <radialGradient id="fillCCO" cx="42%" cy="38%" r="72%">
+                <stop offset="0%" stop-color="#8fe0da"/>
+                <stop offset="58%" stop-color="#65c7c0"/>
+                <stop offset="100%" stop-color="#2f8f88"/>
+              </radialGradient>
+              <radialGradient id="fillOrder" cx="42%" cy="38%" r="72%">
+                <stop offset="0%" stop-color="#c2e3a3"/>
+                <stop offset="58%" stop-color="#98c379"/>
+                <stop offset="100%" stop-color="#5e8e3f"/>
+              </radialGradient>
+              <!-- halos -->
+              <radialGradient id="haloLight" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#FFD166" stop-opacity=".34"/>
+                <stop offset="100%" stop-color="#FFD166" stop-opacity="0"/>
+              </radialGradient>
+              <radialGradient id="haloOrder" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#98c379" stop-opacity=".40"/>
+                <stop offset="100%" stop-color="#98c379" stop-opacity="0"/>
+              </radialGradient>
+              <!-- glows das partículas viajantes -->
+              <filter id="glowSolar"  x="-160%" y="-160%" width="420%" height="420%"><feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#FFD166"/></filter>
+              <filter id="glowViolet" x="-160%" y="-160%" width="420%" height="420%"><feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#8a6ee8"/></filter>
+              <filter id="glowGreen"  x="-160%" y="-160%" width="420%" height="420%"><feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#98c379"/></filter>
+            </defs>
+
+            <!-- trilho energético contínuo (esquerda → direita) -->
+            <path class="flow-conduit" d="M86,96 L894,96"/>
+
+            <!-- partículas brilhantes percorrendo o trilho (cores mudam ao longo) -->
+            <circle class="flow-particle p1 run" r="3.5" fill="#FFD166" filter="url(#glowSolar)"/>
+            <circle class="flow-particle p2 run" r="3"   fill="#8a6ee8" filter="url(#glowViolet)"/>
+            <circle class="flow-particle p3 run" r="3"   fill="#98c379" filter="url(#glowGreen)"/>
+
+            <!-- marcas de fase -->
+            <text class="flow-stage-tag" x="86"  y="24" text-anchor="middle">entrada · fóton</text>
+            <text class="flow-stage-tag" x="894" y="24" text-anchor="middle">saída · ordem</text>
+
+            <!-- ░░ NÓ 0 — Luz / Fótons · círculo com corona radiante ░░ -->
+            <g class="flow-node" data-node="0" tabindex="0" role="button"
+               aria-label="Luz e Fótons, espectro solar — fonte de energia. Clique para descrição."
+               aria-pressed="false" style="color:#FFD166">
+              <circle cx="86" cy="96" r="56" fill="url(#haloLight)"/>
+              <g class="flow-corona run">
+                <line x1="86" y1="62" x2="86" y2="50"/>
+                <line x1="86" y1="130" x2="86" y2="142"/>
+                <line x1="52" y1="96" x2="40" y2="96"/>
+                <line x1="120" y1="96" x2="132" y2="96"/>
+                <line x1="62" y1="72" x2="53" y2="63"/>
+                <line x1="110" y1="72" x2="119" y2="63"/>
+                <line x1="62" y1="120" x2="53" y2="129"/>
+                <line x1="110" y1="120" x2="119" y2="129"/>
+              </g>
+              <circle class="flow-source-ring run" cx="86" cy="96" r="30"/>
+              <g class="node-body">
+                <circle cx="86" cy="96" r="26" fill="url(#fillLight)"/>
+              </g>
+              <circle class="node-focus" cx="86" cy="96" r="44"/>
+              <text class="flow-node-label" x="86" y="96" text-anchor="middle" style="font-size:13px" fill="#3a2a08">Luz</text>
+              <text class="flow-node-sub"   x="86" y="170" text-anchor="middle">espectro solar</text>
+            </g>
+
+            <!-- ░░ NÓ 1 — Melanina · hexágono (estrutura tipo grafeno) ░░ -->
+            <g class="flow-node" data-node="1" tabindex="0" role="button"
+               aria-label="Melanina, roteador óptico. Clique para descrição."
+               aria-pressed="false" style="color:#B8832A">
+              <g class="node-body">
+                <path d="M286,67 L312,81.5 L312,110.5 L286,125 L260,110.5 L260,81.5 Z" fill="url(#fillMelanina)"/>
+              </g>
+              <path class="node-focus" d="M286,57 L320,76 L320,116 L286,135 L252,116 L252,76 Z"/>
+              <text class="flow-node-label" x="286" y="96" text-anchor="middle" style="font-size:12px">Melanina</text>
+              <text class="flow-node-sub"   x="286" y="170" text-anchor="middle">roteador óptico</text>
+            </g>
+
+            <!-- ░░ NÓ 2 — Ferredoxina · diamante (cluster cúbico Fe-S) ░░ -->
+            <g class="flow-node" data-node="2" tabindex="0" role="button"
+               aria-label="Ferredoxina, clusters ferro-enxofre, tunelamento. Clique para descrição."
+               aria-pressed="false" style="color:#8a6ee8">
+              <g class="node-body">
+                <rect x="461" y="71" width="50" height="50" rx="6" transform="rotate(45 486 96)" fill="url(#fillFerredoxina)"/>
+              </g>
+              <rect class="node-focus" x="453" y="63" width="66" height="66" rx="8" transform="rotate(45 486 96)"/>
+              <text class="flow-node-label" x="486" y="96" text-anchor="middle" style="font-size:12px">Fe-S</text>
+              <text class="flow-node-sub"   x="486" y="170" text-anchor="middle">[Fe-S] · tunelamento</text>
+            </g>
+
+            <!-- ░░ NÓ 3 — CCO · círculo com anel duplo (poro proteico) ░░ -->
+            <g class="flow-node" data-node="3" tabindex="0" role="button"
+               aria-label="CCO, citocromo c oxidase, maser a 1878 nm. Clique para descrição."
+               aria-pressed="false" style="color:#65c7c0">
+              <g class="node-body">
+                <circle cx="686" cy="96" r="30" fill="none" stroke="#65c7c0" stroke-width="1.5" opacity=".55"/>
+                <circle cx="686" cy="96" r="24" fill="url(#fillCCO)"/>
+              </g>
+              <circle class="node-focus" cx="686" cy="96" r="40"/>
+              <text class="flow-node-label" x="686" y="96" text-anchor="middle" style="font-size:13px" fill="#06302d">CCO</text>
+              <text class="flow-node-sub"   x="686" y="170" text-anchor="middle">1878 nm · DDW</text>
+            </g>
+
+            <!-- ░░ NÓ 4 — DDW / Ordem · estrela de 4 pontas com halo (destino) ░░ -->
+            <g class="flow-node" data-node="4" tabindex="0" role="button"
+               aria-label="DDW e Ordem biológica, destino — biologia de baixa entropia. Clique para descrição."
+               aria-pressed="false" style="color:#98c379">
+              <circle cx="894" cy="96" r="64" fill="url(#haloOrder)"/>
+              <circle class="flow-source-ring run" cx="894" cy="96" r="34" style="stroke:#98c379"/>
+              <g class="node-body">
+                <!-- estrela de 4 pontas (chegada/ordem) -->
+                <path d="M894,62 C898,86 904,92 928,96 C904,100 898,106 894,130 C890,106 884,100 860,96 C884,92 890,86 894,62 Z" fill="url(#fillOrder)"/>
+              </g>
+              <circle class="node-focus" cx="894" cy="96" r="46"/>
+              <text class="flow-node-label" x="894" y="96" text-anchor="middle" style="font-size:11px" fill="#163708">DDW</text>
+              <text class="flow-node-sub"   x="894" y="170" text-anchor="middle">baixa entropia</text>
+            </g>
+          </svg>
+
+          <!-- Tooltip descritivo (persistente, lado a lado em tela larga) -->
+          <div class="flow-tooltip" id="flowTooltip" role="status" aria-live="polite">
+            <span class="tooltip-hint" id="flowTooltipHint">Toque em um nó da cascata</span>
+            <b id="flowTooltipTitle">Metabolismo de estado sólido</b>
+            <span class="tooltip-body empty" id="flowTooltipBody">Cada nó é uma etapa sequencial — a luz vira corrente, a corrente vira ordem. Selecione um nó para ler a física por trás.</span>
+          </div>
+        </div>
+
+        <!-- Rodapé citacional -->
+        <p class="flow-shadow-label">A bioquímica é a sombra desta física de estado sólido.</p>
       </article>
 
       <div class="matrix">
@@ -877,7 +1370,7 @@
         warns: ['Não universalizar resposta clínica', 'Não esquecer ambiente do paciente']
       },
       {
-        title: 'Espectro UV/Vis/IR', tag: 'fotões · cromóforo · POMC', accent: 'solar',
+        title: 'Espectro UV/Vis/IR', tag: 'fótons · cromóforo · POMC', accent: 'solar',
         question: 'A molécula conversa com alguma janela de luz biologicamente relevante?',
         body: 'As janelas biologicamente ativas são: UV-B (280–320 nm) → POMC: cliva em α-MSH (pigmentação, anti-inflamação), β-endorfina (analgesia) e ACTH (cortisol/eixo adrenal) — tradução literal de luz em sinal endócrino; UV-A (320–400 nm) → melanina, NO, antenas fotônicas; visível ~660 nm → hemoglobina/CCO; IR-A 830 nm e 1878 nm → CCO, DDW, bandgap da melanina (0,66 eV). O painel mede onde a molécula entra nesse mapa — e o que ela não absorve pode ser tão informativo quanto o que absorve.',
         reads: ['Picos UV/Vis/IR e fotossensibilidade', 'Relação com POMC (α-MSH · β-endorfina · ACTH), melanina e pele'],
@@ -893,7 +1386,7 @@
       {
         title: 'CISS/spin/quiralidade', tag: 'spin · hélice · ferredoxina', accent: 'mag',
         question: 'A molécula filtra ou desorganiza corrente por seletividade de spin?',
-        body: 'O efeito CISS exige geometria, quiralidade, interfaces ordenadas e campo coerente. O circuito primordial subjacente: melanina controla o fluxo de fótons e eletrões, ferredoxina (clusters [Fe-S]) tunela eletrões ao custo mínimo — herdeiro do circuito radiossintético arqueano que ainda opera em cada mitocôndria. Este painel investiga se a molécula pode polarizar elétrons, acoplar a proteínas helicoidais, membranas ou melanina.',
+        body: 'O efeito CISS exige geometria, quiralidade, interfaces ordenadas e campo coerente. O circuito primordial subjacente: melanina controla o fluxo de fótons e elétrons, ferredoxina (clusters [Fe-S]) tunela elétrons ao custo mínimo — herdeiro do circuito radiossintético arqueano que ainda opera em cada mitocôndria. Este painel investiga se a molécula pode polarizar elétrons, acoplar a proteínas helicoidais, membranas ou melanina.',
         reads: ['Centros quirais e interfaces helicoidais', 'Acoplamento a melanina, DHA, APOE, ferredoxina ([Fe-S])'],
         warns: ['Não usar CISS como metáfora vaga', 'Marcar claramente onde é hipótese Kruse']
       },
@@ -921,8 +1414,8 @@
       {
         title: 'Nervo vago / exautor isotópico', tag: 'vago · deutério · desfragmentação', accent: 'bio',
         question: 'A molécula toca no exautor de deutério do corpo?',
-        body: 'O nervo vago é o protocolo de desfragmentação isotópica in vivo: do trígono motor no quarto ventrículo desce pela laringe (fala depleta deutério), coração (batimento depleta deutério), diafragma (respiração é desfragmentação), estômago (pH 1,5 cospe deutério), até ao cólon transverso. Qualquer molécula que altere o tónus vagal está a mexer no exautor de deutério — e sem este mecanismo, florais de Bach, óleo de rícino e GLP-1 ficam sem chão físico.',
-        reads: ['Tónus vagal, HRV, frequência respiratória', 'Interação com pH gástrico, motilidade e eixo intestino-cérebro'],
+        body: 'O nervo vago é o protocolo de desfragmentação isotópica in vivo: do trígono motor no quarto ventrículo desce pela laringe (fala depleta deutério), coração (batimento depleta deutério), diafragma (respiração é desfragmentação), estômago (pH 1,5 cospe deutério), até o cólon transverso. Qualquer molécula que altere o tônus vagal está mexendo no exautor de deutério — e sem esse mecanismo, florais de Bach, óleo de rícino e GLP-1 ficam sem chão físico.',
+        reads: ['Tônus vagal, HRV, frequência respiratória', 'Interação com pH gástrico, motilidade e eixo intestino-cérebro'],
         warns: ['Não reduzir ao "parassimpático"', 'O mecanismo é físico (isotópico), não apenas autonômico']
       }
     ];
@@ -968,6 +1461,239 @@
     });
 
     setActive(0);
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       FOUNDATION FLOW — interação dos nós
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ── mini-visualizações SVG por nó ──────────────────
+       Cada nó traz: title (curto), caption (legenda) e viz (SVG inline,
+       viewBox fixo, width 100%, cores via CSS vars + hardcoded só onde
+       o significado espectral/isotópico o exige). Cores semânticas:
+       solar #B8832A · bio #2B8A84 · mag #5B4DB8 · violeta UV #7d5bd6
+       ferro #b5632e · deutério #c0522e                                 */
+    var flowNodes = [
+      {
+        title: 'Luz / Fótons',
+        caption: 'O espectro solar como linguagem do corpo — cada janela fala com uma estrutura.',
+        viz:
+          '<svg class="flow-viz" viewBox="0 0 560 96" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Barra espectral do visível para o infravermelho, com janelas biológicas marcadas: UV-B (POMC), UV-A (melanina e NO), 660 nm (CCO e Hb), 830 nm (CCO) e 1878 nm (CCO maser e DDW).">' +
+            '<defs>' +
+              /* espectro visível real: violeta → azul → verde → amarelo → laranja → vermelho */
+              '<linearGradient id="vizSpectrum" x1="0" y1="0" x2="1" y2="0">' +
+                '<stop offset="0%"  stop-color="#7d5bd6"/>' +
+                '<stop offset="16%" stop-color="#4a6ee0"/>' +
+                '<stop offset="34%" stop-color="#3fb98f"/>' +
+                '<stop offset="52%" stop-color="#e6c84f"/>' +
+                '<stop offset="66%" stop-color="#e08a3c"/>' +
+                '<stop offset="78%" stop-color="#d9483b"/>' +
+                /* região IR — bordô escuro */
+                '<stop offset="86%" stop-color="#7a2230"/>' +
+                '<stop offset="100%" stop-color="#3c1018"/>' +
+              '</linearGradient>' +
+            '</defs>' +
+            /* barra espectral */
+            '<rect x="20" y="44" width="520" height="22" rx="5" fill="url(#vizSpectrum)"/>' +
+            '<rect x="20" y="44" width="520" height="22" rx="5" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="1"/>' +
+            /* marcadores: triângulo apontando para baixo + label */
+            '<g fill="#f3f5ee">' +
+              '<path d="M48,30 l6,9 l-12,0 Z"/>' +
+              '<path d="M120,30 l6,9 l-12,0 Z"/>' +
+              '<path d="M300,30 l6,9 l-12,0 Z"/>' +
+              '<path d="M392,30 l6,9 l-12,0 Z"/>' +
+              '<path d="M500,30 l6,9 l-12,0 Z"/>' +
+            '</g>' +
+            '<text class="viz-label" x="48"  y="20" text-anchor="middle">POMC</text>' +
+            '<text class="viz-label" x="120" y="20" text-anchor="middle">Melanina</text>' +
+            '<text class="viz-label" x="300" y="20" text-anchor="middle">CCO·Hb</text>' +
+            '<text class="viz-label" x="392" y="20" text-anchor="middle">CCO</text>' +
+            '<text class="viz-label" x="500" y="20" text-anchor="middle">maser·DDW</text>' +
+            /* ticks de comprimento de onda */
+            '<text class="viz-tick" x="48"  y="80" text-anchor="middle">UV-B</text>' +
+            '<text class="viz-tick" x="120" y="80" text-anchor="middle">UV-A</text>' +
+            '<text class="viz-tick" x="300" y="80" text-anchor="middle">660 nm</text>' +
+            '<text class="viz-tick" x="392" y="80" text-anchor="middle">830 nm</text>' +
+            '<text class="viz-tick" x="500" y="80" text-anchor="middle">1878 nm</text>' +
+          '</svg>'
+      },
+      {
+        title: 'Melanina',
+        caption: 'Roteador óptico arqueano: converte luz em corrente de spin orientado.',
+        viz:
+          '<svg class="flow-viz" viewBox="0 0 560 96" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Fluxo: fóton solar entra na melanina (hexágono absorvedor) e sai como elétron de spin selecionado.">' +
+            '<defs>' +
+              '<filter id="mGlow" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#FFD166"/></filter>' +
+              '<filter id="eGlow" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#8a6ee8"/></filter>' +
+            '</defs>' +
+            /* fóton — círculo dourado pulsante à esquerda */
+            '<circle class="viz-radiate" cx="78" cy="44" r="17" fill="none" stroke="#FFD166" stroke-width="1.5"/>' +
+            '<circle cx="78" cy="44" r="12" fill="#FFD166" filter="url(#mGlow)"/>' +
+            '<circle cx="78" cy="44" r="5" fill="#FFF4D6"/>' +
+            '<text class="viz-sub" x="78" y="78" text-anchor="middle">fóton</text>' +
+            /* seta de energia */
+            '<path class="viz-arrow" d="M104,44 L162,44"/>' +
+            '<path class="viz-arrowhead" d="M162,40 L172,44 L162,48 Z"/>' +
+            /* melanina — hexágono que brilha ao absorver */
+            '<path class="viz-pulse-glow" d="M236,18 L272,33 L272,55 L236,70 L200,55 L200,33 Z" fill="#B8832A" stroke="#FFD166" stroke-width="1.5"/>' +
+            '<text class="viz-label" x="236" y="44" text-anchor="middle" fill="#1a1206">Melanina</text>' +
+            '<text class="viz-sub" x="236" y="82" text-anchor="middle">absorvedor</text>' +
+            /* seta de saída */
+            '<path class="viz-arrow" d="M300,44 L358,44"/>' +
+            '<path class="viz-arrowhead" d="M358,40 L368,44 L358,48 Z"/>' +
+            /* elétron com spin (↑) brilhando em violeta */
+            '<circle cx="436" cy="44" r="15" fill="#8a6ee8" filter="url(#eGlow)"/>' +
+            '<path d="M436,54 L436,34 M436,34 L431,40 M436,34 L441,40" stroke="#FFFFFF" stroke-width="1.8" fill="none" stroke-linecap="round"/>' +
+            '<path class="viz-spin" d="M450,44 a14,14 0 1 1 -4,-10" fill="none" stroke="#a892f2" stroke-width="1.3" stroke-linecap="round"/>' +
+            '<text class="viz-sub" x="436" y="78" text-anchor="middle">elétron ↑</text>' +
+            '<text class="viz-tick" x="280" y="94" text-anchor="middle">fóton → carga → spin selecionado</text>' +
+          '</svg>'
+      },
+      {
+        title: 'Ferredoxina [Fe-S]',
+        caption: 'Tunelamento quântico: o elétron atravessa a barreira sem custo clássico.',
+        viz:
+          '<svg class="flow-viz" viewBox="0 0 560 96" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Dois clusters ferro-enxofre em diamante, separados por uma barreira; uma partícula atravessa por tunelamento quântico.">' +
+            '<defs>' +
+              '<filter id="feGlow" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#e07a3c"/></filter>' +
+            '</defs>' +
+            /* cluster esquerdo — diamante Fe-S */
+            '<rect x="74" y="28" width="40" height="40" rx="5" transform="rotate(45 94 48)" fill="#c2682e" stroke="#e8954a" stroke-width="1.5" filter="url(#feGlow)"/>' +
+            '<text class="viz-label" x="94" y="48" text-anchor="middle" fill="#1a0c04">Fe-S</text>' +
+            /* barreira translúcida cinza */
+            '<rect x="248" y="20" width="64" height="56" rx="6" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.18)" stroke-width="1"/>' +
+            '<text class="viz-tick" x="280" y="14" text-anchor="middle">barreira</text>' +
+            /* partícula violeta atravessando (fade ao cruzar) */
+            '<circle class="viz-tunnel-particle" cx="0" cy="0" r="5" fill="#8a6ee8" style="--tunnel-path:path(\'M126,48 L434,48\')"/>' +
+            /* cluster direito — diamante Fe-S */
+            '<rect x="446" y="28" width="40" height="40" rx="5" transform="rotate(45 466 48)" fill="#c2682e" stroke="#e8954a" stroke-width="1.5" filter="url(#feGlow)"/>' +
+            '<text class="viz-label" x="466" y="48" text-anchor="middle" fill="#1a0c04">Fe-S</text>' +
+            '<text class="viz-tick" x="280" y="90" text-anchor="middle">tunelamento · custo entrópico mínimo</text>' +
+          '</svg>'
+      },
+      {
+        title: 'CCO',
+        caption: 'Maser nanofluídico a 1878 nm: produz DDW como sinal de ordem, não subproduto.',
+        viz:
+          '<svg class="flow-viz" viewBox="0 0 560 96" preserveAspectRatio="xMidYMid meet" role="img" aria-label="A CCO recebe elétrons pela esquerda, emite luz a 1878 nm para cima e produz DDW para a direita.">' +
+            /* entrada de elétrons (esquerda, teal) */
+            '<path d="M40,60 L196,60" fill="none" stroke="#65c7c0" stroke-width="1.5" stroke-linecap="round" opacity=".8"/>' +
+            '<path d="M196,56 L206,60 L196,64 Z" fill="#65c7c0"/>' +
+            '<text class="viz-sub" x="100" y="48" text-anchor="middle" fill="#65c7c0">e⁻</text>' +
+            /* CCO — oval teal */
+            '<ellipse cx="280" cy="60" rx="74" ry="24" fill="#2f8f88" stroke="#65c7c0" stroke-width="1.5"/>' +
+            '<text class="viz-label" x="280" y="60" text-anchor="middle" fill="#04201d">CCO</text>' +
+            /* emissão IR para cima — linha pontilhada vermelha animada + glint */
+            '<path class="viz-flow-dash" d="M280,36 L280,12" fill="none" stroke="#e0584a" stroke-width="1.6" stroke-linecap="round"/>' +
+            '<path d="M276,12 L280,4 L284,12 Z" fill="#e0584a"/>' +
+            '<circle class="viz-glint" cx="280" cy="24" r="4" fill="#ff8a76"/>' +
+            '<text class="viz-sub" x="316" y="14" text-anchor="middle" fill="#e0584a">1878 nm</text>' +
+            /* saída DDW (direita) */
+            '<path class="viz-arrow" d="M354,60 L458,60" stroke="#98c379"/>' +
+            '<path class="viz-arrowhead" d="M458,56 L468,60 L458,64 Z" fill="#98c379"/>' +
+            '<text class="viz-sub" x="506" y="60" text-anchor="middle" fill="#98c379">DDW ↓D</text>' +
+            '<text class="viz-tick" x="280" y="90" text-anchor="middle">maser nanofluídico · DDW como ordem</text>' +
+          '</svg>'
+      },
+      {
+        title: 'DDW / Ordem',
+        caption: 'Menos deutério → tunelamento mais eficiente → maior ordem biológica.',
+        viz:
+          '<svg class="flow-viz" viewBox="0 0 560 96" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Comparação isotópica: água com deutério (átomo de massa dobrada) versus água deutério-depletada (DDW), com tunelamento eficiente.">' +
+            '<defs>' +
+              '<radialGradient id="ddwGlow" cx="50%" cy="50%" r="50%">' +
+                '<stop offset="0%" stop-color="#98c379" stop-opacity=".30"/>' +
+                '<stop offset="100%" stop-color="#98c379" stop-opacity="0"/>' +
+              '</radialGradient>' +
+            '</defs>' +
+            /* ── esquerda: H₂O com D (vermelho, grande) ── */
+            '<line x1="120" y1="46" x2="94" y2="28" stroke="rgba(255,255,255,.35)" stroke-width="2"/>' +
+            '<line x1="120" y1="46" x2="150" y2="26" stroke="rgba(255,255,255,.35)" stroke-width="2"/>' +
+            '<circle cx="120" cy="46" r="20" fill="#3a6ea0"/>' +
+            '<text class="viz-label" x="120" y="46" text-anchor="middle" fill="#FFFFFF">O</text>' +
+            '<circle cx="94" cy="28" r="8" fill="rgba(255,255,255,.55)"/>' +
+            '<text class="viz-tick" x="94" y="28" text-anchor="middle" fill="#06121f">H</text>' +
+            '<circle cx="150" cy="26" r="15" fill="#d9483b" stroke="#ff7a6a" stroke-width="1.5"/>' +
+            '<text class="viz-label" x="150" y="26" text-anchor="middle" fill="#FFFFFF">D</text>' +
+            '<text class="viz-tick" x="120" y="80" text-anchor="middle">D · 2× massa</text>' +
+            /* seta — exaustão isotópica */
+            '<text class="viz-sub" x="280" y="30" text-anchor="middle">exaustão isotópica</text>' +
+            '<path class="viz-arrow" d="M214,46 L344,46"/>' +
+            '<path class="viz-arrowhead" d="M344,42 L354,46 L344,50 Z"/>' +
+            /* ── direita: DDW com H normal (verde) + glow ── */
+            '<circle cx="440" cy="46" r="42" fill="url(#ddwGlow)"/>' +
+            '<line x1="440" y1="46" x2="414" y2="28" stroke="rgba(255,255,255,.35)" stroke-width="2"/>' +
+            '<line x1="440" y1="46" x2="466" y2="28" stroke="rgba(255,255,255,.35)" stroke-width="2"/>' +
+            '<circle cx="440" cy="46" r="20" fill="#5e8e3f"/>' +
+            '<text class="viz-label" x="440" y="46" text-anchor="middle" fill="#FFFFFF">O</text>' +
+            '<circle cx="414" cy="28" r="8" fill="#98c379"/>' +
+            '<text class="viz-tick" x="414" y="28" text-anchor="middle" fill="#0c2106">H</text>' +
+            '<circle cx="466" cy="28" r="8" fill="#98c379"/>' +
+            '<text class="viz-tick" x="466" y="28" text-anchor="middle" fill="#0c2106">H</text>' +
+            '<text class="viz-tick" x="440" y="80" text-anchor="middle">H · tunelamento eficiente</text>' +
+          '</svg>'
+      }
+    ];
+
+    /* cores espectrais brilhantes — alinhadas aos nós do diagrama */
+    var accentColors = ['#FFD166', '#B8832A', '#8a6ee8', '#65c7c0', '#98c379'];
+
+    var tooltip      = document.getElementById('flowTooltip');
+    var activeFlowNode = null;
+
+    /* guarda o estado ocioso original (texto-convite) para repor no toggle */
+    var idleHTML = tooltip.innerHTML;
+
+    function activateFlowNode(index) {
+      document.querySelectorAll('.flow-node').forEach(function (n) {
+        n.classList.remove('active');
+        n.setAttribute('aria-pressed', 'false');
+      });
+
+      var target = document.querySelector('.flow-node[data-node="' + index + '"]');
+      if (target) {
+        target.classList.add('active');
+        target.setAttribute('aria-pressed', 'true');
+      }
+
+      var node = flowNodes[index];
+      /* injeta a mini-visualização SVG específica deste nó:
+         título curto → SVG inline → legenda curta */
+      tooltip.innerHTML =
+        '<div class="flow-tooltip-inner">' +
+          '<div class="flow-tooltip-title">' + node.title + '</div>' +
+          node.viz +
+          '<p class="flow-tooltip-caption">' + node.caption + '</p>' +
+        '</div>';
+      tooltip.style.borderLeftColor = accentColors[index];
+      /* a borda da mini-viz assume a cor do nó ativo */
+      var vizEl = tooltip.querySelector('.flow-viz');
+      if (vizEl) vizEl.style.borderColor = accentColors[index];
+      activeFlowNode = index;
+    }
+
+    function resetFlowTooltip() {
+      tooltip.innerHTML = idleHTML;
+      tooltip.style.borderLeftColor = '#FFD166';
+      activeFlowNode = null;
+    }
+
+    document.querySelectorAll('.flow-node').forEach(function (node) {
+      node.addEventListener('click', function () {
+        var idx = parseInt(node.getAttribute('data-node'), 10);
+        if (activeFlowNode === idx) {
+          node.classList.remove('active');
+          node.setAttribute('aria-pressed', 'false');
+          resetFlowTooltip();
+        } else {
+          activateFlowNode(idx);
+        }
+      });
+      node.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          node.click();
+        }
+      });
+    });
   </script>
 </body>
 </html>
