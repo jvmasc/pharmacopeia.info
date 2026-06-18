@@ -868,6 +868,22 @@
       padding-right: 4px;
     }
 
+    /* ── descrição detalhada por nó ─────────── */
+    .flow-detail {
+      margin: 0;
+      padding: 16px 18px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius-md);
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: rgba(255,255,255,.72);
+    }
+    .flow-detail strong {
+      color: rgba(255,255,255,.95);
+      font-weight: 650;
+    }
+
     @media (max-width: 760px) {
       .foundation-grid { gap: 16px; }
       .flow-tooltip { min-height: 0; }
@@ -1475,6 +1491,7 @@
       {
         title: 'Luz / Fótons',
         caption: 'O espectro solar como linguagem do corpo — cada janela fala com uma estrutura.',
+        detail: 'O sol emite um espectro contínuo, mas o corpo só <strong>"escuta"</strong> janelas específicas. <strong>UV-B (280–320 nm)</strong> cliva a pró-opiomelanocortina (POMC) na pele em α-MSH, β-endorfina e ACTH — tradução direta de luz em sinal endócrino e imune. <strong>UV-A (320–400 nm)</strong> ativa a melanina e libera óxido nítrico. <strong>660 nm</strong> estimula o complexo IV (CCO) da cadeia respiratória. <strong>1878 nm</strong> ressoa com o bandgap da melanina (0,66 eV) e alimenta o maser da CCO. Fora dessas janelas, a molécula pode absorver luz sem produzir sinal biológico útil — ou pior, produzir ROS sem benefício.',
         viz:
           '<svg class="flow-viz" viewBox="0 0 560 96" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Barra espectral do visível para o infravermelho, com janelas biológicas marcadas: UV-B (POMC), UV-A (melanina e NO), 660 nm (CCO e Hb), 830 nm (CCO) e 1878 nm (CCO maser e DDW).">' +
             '<defs>' +
@@ -1518,6 +1535,7 @@
       {
         title: 'Melanina',
         caption: 'Roteador óptico arqueano: converte luz em corrente de spin orientado.',
+        detail: 'A melanina é um polímero arqueano com <strong>bandgap de 0,66 eV</strong> — projetado para absorver luz e converter energia fotônica em corrente elétrica com spin selecionado. Pelo <strong>efeito CISS</strong> (Spin Selectivity Induced by Chirality), a geometria helicoidal da melanina filtra elétrons por spin: apenas elétrons com spin compatível passam, reduzindo o ruído quântico. Essa corrente orientada alimenta a ferredoxina e, em última instância, a mitocôndria. Sem melanina funcional — por deficit de luz solar, por campo magnético fraco ou por excesso de nnEMF — toda a cadeia downstream perde coerência.',
         viz:
           '<svg class="flow-viz" viewBox="0 0 560 96" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Fluxo: fóton solar entra na melanina (hexágono absorvedor) e sai como elétron de spin selecionado.">' +
             '<defs>' +
@@ -1550,6 +1568,7 @@
       {
         title: 'Ferredoxina [Fe-S]',
         caption: 'Tunelamento quântico: o elétron atravessa a barreira sem custo clássico.',
+        detail: 'Os clusters <strong>[Fe-S]</strong> da ferredoxina são relíquias do metabolismo arqueano — estruturas de ferro e enxofre que transportam elétrons por <strong>tunelamento quântico</strong>, não por difusão clássica. No tunelamento, o elétron atravessa a barreira energética sem precisar escalá-la, desde que a geometria e o campo sejam coerentes. O custo entrópico é mínimo — conforme o <strong>Princípio de Landauer</strong>, apagar informação tem custo; transportar coerentemente, não. Qualquer molécula que altere a geometria ou a coerência desses clusters (por oxidação, por campo eletromagnético incoerente ou por substituição isotópica errada) eleva o custo do transporte e degrada toda a cadeia de ordem.',
         viz:
           '<svg class="flow-viz" viewBox="0 0 560 96" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Dois clusters ferro-enxofre em diamante, separados por uma barreira; uma partícula atravessa por tunelamento quântico.">' +
             '<defs>' +
@@ -1572,6 +1591,7 @@
       {
         title: 'CCO',
         caption: 'Maser nanofluídico a 1878 nm: produz DDW como sinal de ordem, não subproduto.',
+        detail: 'O Complexo IV (CCO) da mitocôndria não é apenas uma "bomba de prótons" — é um <strong>maser nanofluídico</strong>. Opera na janela de 1878 nm, produz água com constante dielétrica ~160 (muito acima dos 78 da água comum) e <strong>depleta deutério</strong> do fluxo hídrico celular. A diferença entre <em>estimulação</em> e <em>restauração</em> é crítica: estimular a CCO num terreno redox ruim aumenta ATP e ROS simultaneamente; restaurar a CCO num terreno coerente aumenta ATP e reduz ROS. A mesma molécula produz resultados opostos dependendo do estado redox inicial — por isso a bula não basta.',
         viz:
           '<svg class="flow-viz" viewBox="0 0 560 96" preserveAspectRatio="xMidYMid meet" role="img" aria-label="A CCO recebe elétrons pela esquerda, emite luz a 1878 nm para cima e produz DDW para a direita.">' +
             /* entrada de elétrons (esquerda, teal) */
@@ -1596,6 +1616,7 @@
       {
         title: 'DDW / Ordem',
         caption: 'Menos deutério → tunelamento mais eficiente → maior ordem biológica.',
+        detail: 'O <strong>deutério</strong> tem massa 2× maior que o próton. Em reações enzimáticas dependentes de tunelamento quântico, essa massa extra reduz a eficiência em 6–10× — o <strong>Efeito Isotópico Cinético (KIE)</strong>. A DDW (água deutério-depletada) produzida pela CCO permite que as enzimas tuneiem com precisão máxima, reduzindo o custo metabólico de cada reação. O mecanismo de depleção são os <strong>três vórtices endógenos</strong>: ATP-sintase (~9.000 rpm), coração e sistema ventricular/LCR — cada um separa deutério de próton por diferença de massa em fluxo vorticial. A bioquímica que emerge desse estado de baixa entropia é o que chamamos de saúde.',
         viz:
           '<svg class="flow-viz" viewBox="0 0 560 96" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Comparação isotópica: água com deutério (átomo de massa dobrada) versus água deutério-depletada (DDW), com tunelamento eficiente.">' +
             '<defs>' +
@@ -1662,9 +1683,9 @@
           '<div class="flow-tooltip-title">' + node.title + '</div>' +
           node.viz +
           '<p class="flow-tooltip-caption">' + node.caption + '</p>' +
+          '<p class="flow-detail">' + node.detail + '</p>' +
         '</div>';
       tooltip.style.borderLeftColor = accentColors[index];
-      /* a borda da mini-viz assume a cor do nó ativo */
       var vizEl = tooltip.querySelector('.flow-viz');
       if (vizEl) vizEl.style.borderColor = accentColors[index];
       activeFlowNode = index;
