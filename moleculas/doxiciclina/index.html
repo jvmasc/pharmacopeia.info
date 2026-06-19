@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Doxiciclina — Pharmacopeia.info</title>
+  <meta name="description" content="Ficha educacional de leitura biofísica da doxiciclina: tetraciclina semissintética, lipofilicidade, UV-A, estado tripleto, POMC, melanina, APOE/DHA, neuromelanina, redox e janela clínica." />
+  <script>
+  (function () {
+    var saved = localStorage.getItem('ph-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', saved);
+  })();
+  </script>
+  <style>
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       TEMA LIGHT (white/biofílico) — PADRÃO
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    :root {
+      color-scheme: light;
+
+      --bg:        #FAF9F5;
+      --bg-2:      #F2EFE8;
+      --surface:   #FFFFFF;
+      --surface-2: #F7F5EF;
+
+      --ink:       #1C2420;
+      --muted:     #4A5A54;
+      --quiet:     #7A8E87;
+
+      --line:        rgba(28, 36, 32, .10);
+      --line-strong: rgba(184, 131, 42, .50);
+
+      --solar: #B8832A;
+      --bio:   #2B8A84;
+      --mag:   #5B4DB8;
+      --danger: #C0522E;
+      --ok:     #3A7D44;
+
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+
+      --shadow: 0 4px 24px rgba(28, 36, 32, .08), 0 1px 4px rgba(28, 36, 32, .05);
+      --shadow-hover: 0 8px 40px rgba(28, 36, 32, .12), 0 2px 8px rgba(28, 36, 32, .06);
+
+      --header-bg: rgba(250, 249, 245, .88);
+      --body-bg:
+        radial-gradient(ellipse at 18% 0%,  rgba(184, 131, 42, .11), transparent 38rem),
+        radial-gradient(ellipse at 84% 8%,  rgba(43, 138, 132, .09), transparent 34rem),
+        radial-gradient(ellipse at 50% 96%, rgba(91, 77, 184, .07),  transparent 40rem),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg) 62%, var(--bg-2) 100%);
+
+      --mono:  ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans:  Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       TEMA DARK — override
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    html[data-theme="dark"] {
+      color-scheme: dark;
+
+      --bg:        #07100f;
+      --bg-2:      #0b1413;
+      --surface:   #10201e;
+      --surface-2: #142a27;
+
+      --ink:       #e7eadf;
+      --muted:     #a8b5aa;
+      --quiet:     #74827b;
+
+      --line:        rgba(231, 234, 223, .14);
+      --line-strong: rgba(215, 168, 79, .45);
+
+      --solar: #d7a84f;
+      --bio:   #65c7c0;
+      --mag:   #8a6ee8;
+      --danger: #d8816a;
+      --ok:     #98c379;
+
+      --shadow: 0 24px 80px rgba(0, 0, 0, .42);
+      --shadow-hover: 0 24px 80px rgba(0, 0, 0, .55);
+
+      --header-bg: rgba(7, 16, 15, .72);
+      --body-bg:
+        radial-gradient(circle at 12% 0%,  rgba(215, 168, 79, .18), transparent 32rem),
+        radial-gradient(circle at 88% 10%, rgba(101, 199, 192, .14), transparent 32rem),
+        radial-gradient(circle at 48% 100%, rgba(138, 110, 232, .10), transparent 34rem),
+        linear-gradient(180deg, var(--bg), var(--bg-2) 52%, #060b0a);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--body-bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.55;
+    }
+    a { color: inherit; }
+    .shell { width: min(1180px, calc(100% - 36px)); margin: 0 auto; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       HEADER / NAV
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(20px) saturate(1.3);
+      background: var(--header-bg);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 1px 0 var(--line);
+    }
+    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; letter-spacing: -.02em; font-weight: 700; color: var(--ink); }
+    .mark {
+      width: 34px;
+      height: 34px;
+      border: 1.5px solid var(--line-strong);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      position: relative;
+      color: var(--solar);
+      background: var(--surface);
+    }
+    .mark::before, .mark::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(43, 138, 132, .50);
+      border-radius: 50%;
+      inset: 7px 2px;
+      transform: rotate(35deg);
+    }
+    .mark::after { transform: rotate(-35deg); border-color: rgba(91, 77, 184, .42); }
+
+    html[data-theme="dark"] .mark::before { border-color: rgba(101, 199, 192, .42); }
+    html[data-theme="dark"] .mark::after  { border-color: rgba(138, 110, 232, .38); }
+
+    .mark-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--solar);
+      position: relative;
+      z-index: 1;
+    }
+
+    nav { display: flex; gap: 18px; color: var(--muted); font-size: 14px; }
+    nav a { text-decoration: none; transition: color .15s ease; }
+    nav a:hover { color: var(--ink); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       BOTÃO DE TOGGLE DE TEMA
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .theme-btn {
+      cursor: pointer;
+      border: 1px solid var(--line-strong);
+      background: rgba(255, 255, 255, .05);
+      color: var(--solar);
+      border-radius: 999px;
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      font-size: 16px;
+      transition: border-color .18s ease, background .18s ease;
+      flex-shrink: 0;
+    }
+    .theme-btn:hover {
+      background: rgba(184, 131, 42, .10);
+      border-color: var(--line-strong);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       HERO
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .hero { padding: 76px 0 42px; }
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--solar);
+      font-family: var(--mono);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      border: 1px solid rgba(184, 131, 42, .30);
+      border-radius: 999px;
+      padding: 8px 14px;
+      background: rgba(184, 131, 42, .07);
+    }
+    html[data-theme="dark"] .kicker {
+      border-color: rgba(215, 168, 79, .26);
+      background: rgba(215, 168, 79, .06);
+    }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--solar); box-shadow: 0 0 18px var(--solar); }
+    h1 { margin: 26px 0 22px; max-width: 980px; font-family: var(--serif); font-size: clamp(48px, 8vw, 104px); line-height: .92; letter-spacing: -.06em; font-weight: 520; color: var(--ink); }
+    .lead { max-width: 860px; color: var(--muted); font-size: clamp(18px, 2vw, 23px); }
+    .lead strong { color: var(--ink); font-weight: 650; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       LAYOUT GRIDS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    section { padding: 48px 0; scroll-margin-top: 92px; }
+    .grid-2 { display: grid; grid-template-columns: 1.05fr .95fr; gap: 22px; align-items: start; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       CARDS BASE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .panel, .notice, .axis-card, .source-card, .summary-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+    }
+    .panel { padding: 28px; }
+    .panel h2, section h2 { margin: 0 0 14px; font-family: var(--serif); letter-spacing: -.035em; font-size: clamp(30px, 4vw, 52px); line-height: 1; }
+    .panel p, .notice p, .axis-card p, .source-card p, .summary-card p { color: var(--muted); }
+
+    .summary-card { padding: 18px; box-shadow: none; min-height: 170px; }
+    .summary-card b { display: block; margin-bottom: 8px; color: var(--ink); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       STATUS TAGS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .status { display: inline-flex; border-radius: 999px; border: 1px solid var(--line); padding: 6px 10px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+    .established   { color: var(--ok);     border-color: rgba(58, 125, 68, .38);  background: rgba(58, 125, 68, .07);  }
+    .hypothesis    { color: var(--bio);    border-color: rgba(43, 138, 132, .38); background: rgba(43, 138, 132, .07); }
+    .investigational { color: var(--solar); border-color: rgba(184, 131, 42, .38); background: rgba(184, 131, 42, .07); }
+    .guarded       { color: var(--danger); border-color: rgba(192, 82, 46, .38);  background: rgba(192, 82, 46, .07);  }
+
+    html[data-theme="dark"] .established    { border-color: rgba(152,195,121,.34); background: rgba(152,195,121,.08); }
+    html[data-theme="dark"] .hypothesis     { border-color: rgba(101,199,192,.34); background: rgba(101,199,192,.08); }
+    html[data-theme="dark"] .investigational { border-color: rgba(215,168,79,.34);  background: rgba(215,168,79,.08);  }
+    html[data-theme="dark"] .guarded        { border-color: rgba(216,129,106,.34); background: rgba(216,129,106,.08); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       SECTION HEAD
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .section-head { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 22px; }
+    .section-head p { margin: 0; max-width: 680px; color: var(--muted); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       AXIS GRID
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .axis-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .axis-card { padding: 18px; box-shadow: none; min-height: 230px; }
+    .axis-card .num { font-family: var(--mono); color: var(--solar); font-size: 12px; letter-spacing: .12em; }
+    .axis-card h3 { margin: 10px 0 8px; font-size: 20px; letter-spacing: -.02em; }
+    .axis-card p { font-size: 14px; margin: 0; }
+    .axis-card small { display: block; margin-top: 12px; color: var(--quiet); font-family: var(--mono); font-size: 11px; text-transform: uppercase; line-height: 1.45; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       NOTICE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .notice {
+      padding: 26px;
+      box-shadow: none;
+      border-color: rgba(184, 131, 42, .30);
+      background: linear-gradient(135deg, rgba(184, 131, 42, .06) 0%, var(--surface) 70%);
+    }
+    html[data-theme="dark"] .notice {
+      border-color: rgba(215, 168, 79, .24);
+      background: var(--surface);
+    }
+
+    /* Notice de aviso/warning (guardrail clínico) */
+    .warning {
+      border-color: rgba(192, 82, 46, .38);
+      background: linear-gradient(135deg, rgba(192, 82, 46, .06) 0%, var(--surface) 70%);
+    }
+    html[data-theme="dark"] .warning {
+      border-color: rgba(216, 129, 106, .38);
+      background: linear-gradient(180deg, rgba(53,26,22,.82), rgba(18,24,23,.86));
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       BUTTONS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .button {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      border: 1.5px solid var(--line-strong);
+      background: rgba(184, 131, 42, .10);
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      transition: background .18s ease, border-color .18s ease, transform .15s ease, box-shadow .18s ease;
+    }
+    html[data-theme="dark"] .button {
+      background: rgba(215, 168, 79, .12);
+    }
+    .button:hover {
+      background: rgba(184, 131, 42, .18);
+      border-color: rgba(184, 131, 42, .70);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(184, 131, 42, .16);
+    }
+    .button.secondary {
+      border-color: var(--line);
+      background: var(--surface-2);
+      color: var(--muted);
+    }
+    html[data-theme="dark"] .button.secondary {
+      background: rgba(255, 255, 255, .03);
+    }
+    .button.secondary:hover {
+      border-color: rgba(43, 138, 132, .40);
+      background: rgba(43, 138, 132, .06);
+      color: var(--ink);
+      box-shadow: 0 4px 16px rgba(43, 138, 132, .10);
+    }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       SOURCE CARDS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .source-card { padding: 18px; box-shadow: none; }
+    .source-card h3 { margin: 0 0 8px; }
+    .source-card p { margin: 0; font-size: 14px; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       FIGURE CARDS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .figure-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .figure-card { overflow: hidden; background: #f7f7f2; border: 1px solid rgba(231,234,223,.16); border-radius: var(--radius-xl); box-shadow: var(--shadow); }
+    .figure-card img { display: block; width: 100%; background: #fff; }
+    .figure-card figcaption { padding: 14px 16px 16px; color: #33413c; font-size: 14px; line-height: 1.5; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       FOOTER
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    footer {
+      padding: 44px 0 70px;
+      color: var(--quiet);
+      border-top: 1px solid var(--line);
+      background: var(--bg-2);
+    }
+    footer .shell { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    footer strong { color: var(--muted); }
+    footer code   { font-family: var(--mono); color: var(--quiet); font-size: 13px; }
+
+    section + section { border-top: 1px solid var(--line); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       RESPONSIVE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    @media (max-width: 1000px) { .axis-grid { grid-template-columns: repeat(2, 1fr); } .grid-3 { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 760px) {
+      nav { display: none; }
+      .grid-2, .grid-3, .axis-grid, .figure-grid { grid-template-columns: 1fr; }
+      .section-head { display: block; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, html { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+    }
+  
+    .evidence-list { display: grid; gap: 12px; }
+    .evidence-list p { margin: 0; }
+    .protocol-boundary { border-left: 2px solid var(--solar); padding-left: 16px; }
+    .axis-grid { grid-template-columns: repeat(4, 1fr); }
+    @media (max-width: 1000px) { .axis-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 760px) { .axis-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+  <header>
+    <div class="shell nav">
+      <a class="brand" href="../../index.html" aria-label="Pharmacopeia.info">
+        <span class="mark" aria-hidden="true"><span class="mark-dot"></span></span>
+        <span>Pharmacopeia.info</span>
+      </a>
+      <nav aria-label="Navegação principal">
+        <a href="../../index.html#matriz">Matriz</a>
+        <a href="#resumo">Resumo</a>
+        <a href="#eixos">8 eixos</a>
+        <a href="#evidencia">Evidência</a>
+        <a href="#fontes">Fontes</a>
+      </nav>
+      <button id="themeToggle" class="theme-btn" type="button" aria-label="Alternar tema">
+        <span class="theme-icon theme-icon-sun">&#9728;</span>
+        <span class="theme-icon theme-icon-moon" style="display:none">&#9790;</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero shell">
+      <div class="kicker"><span class="dot"></span> Ficha 03 · molécula</div>
+      <h1>Doxiciclina</h1>
+      <p class="lead"><strong>A mesma antena, com outra distribuição.</strong> A doxiciclina é lida como a versão mais sustentada e lipofílica do eixo tetraciclínico: conserva o núcleo fotônico de quatro anéis, mas muda compartimento, meia-vida, penetração tecidual e risco. Essa diferença altera a pergunta biofísica sem autorizar protocolo público.</p>
+      <div class="cta-row">
+        <a class="button" href="#eixos">Ler pelos 8 eixos</a>
+        <a class="button secondary" href="../../index.html#atlas">Voltar ao atlas</a>
+      </div>
+    </section>
+
+    <section class="shell">
+      <div class="grid-2">
+        <article class="panel">
+          <h2>A tese pública</h2>
+          <p>A doxiciclina não é “outra física”; é a mesma família com outra logística biológica. A meia-vida mais longa e maior lipofilicidade deslocam a conversa para pele, matriz lipídica, barreira hematoencefálica, APOE/DHA, inflamação crônica e exposição ambiental sustentada.</p><p>No atlas, entra como <strong>molécula de primeira ordem</strong> apenas na leitura de construção de ordem: antena UV-A, POMC, melanina, CISS, redox e coerência estrutural. Na prática clínica, continua sendo antibiótico com risco, indicação e supervisão.</p>
+        </article>
+        <aside class="notice warning">
+          <h2>Guardrail clínico</h2>
+          <p>Esta página é educacional. Não fornece posologia, ciclo, indicação individual, uso prolongado, profilaxia, tratamento de Lyme/acne/infecção ou orientação solar medicamentosa. Doxiciclina exige avaliação profissional: gravidez, idade, esôfago, fígado, pele, microbioma, interações, fotossensibilidade e contexto infeccioso.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="resumo" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker"><span class="dot"></span> Leitura rápida</div>
+          <h2>Quatro camadas antes de qualquer protocolo.</h2>
+        </div>
+        <p>A ficha pública separa farmacologia estabelecida, hipótese biofísica, fronteira Kruse/PKA e prudência clínica. O objetivo é alfabetização causal, não prescrição.</p>
+      </div>
+      <div class="grid-3">
+        <article class="summary-card"><span class="status established">estabelecido</span><b>Tetraciclina semissintética</b><p>Derivada da oxitetraciclina, com mecanismo antibacteriano clássico na subunidade 30S e uso clínico amplo.</p></article>
+        <article class="summary-card"><span class="status established">estabelecido</span><b>Mais lipofílica e duradoura</b><p>Comparada à tetraciclina base, tem meia-vida maior e distribuição tecidual mais sustentada, mudando a janela de risco/efeito.</p></article>
+        <article class="summary-card"><span class="status hypothesis">hipótese biofísica</span><b>Antena sustentada</b><p>A leitura Kruse/PKA interpreta o núcleo tetraciclínico como antena UV-A capaz de operar em janelas solares repetidas.</p></article>
+        <article class="summary-card"><span class="status hypothesis">hipótese biofísica</span><b>APOE/DHA/matriz lipídica</b><p>A lipofilicidade torna plausível perguntar sobre membranas, DHA, bainhas e guias dielétricos, mas isso não é claim clínica estabelecida.</p></article>
+        <article class="summary-card"><span class="status investigational">investigacional</span><b>Neuromelanina e CISS</b><p>A ponte doxiciclina → POMC/melanina profunda → CISS/neuromelanina pertence à fronteira biofísica, não à bula.</p></article>
+        <article class="summary-card"><span class="status guarded">prudência</span><b>Uso prolongado não é banal</b><p>Quanto mais sustentada a molécula, maior a necessidade de limites: microbioma, fígado, esôfago, pele, fungos, sol, nnEMF e contexto geográfico.</p></article>
+      </div>
+    </section>
+
+    <section id="eixos" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker"><span class="dot"></span> Matriz Pharmacopeia</div>
+          <h2>Doxiciclina pelos oito eixos.</h2>
+        </div>
+        <p>A matriz pergunta origem, arquitetura, espectro, água, spin, redox, campo e janela clínica — sempre marcando o estatuto epistemológico de cada afirmação.</p>
+      </div>
+      <div class="axis-grid">
+        <article class="axis-card"><span class="num">01 · origem</span><h3>Derivada moderna</h3><p>Doxiciclina nasce como derivado semissintético da família tetraciclínica. A origem industrial não apaga o núcleo proteobacteriano; muda estabilidade e distribuição.</p><small>Estado: histórico estabelecido</small></article>
+        <article class="axis-card"><span class="num">02 · arquitetura</span><h3>Núcleo compartilhado</h3><p>Mantém o hidronaftaceno de quatro anéis e o cromóforo tetraciclínico; substituições modulam lipofilicidade, meia-vida e compartimento.</p><small>Estado: estrutura estabelecida</small></article>
+        <article class="axis-card"><span class="num">03 · espectro</span><h3>UV-A quase idêntico</h3><p>Absorção na vizinhança de 350 nm mantém a conversa na janela UV-A. O que muda é persistência tecidual, não a família espectral.</p><small>Estado: absorção verde; função biofísica âmbar</small></article>
+        <article class="axis-card"><span class="num">04 · água</span><h3>Interface lipídio/água</h3><p>Menos confinada ao bulk aquoso que a tetraciclina, pergunta mais sobre membranas, matriz lipídica, hidratação interfacial e barreiras biológicas.</p><small>Estado: hipótese mecanística</small></article>
+        <article class="axis-card"><span class="num">05 · CISS</span><h3>Construção sustentada</h3><p>No modelo Kruse/PKA, janelas solares repetidas com molécula presente poderiam reforçar POMC/eumelanina/CISS. Público: hipótese, não instrução.</p><small>Estado: investigacional</small></article>
+        <article class="axis-card"><span class="num">06 · redox</span><h3>Mitocôndria e cinética</h3><p>A inibição de tradução mitocondrial é real; interpretá-la como desaceleração produtiva do pool cinético requer terreno adequado e monitorização.</p><small>Estado: mecanismo + prudência</small></article>
+        <article class="axis-card"><span class="num">07 · campo</span><h3>APOE sob turbulência</h3><p>A ficha pergunta se matriz lipídica/DHA/APOE sob AAS, radiação cósmica e nnEMF muda a janela da molécula. A resposta clínica não é universal.</p><small>Estado: fronteira Kruse/PKA</small></article>
+        <article class="axis-card"><span class="num">08 · janela</span><h3>Ferramenta de risco</h3><p>A maior duração que torna a doxiciclina interessante também amplia risco se o terreno está errado: Carbose, candidíase, LED noturno, latitude/estação ruins ou sol imprudente.</p><small>Estado: prudência clínica obrigatória</small></article>
+      </div>
+    </section>
+
+    <section id="evidencia" class="shell">
+      <div class="grid-2">
+        <article class="panel evidence-list">
+          <h2>O que é sólido</h2>
+          <p><strong>Verde:</strong> mecanismo antibacteriano, farmacocinética, maior meia-vida, maior lipofilicidade relativa, uso em acne/Lyme/malária e risco de fotossensibilidade são bem estabelecidos.</p><p><strong>Ciano:</strong> distribuição em pele/matriz lipídica e efeitos anti-inflamatórios/mitocondriais justificam perguntas biofísicas mais profundas.</p>
+        </article>
+        <article class="panel evidence-list">
+          <h2>O que exige cuidado</h2>
+          <p><strong>Âmbar:</strong> APOE como guia dielétrico, neuromelanina, CISS sustentado, depleção de deutério e protocolos geomagnéticos são linguagem de fronteira.</p><p><strong>Vermelho editorial:</strong> não transformar meia-vida longa em apelo de uso prolongado; a ficha deve aumentar responsabilidade, não entusiasmo.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="fontes" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker"><span class="dot"></span> Fontes internas e externas</div>
+          <h2>Base desta ficha.</h2>
+        </div>
+      </div>
+      <div class="grid-3">
+        <article class="source-card"><h3>PKA · Protocolo Núbio v2</h3><p>Fonte interna principal para a distinção por compartimento, terreno mínimo, suporte antifúngico, janelas solares e cautelas.</p></article>
+        <article class="source-card"><h3>PKA · Biofísica da Tetraciclina</h3><p>Base para o núcleo comum: quatro anéis, UV-A, estado tripleto, POMC, melanina, CISS e deutério.</p></article>
+        <article class="source-card"><h3>Farmacologia clássica</h3><p>Farmacocinética, usos, riscos, contraindicações, esofagite, fotossensibilidade, microbioma e interações continuam determinando o guardrail público.</p></article>
+      </div>
+    </section>
+
+    <section class="shell">
+      <article class="notice">
+        <h2>Regra editorial desta ficha</h2>
+        <p>Onde há consenso, dizemos consenso. Onde há mecanismo plausível, dizemos hipótese. Onde há Kruse/PKA, dizemos fronteira investigacional. Onde há paciente real, encaminhamos para avaliação individual.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">
+      <span><strong>Pharmacopeia.info</strong> — ficha 03 / doxiciclina.</span>
+      <code>educacional · sem prescrição · matriz biofísica</code>
+    </div>
+  </footer>
+
+  <script>
+    var themeToggle = document.getElementById('themeToggle');
+    var sunIcon  = themeToggle.querySelector('.theme-icon-sun');
+    var moonIcon = themeToggle.querySelector('.theme-icon-moon');
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('ph-theme', theme);
+      if (theme === 'dark') { sunIcon.style.display=''; moonIcon.style.display='none'; themeToggle.setAttribute('aria-label','Mudar para tema claro'); }
+      else { sunIcon.style.display='none'; moonIcon.style.display=''; themeToggle.setAttribute('aria-label','Mudar para tema escuro'); }
+    }
+    applyTheme(localStorage.getItem('ph-theme') || 'light');
+    themeToggle.addEventListener('click', function () {
+      var current = document.documentElement.getAttribute('data-theme');
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+  </script>
+</body>
+</html>
