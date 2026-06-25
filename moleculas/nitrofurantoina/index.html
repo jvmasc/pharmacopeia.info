@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nitrofurantoína — Pharmacopeia.info</title>
+  <meta name="description" content="Ficha educacional da nitrofurantoína no framework biofísica → bioquímica: cromóforo redox de um elétron, par radical sensível a campo, UV-A, CISS, POMC e classificação de primeira ordem condicional. Mecanismo clássico em segundo plano." />
+
+  <!-- Anti-FOWT: aplica o tema guardado ANTES de qualquer render -->
+  <script>
+  (function () {
+    var saved = localStorage.getItem('ph-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', saved);
+  })();
+  </script>
+
+  <style>
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       TEMA LIGHT (white/biofílico) — PADRÃO
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    :root {
+      color-scheme: light;
+
+      --bg:        #FAF9F5;
+      --bg-2:      #F2EFE8;
+      --surface:   #FFFFFF;
+      --surface-2: #F7F5EF;
+
+      --ink:       #1C2420;
+      --muted:     #4A5A54;
+      --quiet:     #7A8E87;
+
+      --line:        rgba(28, 36, 32, .10);
+      --line-strong: rgba(184, 131, 42, .50);
+
+      --solar: #B8832A;
+      --bio:   #2B8A84;
+      --mag:   #5B4DB8;
+      --danger: #C0522E;
+      --ok:     #3A7D44;
+
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+
+      --shadow: 0 4px 24px rgba(28, 36, 32, .08), 0 1px 4px rgba(28, 36, 32, .05);
+      --shadow-hover: 0 8px 40px rgba(28, 36, 32, .12), 0 2px 8px rgba(28, 36, 32, .06);
+
+      --header-bg: rgba(250, 249, 245, .88);
+      --body-bg:
+        radial-gradient(ellipse at 18% 0%,  rgba(184, 131, 42, .11), transparent 38rem),
+        radial-gradient(ellipse at 84% 8%,  rgba(43, 138, 132, .09), transparent 34rem),
+        radial-gradient(ellipse at 50% 96%, rgba(91, 77, 184, .07),  transparent 40rem),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg) 62%, var(--bg-2) 100%);
+
+      --mono:  ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans:  Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       TEMA DARK — override
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    html[data-theme="dark"] {
+      color-scheme: dark;
+
+      --bg:        #07100f;
+      --bg-2:      #0b1413;
+      --surface:   #10201e;
+      --surface-2: #142a27;
+
+      --ink:       #e7eadf;
+      --muted:     #a8b5aa;
+      --quiet:     #74827b;
+
+      --line:        rgba(231, 234, 223, .14);
+      --line-strong: rgba(215, 168, 79, .45);
+
+      --solar: #d7a84f;
+      --bio:   #65c7c0;
+      --mag:   #8a6ee8;
+      --danger: #d8816a;
+      --ok:     #98c379;
+
+      --shadow: 0 24px 80px rgba(0, 0, 0, .42);
+      --shadow-hover: 0 24px 80px rgba(0, 0, 0, .55);
+
+      --header-bg: rgba(7, 16, 15, .72);
+      --body-bg:
+        radial-gradient(circle at 12% 0%,  rgba(215, 168, 79, .18), transparent 32rem),
+        radial-gradient(circle at 88% 10%, rgba(101, 199, 192, .14), transparent 32rem),
+        radial-gradient(circle at 48% 100%, rgba(138, 110, 232, .10), transparent 34rem),
+        linear-gradient(180deg, var(--bg), var(--bg-2) 52%, #060b0a);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--body-bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.55;
+    }
+    a { color: inherit; }
+    .shell { width: min(1180px, calc(100% - 36px)); margin: 0 auto; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       HEADER / NAV
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(20px) saturate(1.3);
+      background: var(--header-bg);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 1px 0 var(--line);
+    }
+    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; letter-spacing: -.02em; font-weight: 700; color: var(--ink); }
+    .mark {
+      width: 34px;
+      height: 34px;
+      border: 1.5px solid var(--line-strong);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      position: relative;
+      color: var(--solar);
+      background: var(--surface);
+    }
+    .mark::before, .mark::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(43, 138, 132, .50);
+      border-radius: 50%;
+      inset: 7px 2px;
+      transform: rotate(35deg);
+    }
+    .mark::after { transform: rotate(-35deg); border-color: rgba(91, 77, 184, .42); }
+
+    html[data-theme="dark"] .mark::before { border-color: rgba(101, 199, 192, .42); }
+    html[data-theme="dark"] .mark::after  { border-color: rgba(138, 110, 232, .38); }
+
+    .mark-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--solar);
+      position: relative;
+      z-index: 1;
+    }
+
+    nav { display: flex; gap: 18px; color: var(--muted); font-size: 14px; }
+    nav a { text-decoration: none; transition: color .15s ease; }
+    nav a:hover { color: var(--ink); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       BOTÃO DE TOGGLE DE TEMA
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .theme-btn {
+      cursor: pointer;
+      border: 1px solid var(--line-strong);
+      background: rgba(255, 255, 255, .05);
+      color: var(--solar);
+      border-radius: 999px;
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      font-size: 16px;
+      transition: border-color .18s ease, background .18s ease;
+      flex-shrink: 0;
+    }
+    .theme-btn:hover {
+      background: rgba(184, 131, 42, .10);
+      border-color: var(--line-strong);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       HERO
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .hero { padding: 76px 0 42px; }
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--solar);
+      font-family: var(--mono);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      border: 1px solid rgba(184, 131, 42, .30);
+      border-radius: 999px;
+      padding: 8px 14px;
+      background: rgba(184, 131, 42, .07);
+    }
+    html[data-theme="dark"] .kicker {
+      border-color: rgba(215, 168, 79, .26);
+      background: rgba(215, 168, 79, .06);
+    }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--solar); box-shadow: 0 0 18px var(--solar); }
+    h1 { margin: 26px 0 22px; max-width: 980px; font-family: var(--serif); font-size: clamp(48px, 8vw, 104px); line-height: .92; letter-spacing: -.06em; font-weight: 520; color: var(--ink); }
+    .lead { max-width: 860px; color: var(--muted); font-size: clamp(18px, 2vw, 23px); }
+    .lead strong { color: var(--ink); font-weight: 650; }
+    .meta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+    .chip { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-size: 13px; color: var(--muted); background: var(--surface-2); }
+    .chip b { color: var(--ink); font-weight: 650; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       LAYOUT GRIDS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    section { padding: 48px 0; scroll-margin-top: 92px; }
+    .grid-2 { display: grid; grid-template-columns: 1.05fr .95fr; gap: 22px; align-items: start; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       FAIXAS DE BLOCO (biofísica lidera / bioquímica segue)
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .bloco-head {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin: 0 0 30px;
+      padding-bottom: 18px;
+      border-bottom: 2px solid var(--line-strong);
+    }
+    .bloco-num {
+      flex-shrink: 0;
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 600;
+      border: 2px solid var(--line-strong);
+      color: var(--solar);
+      background: rgba(184, 131, 42, .07);
+    }
+    .bloco-head.bioquimica { border-bottom-color: rgba(43, 138, 132, .5); }
+    .bloco-head.bioquimica .bloco-num { border-color: rgba(43, 138, 132, .55); color: var(--bio); background: rgba(43, 138, 132, .07); }
+    .bloco-head h2 { margin: 0; font-family: var(--serif); font-size: clamp(34px, 5vw, 60px); line-height: 1; letter-spacing: -.04em; }
+    .bloco-head .sub { margin: 8px 0 0; color: var(--muted); font-size: 15px; max-width: 640px; }
+    .bloco-tag { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .14em; color: var(--quiet); }
+
+    .block-section { border-top: none !important; }
+    .block-section.biofisica  { background: linear-gradient(180deg, rgba(184,131,42,.05), transparent 380px); }
+    .block-section.bioquimica { background: linear-gradient(180deg, rgba(43,138,132,.05), transparent 380px); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       CARDS BASE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .panel, .notice, .axis-card, .source-card, .summary-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+    }
+    .panel { padding: 28px; }
+    .panel h2, section h2 { margin: 0 0 14px; font-family: var(--serif); letter-spacing: -.035em; font-size: clamp(30px, 4vw, 52px); line-height: 1; }
+    .panel h3 { margin: 0 0 10px; font-size: 21px; letter-spacing: -.02em; }
+    .panel p, .notice p, .axis-card p, .source-card p, .summary-card p { color: var(--muted); }
+    .panel p + h3 { margin-top: 22px; }
+
+    .summary-card { padding: 18px; box-shadow: none; min-height: 170px; }
+    .summary-card b { display: block; margin-bottom: 8px; color: var(--ink); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       STATUS TAGS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .status { display: inline-flex; border-radius: 999px; border: 1px solid var(--line); padding: 6px 10px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+    .established   { color: var(--ok);     border-color: rgba(58, 125, 68, .38);  background: rgba(58, 125, 68, .07);  }
+    .hypothesis    { color: var(--bio);    border-color: rgba(43, 138, 132, .38); background: rgba(43, 138, 132, .07); }
+    .investigational { color: var(--solar); border-color: rgba(184, 131, 42, .38); background: rgba(184, 131, 42, .07); }
+    .guarded       { color: var(--danger); border-color: rgba(192, 82, 46, .38);  background: rgba(192, 82, 46, .07);  }
+
+    html[data-theme="dark"] .established    { border-color: rgba(152,195,121,.34); background: rgba(152,195,121,.08); }
+    html[data-theme="dark"] .hypothesis     { border-color: rgba(101,199,192,.34); background: rgba(101,199,192,.08); }
+    html[data-theme="dark"] .investigational { border-color: rgba(215,168,79,.34);  background: rgba(215,168,79,.08);  }
+    html[data-theme="dark"] .guarded        { border-color: rgba(216,129,106,.34); background: rgba(216,129,106,.08); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       SECTION HEAD
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .section-head { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 22px; }
+    .section-head p { margin: 0; max-width: 680px; color: var(--muted); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       AXIS GRID (subtemas dentro de cada bloco)
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .axis-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .axis-card { padding: 20px; box-shadow: none; }
+    .axis-card .num { font-family: var(--mono); color: var(--solar); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+    .bioquimica .axis-card .num { color: var(--bio); }
+    .axis-card h3 { margin: 10px 0 8px; font-size: 19px; letter-spacing: -.02em; }
+    .axis-card p { font-size: 14.5px; margin: 0; }
+    .axis-card small { display: block; margin-top: 12px; color: var(--quiet); font-family: var(--mono); font-size: 11px; text-transform: uppercase; line-height: 1.45; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       NOTICE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .notice {
+      padding: 26px;
+      box-shadow: none;
+      border-color: rgba(184, 131, 42, .30);
+      background: linear-gradient(135deg, rgba(184, 131, 42, .06) 0%, var(--surface) 70%);
+    }
+    html[data-theme="dark"] .notice {
+      border-color: rgba(215, 168, 79, .24);
+      background: var(--surface);
+    }
+
+    /* Notice de aviso/warning (guardrail clínico) */
+    .warning {
+      border-color: rgba(192, 82, 46, .38);
+      background: linear-gradient(135deg, rgba(192, 82, 46, .06) 0%, var(--surface) 70%);
+    }
+    html[data-theme="dark"] .warning {
+      border-color: rgba(216, 129, 106, .38);
+      background: linear-gradient(180deg, rgba(53,26,22,.82), rgba(18,24,23,.86));
+    }
+    .warning h2, .warning h3 { color: var(--danger); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       BUTTONS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .button {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      border: 1.5px solid var(--line-strong);
+      background: rgba(184, 131, 42, .10);
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      transition: background .18s ease, border-color .18s ease, transform .15s ease, box-shadow .18s ease;
+    }
+    html[data-theme="dark"] .button {
+      background: rgba(215, 168, 79, .12);
+    }
+    .button:hover {
+      background: rgba(184, 131, 42, .18);
+      border-color: rgba(184, 131, 42, .70);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(184, 131, 42, .16);
+    }
+    .button.secondary {
+      border-color: var(--line);
+      background: var(--surface-2);
+      color: var(--muted);
+    }
+    html[data-theme="dark"] .button.secondary {
+      background: rgba(255, 255, 255, .03);
+    }
+    .button.secondary:hover {
+      border-color: rgba(43, 138, 132, .40);
+      background: rgba(43, 138, 132, .06);
+      color: var(--ink);
+      box-shadow: 0 4px 16px rgba(43, 138, 132, .10);
+    }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       SOURCE CARDS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .source-card { padding: 18px; box-shadow: none; }
+    .source-card h3 { margin: 0 0 8px; }
+    .source-card p { margin: 0; font-size: 14px; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       FOOTER
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    footer {
+      padding: 44px 0 70px;
+      color: var(--quiet);
+      border-top: 1px solid var(--line);
+      background: var(--bg-2);
+    }
+    footer .shell { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    footer strong { color: var(--muted); }
+    footer code   { font-family: var(--mono); color: var(--quiet); font-size: 13px; }
+
+    section + section { border-top: 1px solid var(--line); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       RESPONSIVE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    @media (max-width: 1000px) { .axis-grid { grid-template-columns: repeat(2, 1fr); } .grid-3 { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 760px) {
+      nav { display: none; }
+      .grid-2, .grid-3, .axis-grid { grid-template-columns: 1fr; }
+      .section-head { display: block; }
+      .bloco-head { flex-wrap: wrap; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, html { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="shell nav">
+      <a class="brand" href="../../index.html" aria-label="Pharmacopeia.info">
+        <span class="mark" aria-hidden="true">
+          <span class="mark-dot"></span>
+        </span>
+        <span>Pharmacopeia.info</span>
+      </a>
+      <nav aria-label="Navegação principal">
+        <a href="../../index.html#matriz">Matriz</a>
+        <a href="#biofisica">Bloco 1 · Biofísica</a>
+        <a href="#bioquimica">Bloco 2 · Bioquímica</a>
+        <a href="#janela">Terreno</a>
+        <a href="#fontes">Fontes</a>
+      </nav>
+      <button id="themeToggle" class="theme-btn" type="button" aria-label="Alternar tema">
+        <span class="theme-icon theme-icon-sun">&#9728;</span>
+        <span class="theme-icon theme-icon-moon" style="display:none">&#9790;</span>
+      </button>
+    </div>
+  </header>
+
+
+  <main>
+    <!-- ━━━━━━━━━━━━━━━━ HERO ━━━━━━━━━━━━━━━━ -->
+    <section class="hero shell">
+      <div class="kicker"><span class="dot"></span> Ficha · molécula · framework biofísica → bioquímica</div>
+      <h1>Nitrofurantoína</h1>
+      <p class="lead"><strong>A bula vê um antibiótico urinário velho, barato e amarelo.</strong> A Pharmacopeia lê primeiro a física: um <strong>cromóforo redox-ativo de baixo peso</strong> que absorve na janela do UV-A, aceita um único elétron para formar um radical de spin definido e é sensível à luz, à quiralidade (CISS) e ao campo magnético. O efeito antibacteriano clássico é o subproduto dessa física — e o terreno (luz, água EZ, deutério, campo) decide se ela sintoniza ou queima a mitocôndria.</p>
+      <div class="meta-row">
+        <span class="chip"><b>Categoria</b> antibiótico nitrofurano (uso urinário)</span>
+        <span class="chip"><b>Sinónimos</b> Furadantina · Macrodantina</span>
+        <span class="chip"><b>Ordem</b> primeira ordem condicional</span>
+      </div>
+      <div class="cta-row">
+        <a class="button" href="#biofisica">Começar pela física</a>
+        <a class="button secondary" href="../../index.html#atlas">Voltar ao atlas</a>
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━ GUARDRAIL (acima de tudo) ━━━━━━━━━━━━━━━━ -->
+    <section class="shell" id="guardrail">
+      <div class="grid-2">
+        <aside class="notice warning">
+          <h2>Leia antes — não é prescrição</h2>
+          <p><strong>Esta página é educacional.</strong> A Pharmacopeia.info publica leitura biofísica e farmacológica de substâncias para estudo e contexto — não fornece dose, posologia, ciclo, indicação individual, nem recomenda compra, uso ou substituição de qualquer tratamento. Nada aqui diagnostica, trata, cura ou previne doença, nem substitui consulta, anamnese, exame ou a decisão de um profissional de saúde habilitado. Medicamentos têm riscos, interações e contraindicações que dependem do seu terreno, da sua história clínica, da sua geografia e dos medicamentos que já usa. Antes de qualquer uso, fale com o seu médico ou farmacêutico.</p>
+        </aside>
+        <aside class="notice warning">
+          <h3>Guardrail específico — nitrofurantoína</h3>
+          <p><strong>Substância de toxicidade relevante.</strong> Associada a <strong>toxicidade pulmonar</strong> (aguda e crónica) e <strong>hepática</strong>, é contraindicada na <strong>insuficiência renal</strong> e no <strong>fim da gravidez / período próximo do parto</strong>, e é <strong>fotossensibilizante</strong>. Não é um suplemento nem uma "molécula da luz" de uso livre — é um medicamento sujeito a receita cujo risco depende criticamente de função renal, terreno e contexto clínico, e exige avaliação de um profissional habilitado.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+         BLOCO 1 — LEITURA BIOFÍSICA (lidera)
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section class="shell block-section biofisica" id="biofisica">
+      <div class="bloco-head biofisica">
+        <span class="bloco-num" aria-hidden="true">1</span>
+        <div>
+          <span class="bloco-tag">Bloco 1 · lidera a leitura</span>
+          <h2>Leitura biofísica</h2>
+          <p class="sub">A molécula como antena dentro do campo físico — luz, água, spin, magnetismo, melanina. É aqui que a Pharmacopeia começa.</p>
+        </div>
+      </div>
+
+      <div class="axis-grid">
+        <article class="axis-card">
+          <span class="num">Antena · cromóforos e luz</span>
+          <h3>Push-pull no UV-A</h3>
+          <p>Cromóforo de transferência de carga intramolecular: a nuvem π do furano empurra densidade eletrónica e o grupo nitro (-NO₂) puxa, com a ponte azometina (C=N) a estender a conjugação até à hidantoína. Absorção forte em <strong>365–400 nm</strong>, com cauda no azul (~400–450 nm) — é essa cauda que retira o azul e a faz parecer amarela. Essa é a janela de informação fotorredox (NO cutâneo, POMC-melanina, flavinas).</p>
+          <small>IR: nitro a ~1570/1350 cm⁻¹ · carbonilos ~1700–1770 · azometina ~1620</small>
+        </article>
+
+        <article class="axis-card">
+          <span class="num">Água EZ</span>
+          <h3>Dopante ordenador</h3>
+          <p>Hidrofílica (log P ≈ −0,47), de alto momento de dipolo, vive no compartimento aquoso (citoplasma, urina), não na membrana. Em água estruturada o dipolo alinha-se ao campo da fase de exclusão e ancora carga negativa, estabilizando o gradiente. Sob UV-A separa carga e pode <strong>injetar elétrons na água EZ</strong> — o combustível que constrói a fase de exclusão (princípio das células fotoeletroquímicas).</p>
+          <small>Estado: hipótese biofísica exploratória</small>
+        </article>
+
+        <article class="axis-card">
+          <span class="num">Spin · CISS · tripleto</span>
+          <h3>O radical domesticado</h3>
+          <p>O coração da molécula. Ao receber <strong>um único elétron</strong>, forma um <strong>radical ânion nitro (R-NO₂•⁻)</strong> — espécie paramagnética estabilizada por ressonância. Química de par radical: o destino (singleto/tripleto) depende do acoplamento hiperfino e do campo. Empilhada (π-stacking) sobre matrizes quirais (DNA, melanina), sofre <strong>filtragem de spin via CISS</strong> — converte radical caótico em corrente spin-selecionada de baixa entropia.</p>
+          <small>A quiralidade do hospedeiro domestica o radical</small>
+        </article>
+
+        <article class="axis-card">
+          <span class="num">Campo · geografia de origem</span>
+          <h3>Híbrida bio/tecnosfera</h3>
+          <p>Sintética (1953). Geografia dupla e tensa: o furano vem do <strong>furfural</strong> de biomassa (carbono fotossintético com memória de sol), o nitro vem do nitrogénio <strong>Haber-Bosch</strong> ("nitrogénio mudo", sem história biológica) — parcialmente órfã de geografia. Por operar por par radical, o destino dos seus radicais é modulado pelo <strong>campo geomagnético local</strong>: sob a Anomalia do Atlântico Sul ou nnEMF urbano, a coerência de spin degrada.</p>
+          <small>O código postal é uma variável farmacológica</small>
+        </article>
+
+        <article class="axis-card">
+          <span class="num">POMC · α-MSH · melanina</span>
+          <h3>Gatilho fotónico</h3>
+          <p>Sob UV-A, o tecido carregado dispara energia eletrónica de alta densidade sobre melanócitos; a célula lê emergência fotónica, transcreve <strong>POMC</strong>, liberta <strong>α-MSH</strong>, ativa o <strong>MC1R</strong> e polimeriza eumelanina. A "hiperpigmentação adversa" é, nesta leitura, biologia escrevendo proteção de estado sólido com luz. Segundo eixo: o nitro reduzível pode alimentar o pool de <strong>NO</strong> local (CCO, tónus vagal).</p>
+          <small>Em dose alta e terreno deuterado, compete com a cadeia e gera ROS</small>
+        </article>
+
+        <article class="axis-card">
+          <span class="num">Classificação de ordem · Landauer</span>
+          <h3>Primeira ordem condicional</h3>
+          <p>Pelo critério de Landauer, a molécula <strong>adiciona capacidade de ordem</strong>: capta luz na janela de informação, escreve POMC, constrói melanina (semicondutor de baixa entropia), gera material para CISS e pode alimentar a água EZ com elétrons. Assinatura de primeira ordem. A ressalva honesta: só se realiza em terreno de <strong>soberania isotópica</strong>, campo são e luz solar real; em terreno deuterado, degenera para gerador de entropia (ROS).</p>
+          <small>Estado: hipótese biofísica exploratória (primeiros princípios) · não consenso</small>
+        </article>
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+         BLOCO 2 — LEITURA BIOQUÍMICA (segue)
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section class="shell block-section bioquimica" id="bioquimica">
+      <div class="bloco-head bioquimica">
+        <span class="bloco-num" aria-hidden="true">2</span>
+        <div>
+          <span class="bloco-tag">Bloco 2 · segue a física</span>
+          <h2>Leitura bioquímica</h2>
+          <p class="sub">O mecanismo clássico/oficial, como o ensinam os livros. Vem depois da física — não antes.</p>
+        </div>
+      </div>
+
+      <div class="axis-grid bioquimica">
+        <article class="axis-card">
+          <span class="num">Mecanismo clássico / oficial</span>
+          <h3>Pró-droga ativada</h3>
+          <p>Pró-droga ativada por enzimas bacterianas. As <strong>nitrorredutases</strong> bacterianas reduzem o grupo nitro, gerando intermediários reativos eletrofílicos que atacam de forma inespecífica múltiplos alvos celulares — ribossomos, DNA e proteínas. A multiplicidade de alvos é a razão clássica apontada para a resistência ser rara.</p>
+          <small>Estado: consenso estabelecido</small>
+        </article>
+
+        <article class="axis-card">
+          <span class="num">Alvos moleculares</span>
+          <h3>Múltiplos e inespecíficos</h3>
+          <p>Ribossomos bacterianos (síntese proteica), DNA, e enzimas do metabolismo de carboidratos da bactéria. Não há um único alvo dominante — é o ataque difuso que a farmacologia clássica enfatiza.</p>
+          <small>Estado: consenso estabelecido</small>
+        </article>
+
+        <article class="axis-card">
+          <span class="num">Farmacologia</span>
+          <h3>Nicho urinário</h3>
+          <p>Antibacteriano de uso restrito ao trato urinário, classicamente indicado em infecção urinária não complicada; com a crise de resistência às fluoroquinolonas, voltou a diretrizes como opção de primeira linha nesse contexto.</p>
+          <small>Ficha educacional — sem posologia, ciclo ou indicação individual</small>
+        </article>
+
+        <article class="axis-card">
+          <span class="num">Farmacocinética</span>
+          <h3>Pequena e hidrofílica</h3>
+          <p>238,16 g/mol, hidrofílica (log P negativo), pKa ≈ 7,2 (fronteira fisiológica): ioniza-se em parte no sangue (pH 7,4) e reprotona-se na urina ácida. Concentra-se na urina — o que sustenta o nicho urinário; a forma macrocristalina (Macrodantina) absorve mais lentamente, melhorando a tolerância gástrica.</p>
+          <small>Dados quantitativos não detalhados nesta ficha educacional</small>
+        </article>
+
+        <article class="axis-card">
+          <span class="num">Toxicidade e contraindicações</span>
+          <h3>Risco real e estabelecido</h3>
+          <p>Efeitos adversos estabelecidos incluem <strong>toxicidade pulmonar</strong> (aguda e crónica) e <strong>hepática</strong>, além de <strong>fotossensibilidade</strong> documentada. Contraindicações clássicas notáveis: <strong>insuficiência renal</strong> (perde eficácia e aumenta toxicidade quando a depuração é baixa) e o <strong>fim da gravidez / período próximo do parto</strong>.</p>
+          <small>Estado: consenso estabelecido — depende do terreno e da história clínica</small>
+        </article>
+
+        <article class="axis-card">
+          <span class="num">Ponte entre os dois blocos</span>
+          <h3>O subproduto da física</h3>
+          <p>A "multiplicidade de alvos inespecíficos" da bioquímica descreve, sem nomear, o mesmo radical ânion nitro do Bloco 1. O que a bula chama efeito antibacteriano é o subproduto observável de um <strong>processo monoeletrónico de spin</strong> — e o que chama toxicidade é, em grande parte, esse mesmo trânsito sem o terreno que o filtra.</p>
+          <small>Bloco 1 explica o porquê; Bloco 2 descreve o quê</small>
+        </article>
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━ JANELA DE USO / TERRENO ━━━━━━━━━━━━━━━━ -->
+    <section class="shell" id="janela">
+      <div class="grid-2">
+        <article class="panel">
+          <h2>Janela de uso / terreno</h2>
+          <p>A nitrofurantoína é "honesta": apenas obedece ao terreno. A janela em que realiza o seu potencial de primeira ordem é <strong>diurna, solar, em corpo hidratado-EZ, leve em deutério e magneticamente são</strong>. Latitude e estação importam — em baixa latitude/verão há UV-A abundante e fotoquímica intensa (mais melanogénese e sinalização, mas mais risco se o terreno estiver deuterado); em alta latitude/inverno opera quase só no modo enzimático redox.</p>
+          <p>A janela circadiana é farmacodinâmica: o pior cenário é a administração noturna sob luz azul de LED/tela, que soma à banda azul da molécula e gera separação de carga fora de fase, sem o vermelho/IR solar para limpar o radical. Fora da janela boa, a molécula não deixa de funcionar — funciona pior, com a balança risco/benefício deslocada para o radical sujo. <em>Leitura educacional de terreno — não é indicação de uso.</em></p>
+        </article>
+        <article class="panel">
+          <h2>Estado da evidência</h2>
+          <p><span class="status established">consolidado</span><br><strong>Consenso:</strong> ativação por nitrorredutases, uso clínico em ITU não complicada, perfil de toxicidade (pulmonar, hepática, fotossensibilidade) e contraindicações (insuficiência renal, fim de gravidez).</p>
+          <p><span class="status hypothesis">física estabelecida</span><br><strong>Mecanismo plausível:</strong> cromóforo push-pull e absorção UV-A; formação de radical ânion nitro e redox cycling; fotossensibilização.</p>
+          <p><span class="status investigational">exploratório</span><br><strong>Hipótese biofísica exploratória (primeiros princípios):</strong> química de par radical sensível ao campo; cascata POMC-melanina; injeção de elétrons na EZ; toxicidade como toxicidade de deutério (KIE sobre a PCET); primeira ordem condicional (Landauer).</p>
+          <p><span class="status guarded">zona proibida</span><br><strong>Sem claims:</strong> qualquer afirmação de que "trata", "constrói melanina como terapia", "deve ser tomada ao sol" ou substitui decisão médica.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━ FONTES ━━━━━━━━━━━━━━━━ -->
+    <section id="fontes" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker"><span class="dot"></span> Ligações e fonte</div>
+          <h2>Base desta ficha.</h2>
+        </div>
+        <p>Ficha-piloto do novo padrão biofísica → bioquímica. A monografia completa está na base de conhecimento PKA.</p>
+      </div>
+      <div class="grid-3">
+        <article class="source-card"><h3>Monografia (Pura)</h3><p><em>Biofísica da Nitrofurantoína</em> — versão Pura/independente (2026-06-21). Skill biofisica-farmaco / molde CPC 84.</p></article>
+        <article class="source-card"><h3>Monografia (Referenciada)</h3><p>Versão comparada à tetraciclina (2026-06-21) — leitura cruzada de dois cromóforos redox.</p></article>
+        <article class="source-card"><h3>Integrações</h3><p>Tele-Farmácia (riscos e terreno) · SOS (redox/par radical) · Time Machine Sync (janela diurna/solar) · Escola Politécnica (química monoeletrónica e cromóforos).</p></article>
+      </div>
+    </section>
+
+    <section class="shell">
+      <article class="notice">
+        <h2>Regra editorial desta ficha</h2>
+        <p>A Pharmacopeia publica perguntas melhores, não atalhos terapêuticos. A física lidera; a bioquímica segue. A classificação "primeira ordem condicional" é precisa: a capacidade física existe, mas só se realiza em terreno são; fora dele, a mesma molécula degenera em gerador de ROS, com toxicidade pulmonar e hepática reais. Onde há paciente real, encaminhamos para avaliação individual.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">
+      <span><strong>Pharmacopeia.info</strong> — ficha / nitrofurantoina · padrão biofísica → bioquímica.</span>
+      <code>educacional · sem prescrição · matriz biofísica</code>
+    </div>
+  </footer>
+
+  <script>
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       THEME TOGGLE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    var themeToggle = document.getElementById('themeToggle');
+    var sunIcon  = themeToggle.querySelector('.theme-icon-sun');
+    var moonIcon = themeToggle.querySelector('.theme-icon-moon');
+
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('ph-theme', theme);
+      if (theme === 'dark') {
+        sunIcon.style.display  = '';
+        moonIcon.style.display = 'none';
+        themeToggle.setAttribute('aria-label', 'Mudar para tema claro');
+      } else {
+        sunIcon.style.display  = 'none';
+        moonIcon.style.display = '';
+        themeToggle.setAttribute('aria-label', 'Mudar para tema escuro');
+      }
+    }
+
+    applyTheme(localStorage.getItem('ph-theme') || 'light');
+
+    themeToggle.addEventListener('click', function () {
+      var current = document.documentElement.getAttribute('data-theme');
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+  </script>
+</body>
+</html>
