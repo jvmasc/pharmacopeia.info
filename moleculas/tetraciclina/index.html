@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tetraciclina — Pharmacopeia.info</title>
-  <meta name="description" content="Ficha educacional de leitura biofísica da tetraciclina: quatro anéis conjugados, UV-A, estado tripleto, POMC, melanina, CISS, água EZ, deutério, geografia magnética e janela clínica." />
+  <meta name="description" content="Ficha educacional de leitura biofísica da tetraciclina: quatro anéis conjugados, UV-A, estado tripleto, POMC, melanina, CISS, água EZ, campo geográfico Núbia, ribossoma 30S e janela clínica." />
 
   <!-- Anti-FOWT: aplica o tema guardado ANTES de qualquer render -->
   <script>
@@ -46,7 +46,6 @@
       --mono:   'Space Mono', ui-monospace, SFMono-Regular, monospace;
       --ui:     system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 
-      /* aliases de compatibilidade com index.html */
       --serif:  'Spectral', Georgia, serif;
       --sans:   system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       --bg:     var(--paper);
@@ -86,7 +85,7 @@
 
     .shell { width: min(1180px, calc(100% - 36px)); margin: 0 auto; }
 
-    /* ─── MASTHEAD — flat, sem sticky/blur ──────────── */
+    /* ─── MASTHEAD ───────────────────────────────────── */
     header {
       border-bottom: 1px solid var(--rule-heavy);
       padding: 18px 0;
@@ -152,7 +151,6 @@
     }
     nav a:hover { color: var(--ink); }
 
-    /* botão de tema — texto simples com borda */
     .theme-btn {
       font-family: var(--mono);
       font-size: 11px;
@@ -172,7 +170,6 @@
     /* ─── HERO ───────────────────────────────────────── */
     .hero { padding: 76px 0 42px; }
 
-    /* ─── KICKER — label mono, sem pill ─────────────── */
     .kicker {
       display: block;
       font-family: var(--mono);
@@ -225,7 +222,7 @@
     .grid-2 { display: grid; grid-template-columns: 1.05fr .95fr; gap: 22px; align-items: start; }
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 
-    /* ─── PANELS — sem sombra, borda fina ───────────── */
+    /* ─── PANELS ─────────────────────────────────────── */
     .panel {
       padding: 28px;
       border: 1px solid var(--rule);
@@ -234,10 +231,6 @@
     .panel p { color: var(--ink-2); line-height: 1.68; font-size: 16px; }
     .panel p + p { margin-top: .9em; }
     .panel strong { color: var(--ink); font-weight: 500; }
-
-    /* ─── EVIDENCE LIST ──────────────────────────────── */
-    .evidence-list { display: grid; gap: 12px; }
-    .evidence-list p { margin: 0; }
 
     /* ─── STATUS TAGS ────────────────────────────────── */
     .status {
@@ -321,7 +314,6 @@
     .notice p { color: var(--ink-2); font-size: 16px; line-height: 1.68; }
     .notice p + p { margin-top: .8em; }
 
-    /* Notice de aviso/warning */
     .warning {
       border-color: rgba(144, 48, 32, .28);
     }
@@ -438,10 +430,8 @@
         <span>Pharmacopeia.info</span>
       </a>
       <nav aria-label="Navegação principal">
-        <a href="../../index.html#matriz">Matriz</a>
-        <a href="#resumo">Resumo</a>
-        <a href="#figuras">Figuras</a>
-        <a href="#eixos">8 eixos</a>
+        <a href="#biofisica">Biofísica</a>
+        <a href="#bioquimica">Bioquímica</a>
         <a href="#evidencia">Evidência</a>
         <a href="#fontes">Fontes</a>
       </nav>
@@ -455,10 +445,10 @@
     <section class="hero shell">
       <div class="kicker">Ficha 02 · molécula</div>
       <h1>Tetraciclina</h1>
-      <p class="lead"><strong>A bula vê um antibiótico que bloqueia o ribossoma 30S.</strong> A Pharmacopeia lê uma antena fotónica de quatro anéis que o solo forjou para gerir fotões e spins: um núcleo hidronaftacênico capaz de absorver UV-A, quelar metais, interagir com água interfacial e levantar perguntas sobre POMC, melanina e corrente de baixa entropia.</p>
+      <p class="lead"><strong>A bula vê um antibiótico que bloqueia o ribossoma 30S.</strong> A Pharmacopeia lê uma antena fotónica de quatro anéis que o solo forjou para gerir fotões e spins: quatro anéis conjugados planos, quiralidade densa, absorção UV-A na janela exata da melanina, estado tripleto metaestável e cascata POMC — construção de ordem com luz. Esta ficha organiza o que é estabelecido, o que é hipótese biofísica plausível e o que permanece investigacional. Biofísica primeiro, Bioquímica depois.</p>
       <div class="cta-row">
-        <a class="button" href="#eixos">Ler pelos 8 eixos</a>
-        <a class="button secondary" href="../../index.html#atlas">Voltar ao atlas</a>
+        <a class="button" href="#biofisica">BLOCO 1 — Biofísica</a>
+        <a class="button secondary" href="#bioquimica">BLOCO 2 — Bioquímica</a>
       </div>
     </section>
 
@@ -466,30 +456,31 @@
       <div class="grid-2">
         <article class="panel">
           <h2>A tese pública</h2>
-          <p>A tetraciclina é uma molécula didática porque obriga a sair da frase "inibe a subunidade 30S". Ela mostra que a arquitetura molecular — anéis conjugados, carbonilas, hidroxilas, amino dimetilado e quelação — define uma relação com luz, água, metais e tecidos.</p><p>No vocabulário público da Pharmacopeia, ela é uma <strong>molécula de primeira ordem</strong> quando analisada como antena de construção de ordem: UV-A → estado excitado/tripleto → sinalização POMC → melanina/eumelanina → CISS. A linguagem deve permanecer educacional: hipótese biofísica forte, não protocolo universal.</p>
+          <p>A tetraciclina não precisa ser apresentada apenas como antibiótico de largo espectro para merecer atenção. A sua importância está no cruzamento entre farmacologia clássica e terreno biológico: origem em solo actinobacteriano, quatro anéis conjugados planares, absorção UV-A (~360 nm) sintonizada na janela de comando da melanina, quiralidade que a torna candidata a filtro de spin, e inibição da tradução mitocondrial como possível freio cinético.</p>
+          <p>No vocabulário da Pharmacopeia: ela é uma molécula que exige leitura de <strong>espectro</strong>, <strong>terreno</strong> e <strong>janela clínica</strong>, não apenas ribossoma e dose.</p>
         </article>
         <aside class="notice warning">
-          <h2>Guardrail clínico</h2>
-          <p>Esta página não recomenda uso, dose, ciclo, exposição solar medicamentosa, substituição de antibiótico ou automedicação. Tetraciclinas têm riscos reais: fotossensibilidade, interações por quelação, contraindicações em gravidez/crianças, efeitos gastrointestinais, microbioma e necessidade de avaliação profissional.</p>
+          <h2>Guardrail clínico — leia antes</h2>
+          <p>Esta página é educacional. Não é prescrição. A Pharmacopeia.info não fornece dose, ciclo, indicação individual, nem recomenda compra, uso ou substituição de acompanhamento médico. A tetraciclina é antibiótico de prescrição com contraindicações absolutas: gestação, lactação e crianças abaixo de ~8 anos (dano dentário e ósseo permanente). Pode agravar insuficiência renal. Nunca usar produto vencido (risco de síndrome de Fanconi). Fotossensibilidade é efeito de classe documentado.</p>
         </aside>
       </div>
     </section>
 
-    <section id="resumo" class="shell">
+    <section class="shell">
       <div class="section-head">
         <div>
           <div class="kicker">Leitura rápida</div>
-          <h2>Quatro camadas antes de qualquer protocolo.</h2>
+          <h2>Dois blocos antes de qualquer protocolo.</h2>
         </div>
-        <p>A ficha pública separa farmacologia estabelecida, hipótese biofísica, fronteira Kruse/PKA e prudência clínica. O objetivo é alfabetização causal, não prescrição.</p>
+        <p>A ficha pública separa o mecanismo aceito (BLOCO 2) da leitura biofísica de fronteira (BLOCO 1), com estatuto epistemológico explícito em cada ponto.</p>
       </div>
       <div class="grid-3">
-        <article class="summary-card"><span class="status established">estabelecido</span><b>Antibiótico de amplo espectro</b><p>Mecanismo clássico: bloqueio reversível da ligação do aminoacil-tRNA à subunidade 30S bacteriana, com dependência de Mg²⁺.</p></article>
-        <article class="summary-card"><span class="status established">estabelecido</span><b>Quatro anéis conjugados</b><p>O núcleo hidronaftacênico planar cria um cromóforo extenso; isso explica absorção UV/Vis, fluorescência e fotossensibilidade.</p></article>
-        <article class="summary-card"><span class="status hypothesis">hipótese biofísica</span><b>Antena UV-A</b><p>A leitura como antena fotônica proteobacteriana é uma hipótese Kruse/PKA: a molécula não é só alvo/receptor; é interface com espectro.</p></article>
-        <article class="summary-card"><span class="status hypothesis">hipótese biofísica</span><b>POMC e melanina</b><p>O encadeamento UV-A → estado tripleto → POMC/α-MSH → eumelanina/CISS organiza o raciocínio, mas precisa ser marcado como fronteira.</p></article>
-        <article class="summary-card"><span class="status investigational">investigacional</span><b>Deutério e G3P</b><p>A relação entre tetraciclina, desaceleração mitocondrial, shuttle G3P e depleção interna de deutério é plausível no framework, não consenso clínico.</p></article>
-        <article class="summary-card"><span class="status guarded">prudência</span><b>Janela estreita</b><p>Sol, campo magnético, terreno redox, fígado, microbioma e risco individual definem se a pergunta é apropriada. Não é molécula para slogan.</p></article>
+        <article class="summary-card"><span class="status hypothesis">biofísica · BLOCO 1</span><b>Antena UV-A de fase aquosa</b><p>Quatro anéis conjugados planos + banda de absorção ~360 nm = antena sintonizada na janela de comando da melanina. Opera na fase aquosa e epidérmica. Contrasta com a doxiciclina, que atinge membranas e SNC.</p></article>
+        <article class="summary-card"><span class="status hypothesis">biofísica · BLOCO 1</span><b>Estado tripleto e CISS</b><p>UV-A → cruzamento intersistemas → estado tripleto metaestável de baixa entropia. A quiralidade densa (5 estereocentros) é o pré-requisito estrutural do filtro de spin CISS. Corrente DC limpa em vez de radicais livres.</p></article>
+        <article class="summary-card"><span class="status investigational">investigacional · BLOCO 1</span><b>POMC, melanina e Núbia</b><p>Estado tripleto como gatilho fotónico → POMC 2p23.3 → α-MSH → MC1R → eumelanina semicondutora. Leitura geográfica: tetraciclina em cerveja núbia (~22°N) documentada em ossos do séc. IV–VI d.C.</p></article>
+        <article class="summary-card"><span class="status established">estabelecido · BLOCO 2</span><b>Antibiótico 30S</b><p>Bloqueio reversível da ligação do aminoacil-tRNA à subunidade ribossomal 30S bacteriana, dependente de Mg²⁺. Bacteriostático de amplo espectro. Mecanismo e seletividade bem documentados.</p></article>
+        <article class="summary-card"><span class="status established">estabelecido · BLOCO 2</span><b>Quelação e fotossensibilidade</b><p>Bolso tricarbonil de alta afinidade para Ca²⁺, Mg²⁺, Fe²⁺/³⁺, Zn²⁺ — base da deposição em tecidos calcificados, interferência alimentar e fotossensibilidade como efeito de classe documentado.</p></article>
+        <article class="summary-card"><span class="status guarded">prudência · ambos</span><b>Janela estreita</b><p>Contraindicações absolutas em gestação/lactação/crianças &lt;8 anos; risco em insuficiência renal; produto vencido → síndrome de Fanconi; resistência bacteriana por uso inadequado. Não é molécula para slogan.</p></article>
       </div>
     </section>
 
@@ -504,52 +495,161 @@
       <div class="figure-grid">
         <figure class="figure-card">
           <img src="../../assets/moleculas/tetraciclina/gpt/tetraciclina-01-molecula-gpt.png" alt="Diagrama editorial da molécula de tetraciclina com núcleo octahidronaftaceno de quatro anéis, grupos carbonila, hidroxila e dimetilamino destacados em estilo de atlas farmacológico." loading="lazy" />
-          <figcaption>Molécula da tetraciclina: quatro anéis conjugados, carbonilas, hidroxilas e grupo dimetilamino — arquitetura de cromóforo e quelante simultâneos.</figcaption>
+          <figcaption>Molécula da tetraciclina: quatro anéis conjugados planos, carbonilas, hidroxilas e grupo dimetilamino — arquitetura simultânea de cromóforo e quelante de metais.</figcaption>
         </figure>
         <figure class="figure-card">
           <img src="../../assets/moleculas/tetraciclina/gpt/tetraciclina-02-ribossomo-30s-gpt.png" alt="Diagrama do mecanismo clássico da tetraciclina: molécula posicionada na subunidade ribossomal 30S a bloquear o aminoacil-tRNA, com dependência de Mg²⁺." loading="lazy" />
-          <figcaption>Mecanismo clássico: bloqueio reversível da ligação do aminoacil-tRNA à subunidade 30S do ribossoma bacteriano, dependente de Mg²⁺.</figcaption>
+          <figcaption>Mecanismo clássico: bloqueio reversível da ligação do aminoacil-tRNA à subunidade 30S do ribossoma bacteriano, dependente de Mg²⁺. Efeito bacteriostático de amplo espectro.</figcaption>
         </figure>
         <figure class="figure-card">
           <img src="../../assets/moleculas/tetraciclina/gpt/tetraciclina-03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico da tetraciclina: absorção oral com filtro de quelação, metabolismo hepático mínimo, deposição em tecidos calcificados, excreção renal e circulação êntero-hepática." loading="lazy" />
-          <figcaption>Mapa farmacológico simplificado: absorção, quelação intestinal, distribuição para tecidos calcificados, metabolismo mínimo e excreção renal.</figcaption>
+          <figcaption>Mapa farmacológico simplificado: absorção oral com filtro de quelação intestinal, distribuição para tecidos calcificados, metabolismo mínimo e excreção predominantemente renal.</figcaption>
         </figure>
         <figure class="figure-card">
           <img src="../../assets/moleculas/tetraciclina/gpt/tetraciclina-04-interface-biofisica-gpt.png" alt="Diagrama da interface biofísica da tetraciclina: UV-A atinge a molécula, transição para estado tripleto, cascata POMC-melanina, corrente de electrões polarizados por spin e conexão mitocondrial — com marcação de hipótese." loading="lazy" />
-          <figcaption>Interface biofísica (hipótese): UV-A → estado tripleto → POMC/α-MSH → melanina → corrente CISS → mitocôndria. Fronteira investigacional, não consenso.</figcaption>
+          <figcaption>Interface biofísica (hipótese investigacional): UV-A → estado tripleto → POMC/α-MSH → melanina semicondutora → corrente CISS → mitocôndria. Fronteira investigacional, não consenso biomédico.</figcaption>
         </figure>
       </div>
     </section>
 
-    <section id="eixos" class="shell">
+    <section id="biofisica" class="shell">
       <div class="section-head">
         <div>
-          <div class="kicker">Matriz Pharmacopeia</div>
-          <h2>Tetraciclina pelos oito eixos.</h2>
+          <div class="kicker">BLOCO 1 — Biofísica</div>
+          <h2>Oito eixos de leitura de antena e spin.</h2>
         </div>
-        <p>A matriz pergunta origem, arquitetura, espectro, água, spin, redox, campo e janela clínica — sempre marcando o estatuto epistemológico de cada afirmação.</p>
+        <p>Leitura biofísica de primeiros princípios: origem no solo Arqueano, arquitetura como antena UV-A, estado tripleto, CISS via melanina, água EZ, cascata POMC, freio mitocondrial e contexto magnético. Cada eixo tem estatuto epistemológico declarado.</p>
       </div>
       <div class="axis-grid">
-        <article class="axis-card"><span class="num">01 · origem</span><h3>Streptomyces e solo</h3><p>Derivada de organismos do solo, especialmente o arco Streptomyces/aureomicina/tetraciclinas, em ambiente onde luz, minerais e campo moldam metabólitos secundários.</p><small>Estado: histórico estabelecido + leitura ecológica investigacional</small></article>
-        <article class="axis-card"><span class="num">02 · arquitetura</span><h3>Hidronaftaceno planar</h3><p>Quatro anéis conjugados, carbonilas, hidroxilas e amino dimetilado tornam a molécula simultaneamente antibiótico, quelante e cromóforo.</p><small>Estado: estrutura estabelecida</small></article>
-        <article class="axis-card"><span class="num">03 · espectro</span><h3>UV-A e estado excitado</h3><p>A banda próxima de 355 nm em pH fisiológico coloca a molécula na janela UV-A. O salto para estado tripleto funcional em tecido é hipótese a ser tratada com precisão.</p><small>Estado: absorção medida; função in vivo = hipótese</small></article>
-        <article class="axis-card"><span class="num">04 · água</span><h3>EZ e quelatos</h3><p>Hidrofilia, múltiplos pKa e quelação de Mg²⁺/Ca²⁺/Fe²⁺/Zn²⁺ fazem da tetraciclina uma moduladora de água interfacial e microambiente iônico.</p><small>Estado: físico-química verde; EZ/deutério âmbar</small></article>
-        <article class="axis-card"><span class="num">05 · CISS</span><h3>Melanina como conversor</h3><p>No modelo Kruse/PKA, a tetraciclina não faz CISS sozinha; ela ajuda a construir eumelanina quiral que converte energia UV em corrente ordenada.</p><small>Estado: investigacional</small></article>
-        <article class="axis-card"><span class="num">06 · redox</span><h3>Mitocôndria lenta</h3><p>A inibição de tradução mitocondrial pode ser lida como desaceleração do pool cinético. A interpretação de resgate redox depende do terreno e não deve virar promessa.</p><small>Estado: mecanismo plausível com cautela</small></article>
-        <article class="axis-card"><span class="num">07 · campo</span><h3>AAS e latitude</h3><p>Campo magnético e UV-A determinam a qualidade do acoplamento oxigênio/melanina. A Anomalia do Atlântico Sul é tratada como variável ambiental de primeira ordem.</p><small>Estado: fronteira biofísica</small></article>
-        <article class="axis-card"><span class="num">08 · janela</span><h3>Não é protocolo público</h3><p>A tetraciclina exige avaliação: idade, gravidez, fígado/rim, microbioma, sol, interações por minerais, risco de fototoxicidade e contexto infeccioso.</p><small>Estado: prudência clínica obrigatória</small></article>
+        <article class="axis-card">
+          <span class="num">01 · origem</span>
+          <h3>Solo Arqueano — Streptomyces</h3>
+          <p>Sintetizada por <em>Streptomyces aureofaciens</em> e <em>S. rimosus</em> na interface terra-água, onde o magnetismo telúrico domina e a luz solar já não chega. A biossíntese de policetídeos acontece rodeada de catiões metálicos paramagnéticos (Fe, Mn) e sob campo magnético orientador — daí a quelação voraz e a quiralidade densa. Uma molécula forjada no escuro do solo para gerir electrões e spins.</p>
+          <small>Estado: histórico estabelecido + leitura geográfica investigacional</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">02 · arquitectura</span>
+          <h3>Hidronaftaceno planar — antena</h3>
+          <p>Quatro anéis fundidos linearmente (A–D): estrutura plana, não globular. O sistema cromóforo BCD (fenol-diceto-enol conjugado) cria uma nuvem π deslocalizada ao longo de boa parte da molécula — um mar de electrões livres para ressoar quando um fotão de energia certa os atinge. Cinco centros quirais (4S,4aS,5aS,6S,12aS): quiralidade é o pré-requisito físico do CISS. Ao quelar ferro, monta um mini-centro de transferência de electrões.</p>
+          <small>Estado: estrutura estabelecida · função de antena = hipótese biofísica</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">03 · espectro</span>
+          <h3>UV-A ~360 nm — janela da melanina</h3>
+          <p>Banda assinatura em ~355–380 nm (UV-A): sintonizada exactamente na janela de comando da melanina — UV-A penetra mais fundo na derme, atinge melanócitos e vasculatura. Banda secundária em ~270 nm (UV-C/B-borda). Fluorescência amarelo-esverdeada (~510–530 nm) quando quelada a Ca²⁺: conversor descendente de frequência. Contrasta com a doxiciclina (~345–351 nm) — antena mais fria e durável; a tetraciclina é o flash rápido.</p>
+          <small>Estado: absorção espectral (verde) · estado tripleto in vivo (âmbar)</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">04 · estado tripleto</span>
+          <h3>Amortecedor energético metaestável</h3>
+          <p>UV-A absorvido → estado excitado singleto → cruzamento intersistemas (acoplamento spin-órbita favorecido pelos catiões quelados) → <strong>estado tripleto metaestável</strong>. Este estado é longevo, menos entrópico e retém a energia em vez de a dissipar como calor. Amortecedor que captura ruído atmosférico e cósmico antes que oxide caudas lipídicas quirais. O que a dermatologia chama de "fototoxicidade" é a descarga desordenada deste estado em terreno inadequado.</p>
+          <small>Estado: cruzamento intersistemas (verde/ciano) · função terapêutica (âmbar)</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">05 · CISS / melanina</span>
+          <h3>Filtro de spin quiral</h3>
+          <p>A quiralidade fixa (5 estereocentros) faz da tetraciclina um filtro de spin ela mesma. Ao intercalar na hélice quiral da melanina, activa a Seletividade de Spin Induzida por Quiralidade: electrões fotoexcitados spin-up (coerentes) atravessam; spin-down (caóticos) são aterrados. Resultado: corrente contínua de baixa entropia em vez de chuva de radicais livres. Pelo princípio de Landauer, esta corrente paga a conta energética de manter ordem estrutural sem dissipação de calor destrutivo.</p>
+          <small>Estado: hipótese biofísica de fronteira</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">06 · POMC / melanina</span>
+          <h3>Cascata Cromossoma 2</h3>
+          <p>Estado tripleto → gatilho fotónico de emergência em queratinócitos e melanócitos → transcrição do <strong>POMC (locus 2p23.3)</strong>, alojado no cromossoma de fusão humano → clivagem → α-MSH → MC1R → polimerização de tirosina em eumelanina densa e neuromelanina. Permite construir melanina em latitude subótima com UV-A disponível mas UV-B insuficiente. A eumelanina produzida, semicondutora quiral, entrega corrente CC limpa à ATP-sintase — pinta a pele e sintoniza a mitocôndria no mesmo acto.</p>
+          <small>Estado: cascata POMC (investigacional) · α-MSH/MC1R (ciano)</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">07 · mitocôndria</span>
+          <h3>Freio cinético e ΔΨ</h3>
+          <p>As mitocôndrias são proteobactérias domesticadas com ribossoma 70S-like. A tetraciclina inibe parcialmente a <strong>tradução mitocondrial</strong>, retirando a célula do Pool de Replicação Cinética de alta velocidade e activando inibidores de quinase (p21, p27) — Permanência Temporal Estrutural, análogo funcional de FOXO3. Ao mesmo tempo, a corrente CISS filtrada alimenta os nanomotores F₀-F₁ a ~9.000 RPM sem vazar radicais livres, expandindo o ΔΨ. Desliga a impressora ruidosa e afina o gerador.</p>
+          <small>Estado: inibição da tradução mito (ciano) · Permanência Temporal / ΔΨ (âmbar)</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">08 · campo / janela</span>
+          <h3>Núbia, AAS e latitude</h3>
+          <p>Núbios (~22°N) consumiram tetraciclina em cerveja fermentada com <em>Streptomyces</em> por séculos — documentado em ossos do séc. IV–VI d.C. (fluorescência). A geometria magnética da Núbia (UV intenso, campo robusto, solo mineralizado) moldou a química. Hoje, com a Anomalia do Atlântico Sul a expandir-se e o campo dipolar em declínio, a tetraciclina como lastro fotónico captura ruído cósmico em estado tripleto. O código postal é uma variável de saúde.</p>
+          <small>Estado: dado histórico (verde) · leitura geomagnética (investigacional)</small>
+        </article>
+      </div>
+    </section>
+
+    <section id="bioquimica" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">BLOCO 2 — Bioquímica</div>
+          <h2>Farmacologia clássica e evidência estabelecida.</h2>
+        </div>
+        <p>Mecanismo canónico, farmacocinética, indicações aprovadas, fotossensibilidade, quelação, riscos e interações — o que o consenso biomédico sustenta com evidência rastreável.</p>
+      </div>
+      <div class="grid-2">
+        <article class="panel">
+          <h2>Mecanismo clássico e seletividade</h2>
+          <p><strong>Alvo primário:</strong> subunidade ribossomal 30S bacteriana (sítio A). A tetraciclina bloqueia reversivelmente a ligação do aminoacil-tRNA ao complexo ribossoma–mRNA, impedindo a elongação da cadeia peptídica. Efeito <strong>bacteriostático</strong> de amplo espectro. Dependente de Mg²⁺.</p>
+          <p><strong>Seletividade relativa:</strong> a janela terapêutica baseia-se na seletividade para o ribossoma 70S bacteriano sobre o 80S eucariota, mais a acumulação activa intra-bacteriana. Não é absoluta — os ribossomas mitocondriais (70S-like, proteobacterianos) são parcialmente afectados em uso prolongado.</p>
+          <p><strong>Efeitos não-antibióticos:</strong> inibição de metaloproteinases de matriz (MMPs) e acção anti-inflamatória independente do mecanismo ribossomal — explorados nos derivados de segunda geração (doxiciclina sub-antimicrobiana para rosácea e periodontite).</p>
+          <p><strong>Farmacocinética:</strong> absorção oral parcial (~75% em jejum), substancialmente reduzida por laticínios/antiácidos/ferro. Distribuição ampla com concentração em tecidos calcificados. Metabolismo hepático mínimo. Eliminação predominantemente renal (meia-vida ~6–11 h) + recirculação êntero-hepática. A função renal condiciona a acumulação — a doxiciclina é a alternativa preferida na doença renal por ter eliminação não-renal.</p>
+        </article>
+        <article class="panel">
+          <h2>Indicações estabelecidas e usos reais</h2>
+          <p><strong>Indicações estabelecidas:</strong> acne vulgar moderada a inflamatória (uso histórico; hoje frequentemente migrado para doxiciclina/minociclina); bactérias atípicas/intracelulares (<em>Chlamydia</em>, <em>Mycoplasma pneumoniae</em>, <em>Rickettsia</em>, <em>Coxiella</em>, <em>Borrelia</em>); cólera e zoonoses específicas (brucelose em associação, tularémia, antraz); <strong>erradicação de <em>H. pylori</em></strong> — esquema quádruplo com bismuto, um dos nichos contemporâneos onde a molécula-mãe é preferida; uso tópico (formulações oftálmicas/dermatológicas).</p>
+          <p><strong>Fotossensibilidade (efeito de classe):</strong> a banda UV-A (~360 nm) é a base física deste fenómeno. O sistema de 4 anéis conjugados capta luz solar e a reemite como energia que pode danificar tecido sem substrato de melanina adequado. Protecção solar é indicação de segurança durante o tratamento.</p>
+          <p><strong>Quelação — consequências práticas:</strong> deposição em tecidos calcificados em formação → descoloração dentária permanente + hipoplasia do esmalte; redução de absorção oral por quelação intestinal com laticínios/antiácidos/ferro (tomar com estômago vazio, 1h antes ou 2h depois de refeições).</p>
+          <p><strong>Resistência bacteriana:</strong> mecanismos — bombas de efluxo (genes <em>tet</em>), proteínas de protecção ribossomal, inactivação enzimática. Resistência disseminada e frequentemente cruzada dentro da classe. Uso casual/auto-medicado contribui directamente para selecção de resistência.</p>
+        </article>
+      </div>
+
+      <div style="margin-top: 22px;">
+        <article class="panel">
+          <h2>Riscos, contraindicações absolutas e interações</h2>
+          <p><strong>Efeitos adversos estabelecidos:</strong> gastrointestinais (náusea, vómito, diarreia, esofagite, ulceração esofágica — tomar com bastante água na posição vertical); fotossensibilidade cutânea; descoloração dentária permanente e hipoplasia do esmalte; inibição transitória do crescimento ósseo; hepatotoxicidade (esteatose, lesão grave — especialmente IV, gestação, insuficiência renal); nefrotoxicidade/agravamento de uremia (efeito antianabólico, ↑ BUN); <strong>síndrome de Fanconi por produto vencido</strong> (epianidrotetraciclina → tubulopatia renal proximal — nunca usar produto fora de validade); hipertensão intracraniana idiopática (pseudotumor cerebri); candidíase/disbiose.</p>
+          <p><strong>Contraindicações absolutas:</strong> <strong>gestação e lactação</strong> (hepatotoxicidade materna, dano dentário/ósseo fetal, passagem ao leite) · <strong>crianças abaixo de ~8 anos</strong> (descoloração dentária permanente — excepto situações sem alternativa como rickettsiose grave, decisão clínica) · <strong>insuficiência renal</strong> (risco de acumulação e agravamento da uremia; preferir doxiciclina) · <strong>insuficiência hepática</strong> significativa.</p>
+          <p><strong>Interações relevantes:</strong> laticínios / antiácidos (Al, Mg, Ca) / ferro / zinco / bismuto / sucralfato → quelação intestinal → ↓ absorção (separar no tempo, tomar em jejum) · <strong>varfarina</strong> → potenciação do efeito anticoagulante (monitorizar INR) · <strong>retinóides sistémicos</strong> (isotretinoína/acitretina) → contraindicação pela soma de risco de hipertensão intracraniana · contracetivos orais → possível redução de eficácia (historicamente sinalizada, evidência inconsistente) · indutores enzimáticos (rifampicina, barbitúricos, fenitoína, carbamazepina) → possível redução de níveis.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="janela" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Janela de uso</div>
+          <h2>Terreno, latitude e limites absolutos.</h2>
+        </div>
+        <p>A tetraciclina é uma antena de fase aquosa — o que amplifica é determinado pelo estado do meio, não apenas pela molécula. Terreno e latitude são variáveis de primeira ordem.</p>
+      </div>
+      <div class="grid-2">
+        <article class="panel">
+          <h2>Pré-requisitos de terreno (leitura biofísica)</h2>
+          <p><strong>Água EZ como substrato:</strong> a hidrofilia da tetraciclina (log P ≈ −1,3) coloca-a dentro da rede de água estruturada (k=160). Sem essa rede intacta, a corrente CISS fotoexcitada não tem substrato de melanina quiral onde filtrar o spin — e vira radicais livres. Construir a base de água (sol real matinal, aterramento, baixo nnEMF) antes de usar a antena.</p>
+          <p><strong>Melanina basal prévia:</strong> exposição solar prévia que já depositou eumelanina é o inversor de spin onde a corrente CISS aterra eficientemente. Em terreno cru sem melanina, o risco de fototoxicidade convencional aumenta. A diferença entre fototoxicidade e fotossíntese de pigmento está no estado do meio, não na molécula.</p>
+          <p><strong>Janela circadiana e latitude:</strong> UV-A só existe de dia, sob sol real — não LED azul (que não tem UV-A e desidrata a rede). Em latitude alta/inverno sem UV-A, o efeito fotónico é mudo. Em latitude tropical/verão com UV-A abundante, a cascata POMC dispara com força.</p>
+        </article>
+        <article class="panel">
+          <h2>Limites absolutos</h2>
+          <p>Independentemente do enquadramento biofísico, os seguintes contextos exigem avaliação profissional obrigatória antes de qualquer uso:</p>
+          <p>Gestação (especialmente 1º trimestre) e lactação · Crianças abaixo de ~8 anos · Insuficiência renal ou hepática significativa · Uso concomitante de varfarina ou retinóides sistémicos · Produto com validade expirada (risco de tubulopatia renal por epianidrotetraciclina) · Qualquer contexto de infecção bacteriana activa (exige diagnóstico clínico, antibiograma e prescrição).</p>
+          <p><strong>A ficha pública não transforma molécula em protocolo individual.</strong> Dose, forma farmacêutica, duração, indicação e monitorização pertencem à avaliação clínica. O uso inadequado de antibiótico selecciona resistência bacteriana — dano individual e colectivo real.</p>
+        </article>
       </div>
     </section>
 
     <section id="evidencia" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Estado da evidência</div>
+          <h2>O que é consenso. O que é hipótese. O que é fronteira.</h2>
+        </div>
+      </div>
       <div class="grid-2">
-        <article class="panel evidence-list">
-          <h2>O que é sólido</h2>
-          <p><strong>Verde:</strong> estrutura química, mecanismo ribossomal, absorção UV/Vis, quelação de cátions, interações farmacológicas e fotossensibilidade são bem documentados.</p><p><strong>Ciano:</strong> interface água/metais, efeitos mitocondriais indiretos e papel de compartimento aquoso são perguntas mecanísticas plausíveis.</p>
+        <article class="panel">
+          <h2>Camadas de evidência</h2>
+          <p><strong>Verde — estabelecido:</strong> estrutura química (4 anéis, 5 estereocentros, anfotérica, anfofílica, quelante); mecanismo 30S/aminoacil-tRNA; absorção UV/Vis documentada (bandas ~270 e ~360 nm); fluorescência quelada; quelação de catiões e deposição em tecidos calcificados; fotossensibilidade como efeito de classe; contraindicações absolutas; indicações aprovadas (acne, atípicos, <em>H. pylori</em>); resistência (genes <em>tet</em>); interações.</p>
+          <p><strong>Ciano — hipótese plausível:</strong> interface com água EZ, modulação da rede de H₂O por quelação, efeitos mitocondriais indiretos, compartimento aquoso/epidérmico como diferencial da doxiciclina.</p>
+          <p><strong>Âmbar — investigacional:</strong> estado tripleto como gatilho terapêutico in vivo; cascata POMC via TRCS; corrente CISS por eumelanina; soberania isotópica/deutério via G3P; leitura geomagnética (Núbia, AAS, excursão).</p>
+          <p><strong>Vermelho editorial:</strong> não publicar dose, ciclo, automedicação, promessa de bronzeado seguro, nem substituição de avaliação médica numa infecção activa.</p>
         </article>
-        <article class="panel evidence-list">
-          <h2>O que exige cuidado</h2>
-          <p><strong>Âmbar:</strong> estado tripleto como gatilho terapêutico, POMC via TRCS, CISS por eumelanina, depleção de deutério via G3P e geografia magnética pertencem à camada Kruse/PKA.</p><p><strong>Vermelho editorial:</strong> não publicar dose, ciclo, automedicação, promessa de bronzeado seguro ou substituição de avaliação médica.</p>
+        <article class="panel">
+          <h2>Nota metodológica</h2>
+          <p>A farmacologia convencional da tetraciclina foi maioritariamente construída sobre modelos de roedores noturnos sem controlo de espectro luminoso, latitude, campo magnético ou estado de hidratação. Isso sistematicamente enquadra os efeitos fotóssensibilizantes como "toxicidade" sem avaliar o papel do estado do meio na determinação do resultado.</p>
+          <p>A distinção editorial crítica desta molécula é entre o <em>mecanismo antibiótico</em> (sólido, consenso) e a <em>leitura biofísica de antena UV-A</em> (investigacional, Pharmacopeia). A ficha mantém as duas narrativas separadas sem deixar o entusiasmo de uma contaminar a credibilidade da outra. Onde há consenso, dizemos consenso. Onde há hipótese, dizemos hipótese. Onde há fronteira, dizemos fronteira.</p>
         </article>
       </div>
     </section>
@@ -557,22 +657,44 @@
     <section id="fontes" class="shell">
       <div class="section-head">
         <div>
-          <div class="kicker">Fontes internas e externas</div>
+          <div class="kicker">Fontes e ligações</div>
           <h2>Base desta ficha.</h2>
         </div>
       </div>
       <div class="grid-3">
-        <article class="source-card"><h3>PKA · Biofísica da Tetraciclina</h3><p>Nota interna usada para a matriz Kruse/PKA: origem, quatro anéis, UV-A, POMC, melanina, CISS, deutério e AAS.</p></article>
-        <article class="source-card"><h3>Protocolo Núbio v2</h3><p>Fonte interna para distinção tetraciclina/doxiciclina, triagem, terreno, antifúngico, janelas solares e cautelas clínicas.</p></article>
-        <article class="source-card"><h3>Farmacologia clássica</h3><p>Mecanismo 30S, quelantes, fotossensibilidade, contraindicações e interações minerais permanecem como camada pública obrigatória.</p></article>
+        <article class="source-card">
+          <h3>Biofísica Pura</h3>
+          <p><em>Biofísica de Tetraciclina — Análise Independente</em> (2026-06-25). Nota interna de análise de primeiros princípios — base do BLOCO 1: origem no solo Arqueano, 4 anéis como antena UV-A, estado tripleto, POMC, melanina semicondutora, CISS, água EZ, Permanência Temporal Estrutural, classificação 1ª ordem.</p>
+        </article>
+        <article class="source-card">
+          <h3>Biofísica Referenciada</h3>
+          <p><em>A Molécula-Mãe da Antena Núbia</em> (2026-06-25). Leitura comparada com a molécula-âncora (doxiciclina, CPC 84). Divergências e convergências: compartimento (aquoso vs. lipofílico), quelação, janela solar, Núbia (~22°N, cerveja com <em>Streptomyces</em>), protecção do SNC.</p>
+        </article>
+        <article class="source-card">
+          <h3>Análise Clássica</h3>
+          <p><em>Análise Clássica — Tetraciclina</em> (2026-06-25). Base farmacológica e toxicológica convencional — base do BLOCO 2: composição, mecanismo 30S, ADME, resistência, indicações aprovadas, fotossensibilidade, quelação, riscos, contraindicações, interações.</p>
+        </article>
+        <article class="source-card">
+          <h3>Bassett et al., 1980</h3>
+          <p>Detecção de tetraciclina marcada por fluorescência em ossos da população núbia (~350–550 d.C.), Sudão. Fonte histórica do dado de ingestão de tetraciclina via cerveja fermentada com <em>Streptomyces</em> em população de ~22°N. A verificar antes de publicação.</p>
+        </article>
+        <article class="source-card">
+          <h3>Farmacologia clássica</h3>
+          <p>StatPearls/NCBI ("Tetracycline", "Tetracyclines"), Merck/MSD Manual, Goodman &amp; Gilman (cap. inibidores da síntese proteica), LiverTox/NIH (Tetracyclines), bulário FDA/EMA/ANVISA do cloridrato de tetraciclina. Fontes a verificar antes de publicação final.</p>
+        </article>
+        <article class="source-card">
+          <h3>H. pylori e resistência</h3>
+          <p>Diretrizes de erradicação de <em>H. pylori</em> (esquema quádruplo com bismuto) — sociedades de gastroenterologia; revisões sobre resistência a tetraciclinas (genes <em>tet</em>: efluxo, protecção ribossomal, inactivação enzimática). Fontes a verificar antes de publicação.</p>
+        </article>
       </div>
     </section>
 
     <section class="shell">
-      <article class="notice">
-        <h2>Regra editorial desta ficha</h2>
-        <p>Onde há consenso, dizemos consenso. Onde há mecanismo plausível, dizemos hipótese. Onde há Kruse/PKA, dizemos fronteira investigacional. Onde há paciente real, encaminhamos para avaliação individual.</p>
-      </article>
+      <aside class="notice warning">
+        <h2>Guardrail clínico — leia antes</h2>
+        <p><strong>Esta página é educacional. Não é prescrição.</strong> A Pharmacopeia.info publica leitura biofísica e farmacológica de substâncias para estudo e contexto — não fornece dose, posologia, ciclo, indicação individual, nem recomenda compra, uso ou substituição de qualquer tratamento. Nada aqui diagnostica, trata, cura ou previne doença, nem substitui consulta, anamnese, exame ou a decisão de um profissional de saúde habilitado. Medicamentos têm riscos, interações e contraindicações que dependem do seu terreno, da sua história clínica, da sua geografia e dos medicamentos que já usa. Antes de qualquer uso, fale com o seu médico ou farmacêutico.</p>
+        <p><strong>Tetraciclina — específico:</strong> contraindicada na gestação, na lactação e em crianças abaixo de ~8 anos (descoloração dentária permanente e hipoplasia do esmalte — dano irreversível). Pode agravar insuficiência renal (↑ BUN, acumulação) — a doxiciclina é a alternativa de classe preferida na doença renal. Nunca usar produto com validade expirada (epianidrotetraciclina pode causar síndrome de Fanconi). Fotossensibilidade é efeito de classe documentado: protecção solar durante o tratamento. A tetraciclina é antibiótico de prescrição — o uso inadequado e a auto-medicação contribuem directamente para selecção de resistência bacteriana, com impacto individual e colectivo real.</p>
+      </aside>
     </section>
   </main>
 
