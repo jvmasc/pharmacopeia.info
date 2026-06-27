@@ -4,406 +4,452 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Doxiciclina — Pharmacopeia.info</title>
-  <meta name="description" content="Ficha educacional de leitura biofísica da doxiciclina: tetraciclina semissintética, lipofilicidade, UV-A, estado tripleto, POMC, melanina, APOE/DHA, neuromelanina, redox e janela clínica." />
+  <meta name="description" content="Ficha educacional de leitura biofísica da doxiciclina: tetraciclina semissintética lipofílica, UV-A ~350 nm, estado tripleto, POMC, melanina, CISS, APOE/DHA, neuromelanina, ribossoma 30S e janela clínica." />
+
+  <!-- Anti-FOWT: aplica o tema guardado ANTES de qualquer render -->
   <script>
   (function () {
     var saved = localStorage.getItem('ph-theme') || 'light';
     document.documentElement.setAttribute('data-theme', saved);
   })();
   </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
   <style>
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       TEMA LIGHT (white/biofílico) — PADRÃO
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── RESET ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    /* ─── TOKENS — LIGHT ────────────────────────────── */
     :root {
       color-scheme: light;
 
-      --bg:        #FAF9F5;
-      --bg-2:      #F2EFE8;
-      --surface:   #FFFFFF;
-      --surface-2: #F7F5EF;
+      --paper:    #F7F4EE;
+      --paper-2:  #EDE9E0;
+      --ink:      #1A1E1C;
+      --ink-2:    #3C4640;
+      --ink-3:    #6E7A74;
 
-      --ink:       #1C2420;
-      --muted:     #4A5A54;
-      --quiet:     #7A8E87;
+      --rule:       rgba(26, 30, 28, .10);
+      --rule-heavy: rgba(26, 30, 28, .20);
 
-      --line:        rgba(28, 36, 32, .10);
-      --line-strong: rgba(184, 131, 42, .50);
+      --solar:  #9A6B18;
+      --bio:    #1E6E6A;
+      --mag:    #4A3E9C;
+      --danger: #903020;
+      --ok:     #2B6435;
 
-      --solar: #B8832A;
-      --bio:   #2B8A84;
-      --mag:   #5B4DB8;
-      --danger: #C0522E;
-      --ok:     #3A7D44;
+      --text:   'Spectral', Georgia, 'Times New Roman', serif;
+      --mono:   'Space Mono', ui-monospace, SFMono-Regular, monospace;
+      --ui:     system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 
-      --radius-xl: 28px;
-      --radius-lg: 20px;
-      --radius-md: 14px;
-
-      --shadow: 0 4px 24px rgba(28, 36, 32, .08), 0 1px 4px rgba(28, 36, 32, .05);
-      --shadow-hover: 0 8px 40px rgba(28, 36, 32, .12), 0 2px 8px rgba(28, 36, 32, .06);
-
-      --header-bg: rgba(250, 249, 245, .88);
-      --body-bg:
-        radial-gradient(ellipse at 18% 0%,  rgba(184, 131, 42, .11), transparent 38rem),
-        radial-gradient(ellipse at 84% 8%,  rgba(43, 138, 132, .09), transparent 34rem),
-        radial-gradient(ellipse at 50% 96%, rgba(91, 77, 184, .07),  transparent 40rem),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg) 62%, var(--bg-2) 100%);
-
-      --mono:  ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans:  Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      --serif:  'Spectral', Georgia, serif;
+      --sans:   system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      --bg:     var(--paper);
+      --bg-2:   var(--paper-2);
     }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       TEMA DARK — override
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── TOKENS — DARK ─────────────────────────────── */
     html[data-theme="dark"] {
       color-scheme: dark;
 
-      --bg:        #07100f;
-      --bg-2:      #0b1413;
-      --surface:   #10201e;
-      --surface-2: #142a27;
+      --paper:    #0E1412;
+      --paper-2:  #151E1B;
+      --ink:      #E0E8E2;
+      --ink-2:    #A2AFA7;
+      --ink-3:    #6B7870;
 
-      --ink:       #e7eadf;
-      --muted:     #a8b5aa;
-      --quiet:     #74827b;
+      --rule:       rgba(224, 232, 226, .09);
+      --rule-heavy: rgba(224, 232, 226, .18);
 
-      --line:        rgba(231, 234, 223, .14);
-      --line-strong: rgba(215, 168, 79, .45);
-
-      --solar: #d7a84f;
-      --bio:   #65c7c0;
-      --mag:   #8a6ee8;
-      --danger: #d8816a;
-      --ok:     #98c379;
-
-      --shadow: 0 24px 80px rgba(0, 0, 0, .42);
-      --shadow-hover: 0 24px 80px rgba(0, 0, 0, .55);
-
-      --header-bg: rgba(7, 16, 15, .72);
-      --body-bg:
-        radial-gradient(circle at 12% 0%,  rgba(215, 168, 79, .18), transparent 32rem),
-        radial-gradient(circle at 88% 10%, rgba(101, 199, 192, .14), transparent 32rem),
-        radial-gradient(circle at 48% 100%, rgba(138, 110, 232, .10), transparent 34rem),
-        linear-gradient(180deg, var(--bg), var(--bg-2) 52%, #060b0a);
+      --solar:  #C8953A;
+      --bio:    #4EAAA4;
+      --mag:    #7B6ED6;
+      --danger: #C07060;
+      --ok:     #5AA46A;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    /* ─── BASE ───────────────────────────────────────── */
     body {
-      margin: 0;
-      background: var(--body-bg);
+      background: var(--paper);
       color: var(--ink);
-      font-family: var(--sans);
-      line-height: 1.55;
+      font-family: var(--text);
+      font-size: 18px;
+      line-height: 1.68;
     }
-    a { color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--solar); }
+
     .shell { width: min(1180px, calc(100% - 36px)); margin: 0 auto; }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       HEADER / NAV
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── MASTHEAD ───────────────────────────────────── */
     header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(20px) saturate(1.3);
-      background: var(--header-bg);
-      border-bottom: 1px solid var(--line);
-      box-shadow: 0 1px 0 var(--line);
+      border-bottom: 1px solid var(--rule-heavy);
+      padding: 18px 0;
     }
-    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
-    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; letter-spacing: -.02em; font-weight: 700; color: var(--ink); }
+    .nav {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 22px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-family: var(--text);
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -.02em;
+      color: var(--ink);
+    }
     .mark {
-      width: 34px;
-      height: 34px;
-      border: 1.5px solid var(--line-strong);
+      width: 28px;
+      height: 28px;
+      border: 1.5px solid var(--rule-heavy);
       border-radius: 50%;
       display: grid;
       place-items: center;
       position: relative;
-      color: var(--solar);
-      background: var(--surface);
+      flex-shrink: 0;
     }
     .mark::before, .mark::after {
       content: "";
       position: absolute;
-      border: 1px solid rgba(43, 138, 132, .50);
+      border: 1px solid rgba(30, 110, 106, .40);
       border-radius: 50%;
-      inset: 7px 2px;
+      inset: 5px 2px;
       transform: rotate(35deg);
     }
-    .mark::after { transform: rotate(-35deg); border-color: rgba(91, 77, 184, .42); }
-
-    html[data-theme="dark"] .mark::before { border-color: rgba(101, 199, 192, .42); }
-    html[data-theme="dark"] .mark::after  { border-color: rgba(138, 110, 232, .38); }
-
+    .mark::after { transform: rotate(-35deg); border-color: rgba(74, 62, 156, .35); }
+    html[data-theme="dark"] .mark::before { border-color: rgba(78, 170, 164, .40); }
+    html[data-theme="dark"] .mark::after  { border-color: rgba(123, 110, 214, .35); }
     .mark-dot {
-      width: 6px;
-      height: 6px;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
       background: var(--solar);
       position: relative;
       z-index: 1;
     }
 
-    nav { display: flex; gap: 18px; color: var(--muted); font-size: 14px; }
-    nav a { text-decoration: none; transition: color .15s ease; }
+    nav {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+    }
+    nav a {
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--ink-3);
+      transition: color .12s;
+    }
     nav a:hover { color: var(--ink); }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       BOTÃO DE TOGGLE DE TEMA
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     .theme-btn {
-      cursor: pointer;
-      border: 1px solid var(--line-strong);
-      background: rgba(255, 255, 255, .05);
-      color: var(--solar);
-      border-radius: 999px;
-      width: 38px;
-      height: 38px;
-      display: grid;
-      place-items: center;
-      font-size: 16px;
-      transition: border-color .18s ease, background .18s ease;
-      flex-shrink: 0;
-    }
-    .theme-btn:hover {
-      background: rgba(184, 131, 42, .10);
-      border-color: var(--line-strong);
-    }
-
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       HERO
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .hero { padding: 76px 0 42px; }
-    .kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--solar);
       font-family: var(--mono);
-      font-size: 12px;
+      font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: .16em;
-      border: 1px solid rgba(184, 131, 42, .30);
-      border-radius: 999px;
-      padding: 8px 14px;
-      background: rgba(184, 131, 42, .07);
+      letter-spacing: .12em;
+      background: none;
+      border: 1px solid var(--rule-heavy);
+      color: var(--ink-3);
+      cursor: pointer;
+      padding: 4px 10px;
+      line-height: 1.6;
+      flex-shrink: 0;
+      transition: color .12s, border-color .12s;
     }
-    html[data-theme="dark"] .kicker {
-      border-color: rgba(215, 168, 79, .26);
-      background: rgba(215, 168, 79, .06);
-    }
-    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--solar); box-shadow: 0 0 18px var(--solar); }
-    h1 { margin: 26px 0 22px; max-width: 980px; font-family: var(--serif); font-size: clamp(48px, 8vw, 104px); line-height: .92; letter-spacing: -.06em; font-weight: 520; color: var(--ink); }
-    .lead { max-width: 860px; color: var(--muted); font-size: clamp(18px, 2vw, 23px); }
-    .lead strong { color: var(--ink); font-weight: 650; }
+    .theme-btn:hover { color: var(--ink); border-color: var(--ink-3); }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       LAYOUT GRIDS
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    section { padding: 48px 0; scroll-margin-top: 92px; }
+    /* ─── HERO ───────────────────────────────────────── */
+    .hero { padding: 76px 0 42px; }
+
+    .kicker {
+      display: block;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--ink-3);
+      margin-bottom: 18px;
+    }
+
+    /* ─── HEADINGS ───────────────────────────────────── */
+    h1 {
+      font-family: var(--text);
+      font-size: clamp(48px, 7vw, 84px);
+      font-weight: 500;
+      line-height: .96;
+      letter-spacing: -.04em;
+      color: var(--ink);
+      margin-bottom: .45em;
+    }
+    h2 {
+      font-family: var(--text);
+      font-size: clamp(22px, 3.4vw, 36px);
+      font-weight: 500;
+      line-height: 1.12;
+      letter-spacing: -.025em;
+      color: var(--ink);
+      margin-bottom: .5em;
+    }
+    h3 {
+      font-family: var(--text);
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: -.015em;
+      color: var(--ink);
+      margin-bottom: .35em;
+    }
+
+    .lead {
+      max-width: 860px;
+      color: var(--ink-2);
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.62;
+    }
+    .lead strong { color: var(--ink); font-weight: 500; }
+
+    /* ─── LAYOUT ─────────────────────────────────────── */
+    section { padding: 48px 0; }
+    section + section { border-top: 1px solid var(--rule); }
     .grid-2 { display: grid; grid-template-columns: 1.05fr .95fr; gap: 22px; align-items: start; }
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       CARDS BASE
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .panel, .notice, .axis-card, .source-card, .summary-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow);
+    /* ─── PANELS ─────────────────────────────────────── */
+    .panel {
+      padding: 28px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
     }
-    .panel { padding: 28px; }
-    .panel h2, section h2 { margin: 0 0 14px; font-family: var(--serif); letter-spacing: -.035em; font-size: clamp(30px, 4vw, 52px); line-height: 1; }
-    .panel p, .notice p, .axis-card p, .source-card p, .summary-card p { color: var(--muted); }
+    .panel p { color: var(--ink-2); line-height: 1.68; font-size: 16px; }
+    .panel p + p { margin-top: .9em; }
+    .panel strong { color: var(--ink); font-weight: 500; }
 
-    .summary-card { padding: 18px; box-shadow: none; min-height: 170px; }
-    .summary-card b { display: block; margin-bottom: 8px; color: var(--ink); }
+    /* ─── STATUS TAGS ────────────────────────────────── */
+    .status {
+      display: inline-flex;
+      border-radius: 999px;
+      border: 1px solid var(--rule);
+      padding: 5px 10px;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--ink-3);
+      margin-bottom: 12px;
+    }
+    .established   { color: var(--ok);     border-color: rgba(43, 100, 53, .32);  background: rgba(43, 100, 53, .06);  }
+    .hypothesis    { color: var(--bio);    border-color: rgba(30, 110, 106, .32); background: rgba(30, 110, 106, .06); }
+    .investigational { color: var(--solar); border-color: rgba(154, 107, 24, .32); background: rgba(154, 107, 24, .06); }
+    .guarded       { color: var(--danger); border-color: rgba(144, 48, 32, .32);  background: rgba(144, 48, 32, .06);  }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       STATUS TAGS
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .status { display: inline-flex; border-radius: 999px; border: 1px solid var(--line); padding: 6px 10px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
-    .established   { color: var(--ok);     border-color: rgba(58, 125, 68, .38);  background: rgba(58, 125, 68, .07);  }
-    .hypothesis    { color: var(--bio);    border-color: rgba(43, 138, 132, .38); background: rgba(43, 138, 132, .07); }
-    .investigational { color: var(--solar); border-color: rgba(184, 131, 42, .38); background: rgba(184, 131, 42, .07); }
-    .guarded       { color: var(--danger); border-color: rgba(192, 82, 46, .38);  background: rgba(192, 82, 46, .07);  }
+    html[data-theme="dark"] .established    { border-color: rgba(90, 164, 106, .28); background: rgba(90, 164, 106, .07); }
+    html[data-theme="dark"] .hypothesis     { border-color: rgba(78, 170, 164, .28); background: rgba(78, 170, 164, .07); }
+    html[data-theme="dark"] .investigational { border-color: rgba(200, 149, 58, .28);  background: rgba(200, 149, 58, .07);  }
+    html[data-theme="dark"] .guarded        { border-color: rgba(192, 112, 96, .28); background: rgba(192, 112, 96, .07); }
 
-    html[data-theme="dark"] .established    { border-color: rgba(152,195,121,.34); background: rgba(152,195,121,.08); }
-    html[data-theme="dark"] .hypothesis     { border-color: rgba(101,199,192,.34); background: rgba(101,199,192,.08); }
-    html[data-theme="dark"] .investigational { border-color: rgba(215,168,79,.34);  background: rgba(215,168,79,.08);  }
-    html[data-theme="dark"] .guarded        { border-color: rgba(216,129,106,.34); background: rgba(216,129,106,.08); }
-
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       SECTION HEAD
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── SECTION HEAD ───────────────────────────────── */
     .section-head { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 22px; }
-    .section-head p { margin: 0; max-width: 680px; color: var(--muted); }
+    .section-head p { margin: 0; max-width: 680px; color: var(--ink-2); font-size: 16px; line-height: 1.6; }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       AXIS GRID
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── SUMMARY CARDS ──────────────────────────────── */
+    .summary-card {
+      padding: 18px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      min-height: 170px;
+    }
+    .summary-card b {
+      display: block;
+      font-family: var(--text);
+      font-weight: 500;
+      font-size: 17px;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .summary-card p { color: var(--ink-2); font-size: 15px; line-height: 1.6; }
+
+    /* ─── AXIS GRID ──────────────────────────────────── */
     .axis-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-    .axis-card { padding: 18px; box-shadow: none; min-height: 230px; }
-    .axis-card .num { font-family: var(--mono); color: var(--solar); font-size: 12px; letter-spacing: .12em; }
-    .axis-card h3 { margin: 10px 0 8px; font-size: 20px; letter-spacing: -.02em; }
-    .axis-card p { font-size: 14px; margin: 0; }
-    .axis-card small { display: block; margin-top: 12px; color: var(--quiet); font-family: var(--mono); font-size: 11px; text-transform: uppercase; line-height: 1.45; }
+    .axis-card {
+      padding: 18px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      min-height: 230px;
+    }
+    .axis-card .num {
+      font-family: var(--mono);
+      color: var(--solar);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .axis-card h3 { margin: 10px 0 8px; }
+    .axis-card p { font-size: 14px; color: var(--ink-2); line-height: 1.6; margin: 0; }
+    .axis-card small {
+      display: block;
+      margin-top: 12px;
+      color: var(--ink-3);
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      line-height: 1.45;
+    }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       NOTICE
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── NOTICE ─────────────────────────────────────── */
     .notice {
       padding: 26px;
-      box-shadow: none;
-      border-color: rgba(184, 131, 42, .30);
-      background: linear-gradient(135deg, rgba(184, 131, 42, .06) 0%, var(--surface) 70%);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
     }
-    html[data-theme="dark"] .notice {
-      border-color: rgba(215, 168, 79, .24);
-      background: var(--surface);
-    }
+    .notice h2 { margin-bottom: .4em; }
+    .notice p { color: var(--ink-2); font-size: 16px; line-height: 1.68; }
+    .notice p + p { margin-top: .8em; }
 
-    /* Notice de aviso/warning (guardrail clínico) */
     .warning {
-      border-color: rgba(192, 82, 46, .38);
-      background: linear-gradient(135deg, rgba(192, 82, 46, .06) 0%, var(--surface) 70%);
+      border-color: rgba(144, 48, 32, .28);
     }
     html[data-theme="dark"] .warning {
-      border-color: rgba(216, 129, 106, .38);
-      background: linear-gradient(180deg, rgba(53,26,22,.82), rgba(18,24,23,.86));
+      border-color: rgba(192, 112, 96, .28);
     }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       BUTTONS
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── BUTTONS ────────────────────────────────────── */
     .button {
-      min-height: 46px;
+      min-height: 44px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      padding: 12px 20px;
-      border-radius: 999px;
-      border: 1.5px solid var(--line-strong);
-      background: rgba(184, 131, 42, .10);
+      padding: 11px 18px;
+      border-radius: 4px;
+      border: 1px solid var(--rule-heavy);
+      background: rgba(154, 107, 24, .08);
       color: var(--ink);
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 14px;
-      transition: background .18s ease, border-color .18s ease, transform .15s ease, box-shadow .18s ease;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .10em;
+      transition: background .15s, border-color .15s;
     }
     html[data-theme="dark"] .button {
-      background: rgba(215, 168, 79, .12);
+      background: rgba(200, 149, 58, .08);
     }
     .button:hover {
-      background: rgba(184, 131, 42, .18);
-      border-color: rgba(184, 131, 42, .70);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 16px rgba(184, 131, 42, .16);
+      background: rgba(154, 107, 24, .14);
+      border-color: rgba(154, 107, 24, .45);
+      color: var(--ink);
     }
     .button.secondary {
-      border-color: var(--line);
-      background: var(--surface-2);
-      color: var(--muted);
-    }
-    html[data-theme="dark"] .button.secondary {
-      background: rgba(255, 255, 255, .03);
+      border-color: var(--rule);
+      background: transparent;
+      color: var(--ink-2);
     }
     .button.secondary:hover {
-      border-color: rgba(43, 138, 132, .40);
-      background: rgba(43, 138, 132, .06);
+      border-color: var(--rule-heavy);
+      background: var(--paper-2);
       color: var(--ink);
-      box-shadow: 0 4px 16px rgba(43, 138, 132, .10);
     }
     .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       SOURCE CARDS
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .source-card { padding: 18px; box-shadow: none; }
-    .source-card h3 { margin: 0 0 8px; }
-    .source-card p { margin: 0; font-size: 14px; }
-
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       FIGURE CARDS
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .figure-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
-    .figure-card { overflow: hidden; background: #f7f7f2; border: 1px solid rgba(231,234,223,.16); border-radius: var(--radius-xl); box-shadow: var(--shadow); }
-    .figure-card img { display: block; width: 100%; background: #fff; }
-    .figure-card figcaption { padding: 14px 16px 16px; color: #33413c; font-size: 14px; line-height: 1.5; }
-
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       FOOTER
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    footer {
-      padding: 44px 0 70px;
-      color: var(--quiet);
-      border-top: 1px solid var(--line);
-      background: var(--bg-2);
+    /* ─── SOURCE CARDS ───────────────────────────────── */
+    .source-card {
+      padding: 18px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
     }
-    footer .shell { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-    footer strong { color: var(--muted); }
-    footer code   { font-family: var(--mono); color: var(--quiet); font-size: 13px; }
+    .source-card h3 { margin: 0 0 8px; }
+    .source-card p { margin: 0; font-size: 14px; color: var(--ink-2); line-height: 1.6; }
 
-    section + section { border-top: 1px solid var(--line); }
+    /* ─── FIGURE CARDS ───────────────────────────────── */
+    .figure-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .figure-card {
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+    }
+    .figure-card img { display: block; width: 100%; background: var(--paper-2); }
+    .figure-card figcaption {
+      padding: 14px 16px 16px;
+      color: var(--ink-2);
+      font-size: 14px;
+      line-height: 1.5;
+      border-top: 1px solid var(--rule);
+    }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       RESPONSIVE
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    @media (max-width: 1000px) { .axis-grid { grid-template-columns: repeat(2, 1fr); } .grid-3 { grid-template-columns: 1fr 1fr; } }
+    /* ─── FOOTER ─────────────────────────────────────── */
+    footer {
+      padding: 28px 0 52px;
+      border-top: 1px solid var(--rule);
+      background: var(--paper-2);
+    }
+    footer .shell {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      color: var(--ink-3);
+      text-transform: uppercase;
+    }
+    footer strong { color: var(--ink-2); font-weight: 700; }
+    footer code   { font-family: var(--mono); color: var(--ink-3); font-size: 11px; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 1000px) {
+      .axis-grid { grid-template-columns: repeat(2, 1fr); }
+      .grid-3 { grid-template-columns: 1fr 1fr; }
+    }
     @media (max-width: 760px) {
       nav { display: none; }
       .grid-2, .grid-3, .axis-grid, .figure-grid { grid-template-columns: 1fr; }
       .section-head { display: block; }
+      .section-head p { margin-top: 12px; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, html { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
     }
-  
-    .evidence-list { display: grid; gap: 12px; }
-    .evidence-list p { margin: 0; }
-    .protocol-boundary { border-left: 2px solid var(--solar); padding-left: 16px; }
-    .axis-grid { grid-template-columns: repeat(4, 1fr); }
-    @media (max-width: 1000px) { .axis-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 760px) { .axis-grid { grid-template-columns: 1fr; } }
-</style>
+  </style>
 </head>
 <body>
   <header>
     <div class="shell nav">
       <a class="brand" href="../../index.html" aria-label="Pharmacopeia.info">
-        <span class="mark" aria-hidden="true"><span class="mark-dot"></span></span>
+        <span class="mark" aria-hidden="true">
+          <span class="mark-dot"></span>
+        </span>
         <span>Pharmacopeia.info</span>
       </a>
       <nav aria-label="Navegação principal">
-        <a href="../../index.html#matriz">Matriz</a>
-        <a href="#resumo">Resumo</a>
+        <a href="#biofisica">Biofísica</a>
+        <a href="#bioquimica">Bioquímica</a>
         <a href="#figuras">Figuras</a>
-        <a href="#eixos">8 eixos</a>
         <a href="#evidencia">Evidência</a>
         <a href="#fontes">Fontes</a>
       </nav>
-      <button id="themeToggle" class="theme-btn" type="button" aria-label="Alternar tema">
-        <span class="theme-icon theme-icon-sun">&#9728;</span>
-        <span class="theme-icon theme-icon-moon" style="display:none">&#9790;</span>
+      <button id="themeToggle" class="theme-btn" type="button" aria-label="Mudar para tema escuro">
+        <span id="themeBtnLabel">escuro</span>
       </button>
     </div>
   </header>
 
   <main>
     <section class="hero shell">
-      <div class="kicker"><span class="dot"></span> Ficha 03 · molécula</div>
+      <div class="kicker">Ficha 03 · molécula</div>
       <h1>Doxiciclina</h1>
-      <p class="lead"><strong>A mesma antena, com outra distribuição.</strong> A doxiciclina é lida como a versão mais sustentada e lipofílica do eixo tetraciclínico: conserva o núcleo fotônico de quatro anéis, mas muda compartimento, meia-vida, penetração tecidual e risco. Essa diferença altera a pergunta biofísica sem autorizar protocolo público.</p>
+      <p class="lead"><strong>A mesma antena, com outra distribuição.</strong> A doxiciclina é a tetraciclina semissintética que troca compartimento por penetração: conserva o núcleo fotónico de quatro anéis e a janela UV-A de ~350 nm, mas a lipofilicidade aumentada e a meia-vida de 18–22 h deslocam-na da epiderme para as membranas, o SNC, a APOE e a neuromelanina. Biofísica primeiro, Bioquímica depois.</p>
       <div class="cta-row">
-        <a class="button" href="#eixos">Ler pelos 8 eixos</a>
-        <a class="button secondary" href="../../index.html#atlas">Voltar ao atlas</a>
+        <a class="button" href="#biofisica">BLOCO 1 — Biofísica</a>
+        <a class="button secondary" href="#bioquimica">BLOCO 2 — Bioquímica</a>
       </div>
     </section>
 
@@ -411,90 +457,200 @@
       <div class="grid-2">
         <article class="panel">
           <h2>A tese pública</h2>
-          <p>A doxiciclina não é “outra física”; é a mesma família com outra logística biológica. A meia-vida mais longa e maior lipofilicidade deslocam a conversa para pele, matriz lipídica, barreira hematoencefálica, APOE/DHA, inflamação crônica e exposição ambiental sustentada.</p><p>No atlas, entra como <strong>molécula de primeira ordem</strong> apenas na leitura de construção de ordem: antena UV-A, POMC, melanina, CISS, redox e coerência estrutural. Na prática clínica, continua sendo antibiótico com risco, indicação e supervisão.</p>
+          <p>A doxiciclina não é "outra física"; é a mesma família tetraciclínica com outra logística biológica. A maior lipofilicidade e a meia-vida mais longa deslocam a conversa da pele para a matriz lipídica, a barreira hematoencefálica, a APOE/DHA e a neuromelanina.</p>
+          <p>No vocabulário da Pharmacopeia: ela é uma molécula que exige leitura de <strong>espectro</strong>, <strong>compartimento</strong> e <strong>janela clínica</strong> — não apenas ribossoma e dose. O diferencial face à tetraciclina-mãe é o que torna a leitura biofísica mais específica, não mais permissiva.</p>
         </article>
         <aside class="notice warning">
-          <h2>Guardrail clínico</h2>
-          <p>Esta página é educacional. Não fornece posologia, ciclo, indicação individual, uso prolongado, profilaxia, tratamento de Lyme/acne/infecção ou orientação solar medicamentosa. Doxiciclina exige avaliação profissional: gravidez, idade, esôfago, fígado, pele, microbioma, interações, fotossensibilidade e contexto infeccioso.</p>
+          <h2>Guardrail clínico — leia antes</h2>
+          <p>Esta página é educacional. Não é prescrição. A Pharmacopeia.info não fornece dose, ciclo, indicação individual, nem recomenda compra, uso ou substituição de acompanhamento médico. A doxiciclina é antibiótico de prescrição: esofagite ulcerativa, fotossensibilidade e deposição dentária são riscos reais. Contraindicada em gestação, lactação e crianças abaixo de ~8 anos como regra geral. Nunca usar produto vencido (risco de síndrome de Fanconi).</p>
         </aside>
       </div>
     </section>
 
-    <section id="resumo" class="shell">
+    <section class="shell">
       <div class="section-head">
         <div>
-          <div class="kicker"><span class="dot"></span> Leitura rápida</div>
-          <h2>Quatro camadas antes de qualquer protocolo.</h2>
+          <div class="kicker">Leitura rápida</div>
+          <h2>Dois blocos antes de qualquer protocolo.</h2>
         </div>
-        <p>A ficha pública separa farmacologia estabelecida, hipótese biofísica, fronteira Kruse/PKA e prudência clínica. O objetivo é alfabetização causal, não prescrição.</p>
+        <p>A ficha pública separa o mecanismo aceito (BLOCO 2) da leitura biofísica de fronteira (BLOCO 1), com estatuto epistemológico explícito em cada ponto.</p>
       </div>
       <div class="grid-3">
-        <article class="summary-card"><span class="status established">estabelecido</span><b>Tetraciclina semissintética</b><p>Derivada da oxitetraciclina, com mecanismo antibacteriano clássico na subunidade 30S e uso clínico amplo.</p></article>
-        <article class="summary-card"><span class="status established">estabelecido</span><b>Mais lipofílica e duradoura</b><p>Comparada à tetraciclina base, tem meia-vida maior e distribuição tecidual mais sustentada, mudando a janela de risco/efeito.</p></article>
-        <article class="summary-card"><span class="status hypothesis">hipótese biofísica</span><b>Antena sustentada</b><p>A leitura Kruse/PKA interpreta o núcleo tetraciclínico como antena UV-A capaz de operar em janelas solares repetidas.</p></article>
-        <article class="summary-card"><span class="status hypothesis">hipótese biofísica</span><b>APOE/DHA/matriz lipídica</b><p>A lipofilicidade torna plausível perguntar sobre membranas, DHA, bainhas e guias dielétricos, mas isso não é claim clínica estabelecida.</p></article>
-        <article class="summary-card"><span class="status investigational">investigacional</span><b>Neuromelanina e CISS</b><p>A ponte doxiciclina → POMC/melanina profunda → CISS/neuromelanina pertence à fronteira biofísica, não à bula.</p></article>
-        <article class="summary-card"><span class="status guarded">prudência</span><b>Uso prolongado não é banal</b><p>Quanto mais sustentada a molécula, maior a necessidade de limites: microbioma, fígado, esôfago, pele, fungos, sol, nnEMF e contexto geográfico.</p></article>
+        <article class="summary-card"><span class="status hypothesis">biofísica · BLOCO 1</span><b>Antena lipofílica sustentada</b><p>Quatro anéis conjugados + UV-A ~350 nm + meia-vida 18–22 h = antena tecidual de longa duração que chega onde a tetraciclina-mãe não chega: membranas, BHE, APOE/DHA.</p></article>
+        <article class="summary-card"><span class="status hypothesis">biofísica · BLOCO 1</span><b>Estado tripleto e CISS</b><p>UV-A → cruzamento intersistemas → estado tripleto metaestável de baixa entropia. A quiralidade densa é o pré-requisito estrutural do filtro de spin CISS — corrente DC limpa em vez de radicais livres.</p></article>
+        <article class="summary-card"><span class="status investigational">investigacional · BLOCO 1</span><b>POMC, neuromelanina e APOE</b><p>Estado tripleto como gatilho → POMC 2p23.3 → α-MSH → MC1R → eumelanina e neuromelanina. Lipofilicidade estende a cascata ao SNC e às bainhas de APOE.</p></article>
+        <article class="summary-card"><span class="status established">estabelecido · BLOCO 2</span><b>Antibiótico 30S, eliminação não-renal</b><p>Bloqueio reversível do aminoacil-tRNA na subunidade 30S. Bacteriostático de amplo espectro. Meia-vida 18–22 h e eliminação não-renal — tetraciclina de eleição na insuficiência renal.</p></article>
+        <article class="summary-card"><span class="status established">estabelecido · BLOCO 2</span><b>Quelação e fotossensibilidade</b><p>Bolso β-diceto-fenol de alta afinidade para Ca²⁺, Mg²⁺, Fe²⁺/³⁺. Fotossensibilidade é efeito de classe documentado. Deposição em tecidos calcificados em formação.</p></article>
+        <article class="summary-card"><span class="status guarded">prudência · ambos</span><b>Meia-vida longa exige terreno</b><p>Quanto mais sustentada a antena, maior a necessidade de terreno: água EZ, melanina basal, sol real, microbioma, fígado, esôfago e contexto infeccioso rigorosamente avaliados.</p></article>
+      </div>
+    </section>
+
+    <section id="biofisica" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">BLOCO 1 — Biofísica</div>
+          <h2>Oito eixos de leitura de antena e spin.</h2>
+        </div>
+        <p>Leitura biofísica de primeiros princípios: origem semissintética sobre base actinobacteriana, arquitetura como antena UV-A lipofílica, estado tripleto, CISS via melanina e neuromelanina, água EZ, cascata POMC, freio mitocondrial e contexto magnético. Cada eixo tem estatuto epistemológico declarado.</p>
+      </div>
+      <div class="axis-grid">
+        <article class="axis-card">
+          <span class="num">01 · origem</span>
+          <h3>Derivada do solo — refinada</h3>
+          <p>Derivada semissintética da oxitetraciclina (<em>Streptomyces rimosus</em>): o laboratório removeu a 6-OH e adicionou 6-metil. A origem actinobacteriana é preservada — e com ela a memória biofísica de uma linhagem que atravessou múltiplas inversões geomagnéticas. A modificação química afinalizou a antena sem apagar a sua filiação procariótica.</p>
+          <small>Estado: histórico estabelecido + leitura geomagnética investigacional</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">02 · arquitectura</span>
+          <h3>Hidronaftaceno lipofílico — antena durável</h3>
+          <p>Mesmo núcleo de quatro anéis fundidos linearmente da tetraciclina-mãe, mas com cromóforo mais estável (6-deoxi): a antena não se degrada tão rapidamente no tecido. Sistema π estendido, gaiola quelante β-diceto-fenol, centros quirais — candidata estrutural ao CISS. A meia-vida farmacocinética longa tem correlato fotofísico: o transdutor fica ligado mais tempo.</p>
+          <small>Estado: estrutura estabelecida · função de antena = hipótese biofísica</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">03 · espectro</span>
+          <h3>UV-A ~350 nm — janela da melanina</h3>
+          <p>Banda dominante em ~350 nm (UV-A): sintonizada na janela de comando da melanina. Quelação com metal desloca a absorção batocrômicamente (~390–430 nm), estendendo a captação ao visível azul-violeta. A doxiciclina quelada com Ca²⁺ ou Fe³⁺ é uma antena diferente da livre — o metal afina o transdutor.</p>
+          <small>Estado: absorção espectral (verde) · estado tripleto in vivo (âmbar)</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">04 · estado tripleto</span>
+          <h3>Amortecedor metaestável de longa duração</h3>
+          <p>UV-A absorvido → cruzamento intersistemas → <strong>estado tripleto metaestável</strong>. Coerente, longevo, retém energia em vez de dissipá-la como calor. A meia-vida longa da doxiciclina implica que este estado opera em janelas solares repetidas, ampliando a oportunidade de conversão em corrente de spin limpa. O que a dermatologia chama de "fototoxicidade" é a descarga desordenada deste estado em terreno sem melanina prévia.</p>
+          <small>Estado: cruzamento intersistemas (verde/ciano) · função terapêutica (âmbar)</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">05 · CISS / melanina</span>
+          <h3>Filtro de spin quiral lipofílico</h3>
+          <p>A quiralidade da doxiciclina, integrada na hélice quiral da melanina (eumelanina + neuromelanina), ativa a Seletividade de Spin Induzida por Quiralidade: elétrons spin-up coerentes atravessam, spin-down caóticos são aterrados. Pelo princípio de Landauer, esta corrente paga a conta energética de manter ordem estrutural. A lipofilicidade leva este filtro às membranas e ao SNC — não só à epiderme.</p>
+          <small>Estado: hipótese biofísica de fronteira</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">06 · POMC / neuromelanina</span>
+          <h3>Cascata Cromossomo 2 — neural</h3>
+          <p>Estado tripleto → gatilho fotónico → <strong>POMC (locus 2p23.3)</strong> → α-MSH e β-endorfina → MC1R → polimerização de eumelanina e <strong>neuromelanina</strong>. A lipofilicidade faz com que a doxiciclina estenda esta cascata ao SNC e às bainhas de APOE quiral — onde a tetraciclina-mãe não chega. Protege o DHA dos lobos frontais contra decoerência de spin.</p>
+          <small>Estado: cascata POMC (investigacional) · α-MSH/MC1R (ciano)</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">07 · mitocôndria / água EZ</span>
+          <h3>Freio cinético, ΔΨ e k=160</h3>
+          <p>Desaceleração parcial da tradução mitocondrial (ribossoma 70S-like) retira a célula do Pool de Replicação Cinética — Permanência Temporal Estrutural, análogo funcional de FOXO3. A corrente CISS filtrada alimenta os nanomotores F₀-F₁ sem radicais livres, expandindo o ΔΨ. Os grupos fenólicos ancoram a rede de água EZ (k=160), favorecendo expulsão de deutério pesado e restaurando o substrato dielétrico das ligações H.</p>
+          <small>Estado: inibição da tradução mito (ciano) · Permanência Temporal / ΔΨ (âmbar)</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">08 · campo / janela</span>
+          <h3>APOE, AAS e excursão magnética</h3>
+          <p>Com a Anomalia do Atlântico Sul a expandir-se e o campo dipolar em declínio, a principal ameaça biofísica é a decoerência de spin nas membranas neurais ricas em DHA. Por ser lipofílica e neuropenetrante, a doxiciclina é a ferramenta mais precisa da classe para este cenário: lastro fotónico que protege a APOE quiral e a neuromelanina onde a radiação cósmica e o nnEMF mais atuam.</p>
+          <small>Estado: dado geofísico (verde) · leitura magnética clínica (investigacional)</small>
+        </article>
+      </div>
+    </section>
+
+    <section id="bioquimica" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">BLOCO 2 — Bioquímica</div>
+          <h2>Farmacologia clássica e evidência estabelecida.</h2>
+        </div>
+        <p>Mecanismo canónico, farmacocinética lipofílica, indicações aprovadas, fotossensibilidade, quelação, riscos e interações — o que o consenso biomédico sustenta com evidência rastreável.</p>
+      </div>
+      <div class="grid-2">
+        <article class="panel">
+          <h2>Mecanismo clássico e seletividade</h2>
+          <p><strong>Alvo primário:</strong> subunidade ribossomal 30S bacteriana (sítio A). A doxiciclina bloqueia reversivelmente a ligação do aminoacil-tRNA ao complexo ribossoma–mRNA, impedindo a elongação da cadeia peptídica. Efeito <strong>bacteriostático</strong> de amplo espectro.</p>
+          <p><strong>Seletividade relativa:</strong> a janela terapêutica baseia-se na seletividade para o ribossoma 70S bacteriano sobre o 80S eucariota, mais a acumulação ativa intra-bacteriana. Não é absoluta — os ribossomas mitocondriais (70S-like, proteobacterianos) são parcialmente afetados em uso prolongado.</p>
+          <p><strong>Efeitos não-antibióticos reconhecidos:</strong> inibição de metaloproteinases de matriz (MMPs) e ação anti-inflamatória independente do mecanismo ribossomal. Base do uso <strong>sub-antimicrobiano (~20 mg)</strong> em rosácea e periodontite.</p>
+          <p><strong>Farmacocinética lipofílica:</strong> absorção oral alta e alimento-tolerante (~90–100% de biodisponibilidade). Distribuição ampla e lipofílica — pele, pulmão, próstata, SNC. Atravessa a barreira hematoencefálica. Metabolismo hepático limitado; excretada em grande parte inalterada. Eliminação <strong>predominantemente não-renal</strong> (intestinal e biliar) — meia-vida ~18–22 h, posologia 1–2×/dia. Não requer ajuste relevante na insuficiência renal: é a tetraciclina de eleição no doente renal.</p>
+        </article>
+        <article class="panel">
+          <h2>Indicações estabelecidas e usos reais</h2>
+          <p><strong>Indicações estabelecidas:</strong> <strong>ricketsioses</strong> (<em>Rickettsia</em> spp., febre maculosa) — doxiciclina é de eleição, incluindo em pediatria grave (exceção etária reconhecida em ricketsiose, curso curto); <strong>doença de Lyme</strong> (<em>Borrelia burgdorferi</em>) — primeira linha em fases adequadas; infeções por <em>Chlamydia</em>, <em>Mycoplasma pneumoniae</em>, <em>Coxiella burnetii</em> (febre Q); pneumonia atípica; acne vulgar inflamatória; rosácea (dose sub-antimicrobiana); profilaxia e adjuvante terapêutico de malária; zoonoses (brucelose em associação, leptospirose, antraz, tularemia); infeções de pele/tecidos moles por organismos sensíveis, incluindo alguns MRSA comunitários.</p>
+          <p><strong>Fotossensibilidade (efeito de classe):</strong> a banda UV-A (~350 nm) é a base física. O sistema de 4 anéis conjugados capta luz solar e a pode reemitir como energia danosa sem substrato de melanina adequado. Proteção solar durante o tratamento é indicação de segurança.</p>
+          <p><strong>Quelação — consequências práticas:</strong> deposição em tecidos calcificados em formação → descoloração dentária permanente; redução de absorção oral por quelação com antiácidos/ferro/laticínios (separar no tempo). Menos limitante que na tetraciclina-mãe pela maior lipofilicidade.</p>
+          <p><strong>Resistência bacteriana:</strong> bombas de efluxo (genes <em>tet</em>), proteínas de proteção ribossomal, inativação enzimática. Resistência disseminada e frequentemente cruzada dentro da classe. Uso inadequado contribui diretamente para seleção de resistência.</p>
+        </article>
+      </div>
+
+      <div style="margin-top: 22px;">
+        <article class="panel">
+          <h2>Riscos, contraindicações absolutas e interações</h2>
+          <p><strong>Efeitos adversos estabelecidos:</strong> esofagite e ulceração esofágica — risco notório da doxiciclina, tomar com bastante água e permanecer na posição vertical após a toma, nunca antes de deitar; náusea, vómito, diarreia; fotossensibilidade cutânea; descoloração dentária permanente e efeito ósseo transitório em tecidos em formação; candidíase/disbiose (antibiótico de amplo espectro); hipertensão intracraniana idiopática (pseudotumor cerebri — vigiar cefaleia e alterações visuais); <strong>síndrome de Fanconi por produto vencido</strong> (nunca usar produto fora de validade); hepatotoxicidade em doses altas/uso prolongado.</p>
+          <p><strong>Contraindicações absolutas:</strong> <strong>gestação e lactação</strong> (deposição dentária/óssea fetal, passagem ao leite) · <strong>crianças abaixo de ~8 anos</strong> como regra geral (descoloração dentária permanente — exceção reconhecida em ricketsioses graves, decisão clínica) · <strong>insuficiência hepática</strong> significativa — cautela (ao contrário da tetraciclina-mãe, insuficiência renal geralmente não exige ajuste).</p>
+          <p><strong>Interações relevantes:</strong> quelação com antiácidos (Al, Mg, Ca), ferro, laticínios em excesso, zinco, bismuto, sucralfato → separar no tempo · <strong>indutores enzimáticos</strong> (rifampicina, fenitoína, carbamazepina, barbitúricos) → encurtam meia-vida e reduzem níveis — interação clinicamente significativa · <strong>varfarina</strong> → potenciação do efeito anticoagulante, monitorizar INR · <strong>retinóides sistémicos</strong> (isotretinoína, acitretina) → evitar pela soma de risco de hipertensão intracraniana · contracetivos orais → possível redução de eficácia (evidência inconsistente, historicamente sinalizada).</p>
+        </article>
       </div>
     </section>
 
     <section id="figuras" class="shell">
       <div class="section-head">
         <div>
-          <div class="kicker"><span class="dot"></span> Figuras didáticas</div>
+          <div class="kicker">Figuras didáticas</div>
           <h2>Fundo branco, traço limpo, leitura farmacológica.</h2>
         </div>
         <p>Imagens minimalistas para apoiar a ficha: arquitetura molecular, mecanismo clássico, mapa farmacológico e interface biofísica. São esquemas educacionais, não estruturas químicas completas nem protocolo clínico.</p>
       </div>
       <div class="figure-grid">
         <figure class="figure-card">
-          <img src="../../assets/moleculas/doxiciclina/gpt/doxiciclina-01-molecula-gpt.png" alt="Estrutura química da doxiciclina com grupos funcionais destacados, sobre fundo branco." loading="lazy" />
-          <figcaption>Molécula da doxiciclina: figura editorial GPT/OpenAI em estilo farmacologia clássica.</figcaption>
+          <img src="../../assets/moleculas/doxiciclina/gpt/doxiciclina-01-molecula-gpt.png" alt="Estrutura química da doxiciclina com núcleo hidronaftaceno de quatro anéis, grupos funcionais e lipofilicidade aumentada em relação à tetraciclina-mãe, sobre fundo branco." loading="lazy" />
+          <figcaption>Molécula da doxiciclina: quatro anéis conjugados planos, gaiola quelante β-diceto-fenol, centros quirais e substituição 6-metil que aumenta a lipofilicidade — arquitetura de antena durável.</figcaption>
         </figure>
         <figure class="figure-card">
-          <img src="../../assets/moleculas/doxiciclina/gpt/doxiciclina-02-ribossomo-30s-gpt.png" alt="Diagrama do mecanismo clássico: subunidade 30S ribossomal com bloqueio do sítio A e lipofilicidade para BHE." loading="lazy" />
-          <figcaption>Mecanismo clássico: canal 30S + lipofilicidade e travessia da BHE.</figcaption>
+          <img src="../../assets/moleculas/doxiciclina/gpt/doxiciclina-02-ribossomo-30s-gpt.png" alt="Diagrama do mecanismo clássico da doxiciclina: bloqueio do sítio A da subunidade ribossomal 30S e distribuição lipofílica incluindo barreira hematoencefálica." loading="lazy" />
+          <figcaption>Mecanismo clássico: bloqueio reversível do aminoacil-tRNA na subunidade 30S + distribuição lipofílica que atravessa a barreira hematoencefálica. Bacteriostático de amplo espectro.</figcaption>
         </figure>
         <figure class="figure-card">
-          <img src="../../assets/moleculas/doxiciclina/gpt/doxiciclina-03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico: absorção oral, distribuição lipofílica, metabolismo hepático e excreção." loading="lazy" />
-          <figcaption>Mapa farmacológico: absorção, distribuição profunda, metabolismo e excreção.</figcaption>
+          <img src="../../assets/moleculas/doxiciclina/gpt/doxiciclina-03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico da doxiciclina: absorção oral alimento-tolerante, distribuição tecidual lipofílica profunda, metabolismo hepático limitado e eliminação não-renal com meia-vida longa." loading="lazy" />
+          <figcaption>Mapa farmacológico: absorção alimento-tolerante (~90–100%), distribuição lipofílica profunda incluindo SNC, metabolismo mínimo e eliminação não-renal — meia-vida 18–22 h.</figcaption>
         </figure>
         <figure class="figure-card">
-          <img src="../../assets/moleculas/doxiciclina/gpt/doxiciclina-04-interface-biofisica-gpt.png" alt="Diagrama conceitual da leitura biofísica: UV-A, estado tripleto, via POMC/neuromelanina e CISS." loading="lazy" />
-          <figcaption>Interface biofísica: UV-A, estado tripleto, via POMC/neuromelanina e CISS como hipóteses de fronteira.</figcaption>
+          <img src="../../assets/moleculas/doxiciclina/gpt/doxiciclina-04-interface-biofisica-gpt.png" alt="Diagrama da interface biofísica da doxiciclina: UV-A, estado tripleto, cascata POMC/neuromelanina, CISS, APOE/DHA e freio mitocondrial — com marcação de hipótese investigacional." loading="lazy" />
+          <figcaption>Interface biofísica (hipótese investigacional): UV-A → estado tripleto → POMC/α-MSH → eumelanina e neuromelanina → CISS → APOE/DHA → freio mitocondrial. Fronteira investigacional, não consenso biomédico.</figcaption>
         </figure>
       </div>
     </section>
 
-    <section id="eixos" class="shell">
+    <section id="janela" class="shell">
       <div class="section-head">
         <div>
-          <div class="kicker"><span class="dot"></span> Matriz Pharmacopeia</div>
-          <h2>Doxiciclina pelos oito eixos.</h2>
+          <div class="kicker">Janela de uso</div>
+          <h2>Terreno, latitude e limites absolutos.</h2>
         </div>
-        <p>A matriz pergunta origem, arquitetura, espectro, água, spin, redox, campo e janela clínica — sempre marcando o estatuto epistemológico de cada afirmação.</p>
+        <p>A doxiciclina é uma antena lipofílica de longa duração — o que amplifica é determinado pelo estado do meio e pela profundidade do compartimento, não apenas pela molécula. Terreno, latitude e contexto clínico são variáveis de primeira ordem.</p>
       </div>
-      <div class="axis-grid">
-        <article class="axis-card"><span class="num">01 · origem</span><h3>Derivada moderna</h3><p>Doxiciclina nasce como derivado semissintético da família tetraciclínica. A origem industrial não apaga o núcleo proteobacteriano; muda estabilidade e distribuição.</p><small>Estado: histórico estabelecido</small></article>
-        <article class="axis-card"><span class="num">02 · arquitetura</span><h3>Núcleo compartilhado</h3><p>Mantém o hidronaftaceno de quatro anéis e o cromóforo tetraciclínico; substituições modulam lipofilicidade, meia-vida e compartimento.</p><small>Estado: estrutura estabelecida</small></article>
-        <article class="axis-card"><span class="num">03 · espectro</span><h3>UV-A quase idêntico</h3><p>Absorção na vizinhança de 350 nm mantém a conversa na janela UV-A. O que muda é persistência tecidual, não a família espectral.</p><small>Estado: absorção verde; função biofísica âmbar</small></article>
-        <article class="axis-card"><span class="num">04 · água</span><h3>Interface lipídio/água</h3><p>Menos confinada ao bulk aquoso que a tetraciclina, pergunta mais sobre membranas, matriz lipídica, hidratação interfacial e barreiras biológicas.</p><small>Estado: hipótese mecanística</small></article>
-        <article class="axis-card"><span class="num">05 · CISS</span><h3>Construção sustentada</h3><p>No modelo Kruse/PKA, janelas solares repetidas com molécula presente poderiam reforçar POMC/eumelanina/CISS. Público: hipótese, não instrução.</p><small>Estado: investigacional</small></article>
-        <article class="axis-card"><span class="num">06 · redox</span><h3>Mitocôndria e cinética</h3><p>A inibição de tradução mitocondrial é real; interpretá-la como desaceleração produtiva do pool cinético requer terreno adequado e monitorização.</p><small>Estado: mecanismo + prudência</small></article>
-        <article class="axis-card"><span class="num">07 · campo</span><h3>APOE sob turbulência</h3><p>A ficha pergunta se matriz lipídica/DHA/APOE sob AAS, radiação cósmica e nnEMF muda a janela da molécula. A resposta clínica não é universal.</p><small>Estado: fronteira Kruse/PKA</small></article>
-        <article class="axis-card"><span class="num">08 · janela</span><h3>Ferramenta de risco</h3><p>A maior duração que torna a doxiciclina interessante também amplia risco se o terreno está errado: Carbose, candidíase, LED noturno, latitude/estação ruins ou sol imprudente.</p><small>Estado: prudência clínica obrigatória</small></article>
+      <div class="grid-2">
+        <article class="panel">
+          <h2>Pré-requisitos de terreno (leitura biofísica)</h2>
+          <p><strong>Melanina basal prévia:</strong> a inversão de spin onde a corrente CISS aterra eficientemente precisa estar montada. Chegar à doxiciclina sem melanina solar prévia é ligar a antena sem o receptor. Em terreno cru, o risco de fototoxicidade convencional aumenta — a diferença entre fototoxicidade e fotossíntese de pigmento está no estado do meio, não na molécula.</p>
+          <p><strong>Água EZ como substrato dielétrico:</strong> a lipofilicidade da doxiciclina coloca-a na interface membrana-água estruturada. Sem essa rede intacta (sol real matinal, aterramento, baixo nnEMF), a corrente CISS fotoexcitada não tem substrato quiral onde filtrar o spin.</p>
+          <p><strong>Janela circadiana e latitude:</strong> UV-A existe de dia, sob sol real — não LED azul (que não tem UV-A e desidrata a rede). A meia-vida longa (~18–22 h) permite que os níveis teciduais coincidam com janelas solares matinal e vespertina sem exigir temporização rigorosa da toma. Em latitude alta/inverno sem UV-A, o efeito fotónico é mudo.</p>
+        </article>
+        <article class="panel">
+          <h2>Limites absolutos</h2>
+          <p>Independentemente do enquadramento biofísico, os seguintes contextos exigem avaliação profissional obrigatória antes de qualquer uso:</p>
+          <p>Gestação (especialmente 1º trimestre) e lactação · Crianças abaixo de ~8 anos como regra (exceção clínica em ricketsiose grave) · Insuficiência hepática significativa · Uso concomitante de varfarina (monitorizar INR) ou retinóides sistémicos · Produto com validade expirada (risco de tubulopatia renal) · Qualquer contexto de infeção bacteriana ativa (exige diagnóstico, antibiograma e prescrição) · Esôfago de risco (tomar sempre com bastante água e na posição vertical).</p>
+          <p><strong>A ficha pública não transforma molécula em protocolo individual.</strong> Dose, forma farmacêutica, duração, indicação e monitorização pertencem à avaliação clínica. O uso inadequado de antibiótico seleciona resistência bacteriana — dano individual e coletivo real.</p>
+        </article>
       </div>
     </section>
 
     <section id="evidencia" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Estado da evidência</div>
+          <h2>O que é consenso. O que é hipótese. O que é fronteira.</h2>
+        </div>
+      </div>
       <div class="grid-2">
-        <article class="panel evidence-list">
-          <h2>O que é sólido</h2>
-          <p><strong>Verde:</strong> mecanismo antibacteriano, farmacocinética, maior meia-vida, maior lipofilicidade relativa, uso em acne/Lyme/malária e risco de fotossensibilidade são bem estabelecidos.</p><p><strong>Ciano:</strong> distribuição em pele/matriz lipídica e efeitos anti-inflamatórios/mitocondriais justificam perguntas biofísicas mais profundas.</p>
+        <article class="panel">
+          <h2>Camadas de evidência</h2>
+          <p><strong>Verde — estabelecido:</strong> estrutura química (4 anéis, lipofílica, anfotérica, quelante, 6-desoxitetraciclina); mecanismo 30S/aminoacil-tRNA; absorção UV-A documentada (~350 nm + batocrômico quelado); quelação de catiões; fotossensibilidade como efeito de classe; meia-vida 18–22 h; eliminação não-renal; indicações aprovadas (ricketsioses, Lyme, atípicos, acne, malária, zoonoses); resistência (genes <em>tet</em>); interações; contraindicações absolutas.</p>
+          <p><strong>Ciano — hipótese plausível:</strong> APOE/DHA como guia dielétrico lipofílico; diferencial de compartimento vs. tetraciclina (epidérmico vs. neural); modulação da rede de água EZ por ancoragem fenólica; efeitos mitocondriais indiretos; meia-vida longa como correlato fotofísico de antena durável.</p>
+          <p><strong>Âmbar — investigacional:</strong> estado tripleto como gatilho terapêutico in vivo; cascata POMC via TRCS; corrente CISS por eumelanina e neuromelanina; soberania isotópica/deutério via G3P; leitura geomagnética (AAS, excursão magnética, APOE lipofílica).</p>
+          <p><strong>Vermelho editorial:</strong> não publicar dose, ciclo, automedicação, promessa de bronzeado seguro, substituição de avaliação médica numa infecção ativa, nem enquadramento de uso prolongado sem supervisão clínica.</p>
         </article>
-        <article class="panel evidence-list">
-          <h2>O que exige cuidado</h2>
-          <p><strong>Âmbar:</strong> APOE como guia dielétrico, neuromelanina, CISS sustentado, depleção de deutério e protocolos geomagnéticos são linguagem de fronteira.</p><p><strong>Vermelho editorial:</strong> não transformar meia-vida longa em apelo de uso prolongado; a ficha deve aumentar responsabilidade, não entusiasmo.</p>
+        <article class="panel">
+          <h2>Nota metodológica</h2>
+          <p>A farmacologia convencional da doxiciclina foi maioritariamente construída sobre modelos de roedores noturnos sem controlo de espectro luminoso, latitude, campo magnético ou estado de hidratação. Isso sistematicamente enquadra os efeitos fotossensibilizantes como "toxicidade" sem avaliar o papel do estado do meio na determinação do resultado.</p>
+          <p>A distinção editorial crítica desta molécula é entre o <em>mecanismo antibiótico</em> (sólido, consenso) e a <em>leitura biofísica de antena UV-A lipofílica</em> (investigacional, Pharmacopeia). A ficha mantém as duas narrativas separadas: onde há consenso, dizemos consenso; onde há hipótese, dizemos hipótese; onde há fronteira, dizemos fronteira. O diferencial lipofílico vs. tetraciclina-mãe é o ponto editorial central desta ficha.</p>
         </article>
       </div>
     </section>
@@ -502,22 +658,44 @@
     <section id="fontes" class="shell">
       <div class="section-head">
         <div>
-          <div class="kicker"><span class="dot"></span> Fontes internas e externas</div>
+          <div class="kicker">Fontes e ligações</div>
           <h2>Base desta ficha.</h2>
         </div>
       </div>
       <div class="grid-3">
-        <article class="source-card"><h3>PKA · Protocolo Núbio v2</h3><p>Fonte interna principal para a distinção por compartimento, terreno mínimo, suporte antifúngico, janelas solares e cautelas.</p></article>
-        <article class="source-card"><h3>PKA · Biofísica da Tetraciclina</h3><p>Base para o núcleo comum: quatro anéis, UV-A, estado tripleto, POMC, melanina, CISS e deutério.</p></article>
-        <article class="source-card"><h3>Farmacologia clássica</h3><p>Farmacocinética, usos, riscos, contraindicações, esofagite, fotossensibilidade, microbioma e interações continuam determinando o guardrail público.</p></article>
+        <article class="source-card">
+          <h3>Biofísica Pura</h3>
+          <p><em>Biofísica da Doxiciclina — Análise Independente</em> (2026-06-25). Nota interna de análise de primeiros princípios — base do BLOCO 1: origem actinobacteriana, 4 anéis como antena UV-A, estado tripleto, POMC, melanina semicondutora, CISS, água EZ, freio mitocondrial, classificação 1ª ordem condicional.</p>
+        </article>
+        <article class="source-card">
+          <h3>Biofísica Referenciada</h3>
+          <p><em>Biofísica da Doxiciclina — Análise Comparada</em> (2026-06-25). Leitura referenciada com a tetraciclina-mãe como âncora. Divergências e convergências: compartimento (aquoso/epidérmico vs. lipofílico/neural), meia-vida, cromóforo estabilizado, neuromelanina e APOE.</p>
+        </article>
+        <article class="source-card">
+          <h3>Análise Clássica</h3>
+          <p><em>Análise Clássica — Doxiciclina</em> (2026-06-25). Base farmacológica e toxicológica convencional — base do BLOCO 2: composição, mecanismo 30S, ADME lipofílica, efeitos não-antibióticos, resistência, indicações aprovadas, fotossensibilidade, quelação, esofagite, riscos, contraindicações, interações.</p>
+        </article>
+        <article class="source-card">
+          <h3>Tetraciclina — molécula-mãe</h3>
+          <p>Ficha interna da tetraciclina (Pharmacopeia.info) — base de contraste: compartimento aquoso/epidérmico, quelação de Ca²⁺ e deposição óssea (dado histórico da Núbia, séc. IV–VI d.C.), meia-vida ~8 h, afinidade renal. A doxiciclina é lida como derivada lipofílica desta âncora.</p>
+        </article>
+        <article class="source-card">
+          <h3>Farmacologia clássica</h3>
+          <p>StatPearls/NCBI ("Doxycycline", "Tetracyclines"), Merck/MSD Manual, Goodman &amp; Gilman (cap. inibidores da síntese proteica), LiverTox/NIH (Tetracyclines/Doxycycline), bulário FDA/EMA/ANVISA, CDC (ricketsioses pediátricas, malária/Lyme), IDSA. Fontes a verificar antes de publicação final.</p>
+        </article>
+        <article class="source-card">
+          <h3>Rosácea, periodontite e sub-antibiótico</h3>
+          <p>Revisões sobre uso sub-antimicrobiano (~20 mg) de doxiciclina em rosácea e periodontite (efeito anti-MMP/anti-inflamatório independente do mecanismo ribossomal). Fontes a verificar antes de publicação.</p>
+        </article>
       </div>
     </section>
 
     <section class="shell">
-      <article class="notice">
-        <h2>Regra editorial desta ficha</h2>
-        <p>Onde há consenso, dizemos consenso. Onde há mecanismo plausível, dizemos hipótese. Onde há Kruse/PKA, dizemos fronteira investigacional. Onde há paciente real, encaminhamos para avaliação individual.</p>
-      </article>
+      <aside class="notice warning">
+        <h2>Guardrail clínico — leia antes</h2>
+        <p><strong>Esta página é educacional. Não é prescrição.</strong> A Pharmacopeia.info publica leitura biofísica e farmacológica de substâncias para estudo e contexto — não fornece dose, posologia, ciclo, indicação individual, nem recomenda compra, uso ou substituição de qualquer tratamento. Nada aqui diagnostica, trata, cura ou previne doença, nem substitui consulta, anamnese, exame ou a decisão de um profissional de saúde habilitado. Medicamentos têm riscos, interações e contraindicações que dependem do seu terreno, da sua história clínica, da sua geografia e dos medicamentos que já usa. Antes de qualquer uso, fale com o seu médico ou farmacêutico.</p>
+        <p><strong>Doxiciclina — específico:</strong> esofagite ulcerativa documentada — tomar sempre com bastante água e na posição vertical, nunca imediatamente antes de deitar. Fotossensibilidade é efeito de classe documentado: proteção solar durante o tratamento. Contraindicada em gestação, lactação e crianças abaixo de ~8 anos como regra geral (descoloração dentária permanente e efeito ósseo — exceção reconhecida em ricketsioses graves, decisão clínica). Nunca usar produto com validade expirada (risco de síndrome de Fanconi). Quelação com antiácidos, ferro e laticínios em excesso — separar no tempo. Interações relevantes: indutores enzimáticos (rifampicina, fenitoína, carbamazepina, barbitúricos reduzem níveis e meia-vida), varfarina (potenciação anticoagulante — monitorizar INR), retinóides sistémicos (isotretinoína/acitretina — evitar, risco aditivo de hipertensão intracraniana). A doxiciclina é antibiótico de prescrição — uso inadequado e automedicação contribuem para seleção de resistência bacteriana, com impacto individual e coletivo real.</p>
+      </aside>
     </section>
   </main>
 
@@ -529,19 +707,24 @@
   </footer>
 
   <script>
+    /* ─── THEME TOGGLE ────────────────────────────────── */
     var themeToggle = document.getElementById('themeToggle');
-    var sunIcon  = themeToggle.querySelector('.theme-icon-sun');
-    var moonIcon = themeToggle.querySelector('.theme-icon-moon');
+    var themeBtnLabel = document.getElementById('themeBtnLabel');
+
     function applyTheme(theme) {
       document.documentElement.setAttribute('data-theme', theme);
       localStorage.setItem('ph-theme', theme);
-      if (theme === 'dark') { sunIcon.style.display=''; moonIcon.style.display='none'; themeToggle.setAttribute('aria-label','Mudar para tema claro'); }
-      else { sunIcon.style.display='none'; moonIcon.style.display=''; themeToggle.setAttribute('aria-label','Mudar para tema escuro'); }
+      themeBtnLabel.textContent = theme === 'dark' ? 'claro' : 'escuro';
+      themeToggle.setAttribute('aria-label',
+        theme === 'dark' ? 'Mudar para tema claro' : 'Mudar para tema escuro');
     }
+
     applyTheme(localStorage.getItem('ph-theme') || 'light');
+
     themeToggle.addEventListener('click', function () {
-      var current = document.documentElement.getAttribute('data-theme');
-      applyTheme(current === 'dark' ? 'light' : 'dark');
+      applyTheme(
+        document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
+      );
     });
   </script>
 </body>
