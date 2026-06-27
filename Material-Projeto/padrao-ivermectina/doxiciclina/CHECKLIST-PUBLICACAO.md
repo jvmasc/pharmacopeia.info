@@ -1,0 +1,26 @@
+# Checklist de Publicação — Doxiciclina
+
+- [ ] DOSSIER.md completo (classificação, evidência, 8 eixos)
+- [ ] HISTORIA.md com frase-mãe
+- [ ] ROTEIRO-IMAGENS.md com especificação das 4 imagens
+- [ ] PROMPTS-IMAGENS.md com prompts, alt text e legendas
+- [ ] CHECKLIST-PUBLICACAO.md (este ficheiro)
+- [ ] 4 imagens geradas e aprovadas visualmente
+- [ ] Nav com link #figuras
+- [ ] Hero com frase-mãe
+- [ ] Resumo com 6 cards
+- [ ] Secção #figuras com grid 2×2
+- [ ] 4 imagens com alt text
+- [ ] Secção #eixos com 8 cards
+- [ ] Secção #evidencia estratificada (verde/ciano/âmbar)
+- [ ] Secção #fontes internas e externas
+- [ ] Guardrail clínico específico
+- [ ] Regra editorial final
+- [ ] "não é prescrição" e "educacional"
+- [ ] Auditoria de links: sem quebrados
+- [ ] Auditoria de imagens: todas existem
+- [ ] Auditoria de placeholders: sem TODO/lorem
+- [ ] Auditoria de âncoras: sem #quebradas
+- [ ] HTML válido (tags abertas = fechadas)
+- [ ] Nenhum claim médico não-suportado
+- [ ] Hipóteses Kruse/PKA marcadas como fronteira
