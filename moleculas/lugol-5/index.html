@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lugol 5% — Pharmacopeia.info</title>
+  <meta name="description" content="Ficha educacional do Lugol 5% no framework biofísica → bioquímica: par redox de halogênio pesado (I₂/I⁻/I₃⁻), substrato mineral-redox e não antena fotônica, efeito de átomo pesado (Z=53), iodeto como caótropo na água EZ, e classificação de primeira ordem condicional. Mecanismo clássico do eixo iodo-tireoide em segundo plano." />
+
+  <!-- Anti-FOWT: aplica o tema guardado ANTES de qualquer render -->
+  <script>
+  (function () {
+    var saved = localStorage.getItem('ph-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', saved);
+  })();
+  </script>
+
+  <style>
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       TEMA LIGHT (white/biofílico) — PADRÃO
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    :root {
+      color-scheme: light;
+
+      --bg:        #FAF9F5;
+      --bg-2:      #F2EFE8;
+      --surface:   #FFFFFF;
+      --surface-2: #F7F5EF;
+
+      --ink:       #1C2420;
+      --muted:     #4A5A54;
+      --quiet:     #7A8E87;
+
+      --line:        rgba(28, 36, 32, .10);
+      --line-strong: rgba(184, 131, 42, .50);
+
+      --solar: #B8832A;
+      --bio:   #2B8A84;
+      --mag:   #5B4DB8;
+      --danger: #C0522E;
+      --ok:     #3A7D44;
+
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+
+      --shadow: 0 4px 24px rgba(28, 36, 32, .08), 0 1px 4px rgba(28, 36, 32, .05);
+      --shadow-hover: 0 8px 40px rgba(28, 36, 32, .12), 0 2px 8px rgba(28, 36, 32, .06);
+
+      --header-bg: rgba(250, 249, 245, .88);
+      --body-bg:
+        radial-gradient(ellipse at 18% 0%,  rgba(184, 131, 42, .11), transparent 38rem),
+        radial-gradient(ellipse at 84% 8%,  rgba(43, 138, 132, .09), transparent 34rem),
+        radial-gradient(ellipse at 50% 96%, rgba(91, 77, 184, .07),  transparent 40rem),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg) 62%, var(--bg-2) 100%);
+
+      --mono:  ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans:  Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       TEMA DARK — override
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    html[data-theme="dark"] {
+      color-scheme: dark;
+
+      --bg:        #07100f;
+      --bg-2:      #0b1413;
+      --surface:   #10201e;
+      --surface-2: #142a27;
+
+      --ink:       #e7eadf;
+      --muted:     #a8b5aa;
+      --quiet:     #74827b;
+
+      --line:        rgba(231, 234, 223, .14);
+      --line-strong: rgba(215, 168, 79, .45);
+
+      --solar: #d7a84f;
+      --bio:   #65c7c0;
+      --mag:   #8a6ee8;
+      --danger: #d8816a;
+      --ok:     #98c379;
+
+      --shadow: 0 24px 80px rgba(0, 0, 0, .42);
+      --shadow-hover: 0 24px 80px rgba(0, 0, 0, .55);
+
+      --header-bg: rgba(7, 16, 15, .72);
+      --body-bg:
+        radial-gradient(circle at 12% 0%,  rgba(215, 168, 79, .18), transparent 32rem),
+        radial-gradient(circle at 88% 10%, rgba(101, 199, 192, .14), transparent 32rem),
+        radial-gradient(circle at 48% 100%, rgba(138, 110, 232, .10), transparent 34rem),
+        linear-gradient(180deg, var(--bg), var(--bg-2) 52%, #060b0a);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--body-bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.55;
+    }
+    a { color: inherit; }
+    .shell { width: min(1180px, calc(100% - 36px)); margin: 0 auto; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       HEADER / NAV
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(20px) saturate(1.3);
+      background: var(--header-bg);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 1px 0 var(--line);
+    }
+    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; letter-spacing: -.02em; font-weight: 700; color: var(--ink); }
+    .mark {
+      width: 34px;
+      height: 34px;
+      border: 1.5px solid var(--line-strong);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      position: relative;
+      color: var(--solar);
+      background: var(--surface);
+    }
+    .mark::before, .mark::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(43, 138, 132, .50);
+      border-radius: 50%;
+      inset: 7px 2px;
+      transform: rotate(35deg);
+    }
+    .mark::after { transform: rotate(-35deg); border-color: rgba(91, 77, 184, .42); }
+
+    html[data-theme="dark"] .mark::before { border-color: rgba(101, 199, 192, .42); }
+    html[data-theme="dark"] .mark::after  { border-color: rgba(138, 110, 232, .38); }
+
+    .mark-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--solar);
+      position: relative;
+      z-index: 1;
+    }
+
+    nav { display: flex; gap: 18px; color: var(--muted); font-size: 14px; }
+    nav a { text-decoration: none; transition: color .15s ease; }
+    nav a:hover { color: var(--ink); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       BOTÃO DE TOGGLE DE TEMA
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .theme-btn {
+      cursor: pointer;
+      border: 1px solid var(--line-strong);
+      background: rgba(255, 255, 255, .05);
+      color: var(--solar);
+      border-radius: 999px;
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      font-size: 16px;
+      transition: border-color .18s ease, background .18s ease;
+      flex-shrink: 0;
+    }
+    .theme-btn:hover {
+      background: rgba(184, 131, 42, .10);
+      border-color: var(--line-strong);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       HERO
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .hero { padding: 76px 0 42px; }
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--solar);
+      font-family: var(--mono);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      border: 1px solid rgba(184, 131, 42, .30);
+      border-radius: 999px;
+      padding: 8px 14px;
+      background: rgba(184, 131, 42, .07);
+    }
+    html[data-theme="dark"] .kicker {
+      border-color: rgba(215, 168, 79, .26);
+      background: rgba(215, 168, 79, .06);
+    }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--solar); box-shadow: 0 0 18px var(--solar); }
+    h1 { margin: 26px 0 22px; max-width: 980px; font-family: var(--serif); font-size: clamp(48px, 8vw, 104px); line-height: .92; letter-spacing: -.06em; font-weight: 520; color: var(--ink); }
+    .lead { max-width: 860px; color: var(--muted); font-size: clamp(18px, 2vw, 23px); }
+    .lead strong { color: var(--ink); font-weight: 650; }
+    .meta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+    .chip { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-size: 13px; color: var(--muted); background: var(--surface-2); }
+    .chip b { color: var(--ink); font-weight: 650; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       LAYOUT GRIDS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    section { padding: 48px 0; scroll-margin-top: 92px; }
+    .grid-2 { display: grid; grid-template-columns: 1.05fr .95fr; gap: 22px; align-items: start; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       FAIXAS DE BLOCO (biofísica lidera / bioquímica segue)
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .bloco-head {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin: 0 0 30px;
+      padding-bottom: 18px;
+      border-bottom: 2px solid var(--line-strong);
+    }
+    .bloco-num {
+      flex-shrink: 0;
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 600;
+      border: 2px solid var(--line-strong);
+      color: var(--solar);
+      background: rgba(184, 131, 42, .07);
+    }
+    .bloco-head.bioquimica { border-bottom-color: rgba(43, 138, 132, .5); }
+    .bloco-head.bioquimica .bloco-num { border-color: rgba(43, 138, 132, .55); color: var(--bio); background: rgba(43, 138, 132, .07); }
+    .bloco-head h2 { margin: 0; font-family: var(--serif); font-size: clamp(34px, 5vw, 60px); line-height: 1; letter-spacing: -.04em; }
+    .bloco-head .sub { margin: 8px 0 0; color: var(--muted); font-size: 15px; max-width: 640px; }
+    .bloco-tag { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .14em; color: var(--quiet); }
+
+    .block-section { border-top: none !important; }
+    .block-section.biofisica  { background: linear-gradient(180deg, rgba(184,131,42,.05), transparent 380px); }
+    .block-section.bioquimica { background: linear-gradient(180deg, rgba(43,138,132,.05), transparent 380px); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       CARDS BASE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .panel, .notice, .axis-card, .source-card, .summary-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+    }
+    .panel { padding: 28px; }
+    .panel h2, section h2 { margin: 0 0 14px; font-family: var(--serif); letter-spacing: -.035em; font-size: clamp(30px, 4vw, 52px); line-height: 1; }
+    .panel h3 { margin: 0 0 10px; font-size: 21px; letter-spacing: -.02em; }
+    .panel p, .notice p, .axis-card p, .source-card p, .summary-card p { color: var(--muted); }
+    .panel p + h3 { margin-top: 22px; }
+
+    .summary-card { padding: 18px; box-shadow: none; min-height: 170px; }
+    .summary-card b { display: block; margin-bottom: 8px; color: var(--ink); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       STATUS TAGS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .status { display: inline-flex; border-radius: 999px; border: 1px solid var(--line); padding: 6px 10px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+    .established   { color: var(--ok);     border-color: rgba(58, 125, 68, .38);  background: rgba(58, 125, 68, .07);  }
+    .hypothesis    { color: var(--bio);    border-color: rgba(43, 138, 132, .38); background: rgba(43, 138, 132, .07); }
+    .investigational { color: var(--solar); border-color: rgba(184, 131, 42, .38); background: rgba(184, 131, 42, .07); }
+    .guarded       { color: var(--danger); border-color: rgba(192, 82, 46, .38);  background: rgba(192, 82, 46, .07);  }
+
+    html[data-theme="dark"] .established    { border-color: rgba(152,195,121,.34); background: rgba(152,195,121,.08); }
+    html[data-theme="dark"] .hypothesis     { border-color: rgba(101,199,192,.34); background: rgba(101,199,192,.08); }
+    html[data-theme="dark"] .investigational { border-color: rgba(215,168,79,.34);  background: rgba(215,168,79,.08);  }
+    html[data-theme="dark"] .guarded        { border-color: rgba(216,129,106,.34); background: rgba(216,129,106,.08); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       SECTION HEAD
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .section-head { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 22px; }
+    .section-head p { margin: 0; max-width: 680px; color: var(--muted); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       AXIS GRID (subtemas dentro de cada bloco)
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .axis-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .axis-card { padding: 20px; box-shadow: none; }
+    .axis-card .num { font-family: var(--mono); color: var(--solar); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+    .bioquimica .axis-card .num { color: var(--bio); }
+    .axis-card h3 { margin: 10px 0 8px; font-size: 19px; letter-spacing: -.02em; }
+    .axis-card p { font-size: 14.5px; margin: 0; }
+    .axis-card small { display: block; margin-top: 12px; color: var(--quiet); font-family: var(--mono); font-size: 11px; text-transform: uppercase; line-height: 1.45; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       NOTICE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .notice {
+      padding: 26px;
+      box-shadow: none;
+      border-color: rgba(184, 131, 42, .30);
+      background: linear-gradient(135deg, rgba(184, 131, 42, .06) 0%, var(--surface) 70%);
+    }
+    html[data-theme="dark"] .notice {
+      border-color: rgba(215, 168, 79, .24);
+      background: var(--surface);
+    }
+
+    /* Notice de aviso/warning (guardrail clínico) */
+    .warning {
+      border-color: rgba(192, 82, 46, .38);
+      background: linear-gradient(135deg, rgba(192, 82, 46, .06) 0%, var(--surface) 70%);
+    }
+    html[data-theme="dark"] .warning {
+      border-color: rgba(216, 129, 106, .38);
+      background: linear-gradient(180deg, rgba(53,26,22,.82), rgba(18,24,23,.86));
+    }
+    .warning h2, .warning h3 { color: var(--danger); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       BUTTONS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .button {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      border: 1.5px solid var(--line-strong);
+      background: rgba(184, 131, 42, .10);
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      transition: background .18s ease, border-color .18s ease, transform .15s ease, box-shadow .18s ease;
+    }
+    html[data-theme="dark"] .button {
+      background: rgba(215, 168, 79, .12);
+    }
+    .button:hover {
+      background: rgba(184, 131, 42, .18);
+      border-color: rgba(184, 131, 42, .70);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(184, 131, 42, .16);
+    }
+    .button.secondary {
+      border-color: var(--line);
+      background: var(--surface-2);
+      color: var(--muted);
+    }
+    html[data-theme="dark"] .button.secondary {
+      background: rgba(255, 255, 255, .03);
+    }
+    .button.secondary:hover {
+      border-color: rgba(43, 138, 132, .40);
+      background: rgba(43, 138, 132, .06);
+      color: var(--ink);
+      box-shadow: 0 4px 16px rgba(43, 138, 132, .10);
+    }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       SOURCE CARDS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .source-card { padding: 18px; box-shadow: none; }
+    .source-card h3 { margin: 0 0 8px; }
+    .source-card p { margin: 0; font-size: 14px; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       FOOTER
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    footer {
+      padding: 44px 0 70px;
+      color: var(--quiet);
+      border-top: 1px solid var(--line);
+      background: var(--bg-2);
+    }
+    footer .shell { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    footer strong { color: var(--muted); }
+    footer code   { font-family: var(--mono); color: var(--quiet); font-size: 13px; }
+
+    section + section { border-top: 1px solid var(--line); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       RESPONSIVE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    @media (max-width: 1000px) { .axis-grid { grid-template-columns: repeat(2, 1fr); } .grid-3 { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 760px) {
+      nav { display: none; }
+      .grid-2, .grid-3, .axis-grid { grid-template-columns: 1fr; }
+      .section-head { display: block; }
+      .bloco-head { flex-wrap: wrap; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, html { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="shell nav">
+      <a class="brand" href="../../index.html" aria-label="Pharmacopeia.info">
+        <span class="mark" aria-hidden="true">
+          <span class="mark-dot"></span>
+        </span>
+        <span>Pharmacopeia.info</span>
+      </a>
+      <nav aria-label="Navegação principal">
+        <a href="../../index.html#matriz">Matriz</a>
+        <a href="#biofisica">Bloco 1 · Biofísica</a>
+        <a href="#bioquimica">Bloco 2 · Bioquímica</a>
+        <a href="#janela">Terreno</a>
+        <a href="#fontes">Fontes</a>
+      </nav>
+      <button id="themeToggle" class="theme-btn" type="button" aria-label="Alternar tema">
+        <span class="theme-icon theme-icon-sun">&#9728;</span>
+        <span class="theme-icon theme-icon-moon" style="display:none">&#9790;</span>
+      </button>
+    </div>
+  </header>
+
+
+  <main>
+    <!-- ━━━━━━━━━━━━━━━━ HERO ━━━━━━━━━━━━━━━━ -->
+    <section class="hero shell">
+      <div class="kicker"><span class="dot"></span> Ficha · molécula · framework biofísica → bioquímica</div>
+      <h1>Lugol 5%</h1>
+      <p class="lead"><strong>O rótulo popular vê "iodo para a tireoide" ou um suplemento inocente. Não é nenhum dos dois.</strong> A Pharmacopeia lê primeiro a física — e a física aqui é honesta: o Lugol <strong>não é uma antena que canta</strong>. É uma mistura redox de halogênio pesado (I₂ / I⁻ / I₃⁻) em dose farmacológica, um <strong>substrato mineral-redox</strong> de átomo pesado (Z = 53) que fornece o tijolo irredutível do nó fotoperiódico-metabólico da tireoide. É um amplificador cego do terreno: reacende o metabólico onde o terreno está pronto e queima onde não está.</p>
+      <div class="meta-row">
+        <span class="chip"><b>Categoria</b> preparação redox de halogênio (I₂ + KI)</span>
+        <span class="chip"><b>Sinónimos</b> solução de Lugol · solução de iodo composta</span>
+        <span class="chip"><b>Ordem</b> primeira ordem condicional (substrato-mineral)</span>
+      </div>
+      <div class="cta-row">
+        <a class="button" href="#biofisica">Começar pela física</a>
+        <a class="button secondary" href="../../index.html#atlas">Voltar ao atlas</a>
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━ GUARDRAIL (acima de tudo) ━━━━━━━━━━━━━━━━ -->
+    <section class="shell" id="guardrail">
+      <div class="grid-2">
+        <aside class="notice warning">
+          <h2>Leia antes — não é prescrição</h2>
+          <p><strong>Esta página é educacional.</strong> A Pharmacopeia.info publica leitura biofísica e farmacológica de substâncias para estudo e contexto — não fornece dose, posologia, ciclo, indicação individual, nem recomenda compra, uso ou substituição de qualquer tratamento. Nada aqui diagnostica, trata, cura ou previne doença, nem substitui consulta, anamnese, exame ou a decisão de um profissional de saúde habilitado. Medicamentos têm riscos, interações e contraindicações que dependem do seu terreno, da sua história clínica, da sua geografia e dos medicamentos que já usa. Antes de qualquer uso, fale com o seu médico ou farmacêutico.</p>
+        </aside>
+        <aside class="notice warning">
+          <h3>Guardrail específico — Lugol 5%</h3>
+          <p><strong>Substância tireoidiana potente — não é suplemento inocente.</strong> O Lugol é iodo em <strong>dose farmacológica</strong>: uma única gota carrega da ordem de milhares de vezes a referência nutricional diária. Pode precipitar ou agravar doença da tireoide — <strong>hipotireoidismo autoimune (Hashimoto)</strong>, <strong>hipertireoidismo induzido (Jod-Basedow)</strong>, bloqueio Wolff-Chaikoff — e exige cautela absoluta ou é contraindicado na <strong>autoimunidade tireoidiana</strong>, em <strong>nódulos autônomos / Graves</strong>, na <strong>gestação, lactação e crianças</strong>, e na <strong>doença renal</strong> (risco de acúmulo pela excreção renal). Interage com lítio, amiodarona, antitireoidianos, levotiroxina, contraste iodado e outras fontes de iodo (kelp). <strong>Lugol oral não é o mesmo que antisséptico iodado tópico nem que iodeto de potássio (KI) de proteção contra radioiodo</strong> — finalidades, concentrações e riscos distintos. Nenhum uso sem avaliação de um profissional habilitado.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+         BLOCO 1 — LEITURA BIOFÍSICA (lidera)
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section class="shell block-section biofisica" id="biofisica">
+      <div class="bloco-head biofisica">
+        <span class="bloco-num" aria-hidden="true">1</span>
+        <div>
+          <span class="bloco-tag">Bloco 1 · lidera a leitura</span>
+          <h2>Leitura biofísica</h2>
+          <p class="sub">A substância como elemento dentro do campo físico — luz, água, spin, magnetismo, terreno. A Pharmacopeia faz aqui uma leitura honesta: o Lugol não é antena fotônica, é substrato mineral-redox. É essa tensão que organiza o bloco.</p>
+        </div>
+      </div>
+
+      <div class="axis-grid">
+        <article class="axis-card">
+          <span class="num">Cromóforos e luz · UV/Vis/IR</span>
+          <h3>Cromóforo mineral, não antena</h3>
+          <p>O <strong>I₂</strong> tem cor (vapor violeta, solução acastanhada) e absorve no visível (~450–530 nm); o <strong>I₃⁻</strong> absorve no UV próximo (~290 e ~350 nm); o <strong>iodeto (I⁻)</strong> é quase transparente. Ter cor é interagir com radiação — mas falta-lhe o sistema π conjugado das antenas do atlas, que captam UV-A e <em>escrevem</em> a cascata por estado tripleto. A ligação com a luz é <strong>indireta e a montante</strong>: a tireoide é um órgão fotoperiódico-metabólico e o iodo é o mineral que ela gasta.</p>
+          <small>Serve à fotobiologia como substrato, não como antena própria</small>
+        </article>
+
+        <article class="axis-card">
+          <span class="num">Água EZ</span>
+          <h3>Caótropo, não construtor</h3>
+          <p>A físico-química contraria a narrativa fácil. Na série de Hofmeister, o iodeto (I⁻) está na ponta <strong>caotrópica</strong>: ânion grande, de baixa densidade de carga, fracamente hidratado, que tende a <strong>desorganizar</strong> a rede de pontes de hidrogênio (<em>structure breaker</em>). Iodeto isolado numa interface <strong>afrouxa</strong> a água — empurra contra a fase de exclusão, não a constrói. O par I₂/I₃⁻, polarizável, pode <em>participar</em> da química de carga quando bem tamponado, mas o saldo é bidirecional e dependente de terreno.</p>
+          <small>"Lugol estrutura a água" não se publica como facto</small>
+        </article>
+
+        <article class="axis-card">
+          <span class="num">Spin · CISS · tripleto</span>
+          <h3>Modulador de spin, não filtro</h3>
+          <p>A única ponte legítima com o vocabulário de spin. Com <strong>Z = 53</strong>, o iodo está entre os átomos mais pesados da bioquímica de rotina; o acoplamento spin-órbita escala com a massa atômica, e átomos pesados facilitam o cruzamento intersistema (singlete → tripleto) — o <strong>efeito de átomo pesado</strong>. O iodo <em>abre a porta</em> do tripleto pela própria pesadez. Mas é <strong>aquiral</strong>: CISS exige uma hélice que ele não tem. Logo não <em>filtra</em> spin — medeia transferência de carga, não a escreve.</p>
+          <small>Tampão/amplificador redox mineral, não caneta fotônica</small>
+        </article>
+
+        <article class="axis-card">
+          <span class="num">Campo · geografia de origem</span>
+          <h3>Memória oceânica e continental</h3>
+          <p>O iodo tem <strong>geografia real</strong>: elemento oceânico e geológico, concentra-se na água do mar, em algas (kelp, que o bioacumula), em caliche (Atacama) e em salmouras. A alga usa o iodeto como antioxidante de superfície na maré exposta — geoquímica da interface luz-água-oxidação. Carrega a memória da <strong>deficiência continental</strong>: os "cinturões do bócio" interiores são pobres em iodo porque a geografia o levou para o oceano. E onde o Lugol é <em>usado</em> importa — par redox sensível ao campo, à luz e ao estado redox do terreno.</p>
+          <small>Não fornece soberania de terreno — revela o estado dele</small>
+        </article>
+
+        <article class="axis-card">
+          <span class="num">POMC · α-MSH · melanina</span>
+          <h3>Limite registado</h3>
+          <p>A Pharmacopeia regista o limite explicitamente: o iodo <strong>não</strong> entra no eixo POMC → α-MSH → melanina como antena. Não tem o cromóforo conjugado nem a rota quiral para escrever melanina. A ligação honesta é a montante e de <strong>partilha de terreno</strong>: tireoide e eixo melanocortina compartilham o território fotoperiódico-metabólico e ambos colapsam em campo fraturado e luz artificial. O iodo dá substrato ao ramo tireoidiano; não escreve melanina.</p>
+          <small>"Lugol ativa POMC/melanina" é hipótese sem suporte</small>
+        </article>
+
+        <article class="axis-card">
+          <span class="num">Classificação de ordem · Landauer</span>
+          <h3>Primeira ordem condicional</h3>
+          <p>Caso de fronteira que exige honestidade. Pela via estrita da antena fotônica, <strong>falha o critério</strong>: não capta UV-A nem escreve melanina por tripleto + CISS. Mas adiciona ordem real por outra via — fornece o substrato mineral irredutível do nó fotoperiódico-metabólico (tireoide → T3/T4 → fosforilação oxidativa → termogênese) e injeta um par redox de átomo pesado. Rótulo de framework: <strong>primeira ordem condicional — de natureza substrato-mineral-redox, não de antena fotônica.</strong> A condicionalidade tem dois eixos: terreno nutricional (selênio, glutationa) e terreno tireoidiano/imune.</p>
+          <small>Estado: hipótese biofísica exploratória (primeiros princípios) · não consenso</small>
+        </article>
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+         BLOCO 2 — LEITURA BIOQUÍMICA (segue)
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section class="shell block-section bioquimica" id="bioquimica">
+      <div class="bloco-head bioquimica">
+        <span class="bloco-num" aria-hidden="true">2</span>
+        <div>
+          <span class="bloco-tag">Bloco 2 · segue a física</span>
+          <h2>Leitura bioquímica</h2>
+          <p class="sub">O mecanismo clássico/oficial, como o ensinam os livros. Vem depois da física — não antes.</p>
+        </div>
+      </div>
+
+      <div class="axis-grid bioquimica">
+        <article class="axis-card">
+          <span class="num">Mecanismo clássico / oficial</span>
+          <h3>Equilíbrio I₂ ⇌ I₃⁻</h3>
+          <p>Iodo molecular (I₂) dissolvido em água por meio de iodeto de potássio (KI), com três espécies em equilíbrio: <strong>I₂ + I⁻ ⇌ I₃⁻</strong>. O I₂ é a forma oxidante/antisséptica; o I⁻ é a forma fisiológica captada pelos tecidos; o I₃⁻ é o reservatório de transporte. No trato gastrointestinal o I₂ é em grande parte reduzido a iodeto — o que chega à circulação é majoritariamente <strong>iodeto</strong>. O alvo central é o <strong>eixo tireoidiano</strong>.</p>
+          <small>Estado: consenso estabelecido</small>
+        </article>
+
+        <article class="axis-card">
+          <span class="num">Alvos moleculares</span>
+          <h3>NIS · TPO · desiodinases</h3>
+          <p><strong>NIS</strong> (simportador Na⁺/I⁻) transporta iodeto para dentro da célula tireoidiana acoplado ao gradiente de sódio, concentrando-o — também expresso em glândulas salivares, mucosa gástrica e mama lactante. <strong>TPO</strong> (tireoperoxidase) oxida e organifica o iodeto na tireoglobulina usando H₂O₂, gerando MIT/DIT → T4 e T3. As <strong>desiodinases (selênio-dependentes)</strong> convertem T4 → T3 na periferia.</p>
+          <small>Estado: consenso estabelecido</small>
+        </article>
+
+        <article class="axis-card">
+          <span class="num">Farmacologia</span>
+          <h3>Microgramas ≠ miligramas</h3>
+          <p>Iodo é nutriente essencial; a deficiência causa bócio e hipotireoidismo. A intervenção de saúde pública para <em>deficiência</em> é iodação do sal e, na gestação, microgramas — <strong>não Lugol</strong>. Usos médicos do iodo em dose farmacológica são <strong>pontuais, de curto prazo e hospitalares</strong> (Graves pré-operatório; adjuvante na tempestade tireoidiana). Em emergência nuclear usa-se <strong>KI padronizado</strong>, não "Lugol comercial". A escala é a chave: referência ~150 µg/dia; uma gota de Lugol 5% carrega ~6 mg.</p>
+          <small>Ficha educacional — sem posologia, ciclo ou indicação individual</small>
+        </article>
+
+        <article class="axis-card">
+          <span class="num">Farmacocinética</span>
+          <h3>Absorção rápida, excreção renal</h3>
+          <p>O iodeto é absorvido rápida e quase completamente no intestino delgado (e em parte no estômago); o I₂ é reduzido a iodeto no trajeto. Distribui-se no compartimento extracelular e é captado por tecidos com transportador específico. A <strong>excreção é predominantemente renal</strong> (a iodúria é o principal marcador de ingestão) — pelo que a insuficiência renal pode levar a <strong>acúmulo</strong>. Atravessa a placenta e concentra-se no leite materno.</p>
+          <small>Dados quantitativos não detalhados nesta ficha educacional</small>
+        </article>
+
+        <article class="axis-card">
+          <span class="num">Toxicidade e contraindicações</span>
+          <h3>Risco depende do terreno tireoidiano</h3>
+          <p>Intervenção potente sobre o eixo tireoidiano. <strong>Hashimoto/autoimunidade:</strong> o excesso pode precipitar/agravar hipotireoidismo autoimune. <strong>Graves/nódulos autônomos:</strong> risco de <strong>Jod-Basedow</strong> (hipertireoidismo induzido). <strong>Wolff-Chaikoff:</strong> a glândula normal "escapa", mas a que não escapa (feto, neonato, glândula lesada) evolui para hipotireoidismo. <strong>Gestação/lactação/crianças</strong> e <strong>doença renal</strong> são alto risco. Interage com lítio, amiodarona, antitireoidianos, levotiroxina, contraste e kelp.</p>
+          <small>Estado: consenso estabelecido — depende do terreno e da história clínica</small>
+        </article>
+
+        <article class="axis-card">
+          <span class="num">Ponte entre os dois blocos</span>
+          <h3>O substrato que a bula não nomeia</h3>
+          <p>O "eixo iodo-tireoide" da bioquímica descreve, sem nomear, o mesmo <strong>par redox de átomo pesado</strong> do Bloco 1. O que a fisiologia clássica chama captação-organificação é o substrato mineral irredutível alimentando o nó fotoperiódico-metabólico; o que chama toxicidade é, em grande parte, esse mesmo amplificador redox despejado num terreno que não o tampona — selênio ausente, glândula doente, rim comprometido.</p>
+          <small>Bloco 1 explica o porquê; Bloco 2 descreve o quê</small>
+        </article>
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━ JANELA DE USO / TERRENO ━━━━━━━━━━━━━━━━ -->
+    <section class="shell" id="janela">
+      <div class="grid-2">
+        <article class="panel">
+          <h2>Janela de uso / terreno</h2>
+          <p>O Lugol é "honesto": apenas obedece ao terreno. <strong>Constrói</strong> quando há deficiência real de iodo, terreno nutricional pronto (selênio, glutationa, cofatores), glândula sem autoimunidade ativa, excreção renal competente, contexto e dose conservadores, e campo/luz/hidratação razoáveis — aí o substrato reacende o metabólico e encontra uma cadeia que tampona o fluxo.</p>
+          <p><strong>Desorganiza</strong> em Hashimoto ativo, Graves/nódulo autônomo, ausência de selênio, pool redox exausto, terreno deuterado/indoor e insuficiência renal — aí, ao acelerar a tireoide, amplifica ROS e dano: a face clínica é o flare autoimune e a tireotoxicose induzida. O iodo entra ainda numa <strong>competição de halogênios</strong> (desloca brometo, fluoreto, perclorato do NIS); num organismo carregado desses competidores, dar iodo despeja-os na circulação antes da excreção — e é a função renal que decide se a operação é limpeza ou intoxicação. <em>Leitura educacional de terreno — não é indicação de uso.</em></p>
+        </article>
+        <article class="panel">
+          <h2>Estado da evidência</h2>
+          <p><span class="status established">consolidado</span><br><strong>Consenso:</strong> química I₂/I⁻ ⇌ I₃⁻; iodo como nutriente essencial e a deficiência como causa de bócio/hipotireoidismo/dano fetal; captação via NIS e organificação via TPO; conversão T4→T3 selênio-dependente; Wolff-Chaikoff com escape; Jod-Basedow; agravamento de Hashimoto por excesso de iodo; usos médicos pontuais; interações; excreção renal e risco de acúmulo.</p>
+          <p><span class="status hypothesis">mecanismo plausível</span><br><strong>Linguagem qualificada:</strong> deslocamento de brometo/fluoreto/perclorato e "bromismo" ao iniciar iodo; lógica do "salt flux" (sódio move o NIS); efeito de átomo pesado (Z=53) favorecendo tripleto; iodeto como caótropo que perturba (não constrói) a água local; a tireoide como nó fotoperiódico com o iodo como substrato.</p>
+          <p><span class="status investigational">exploratório</span><br><strong>Hipótese biofísica (primeiros princípios):</strong> "primeira ordem condicional de ordem mineral-redox" (rótulo de framework); efeito bidirecional sobre a água EZ; par I₂/I⁻/I₃⁻ como tampão redox em química de spin; "acopla ou queima conforme o terreno"; iodo como cofator de átomo pesado e não cromóforo autônomo.</p>
+          <p><span class="status guarded">zona proibida</span><br><strong>Sem claims:</strong> que o Lugol "estrutura/constrói a água EZ"; que é "antena fotônica / ativa POMC-melanina"; "96% é deficiente"; doses terapêuticas ou protocolos de carregamento em gotas; "iodo cura X / impacta 10 de 14 sistemas"; "seguro para todos"; "trata câncer/cistos"; uso em gestação/lactação/criança sem qualificação; e equiparar Lugol oral a antisséptico tópico ou a KI de radioproteção.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━ FONTES ━━━━━━━━━━━━━━━━ -->
+    <section id="fontes" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker"><span class="dot"></span> Ligações e fonte</div>
+          <h2>Base desta ficha.</h2>
+        </div>
+        <p>Ficha no padrão biofísica → bioquímica, resolução de três notas-fonte. A monografia completa está na base de conhecimento PKA.</p>
+      </div>
+      <div class="grid-3">
+        <article class="source-card"><h3>Monografia (Pura)</h3><p><em>Biofísica do Lugol 5%</em> — parecer público / independente (2026-06-21). Leitura de primeiros princípios: substrato mineral-redox.</p></article>
+        <article class="source-card"><h3>Monografia (Referenciada)</h3><p>Parecer biofísico referenciado ao atlas (2026-06-21) — por que o iodo não é antena fotônica como os cromóforos conjugados.</p></article>
+        <article class="source-card"><h3>Integrações</h3><p>Tele-Farmácia (terreno tireoidiano, selênio, função renal) · SOS (eixo iodo-tireoide e competição de halogênios) · Time Machine Sync (tireoide como nó fotoperiódico) · Escola Politécnica (halogênios, redox, Hofmeister, NIS/TPO).</p></article>
+      </div>
+    </section>
+
+    <section class="shell">
+      <article class="notice">
+        <h2>Regra editorial desta ficha</h2>
+        <p>A Pharmacopeia publica perguntas melhores, não atalhos terapêuticos. A física lidera; a bioquímica segue. Aqui a física é honesta sobre o que o iodo <em>não</em> é: não é antena fotônica nem estrutura água EZ. A classificação "primeira ordem condicional de ordem mineral-redox" é precisa — a capacidade de ordem existe como substrato, mas só se realiza em terreno preparado (selênio, glândula sã, excreção competente); fora dele, a mesma carga que regula numa glândula sã descompensa numa glândula doente. Microgramagem nutricional não é miligramagem farmacológica. Onde há paciente real, encaminhamos para avaliação individual.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">
+      <span><strong>Pharmacopeia.info</strong> — ficha / lugol-5 · padrão biofísica → bioquímica.</span>
+      <code>educacional · sem prescrição · matriz biofísica</code>
+    </div>
+  </footer>
+
+  <script>
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       THEME TOGGLE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    var themeToggle = document.getElementById('themeToggle');
+    var sunIcon  = themeToggle.querySelector('.theme-icon-sun');
+    var moonIcon = themeToggle.querySelector('.theme-icon-moon');
+
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('ph-theme', theme);
+      if (theme === 'dark') {
+        sunIcon.style.display  = '';
+        moonIcon.style.display = 'none';
+        themeToggle.setAttribute('aria-label', 'Mudar para tema claro');
+      } else {
+        sunIcon.style.display  = 'none';
+        moonIcon.style.display = '';
+        themeToggle.setAttribute('aria-label', 'Mudar para tema escuro');
+      }
+    }
+
+    applyTheme(localStorage.getItem('ph-theme') || 'light');
+
+    themeToggle.addEventListener('click', function () {
+      var current = document.documentElement.getAttribute('data-theme');
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+  </script>
+</body>
+</html>
