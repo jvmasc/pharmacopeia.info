@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bicarbonato de Sódio — Pharmacopeia</title>
+<meta name="description" content="Ficha biofísica do Bicarbonato de Sódio (NaHCO₃). Tampão termodinâmico de segunda ordem. Preserva o pH mitocondrial para que ferramentas de primeira ordem possam operar.">
+<script>/* anti-FOWT */document.documentElement.classList.add('js');(function(){var d=document.documentElement;d.style.setProperty('--fade-in','opacity 1');})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F7F4EE;
+  --ink: #1A1E1C;
+  --solar: #9A6B18;
+  --bio: #1E6E6A;
+  --mag: #4A3E9C;
+  --cyan: #0BC5EA;
+  --amber: #D97706;
+  --red: #DC2626;
+  --green: #16A34A;
+  --serif: 'Spectral', Georgia, serif;
+  --mono: 'Space Mono', 'Courier New', monospace;
+  --bg: var(--paper);
+  --fg: var(--ink);
+  --card: #EFECE6;
+  --border: #D8D4CC;
+  --muted: #6B7280;
+  --tag-bg: var(--solar);
+  --tag-fg: var(--paper);
+  --radius: 12px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+[data-theme="dark"] {
+  --paper: #121416;
+  --ink: #E8E6E3;
+  --solar: #D4A04A;
+  --bg: #0D0F10;
+  --fg: var(--ink);
+  --card: #1A1E20;
+  --border: #2A2E30;
+  --muted: #9CA3AF;
+  --tag-bg: var(--solar);
+  --tag-fg: #0D0F10;
+  --shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--serif);
+  background:var(--bg);
+  color:var(--fg);
+  line-height:1.7;
+  font-weight:300;
+  font-size:1.05rem;
+  opacity:0;
+  transition: opacity 0.5s ease;
+}
+html.js body{opacity:1}
+a{color:var(--bio);text-decoration:none;transition:color 0.2s}
+a:hover{color:var(--solar)}
+img{max-width:100%;height:auto;display:block}
+.container{max-width:1120px;margin:0 auto;padding:0 24px}
+/* header */
+header{
+  border-bottom:1px solid var(--border);
+  padding:16px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:12px;
+  background:var(--bg);
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+.brand{
+  font-family:var(--mono);
+  font-size:1rem;
+  font-weight:700;
+  color:var(--solar);
+  letter-spacing:0.05em;
+}
+.brand span{color:var(--fg)}
+nav{display:flex;gap:8px;flex-wrap:wrap}
+nav a{
+  font-family:var(--mono);
+  font-size:0.75rem;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  padding:6px 14px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  color:var(--muted);
+  transition:all 0.2s;
+}
+nav a:hover{
+  border-color:var(--solar);
+  color:var(--solar);
+  background:rgba(154,107,24,0.08);
+}
+.theme-toggle{
+  background:none;
+  border:1px solid var(--border);
+  border-radius:999px;
+  color:var(--muted);
+  padding:6px 14px;
+  font-family:var(--mono);
+  font-size:0.7rem;
+  cursor:pointer;
+  transition:all 0.2s;
+}
+.theme-toggle:hover{border-color:var(--solar);color:var(--solar)}
+/* hero */
+.hero{
+  padding:80px 0 60px;
+  text-align:center;
+  border-bottom:1px solid var(--border);
+}
+.kicker{
+  font-family:var(--mono);
+  font-size:0.75rem;
+  text-transform:uppercase;
+  letter-spacing:0.15em;
+  color:var(--solar);
+  margin-bottom:16px;
+}
+.hero h1{
+  font-size:clamp(2rem,5vw,3.2rem);
+  font-weight:700;
+  line-height:1.15;
+  margin-bottom:20px;
+  color:var(--fg);
+}
+.hero .order-tag{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:0.7rem;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  background:var(--tag-bg);
+  color:var(--tag-fg);
+  padding:4px 14px;
+  border-radius:999px;
+  margin-bottom:20px;
+}
+.hero .lead{
+  max-width:720px;
+  margin:0 auto;
+  font-size:1.1rem;
+  color:var(--muted);
+  font-style:italic;
+  line-height:1.8;
+}
+/* painel duplo */
+.painel-duplo{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:32px;
+  padding:60px 0;
+  border-bottom:1px solid var(--border);
+}
+.painel-card{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:32px;
+  border:1px solid var(--border);
+}
+.painel-card h2{
+  font-size:1rem;
+  font-family:var(--mono);
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  margin-bottom:16px;
+}
+.painel-card.tese h2{color:var(--bio)}
+.painel-card.guardrail h2{color:var(--amber)}
+.painel-card p{
+  font-size:0.95rem;
+  line-height:1.8;
+  color:var(--muted);
+}
+.painel-card ul{
+  font-size:0.9rem;
+  color:var(--muted);
+  padding-left:20px;
+  line-height:1.8;
+}
+/* summary grid */
+.summary-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  padding:60px 0;
+  border-bottom:1px solid var(--border);
+}
+.summary-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:24px;
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.summary-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.summary-card .icon{
+  font-size:1.5rem;
+  margin-bottom:8px;
+}
+.summary-card h3{
+  font-family:var(--mono);
+  font-size:0.8rem;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  color:var(--solar);
+  margin-bottom:8px;
+}
+.summary-card p{
+  font-size:0.88rem;
+  color:var(--muted);
+  line-height:1.7;
+}
+/* figuras */
+#figuras{
+  padding:60px 0;
+  border-bottom:1px solid var(--border);
+}
+#figuras h2{
+  font-family:var(--mono);
+  font-size:0.8rem;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  color:var(--solar);
+  margin-bottom:8px;
+  text-align:center;
+}
+#figuras .subtitle{
+  text-align:center;
+  color:var(--muted);
+  font-size:0.95rem;
+  margin-bottom:40px;
+}
+.figuras-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+}
+.figura-item{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  overflow:hidden;
+}
+.figura-item img{
+  width:100%;
+  aspect-ratio:16/10;
+  object-fit:cover;
+}
+.figura-item .legenda{
+  padding:16px 20px;
+  font-size:0.82rem;
+  color:var(--muted);
+  line-height:1.6;
+  font-style:italic;
+}
+.figura-item .label{
+  font-family:var(--mono);
+  font-size:0.65rem;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  color:var(--solar);
+}
+/* biofisica section */
+#biofisica{
+  padding:60px 0;
+  border-bottom:1px solid var(--border);
+}
+#biofisica h2{
+  font-family:var(--mono);
+  font-size:0.8rem;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  color:var(--solar);
+  margin-bottom:8px;
+}
+#biofisica .section-lead{
+  color:var(--muted);
+  font-size:1rem;
+  margin-bottom:40px;
+  max-width:700px;
+}
+.axis-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+.axis-item{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:20px;
+}
+.axis-item .axis-num{
+  font-family:var(--mono);
+  font-size:0.7rem;
+  color:var(--muted);
+  margin-bottom:4px;
+}
+.axis-item h4{
+  font-family:var(--mono);
+  font-size:0.75rem;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+  color:var(--solar);
+  margin-bottom:8px;
+}
+.axis-item p{
+  font-size:0.82rem;
+  color:var(--muted);
+  line-height:1.6;
+}
+.axis-item .axis-val{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:0.7rem;
+  color:var(--bio);
+  margin-top:8px;
+  padding:2px 8px;
+  border:1px solid var(--bio);
+  border-radius:4px;
+}
+/* bioquimica */
+#bioquimica{
+  padding:60px 0;
+  border-bottom:1px solid var(--border);
+}
+#bioquimica h2{
+  font-family:var(--mono);
+  font-size:0.8rem;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  color:var(--solar);
+  margin-bottom:8px;
+}
+#bioquimica .section-lead{
+  color:var(--muted);
+  font-size:1rem;
+  margin-bottom:40px;
+  max-width:700px;
+}
+.bioquimica-panels{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+}
+.bioquimica-panel{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:28px;
+}
+.bioquimica-panel h3{
+  font-family:var(--mono);
+  font-size:0.8rem;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  color:var(--bio);
+  margin-bottom:16px;
+  padding-bottom:8px;
+  border-bottom:1px solid var(--border);
+}
+.bioquimica-panel dl dt{
+  font-family:var(--mono);
+  font-size:0.75rem;
+  color:var(--solar);
+  margin-top:12px;
+}
+.bioquimica-panel dl dd{
+  font-size:0.88rem;
+  color:var(--muted);
+  line-height:1.6;
+  margin-left:0;
+}
+/* janela */
+#janela{
+  padding:60px 0;
+  border-bottom:1px solid var(--border);
+}
+#janela h2{
+  font-family:var(--mono);
+  font-size:0.8rem;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  color:var(--solar);
+  margin-bottom:8px;
+}
+#janela .section-lead{
+  color:var(--muted);
+  font-size:1rem;
+  margin-bottom:40px;
+  max-width:700px;
+}
+.janela-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+.janela-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:24px;
+}
+.janela-card h3{
+  font-family:var(--mono);
+  font-size:0.75rem;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  color:var(--solar);
+  margin-bottom:12px;
+}
+.janela-card ul{
+  font-size:0.85rem;
+  color:var(--muted);
+  padding-left:16px;
+  line-height:1.8;
+}
+/* evidencia */
+#evidencia{
+  padding:60px 0;
+  border-bottom:1px solid var(--border);
+}
+#evidencia h2{
+  font-family:var(--mono);
+  font-size:0.8rem;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  color:var(--solar);
+  margin-bottom:8px;
+}
+#evidencia .section-lead{
+  color:var(--muted);
+  font-size:1rem;
+  margin-bottom:40px;
+  max-width:700px;
+}
+.evidencia-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+}
+.evidencia-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:24px;
+  border-left:4px solid var(--muted);
+}
+.evidencia-card.verde{border-left-color:var(--green)}
+.evidencia-card.ciano{border-left-color:var(--cyan)}
+.evidencia-card.amber{border-left-color:var(--amber)}
+.evidencia-card.red{border-left-color:var(--red)}
+.evidencia-card .badge{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:0.6rem;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  padding:2px 10px;
+  border-radius:999px;
+  margin-bottom:8px;
+}
+.badge-verde{background:var(--green);color:#fff}
+.badge-ciano{background:var(--cyan);color:#000}
+.badge-amber{background:var(--amber);color:#fff}
+.badge-red{background:var(--red);color:#fff}
+.evidencia-card h3{
+  font-family:var(--mono);
+  font-size:0.75rem;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+  color:var(--fg);
+  margin-bottom:8px;
+}
+.evidencia-card p{
+  font-size:0.85rem;
+  color:var(--muted);
+  line-height:1.7;
+}
+/* fontes */
+#fontes{
+  padding:60px 0;
+  border-bottom:1px solid var(--border);
+}
+#fontes h2{
+  font-family:var(--mono);
+  font-size:0.8rem;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  color:var(--solar);
+  margin-bottom:8px;
+}
+#fontes .section-lead{
+  color:var(--muted);
+  font-size:1rem;
+  margin-bottom:40px;
+  max-width:700px;
+}
+.fontes-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.fonte-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:24px;
+}
+.fonte-card .fonte-tipo{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:0.6rem;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  padding:2px 10px;
+  border-radius:999px;
+  margin-bottom:12px;
+  background:var(--bio);
+  color:#fff;
+}
+.fonte-card h3{
+  font-family:var(--mono);
+  font-size:0.75rem;
+  color:var(--fg);
+  margin-bottom:10px;
+}
+.fonte-card p{
+  font-size:0.82rem;
+  color:var(--muted);
+  line-height:1.6;
+  margin-bottom:12px;
+}
+.fonte-card .fonte-meta{
+  font-size:0.7rem;
+  font-family:var(--mono);
+  color:var(--solar);
+}
+/* guardrail final */
+.guardrail-final{
+  padding:60px 0;
+  border-bottom:1px solid var(--border);
+}
+.guardrail-final h2{
+  font-family:var(--mono);
+  font-size:0.8rem;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  color:var(--red);
+  margin-bottom:16px;
+}
+.guardrail-final .content{
+  background:var(--card);
+  border:1px solid var(--red);
+  border-radius:var(--radius);
+  padding:28px;
+}
+.guardrail-final p{
+  font-size:0.92rem;
+  color:var(--muted);
+  line-height:1.8;
+  margin-bottom:12px;
+}
+.guardrail-final ul{
+  font-size:0.88rem;
+  color:var(--muted);
+  padding-left:20px;
+  line-height:1.8;
+}
+/* footer */
+footer{
+  padding:40px 0;
+  text-align:center;
+}
+footer p{
+  font-size:0.82rem;
+  color:var(--muted);
+  line-height:1.8;
+}
+footer .mono{
+  font-family:var(--mono);
+  font-size:0.7rem;
+  color:var(--solar);
+}
+/* responsivo */
+@media(max-width:900px){
+  .painel-duplo,.bioquimica-panels{grid-template-columns:1fr}
+  .axis-grid{grid-template-columns:repeat(2,1fr)}
+  .janela-grid,.fontes-grid{grid-template-columns:1fr}
+  .evidencia-grid{grid-template-columns:1fr}
+}
+@media(max-width:680px){
+  .summary-grid{grid-template-columns:1fr}
+  .figuras-grid{grid-template-columns:1fr}
+  .axis-grid{grid-template-columns:1fr}
+  header{flex-direction:column;align-items:stretch}
+  nav{justify-content:center}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">&#969; <span>pharmacopeia</span></div>
+  <nav>
+    <a href="#biofisica">Biofísica</a>
+    <a href="#bioquimica">Bioquímica</a>
+    <a href="#evidencia">Evidência</a>
+    <a href="#fontes">Fontes</a>
+  </nav>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">☀ Tema</button>
+</header>
+
+<main class="container">
+  <!-- Hero -->
+  <section class="hero">
+    <p class="kicker">Ficha · molécula</p>
+    <span class="order-tag">SEGUNDA ORDEM — TAMPÃO TERMODINÂMICO</span>
+    <h1>Bicarbonato de Sódio <br><span style="font-size:0.6em;color:var(--muted)">NaHCO₃</span></h1>
+    <p class="lead">A bula vê um antiácido que espanta a azia. A Pharmacopeia lê um tampão termodinâmico bottom-up que preserva o pH mitocondrial para que ferramentas de primeira ordem possam operar.</p>
+  </section>
+
+  <!-- Painel duplo -->
+  <section class="painel-duplo">
+    <div class="painel-card tese">
+      <h2>Tese Pública</h2>
+      <p>O bicarbonato de sódio tem 50 milhões de anos. Formou-se nos lagos alcalinos do Colorado e do Rift Valley antes de existir farmácia, patente ou regulação. É o tampão que a vida multicelular escolheu para preservar o gradiente de protões da ATP-sintase — o nanomotor mais rápido da biologia (9.000 RPM). A indústria farmacêutica não patenteia moléculas de 50 milhões de anos. Em vez disso, substituiu-as por IBPs que geram biliões em receitas anuais — e que silenciosamente comprometem a digestão, a absorção de B12 e a microbiota. O bicarbonato não é um remédio: é uma ferramenta de soberania fisiológica. Mantém as condições de base para que luz, água, campo magnético e melanina — as ferramentas de primeira ordem — possam operar.</p>
+    </div>
+    <div class="painel-card guardrail">
+      <h2>Guardrail</h2>
+      <p><strong>Risco de alcalose metabólica iatrogénica.</strong> Sobrecarga de sódio (273 mg Na⁺/g) — contraindicado em hipertensão não controlada, ICC descompensada, cirrose com ascite.</p>
+      <ul>
+        <li>Hipocalemia funcional por alcalose</li>
+        <li>Hipocalcemia funcional (tetania, sinal de Trousseau/Chvostek)</li>
+        <li>Contraindicação absoluta em alcalose respiratória preexistente</li>
+        <li>Uso IV exclusivamente hospitalar com monitorização gasométrica</li>
+        <li>Reduz absorção de tetraciclinas, fluoroquinolonas, azólicos e ferro oral</li>
+        <li>Aumenta excreção de lítio e salicilatos; reduz excreção de anfetaminas</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Summary cards -->
+  <section class="summary-grid">
+    <div class="summary-card">
+      <div class="icon">🧂</div>
+      <h3>Molécula</h3>
+      <p>Sal inorgânico NaHCO₃, PM 84,01. Geometria planar trigonal. Sem sistema π, sem cromóforo, sem CISS, sem quiralidade. A estrutura mais simples da farmacopeia.</p>
+    </div>
+    <div class="summary-card">
+      <div class="icon">⚖️</div>
+      <h3>Tampão</h3>
+      <p>Sistema CO₂/HCO₃⁻ é o principal tampão do sangue. pKa₁ 6,35. Rácio HCO₃⁻/CO₂ ~20:1 em pH 7,4. Duplo controlo: rim (HCO₃⁻) e pulmão (CO₂).</p>
+    </div>
+    <div class="summary-card">
+      <div class="icon">⚡</div>
+      <h3>Mitocôndria</h3>
+      <p>Restaura a força motriz protónica (pmf = ΔΨ + ΔpH). CO₂ como gasotransmissor: difunde para a mitocôndria, onde CA-V regenera H⁺ para a ATP-sintase a 9.000 RPM.</p>
+    </div>
+    <div class="summary-card">
+      <div class="icon">💧</div>
+      <h3>Água EZ</h3>
+      <p>Ânion kosmotrópico que organiza a água. Preserva a zona de exclusão (EZ, k≈160) ao tamponar H⁺. Ambiente dielétrico necessário para CISS e ATP-sintase.</p>
+    </div>
+    <div class="summary-card">
+      <div class="icon">🏛️</div>
+      <h3>BigHarma</h3>
+      <p>Domínio público total desde 1861. Substituído por IBPs patenteáveis (omeprazol, 1988). Ranitidina retirada em 2020 por contaminação por NDMA. Bicarbonato: R$3 o pacote, sem recall.</p>
+    </div>
+    <div class="summary-card">
+      <div class="icon">🌍</div>
+      <h3>Geografia</h3>
+      <p>Máximo em zonas de campo fraco (Anomalia do Atlântico Sul) e latitudes altas (inverno). Compensa acidose secundária à deficiência de luz e campo magnético.</p>
+    </div>
+  </section>
+
+  <!-- Figuras -->
+  <section id="figuras">
+    <h2>Figuras</h2>
+    <p class="subtitle">Arquitectura molecular, mecanismo, farmacologia e interface biofísica</p>
+    <div class="figuras-grid">
+      <div class="figura-item">
+        <img src="../../assets/moleculas/bicarbonato-de-sodio/gpt/bicarbonato-de-sodio-01-molecula-gpt.png" alt="Estrutura iónica do bicarbonato de sódio em solução aquosa: catião Na⁺ hidratado e anião HCO₃⁻ com geometria planar trigonal. Sem anéis aromáticos, sem sistema π, sem cromóforo." loading="lazy">
+        <div class="legenda"><span class="label">01 — Molécula</span><br>A molécula mais simples da farmacopeia. Um sal inorgânico sem anéis aromáticos, sem sistema π, sem cromóforo UV/Vis — que preserva o gradiente de pH da ATP-sintase.</div>
+      </div>
+      <div class="figura-item">
+        <img src="../../assets/moleculas/bicarbonato-de-sodio/gpt/bicarbonato-de-sodio-02-mecanismo-gpt.png" alt="Ciclo do sistema tampão bicarbonato: HCO₃⁻ captura H⁺ → H₂CO₃ → CO₂ + H₂O. Anidrase carbónica catalisa a reação reversível. Equação de Henderson-Hasselbalch." loading="lazy">
+        <div class="legenda"><span class="label">02 — Mecanismo</span><br>O tampão que a vida escolheu. Sistema CO₂/HCO₃⁻: rim controla o HCO₃⁻, pulmão controla o CO₂. Dois órgãos, um tampão, milhões de anos de evolução.</div>
+      </div>
+      <div class="figura-item">
+        <img src="../../assets/moleculas/bicarbonato-de-sodio/gpt/bicarbonato-de-sodio-03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico do bicarbonato de sódio: absorção oral no intestino delgado, distribuição no líquido extracelular, excreção renal como HCO₃⁻ e excreção respiratória como CO₂." loading="lazy">
+        <div class="legenda"><span class="label">03 — Mapa Farmacológico</span><br>Absorvido no intestino delgado em 30–60 min, distribuído no LEC. Excretado por duas vias: rim (HCO₃⁻) em horas, pulmão (CO₂) em segundos.</div>
+      </div>
+      <div class="figura-item">
+        <img src="../../assets/moleculas/bicarbonato-de-sodio/gpt/bicarbonato-de-sodio-04-interface-biofisica-gpt.png" alt="Mapa conceitual biofísico: pH → ΔpH → fluxo de protões → ATP-sintase a 9.000 RPM. CO₂ como gasotransmissor. Sem CISS, sem cromóforo — ferramenta de terreno." loading="lazy">
+        <div class="legenda"><span class="label">04 — Interface Biofísica</span><br>Não acende o motor — preserva o gradiente que o faz girar. Ferramenta de segunda ordem: remove o obstáculo ácido para que luz, água e campo magnético operem.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Biofísica -->
+  <section id="biofisica">
+    <h2>Biofísica</h2>
+    <p class="section-lead">O bicarbonato de sódio é uma ferramenta de <strong>segunda ordem</strong>: não transduz energia do ambiente, mas remove o obstáculo ácido que bloqueia os sistemas de primeira ordem.</p>
+    <div class="axis-grid">
+      <div class="axis-item">
+        <div class="axis-num">01</div>
+        <h4>Classificação</h4>
+        <p>SEGUNDA ORDEM. Tampão termodinâmico bottom-up. Remove excesso de H⁺ que contrai a EZ water, reduz a pmf e bloqueia a ATP-sintase.</p>
+        <span class="axis-val">ordem II</span>
+      </div>
+      <div class="axis-item">
+        <div class="axis-num">02</div>
+        <h4>Arquitectura</h4>
+        <p>HCO₃⁻ planar trigonal (C₂ᵥ). Sem sistema π aromático. Sem cromóforo UV/Vis. Antena vibracional IR (~1630 cm⁻¹). Dipolo permanente em solução.</p>
+        <span class="axis-val">aquiral</span>
+      </div>
+      <div class="axis-item">
+        <div class="axis-num">03</div>
+        <h4>Mecanismo Primário</h4>
+        <p>HCO₃⁻ + H⁺ ⇌ H₂CO₃ ⇌ CO₂ + H₂O. Tampão extracelular primário. CO₂ como gasotransmissor permeável a membranas lipídicas.</p>
+        <span class="axis-val">pKa 6,35</span>
+      </div>
+      <div class="axis-item">
+        <div class="axis-num">04</div>
+        <h4>Interface Enzimática</h4>
+        <p>Anidrase carbónica (CA I/II/IV/V). Catalisa CO₂ + H₂O ⇌ HCO₃⁻ + H⁺ em milissegundos. CA VA/VB mitocondrial alimenta o gradiente de protões.</p>
+        <span class="axis-val">CA</span>
+      </div>
+      <div class="axis-item">
+        <div class="axis-num">05</div>
+        <h4>ATP-sintase</h4>
+        <p>Modulador indireto da pmf. Restaura ΔΨ e ΔpH em acidose. CO₂ → CA mitocondrial → H⁺ na matriz → alimenta o nanomotor a 9.000 RPM.</p>
+        <span class="axis-val">pmf</span>
+      </div>
+      <div class="axis-item">
+        <div class="axis-num">06</div>
+        <h4>Água EZ</h4>
+        <p>Ânion kosmotrópico. Protege a zona de exclusão (k≈160) ao remover H⁺. Ambiente dielétrico necessário para CISS, melanina e ATP-sintase.</p>
+        <span class="axis-val">k≈160</span>
+      </div>
+      <div class="axis-item">
+        <div class="axis-num">07</div>
+        <h4>POMC / Melanina</h4>
+        <p>Efeito indireto permissivo. pH melanossomal (4,5–5,5) regula tirosinase. Bicarbonato estabiliza o pH sistémico para a cascata melanocortina operar.</p>
+        <span class="axis-val">indirecto</span>
+      </div>
+      <div class="axis-item">
+        <div class="axis-num">08</div>
+        <h4>CISS</h4>
+        <p>Sem CISS direto (HCO₃⁻ é aquiral e sem sistema π). Preserva as condições dielétricas (k≈160) para o CISS dos biopolímeros quirais operar.</p>
+        <span class="axis-val">suporte</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bioquímica -->
+  <section id="bioquimica">
+    <h2>Bioquímica Clássica</h2>
+    <p class="section-lead">Farmacologia, fisiologia e mecanismos conforme a literatura convencional.</p>
+    <div class="bioquimica-panels">
+      <div class="bioquimica-panel">
+        <h3>Farmacocinética</h3>
+        <dl>
+          <dt>Absorção</dt>
+          <dd>Oral: dissociação imediata no TGI. Reação com HCl gástrico produz CO₂ (eructação). HCO₃⁻ não neutralizado absorvido no duodeno. Pico plasmático em 30–60 min.</dd>
+          <dt>Distribuição</dt>
+          <dd>Primariamente no líquido extracelular (LEC, ~14 L em adulto 70 kg). Penetração intracelular limitada para HCO₃⁻; CO₂ difunde livremente.</dd>
+          <dt>Metabolização</dt>
+          <dd>Não sofre metabolismo hepático de fase I/II. A "biotransformação" é puramente físico-química: dissociação iónica, tamponamento, reação com H⁺.</dd>
+          <dt>Excreção</dt>
+          <dd>Dupla via: <strong>renal</strong> (HCO₃⁻ filtrado, reabsorvido ou excretado; limiar ~24–26 mEq/L) e <strong>respiratória</strong> (CO₂ exalado; resposta em segundos).</dd>
+        </dl>
+      </div>
+      <div class="bioquimica-panel">
+        <h3>Farmacodinâmica</h3>
+        <dl>
+          <dt>Tampão plasmático</dt>
+          <dd>Sistema CO₂/HCO₃⁻ (Henderson-Hasselbalch: pH = 6,1 + log([HCO₃⁻] / 0,0307×PaCO₂)). Valores normais: pH 7,40 | HCO₃⁻ 24 mEq/L | PaCO₂ 40 mmHg.</dd>
+          <dt>Anidrase carbónica</dt>
+          <dd>CA I/II eritrocitária, CA II/IV renal, CA VA/VB mitocondrial. Inibidores (acetazolamida) produzem acidose metabólica — mecanismo inverso.</dd>
+          <dt>Efeito Bohr</dt>
+          <dd>Alcalinização reduz liberação periférica de O₂ (curva Hb-O₂ desloca à esquerda). Relevante em acidose grave tratada agressivamente.</dd>
+          <dt>Indicações clássicas</dt>
+          <dd>Acidose metabólica grave (IV), DRC (oral), intoxicação por salicilatos/ADT, alcalinização urinária (nefrolitíase, MTX), tampão de hemodiálise.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- Janela -->
+  <section id="janela">
+    <h2>Janela de Intervenção</h2>
+    <p class="section-lead">O bicarbonato não tem dose nem ciclo definidos nesta ficha — é uma ferramenta contextual. Eis o terreno, a sequência e os limites.</p>
+    <div class="janela-grid">
+      <div class="janela-card">
+        <h3>Terreno</h3>
+        <ul>
+          <li>Latitudes altas (>35°N/S) com inverno prolongado</li>
+          <li>Zonas de campo magnético fraco (Anomalia do Atlântico Sul)</li>
+          <li>Ambientes de nnEMF intenso (5G, WiFi, LED azul)</li>
+          <li>Metabolismo de alta intensidade sem recuperação adequada</li>
+          <li>Transição metabolismo Carbose → Cetose</li>
+          <li>Acidose crónica de baixo grau por disfunção mitocondrial</li>
+        </ul>
+      </div>
+      <div class="janela-card">
+        <h3>Sequência</h3>
+        <ul>
+          <li><strong>Primeiro:</strong> exposição solar (UV-A → POMC → melanina)</li>
+          <li><strong>Segundo:</strong> aterramento (campo magnético, electrões da Terra)</li>
+          <li><strong>Terceiro:</strong> água estruturada (EZ water, k≈160)</li>
+          <li><strong>Quarto:</strong> bicarbonato (remove obstáculo ácido)</li>
+          <li>Janela circadiana: pós-solar matinal (8h–12h), após ativação POMC</li>
+          <li>NUNCA antes da luz solar — o gradiente ácido matinal é fisiológico</li>
+        </ul>
+      </div>
+      <div class="janela-card">
+        <h3>Limites</h3>
+        <ul>
+          <li>Não substitui sistemas de primeira ordem (sol, água, campo)</li>
+          <li>Risco de vasoconstrição cerebral por alcalose excessiva</li>
+          <li>Uso crónico sem monitorização contraindicado</li>
+          <li>Não usar em alcalose respiratória ou metabólica preexistente</li>
+          <li>Atenção à carga de sódio em hipertensos e cardíacos</li>
+          <li>Efeito rebote ácido com uso frequente como antiácido</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Evidência -->
+  <section id="evidencia">
+    <h2>Evidência</h2>
+    <p class="section-lead">Navegação editorial pela qualidade e maturidade da evidência.</p>
+    <div class="evidencia-grid">
+      <div class="evidencia-card verde">
+        <span class="badge badge-verde">SÓLIDA</span>
+        <h3>Acidose metabólica grave (IV)</h3>
+        <p>Primeira linha em acidose metabólica não-lática. Corrige déficit de HCO₃⁻ com mecanismo racional e bem documentado. Consenso clínico robusto.</p>
+      </div>
+      <div class="evidencia-card verde">
+        <span class="badge badge-verde">SÓLIDA</span>
+        <h3>Intoxicação por salicilatos / ADT</h3>
+        <p>Aprisionamento iónico (salicilatos) e reversão de bloqueio de canal de Na⁺ (ADT). Indicações bem estabelecidas em toxicologia de emergência.</p>
+      </div>
+      <div class="evidencia-card ciano">
+        <span class="badge badge-ciano">MISTA</span>
+        <h3>DRC com acidose metabólica</h3>
+        <p>Suplementação oral (1–3 g/dia) demonstrou retardar progressão da DRC (de Brito-Ashurst 2009, Mahajan 2010). Evidência crescente mas não universal.</p>
+      </div>
+      <div class="evidencia-card ciano">
+        <span class="badge badge-ciano">MISTA</span>
+        <h3>Alcalinização urinária</h3>
+        <p>Protocolo padrão para nefrolitíase por ácido úrico e MTX. Evidência de benefício do NaHCO₃ vs. solução salina em rabdomiólise é moderada.</p>
+      </div>
+      <div class="evidencia-card amber">
+        <span class="badge badge-amber">CONTROVERSO</span>
+        <h3>DKA (cetoacidose diabética)</h3>
+        <p>Não recomendado rotineiramente (ADA, ISPAD). Insulina corrige a causa. NaHCO₃ pode piorar hipocalemia e mascarar gravidade. Apenas em pH &lt; 6,9 com instabilidade.</p>
+      </div>
+      <div class="evidencia-card red">
+        <span class="badge badge-red">FRACA</span>
+        <h3>Acidose lática</h3>
+        <p>Evidência de que NaHCO₃ melhora desfechos na acidose lática tipo A é fraca. Pode piorar prognóstico ao mascarar a gravidade. Uso apenas como ponte em UCI.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fontes -->
+  <section id="fontes">
+    <h2>Fontes</h2>
+    <p class="section-lead">Esta ficha é sintetizada a partir de três monografias — os documentos-fonte completos.</p>
+    <div class="fontes-grid">
+      <div class="fonte-card">
+        <span class="fonte-tipo">Biofísica Pura</span>
+        <h3>Biofísica de Bicarbonato de Sódio — Framework Dr. Jack Kruse</h3>
+        <p>Análise independente de primeiros princípios. Origem geológica, arquitectura molecular, mecanismo biofísico, água EZ, CISS, ATP-sintase, cronologia BigHarma.</p>
+        <p class="fonte-meta">34.9 KB · 2026-06-28 · CPC 84</p>
+      </div>
+      <div class="fonte-card">
+        <span class="fonte-tipo">Referenciada</span>
+        <h3>Biofísica de Bicarbonato de Sódio — Análise Referenciada</h3>
+        <p>Comparação com molécula-âncora (doxiciclina/tetraciclina). Tabela comparativa completa. Implicações geográficas e circadianas. Referências bibliográficas.</p>
+        <p class="fonte-meta">33.5 KB · 2026-06-28 · CPC 84</p>
+      </div>
+      <div class="fonte-card">
+        <span class="fonte-tipo">Clássica</span>
+        <h3>Análise Clássica — Bicarbonato de Sódio</h3>
+        <p>Monografia farmacológica convencional: formas, conversões, absorção, distribuição, Henderson-Hasselbalch, anidrase carbónica, usos aprovados, riscos, interacções.</p>
+        <p class="fonte-meta">27.0 KB · 2026-06-28 · Raiam</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guardrail Final -->
+  <section class="guardrail-final">
+    <h2>⚠ Guardrail de Segurança</h2>
+    <div class="content">
+      <p><strong>Alcalose metabólica iatrogénica</strong> é o risco central do uso excessivo ou prolongado de bicarbonato de sódio. Consequências: hipoventilação compensatória, hipocalemia (arritmias), hipocalcemia funcional (tetania, parestesias, espasmo carpopedal).</p>
+      <p><strong>Sobrecarga de sódio:</strong> cada grama de NaHCO₃ contém 273 mg de Na⁺. Doses terapêuticas (3 g/dia) adicionam ~820 mg de sódio — 35% acima da ingestão diária recomendada. Risco de descompensação em ICC, HAS não controlada, cirrose com ascite, síndrome nefrótica.</p>
+      <p><strong>Contraindicações absolutas:</strong> alcalose respiratória, alcalose metabólica preexistente, hipocalemia não corrigida, ICC descompensada.</p>
+      <p><strong>Interações graves:</strong> incompatível com sais de cálcio (precipitação CaCO₃ — risco de embolia), catecolaminas, insulina. Reduz absorção de tetraciclinas, fluoroquinolonas, azólicos, ferro. Aumenta excreção de lítio e salicilatos. Potencializa anfetaminas.</p>
+      <p><strong>Uso IV:</strong> exclusivamente hospitalar, com acesso venoso calibroso, monitorização gasométrica e electrolítica contínua. Risco de necrose por extravasamento.</p>
+      <p><strong>Uso doméstico:</strong> uso oral ocasional como antiácido é de baixo risco em adultos saudáveis. Uso crónico sem monitorização é contraindicado. Não automedicar para acidose clínica.</p>
+      <p><em>Consulte profissional de saúde habilitado antes de qualquer uso terapêutico continuado. Esta ficha é material educativo, não prescrição médica.</em></p>
+    </div>
+  </section>
+</main>
+
+<footer class="container">
+  <p><span class="mono">pharmacopeia.info</span> — Biofísica Farmacológica</p>
+  <p>Ficha sintetizada a partir de três monografias (Biofísica Pura, Referenciada e Análise Clássica).</p>
+  <p>Bicarbonato de Sódio (NaHCO₃) · Classificação: <strong>SEGUNDA ORDEM</strong> · Tampão termodinâmico bottom-up</p>
+  <p style="margin-top:16px;font-size:0.75rem;color:var(--muted)"><em>Nenhuma parte deste conteúdo substitui avaliação clínica individualizada. A física não precisa de aprovação para funcionar, mas o corpo precisa de contexto.</em></p>
+</footer>
+
+<script>
+function toggleTheme(){
+  var d=document.documentElement;
+  var b=d.getAttribute('data-theme');
+  d.setAttribute('data-theme',b==='dark'?'light':'dark');
+  document.querySelector('.theme-toggle').textContent=b==='dark'?'☾ Tema':'☀ Tema';
+}
+// Smooth scroll for anchor links
+document.querySelectorAll('nav a').forEach(function(a){
+  a.addEventListener('click',function(e){
+    e.preventDefault();
+    var t=document.querySelector(this.getAttribute('href'));
+    if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bórax / Borato de Sódio — Pharmacopeia</title>
+<meta name="description" content="Ficha biofísica do Bórax / Borato de Sódio (Na₂B₄O₇·10H₂O). Estabilizador de infraestrutura dielétrica de segunda ordem. Quelante de diols vicinais, inibidor de DPP-IV, tampão alcalino — o potenciômetro do microambiente eletroquímico.">
+<script>/* anti-FOWT */document.documentElement.classList.add('js');(function(){var d=document.documentElement;d.style.setProperty('--fade-in','opacity 1');})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F7F4EE;
+  --ink: #1A1E1C;
+  --solar: #9A6B18;
+  --bio: #1E6E6A;
+  --mag: #4A3E9C;
+  --cyan: #0BC5EA;
+  --amber: #D97706;
+  --red: #DC2626;
+  --green: #16A34A;
+  --serif: 'Spectral', Georgia, serif;
+  --mono: 'Space Mono', 'Courier New', monospace;
+  --bg: var(--paper);
+  --fg: var(--ink);
+  --card: #EFECE6;
+  --border: #D8D4CC;
+  --muted: #6B7280;
+  --tag-bg: var(--solar);
+  --tag-fg: var(--paper);
+  --radius: 12px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+[data-theme="dark"] {
+  --paper: #121416;
+  --ink: #E8E6E3;
+  --solar: #D4A04A;
+  --bg: #0D0F10;
+  --fg: var(--ink);
+  --card: #1A1E20;
+  --border: #2A2E30;
+  --muted: #9CA3AF;
+  --tag-bg: var(--solar);
+  --tag-fg: #0D0F10;
+  --shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--serif);
+  background:var(--bg);
+  color:var(--fg);
+  line-height:1.7;
+  font-weight:300;
+  font-size:1.05rem;
+  opacity:0;
+  transition: opacity 0.5s ease;
+}
+html.js body{opacity:1}
+a{color:var(--bio);text-decoration:none;transition:color 0.2s}
+a:hover{color:var(--solar)}
+img{max-width:100%;height:auto;display:block}
+.container{max-width:1120px;margin:0 auto;padding:0 24px}
+/* header */
+header{
+  border-bottom:1px solid var(--border);
+  padding:16px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:12px;
+  background:var(--bg);
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+.brand{
+  font-family:var(--mono);
+  font-size:1rem;
+  font-weight:700;
+  color:var(--solar);
+  letter-spacing:0.05em;
+}
+.brand span{color:var(--fg)}
+nav{display:flex;gap:8px;flex-wrap:wrap}
+nav a{
+  font-family:var(--mono);
+  font-size:0.75rem;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  padding:6px 14px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  color:var(--muted);
+  transition:all 0.2s;
+}
+nav a:hover{
+  border-color:var(--solar);
+  color:var(--solar);
+  background:rgba(154,107,24,0.08);
+}
+.theme-toggle{
+  background:none;
+  border:1px solid var(--border);
+  border-radius:999px;
+  color:var(--muted);
+  padding:6px 14px;
+  font-family:var(--mono);
+  font-size:0.7rem;
+  cursor:pointer;
+  transition:all 0.2s;
+}
+.theme-toggle:hover{border-color:var(--solar);color:var(--solar)}
+/* hero */
+.hero{
+  padding:80px 0 60px;
+  text-align:center;
+  border-bottom:1px solid var(--border);
+}
+.kicker{
+  font-family:var(--mono);
+  font-size:0.75rem;
+  text-transform:uppercase;
+  letter-spacing:0.15em;
+  color:var(--solar);
+  margin-bottom:16px;
+}
+.hero h1{
+  font-size:clamp(2rem,5vw,3.2rem);
+  font-weight:700;
+  line-height:1.15;
+  margin-bottom:20px;
+  color:var(--fg);
+}
+.hero .order-tag{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:0.7rem;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  background:var(--tag-bg);
+  color:var(--tag-fg);
+  padding:4px 14px;
+  border-radius:999px;
+  margin-bottom:20px;
+}
+.hero .lead{
+  max-width:720px;
+  margin:0 auto;
+  font-size:1.1rem;
+  color:var(--muted);
+  font-style:italic;
+  line-height:1.8;
+}
+/* painel duplo */
+.painel-duplo{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:32px;
+  padding:60px 0;
+  border-bottom:1px solid var(--border);
+}
+.painel-card{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:32px;
+  border:1px solid var(--border);
+}
+.painel-card h2{
+  font-size:1rem;
+  font-family:var(--mono);
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  margin-bottom:16px;
+}
+.painel-card.tese h2{color:var(--bio)}
+.painel-card.guardrail h2{color:var(--amber)}
+.painel-card p{
+  font-size:0.95rem;
+  line-height:1.8;
+  color:var(--muted);
+}
+.painel-card ul{
+  font-size:0.9rem;
+  color:var(--muted);
+  padding-left:20px;
+  line-height:1.8;
+}
+/* summary grid */
+.summary-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  padding:60px 0;
+  border-bottom:1px solid var(--border);
+}
+.summary-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:24px;
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.summary-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.summary-card .icon{
+  font-size:1.5rem;
+  margin-bottom:8px;
+}
+.summary-card h3{
+  font-family:var(--mono);
+  font-size:0.8rem;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  color:var(--solar);
+  margin-bottom:8px;
+}
+.summary-card p{
+  font-size:0.88rem;
+  color:var(--muted);
+  line-height:1.7;
+}
+/* figuras */
+#figuras{
+  padding:60px 0;
+  border-bottom:1px solid var(--border);
+}
+#figuras h2{
+  font-family:var(--mono);
+  font-size:0.8rem;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  color:var(--solar);
+  margin-bottom:8px;
+  text-align:center;
+}
+#figuras .subtitle{
+  text-align:center;
+  color:var(--muted);
+  font-size:0.95rem;
+  margin-bottom:40px;
+}
+.figuras-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+}
+.figura-item{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  overflow:hidden;
+}
+.figura-item img{
+  width:100%;
+  aspect-ratio:16/10;
+  object-fit:cover;
+}
+.figura-item .legenda{
+  padding:16px 20px;
+  font-size:0.82rem;
+  color:var(--muted);
+  line-height:1.6;
+  font-style:italic;
+}
+.figura-item .label{
+  font-family:var(--mono);
+  font-size:0.65rem;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  color:var(--solar);
+}
+/* biofisica section */
+#biofisica{
+  padding:60px 0;
+  border-bottom:1px solid var(--border);
+}
+#biofisica h2{
+  font-family:var(--mono);
+  font-size:0.8rem;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  color:var(--solar);
+  margin-bottom:8px;
+}
+#biofisica .section-lead{
+  color:var(--muted);
+  font-size:1rem;
+  margin-bottom:40px;
+  max-width:700px;
+}
+.axis-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+.axis-item{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:20px;
+}
+.axis-item .axis-num{
+  font-family:var(--mono);
+  font-size:0.7rem;
+  color:var(--muted);
+  margin-bottom:4px;
+}
+.axis-item h4{
+  font-family:var(--mono);
+  font-size:0.75rem;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+  color:var(--solar);
+  margin-bottom:8px;
+}
+.axis-item p{
+  font-size:0.82rem;
+  color:var(--muted);
+  line-height:1.6;
+}
+.axis-item .axis-val{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:0.7rem;
+  color:var(--bio);
+  margin-top:8px;
+  padding:2px 8px;
+  border:1px solid var(--bio);
+  border-radius:4px;
+}
+/* bioquimica */
+#bioquimica{
+  padding:60px 0;
+  border-bottom:1px solid var(--border);
+}
+#bioquimica h2{
+  font-family:var(--mono);
+  font-size:0.8rem;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  color:var(--solar);
+  margin-bottom:8px;
+}
+#bioquimica .section-lead{
+  color:var(--muted);
+  font-size:1rem;
+  margin-bottom:40px;
+  max-width:700px;
+}
+.bioquimica-panels{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+}
+.bioquimica-panel{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:28px;
+}
+.bioquimica-panel h3{
+  font-family:var(--mono);
+  font-size:0.8rem;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  color:var(--bio);
+  margin-bottom:16px;
+  padding-bottom:8px;
+  border-bottom:1px solid var(--border);
+}
+.bioquimica-panel dl dt{
+  font-family:var(--mono);
+  font-size:0.75rem;
+  color:var(--solar);
+  margin-top:12px;
+}
+.bioquimica-panel dl dd{
+  font-size:0.88rem;
+  color:var(--muted);
+  line-height:1.6;
+  margin-left:0;
+}
+/* janela */
+#janela{
+  padding:60px 0;
+  border-bottom:1px solid var(--border);
+}
+#janela h2{
+  font-family:var(--mono);
+  font-size:0.8rem;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  color:var(--solar);
+  margin-bottom:8px;
+}
+#janela .section-lead{
+  color:var(--muted);
+  font-size:1rem;
+  margin-bottom:40px;
+  max-width:700px;
+}
+.janela-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+.janela-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:24px;
+}
+.janela-card h3{
+  font-family:var(--mono);
+  font-size:0.75rem;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  color:var(--solar);
+  margin-bottom:12px;
+}
+.janela-card ul{
+  font-size:0.85rem;
+  color:var(--muted);
+  padding-left:16px;
+  line-height:1.8;
+}
+/* evidencia */
+#evidencia{
+  padding:60px 0;
+  border-bottom:1px solid var(--border);
+}
+#evidencia h2{
+  font-family:var(--mono);
+  font-size:0.8rem;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  color:var(--solar);
+  margin-bottom:8px;
+}
+#evidencia .section-lead{
+  color:var(--muted);
+  font-size:1rem;
+  margin-bottom:40px;
+  max-width:700px;
+}
+.evidencia-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+}
+.evidencia-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:24px;
+  border-left:4px solid var(--muted);
+}
+.evidencia-card.verde{border-left-color:var(--green)}
+.evidencia-card.ciano{border-left-color:var(--cyan)}
+.evidencia-card.amber{border-left-color:var(--amber)}
+.evidencia-card.red{border-left-color:var(--red)}
+.evidencia-card .badge{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:0.6rem;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  padding:2px 10px;
+  border-radius:999px;
+  margin-bottom:8px;
+}
+.badge-verde{background:var(--green);color:#fff}
+.badge-ciano{background:var(--cyan);color:#000}
+.badge-amber{background:var(--amber);color:#fff}
+.badge-red{background:var(--red);color:#fff}
+.evidencia-card h3{
+  font-family:var(--mono);
+  font-size:0.75rem;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+  color:var(--fg);
+  margin-bottom:8px;
+}
+.evidencia-card p{
+  font-size:0.85rem;
+  color:var(--muted);
+  line-height:1.7;
+}
+/* fontes */
+#fontes{
+  padding:60px 0;
+  border-bottom:1px solid var(--border);
+}
+#fontes h2{
+  font-family:var(--mono);
+  font-size:0.8rem;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  color:var(--solar);
+  margin-bottom:8px;
+}
+#fontes .section-lead{
+  color:var(--muted);
+  font-size:1rem;
+  margin-bottom:40px;
+  max-width:700px;
+}
+.fontes-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.fonte-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:24px;
+}
+.fonte-card .fonte-tipo{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:0.6rem;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  padding:2px 10px;
+  border-radius:999px;
+  margin-bottom:12px;
+  background:var(--bio);
+  color:#fff;
+}
+.fonte-card h3{
+  font-family:var(--mono);
+  font-size:0.75rem;
+  color:var(--fg);
+  margin-bottom:10px;
+}
+.fonte-card p{
+  font-size:0.82rem;
+  color:var(--muted);
+  line-height:1.6;
+  margin-bottom:12px;
+}
+.fonte-card .fonte-meta{
+  font-size:0.7rem;
+  font-family:var(--mono);
+  color:var(--solar);
+}
+/* guardrail final */
+.guardrail-final{
+  padding:60px 0;
+  border-bottom:1px solid var(--border);
+}
+.guardrail-final h2{
+  font-family:var(--mono);
+  font-size:0.8rem;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  color:var(--red);
+  margin-bottom:16px;
+}
+.guardrail-final .content{
+  background:var(--card);
+  border:1px solid var(--red);
+  border-radius:var(--radius);
+  padding:28px;
+}
+.guardrail-final p{
+  font-size:0.92rem;
+  color:var(--muted);
+  line-height:1.8;
+  margin-bottom:12px;
+}
+.guardrail-final ul{
+  font-size:0.88rem;
+  color:var(--muted);
+  padding-left:20px;
+  line-height:1.8;
+}
+/* footer */
+footer{
+  padding:40px 0;
+  text-align:center;
+}
+footer p{
+  font-size:0.82rem;
+  color:var(--muted);
+  line-height:1.8;
+}
+footer .mono{
+  font-family:var(--mono);
+  font-size:0.7rem;
+  color:var(--solar);
+}
+/* responsivo */
+@media(max-width:900px){
+  .painel-duplo,.bioquimica-panels{grid-template-columns:1fr}
+  .axis-grid{grid-template-columns:repeat(2,1fr)}
+  .janela-grid,.fontes-grid{grid-template-columns:1fr}
+  .evidencia-grid{grid-template-columns:1fr}
+}
+@media(max-width:680px){
+  .summary-grid{grid-template-columns:1fr}
+  .figuras-grid{grid-template-columns:1fr}
+  .axis-grid{grid-template-columns:1fr}
+  header{flex-direction:column;align-items:stretch}
+  nav{justify-content:center}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">&#969; <span>pharmacopeia</span></div>
+  <nav>
+    <a href="#figuras">Figuras</a>
+    <a href="#biofisica">Biofísica</a>
+    <a href="#bioquimica">Bioquímica</a>
+    <a href="#evidencia">Evidência</a>
+    <a href="#fontes">Fontes</a>
+  </nav>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">☀ Tema</button>
+</header>
+
+<main class="container">
+  <!-- Hero -->
+  <section class="hero">
+    <p class="kicker">Ficha · molécula</p>
+    <span class="order-tag">SEGUNDA ORDEM — ESTABILIZADOR DE INFRAESTRUTURA DIELÉTRICA</span>
+    <h1>Bórax / Borato de Sódio <br><span style="font-size:0.6em;color:var(--muted)">Na₂B₄O₇·10H₂O</span></h1>
+    <p class="lead">A bula vê um anti-séptico tópico e inseticida. A Pharmacopeia lê um estabilizador de infraestrutura dielétrica — o boro como elemento traço que preserva a matriz de água EZ e prolonga α-MSH via inibição de DPP-IV.</p>
+  </section>
+
+  <!-- Painel duplo -->
+  <section class="painel-duplo">
+    <div class="painel-card tese">
+      <h2>Tese Pública</h2>
+      <p>O bórax tem 50 milhões de anos. Formou-se em lagos evaporativos alcalinos sob pressão solar e geomagnética — Death Valley, Atacama, Turquia, Tibete — antes de existir farmácia, patente ou ANVISA. É um sal mineral inorgânico de boro, o quinto elemento da tabela periódica, na fronteira entre condutores e isolantes. A indústria farmacêutica não patenteia minerais de 50 milhões de anos. Em vez disso, suprimiu o bórax via decisão regulatória de 1906 (Harvey Wiley, "Poison Squads") que fixou o frame de "tóxico" para sempre — e nunca permitiu que o elemento traço entrasse no vocabulário clínico. O bórax não é um remédio: é um modulador de microambiente eletroquímico. Quelata diols vicinais (ribose, NAD⁺, catecóis, flavinas), inibe DPP-IV (prolongando α-MSH), e tampona o pH para o limiar alcalino onde a água prefere organização sobre desordem. Mantém as condições de base para que luz, água, campo magnético e melanina — as ferramentas de primeira ordem — possam operar.</p>
+    </div>
+    <div class="painel-card guardrail">
+      <h2>Guardrail</h2>
+      <p><strong>NÃO usar internamente.</strong> Bórax tem toxicidade sistémica documentada em doses supraterapêuticas. LD50 oral ~2,6 g/kg (ratos); dose tóxica aguda humana: 5-10 g.</p>
+      <ul>
+        <li>Contraindicação absoluta em <strong>gestação e lactação</strong> (atravessa placenta, teratogénico em modelos animais)</li>
+        <li>Contraindicação em <strong>crianças</strong> (risco elevado de toxicidade)</li>
+        <li>Contraindicação em <strong>insuficiência renal</strong> (clearance dependente de filtração glomerular)</li>
+        <li>Uso tópico em feridas extensas ou queimaduras — absorção percutânea aumentada</li>
+        <li>Interação potencial com estrogénios exógenos, anticoagulantes, tetraciclinas</li>
+        <li>Nenhuma dose oral segura estabelecida por farmacopeia oficial (USP, FB, F. Europeia)</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Summary cards -->
+  <section class="summary-grid">
+    <div class="summary-card">
+      <div class="icon">🧂</div>
+      <h3>Molécula</h3>
+      <p>Sal inorgânico Na₂B₄O₇·10H₂O, PM 381,37. Em solução: equilíbrio B(OH)₃ trigonal sp² e B(OH)₄⁻ tetraédrico sp³. Sem sistema π, sem cromóforo, sem CISS, sem quiralidade intrínseca.</p>
+    </div>
+    <div class="summary-card">
+      <div class="icon">🔗</div>
+      <h3>Quelante</h3>
+      <p>Forma ésteres covalentes reversíveis com diols vicinais (1,2-diols e 1,3-diols). Alvos: ribose (NAD⁺, ATP), riboflavina, catecóis (DOPA, dopamina), açúcares de membrana.</p>
+    </div>
+    <div class="summary-card">
+      <div class="icon">🧬</div>
+      <h3>DPP-IV</h3>
+      <p>Inibe a dipeptidil peptidase IV (CD26), prolongando a meia-vida de α-MSH circulante → mais sinalização MC1R → mais eumelanina. Mecanismo indireto de amplificação da cascata POMC.</p>
+    </div>
+    <div class="summary-card">
+      <div class="icon">💧</div>
+      <h3>Água EZ</h3>
+      <p>Tampão alcalino (pKa 9,24) que estabiliza pH → favorece formação de zona de exclusão (EZ, k≈160). O boro tetraédrico organiza moléculas de água em geometria de baixa entropia.</p>
+    </div>
+    <div class="summary-card">
+      <div class="icon">🏛️</div>
+      <h3>BigHarma</h3>
+      <p>Domínio público mineral. Nunca patenteável. Suprimido desde 1906 — decisão regulatória que baniu o bórax como aditivo alimentar e fixou o frame de toxicidade para sempre. Sem R&D, sem ensaios.</p>
+    </div>
+    <div class="summary-card">
+      <div class="icon">🌍</div>
+      <h3>Geografia</h3>
+      <p>Máximo em zonas de campo fraco (Anomalia do Atlântico Sul, ~23-26 µT) e solos lixiviados. Compensa défice de boro em dietas processadas. Populações da ASA podem beneficiar mais.</p>
+    </div>
+  </section>
+
+  <!-- Figuras -->
+  <section id="figuras">
+    <h2>Figuras</h2>
+    <p class="subtitle">Arquitectura molecular, mecanismo, farmacologia e interface biofísica</p>
+    <div class="figuras-grid">
+      <div class="figura-item">
+        <img src="../../assets/moleculas/borax-borato-de-sodio/gpt/borax-borato-de-sodio-01-molecula-gpt.png" alt="Estrutura iónica do tetraborato de sódio decaidratado em solução aquosa. Representação das espécies B(OH)₄⁻ tetraédrico e B(OH)₃ trigonal planar. Destaque para a ausência de anéis aromáticos, sistema π conjugado e cromóforo UV/Vis." loading="lazy">
+        <div class="legenda"><span class="label">01 — Molécula</span><br>A molécula mineral mais simples da farmacopeia. Sem anéis aromáticos, sem cromóforo, sem sistema π — o bórax não capta luz, mas modula o ambiente dielétrico onde a luz atua.</div>
+      </div>
+      <div class="figura-item">
+        <img src="../../assets/moleculas/borax-borato-de-sodio/gpt/borax-borato-de-sodio-02-mecanismo-gpt.png" alt="Diagrama de mecanismo bioquímico: formação de ésteres covalentes reversíveis entre o borato e grupos OH vicinais (ribose, frutose, DOPA). Inibição da enzima DPP-IV pelo boro, prolongando a meia-vida de α-MSH." loading="lazy">
+        <div class="legenda"><span class="label">02 — Mecanismo</span><br>O borato forma ligações covalentes reversíveis com diols vicinais — ribose do NAD⁺, frutose, catecóis da via melanogénica. Ao inibir DPP-IV, prolonga o sinal de α-MSH.</div>
+      </div>
+      <div class="figura-item">
+        <img src="../../assets/moleculas/borax-borato-de-sodio/gpt/borax-borato-de-sodio-03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico do bórax: absorção oral com biodisponibilidade >90%, distribuição óssea, excreção renal, atravessa barreira placentária. Painel de toxicidade com LD50, UL e contraindicações." loading="lazy">
+        <div class="legenda"><span class="label">03 — Mapa Farmacológico</span><br>Absorvido rapidamente pelo TGI, distribuído para ossos e dentes, excretado pelos rins. Alerta: atravessa placenta, contraindicado em gravidez, crianças e insuficiência renal.</div>
+      </div>
+      <div class="figura-item">
+        <img src="../../assets/moleculas/borax-borato-de-sodio/gpt/borax-borato-de-sodio-04-interface-biofisica-gpt.png" alt="Mapa conceitual biofísico integrando os mecanismos do bórax: tampão pH 9,2, estabilização de água EZ, quelação de cofatores, inibição DPP-IV, modulação do deutério e KIE." loading="lazy">
+        <div class="legenda"><span class="label">04 — Interface Biofísica</span><br>O bórax não é o motor da vida — é o estabilizador do ambiente onde os motores operam. Tampão alcalino, quelante de cofatores, inibidor de DPP-IV: a fiação elétrica de qualidade do edifício biológico.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Biofísica -->
+  <section id="biofisica">
+    <h2>Biofísica</h2>
+    <p class="section-lead">O bórax / borato de sódio é uma ferramenta de <strong>segunda ordem</strong>: não transduz energia do ambiente, mas remove obstáculos e estabiliza o microambiente para que os sistemas de primeira ordem operem.</p>
+    <div class="axis-grid">
+      <div class="axis-item">
+        <div class="axis-num">01</div>
+        <h4>Classificação</h4>
+        <p>SEGUNDA ORDEM. Estabilizador de microambiente eletroquímico. Não absorve luz, não gera CISS, não ativa POMC diretamente — modula o substrato para que ferramentas de primeira ordem operem.</p>
+        <span class="axis-val">ordem II</span>
+      </div>
+      <div class="axis-item">
+        <div class="axis-num">02</div>
+        <h4>Arquitectura</h4>
+        <p>Sal inorgânico Na₂B₄O₇·10H₂O. Ânion tetraborato com boro sp² trigonal planar + boro sp³ tetraédrico. Sem sistema π aromático. Sem cromóforo UV/Vis. Aquiral em solução.</p>
+        <span class="axis-val">aquiral</span>
+      </div>
+      <div class="axis-item">
+        <div class="axis-num">03</div>
+        <h4>Mecanismo Primário</h4>
+        <p>Ésteres borato-diol com OH vicinais (ribose, NAD⁺, flavinas, catecóis). B(OH)₃ atravessa membranas por difusão passiva. Tampão alcalino pKa 9,24 — B(OH)₃ ↔ B(OH)₄⁻.</p>
+        <span class="axis-val">quelante</span>
+      </div>
+      <div class="axis-item">
+        <div class="axis-num">04</div>
+        <h4>DPP-IV / α-MSH</h4>
+        <p>Inibe dipeptidil peptidase IV (CD26). Prolonga meia-vida de α-MSH → sinalização MC1R sustentada → mais eumelanina. Amplificação indireta da cascata POMC.</p>
+        <span class="axis-val">DPP-IV</span>
+      </div>
+      <div class="axis-item">
+        <div class="axis-num">05</div>
+        <h4>ATP-sintase</h4>
+        <p>Modulador indireto via ambiente dielétrico. Eleva k local (EZ) → reduz deutério no canal F₀ → menor KIE → motor mitocondrial mais eficiente. Quelação de ADP/ribose + modulação NAD⁺/NADH.</p>
+        <span class="axis-val">pmf</span>
+      </div>
+      <div class="axis-item">
+        <div class="axis-num">06</div>
+        <h4>Água EZ</h4>
+        <p>Tampão alcalino protege zona de exclusão (k≈160). B(OH)₄⁻ tetraédrico organiza água circundante em geometria de baixa entropia. Ambiente dielétrico necessário para CISS e melanina.</p>
+        <span class="axis-val">k≈160</span>
+      </div>
+      <div class="axis-item">
+        <div class="axis-num">07</div>
+        <h4>POMC / Melanina</h4>
+        <p>Quela DOPA (catecol 1,2-diol) — interfere com tirosinase. Prolonga α-MSH via DPP-IV. Ativa NRF2 — pré-condicionamento redox para cascata melanocortina. Modula estrogénio/testosterona.</p>
+        <span class="axis-val">indirecto</span>
+      </div>
+      <div class="axis-item">
+        <div class="axis-num">08</div>
+        <h4>CISS</h4>
+        <p>Sem CISS direto (aquiral, sem sistema π). Modula ambiente dielétrico (EZ, k≈160) para filtros CISS endógenos (melanina, APOE, colagénio) operarem com menor resistência óhmica.</p>
+        <span class="axis-val">suporte</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bioquímica -->
+  <section id="bioquimica">
+    <h2>Bioquímica Clássica</h2>
+    <p class="section-lead">Farmacologia, fisiologia e mecanismos conforme a literatura convencional.</p>
+    <div class="bioquimica-panels">
+      <div class="bioquimica-panel">
+        <h3>Farmacocinética</h3>
+        <dl>
+          <dt>Absorção</dt>
+          <dd>Oral: biodisponibilidade >90% em humanos. Ácido bórico (espécie predominante em pH fisiológico) atravessa membranas por difusão passiva. Absorção percutânea relevante em pele lesada ou mucosas.</dd>
+          <dt>Distribuição</dt>
+          <dd>Amplamente distribuída. Concentração mais elevada em ossos, dentes e cabelo. Atravessa barreira placentária e é secretado no leite materno. Baixa ligação a proteínas plasmáticas.</dd>
+          <dt>Metabolização</dt>
+          <dd>Não sofre metabolismo hepático de fase I/II. O boro é excretado essencialmente inalterado. A "biotransformação" é puramente físico-química: dissociação iónica, formação de ésteres, tamponamento.</dd>
+          <dt>Excreção</dt>
+          <dd>Principalmente <strong>renal</strong> (filtração glomerular, excreção inalterada). Meia-vida de eliminação: ~21 horas em adultos com função renal normal. Acumula em IRC.</dd>
+        </dl>
+      </div>
+      <div class="bioquimica-panel">
+        <h3>Farmacodinâmica</h3>
+        <dl>
+          <dt>Ésteres boronato</dt>
+          <dd>Formação de ligações covalentes reversíveis com 1,2-diols e 1,3-diols. Alvos: ribose (NAD⁺, NADH, ATP), riboflavina, açúcares de membrana, catecóis (DOPA, dopamina, tirosina).</dd>
+          <dt>Tampão borato</dt>
+          <dd>Sistema B(OH)₃ ↔ B(OH)₄⁻, pKa 9,24. Em pH fisiológico (7,4), espécie predominante é ácido bórico neutro. Efeito tampão em concentrações farmacológicas topicalizadas.</dd>
+          <dt>Inibição enzimática</dt>
+          <dd>Inibe DPP-IV (CD26) — prolonga α-MSH, GLP-1 e outros peptídeos. Inibe NF-κB e COX-2 (anti-inflamatório fraco). Inibe tirosinase por quelação de cobre.</dd>
+          <dt>Modulação hormonal</dt>
+          <dd>Eleva estradiol sérico e testosterona biodisponível. Aumenta meia-vida de calcidiol (vitamina D). Ativa NRF2 — fator mestre da resposta antioxidante.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- Janela -->
+  <section id="janela">
+    <h2>Janela de Intervenção</h2>
+    <p class="section-lead">O bórax não tem dose nem ciclo definidos nesta ficha — é uma ferramenta contextual de segunda ordem. Eis o terreno, a sequência e os limites. NÃO há recomendação de uso oral.</p>
+    <div class="janela-grid">
+      <div class="janela-card">
+        <h3>Terreno</h3>
+        <ul>
+          <li>Solos depletados em boro (lixiviação por chuvas ácidas industriais, monocultura)</li>
+          <li>Dieta processada sem origem vegetal rastreável (boro < 1 mg/dia)</li>
+          <li>Zonas de campo magnético fraco (Anomalia do Atlântico Sul, ~23-26 µT)</li>
+          <li>Inflamação articular crónica com pH sinovial anormalmente baixo</li>
+          <li>Perimenopausa / pós-menopausa — metabolismo de cálcio pressionado</li>
+          <li>Zonas de alta pluviosidade e altitude elevada</li>
+        </ul>
+      </div>
+      <div class="janela-card">
+        <h3>Sequência</h3>
+        <ul>
+          <li><strong>Primeiro:</strong> exposição solar (UV-A → POMC → melanina)</li>
+          <li><strong>Segundo:</strong> aterramento (campo magnético, eletrões da Terra)</li>
+          <li><strong>Terceiro:</strong> água estruturada de qualidade (EZ water, k≈160)</li>
+          <li><strong>Quarto:</strong> boro dietético (vegetais, nozes, frutas, leguminosas)</li>
+          <li>O bórax como suplemento é a última opção — apenas sob supervisão qualificada</li>
+          <li>NUNCA antes de estabelecer exposição solar e hidratação adequadas</li>
+        </ul>
+      </div>
+      <div class="janela-card">
+        <h3>Limites</h3>
+        <ul>
+          <li>Não substitui sistemas de primeira ordem (sol, água, campo magnético)</li>
+          <li>Risco de toxicidade aguda: 5-10 g de bórax em dose única</li>
+          <li>UL (EFSA): 10 mg/dia de boro; UL (FDA): 20 mg/dia de boro</li>
+          <li>Não usar em gestação, lactação, crianças, IRC</li>
+          <li>Sem ensaios clínicos fase III para qualquer indicação oral</li>
+          <li>Nenhuma farmacopeia oficial aprova uso oral de bórax</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Evidência -->
+  <section id="evidencia">
+    <h2>Evidência</h2>
+    <p class="section-lead">Navegação editorial pela qualidade e maturidade da evidência sobre o boro elementar.</p>
+    <div class="evidencia-grid">
+      <div class="evidencia-card verde">
+        <span class="badge badge-verde">SÓLIDA</span>
+        <h3>Candidíase vaginal (ácido bórico tópico)</h3>
+        <p>600 mg/dia intravaginal para candidíase recorrente/refratária, especialmente espécies não-albicans. ACOG e CDC reconhecem como alternativa de segunda linha. Evidência clínica consolidada.</p>
+      </div>
+      <div class="evidencia-card ciano">
+        <span class="badge badge-ciano">MISTA</span>
+        <h3>Metabolismo ósseo e hormonal</h3>
+        <p>Nielsen (1987-1994): suplementação com 3 mg/dia de boro reduz perda de cálcio urinário e eleva estradiol/testosterona em mulheres pós-menopausa. Estudos pequenos, sem replicação independente robusta.</p>
+      </div>
+      <div class="evidencia-card ciano">
+        <span class="badge badge-ciano">MISTA</span>
+        <h3>Inibição DPP-IV in vitro</h3>
+        <p>Smoum et al. (2010), Ciani et al. (2019): compostos de boro inibem DPP-IV e prolil oligopeptidase. Evidência in vitro forte, mas sem dados clínicos de extensão de meia-vida de α-MSH em humanos.</p>
+      </div>
+      <div class="evidencia-card amber">
+        <span class="badge badge-amber">CONTROVERSO</span>
+        <h3>Saúde articular (boro oral)</h3>
+        <p>Rex Newnham (1990s): observação epidemiológica de que artrite é rara em solos ricos em boro. Ensaio clínico pequeno mostrou melhora sintomática com suplementação. Não replicado, sem financiamento.</p>
+      </div>
+      <div class="evidencia-card amber">
+        <span class="badge badge-amber">CONTROVERSO</span>
+        <h3>Modulação de NF-κB e COX-2</h3>
+        <p>Estudos in vitro documentam inibição de vias inflamatórias por boro. Extrapolação clínica limitada. Dados de modelos animais existem mas sem tradução para humanos em ensaios controlados.</p>
+      </div>
+      <div class="evidencia-card red">
+        <span class="badge badge-red">FRACA</span>
+        <h3>Suplementação oral de bórax</h3>
+        <p>Nenhuma aprovação regulatória para uso oral. Sem ensaios fase III. Evidência de eficácia para qualquer indicação oral é insuficiente. Risco de toxicidade real em autoadministração. Não recomendado.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fontes -->
+  <section id="fontes">
+    <h2>Fontes</h2>
+    <p class="section-lead">Esta ficha é sintetizada a partir de três monografias — os documentos-fonte completos.</p>
+    <div class="fontes-grid">
+      <div class="fonte-card">
+        <span class="fonte-tipo">Biofísica Pura</span>
+        <h3>Biofísica de Bórax / Borato de Sódio — Framework Dr. Jack Kruse</h3>
+        <p>Análise independente de primeiros princípios. Origem geológica, arquitectura molecular, mecanismo biofísico, água EZ, CISS, ATP-sintase, cronologia BigHarma. Classificação de ordem.</p>
+        <p class="fonte-meta">38.6 KB · 2026-06-28 · CPC 84</p>
+      </div>
+      <div class="fonte-card">
+        <span class="fonte-tipo">Referenciada</span>
+        <h3>Biofísica de Bórax / Borato de Sódio — Análise Referenciada</h3>
+        <p>Comparação com molécula-âncora (doxiciclina/tetraciclina). Tabela comparativa completa. Implicações geográficas e circadianas. Inibição DPP-IV, KIE, deutério, BigHarma. 20+ referências.</p>
+        <p class="fonte-meta">34.3 KB · 2026-06-28 · CPC 84</p>
+      </div>
+      <div class="fonte-card">
+        <span class="fonte-tipo">Clássica</span>
+        <h3>Análise Clássica — Bórax / Borato de Sódio</h3>
+        <p>Monografia farmacológica convencional: formas, conversões, absorção, distribuição, mecanismos estabelecidos, usos aprovados (tópico), riscos, contraindicações, interações, referências rastreáveis.</p>
+        <p class="fonte-meta">17.5 KB · 2026-06-28 · Raiam</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guardrail Final -->
+  <section class="guardrail-final">
+    <h2>⚠ Guardrail de Segurança</h2>
+    <div class="content">
+      <p><strong>Bórax NÃO é suplemento oral seguro.</strong> A toxicidade do boro é dose-dependente, com janela terapêutica estreita e sem ensaios clínicos de fase III para qualquer indicação oral. O LD50 oral em ratos é ~2,6 g/kg; em humanos adultos, doses superiores a 5-10 g de bórax em ingestão única são consideradas tóxicas, com risco de nefrotoxicidade, convulsões e colapso circulatório.</p>
+      <p><strong>Contraindicações absolutas:</strong> gestação (teratogénico em modelos animais, atravessa placenta), lactação (secretado no leite), crianças menores de 12 anos (toxicidade aguda documentada fatal em doses >1-3 g), insuficiência renal (clearance dependente de filtração glomerular, acumula com toxicidade progressiva).</p>
+      <p><strong>Uso tópico controlado:</strong> aplicação em mucosas íntegras em concentrações de 1-3% (como ácido bórico farmacêutico grau USP) tem histórico de segurança documentada para candidíase vaginal refratária. Não é equivalente ao bórax industrial ou doméstico.</p>
+      <p><strong>Interações:</strong> potencial elevação de estradiol (uso com terapia hormonal ou contraceptivos orais requer monitorização); quelação potencial com tetraciclinas e fluoroquinolonas reduzindo absorção; interação com anticoagulantes não confirmada mas plausível.</p>
+      <p><strong>Boro dietético:</strong> a fonte mais segura de boro é alimentar — vegetais, nozes, frutas, leguminosas, vinho tinto. A ingestão média numa dieta rica em vegetais é de 1-3 mg/dia de boro. A UL é de 10-20 mg/dia.</p>
+      <p><strong>Esta ficha não prescreve, não dosifica e não recomenda uso oral de bórax.</strong> A análise biofísica aqui apresentada é educacional e teórica. Qualquer uso clínico de derivados de boro deve ser supervisionado por profissional de saúde habilitado, com monitorização laboratorial adequada.</p>
+      <p><em>Consulte profissional de saúde habilitado antes de qualquer uso terapêutico. Esta ficha é material educativo, não prescrição médica.</em></p>
+    </div>
+  </section>
+</main>
+
+<footer class="container">
+  <p><span class="mono">pharmacopeia.info</span> — Biofísica Farmacológica</p>
+  <p>Ficha sintetizada a partir de três monografias (Biofísica Pura, Referenciada e Análise Clássica).</p>
+  <p>Bórax / Borato de Sódio (Na₂B₄O₇·10H₂O) · Classificação: <strong>SEGUNDA ORDEM</strong> · Estabilizador de infraestrutura dielétrica</p>
+  <p style="margin-top:16px;font-size:0.75rem;color:var(--muted)"><em>Nenhuma parte deste conteúdo substitui avaliação clínica individualizada. A física não precisa de aprovação para funcionar, mas o corpo precisa de contexto.</em></p>
+</footer>
+
+<script>
+function toggleTheme(){
+  var d=document.documentElement;
+  var b=d.getAttribute('data-theme');
+  d.setAttribute('data-theme',b==='dark'?'light':'dark');
+  document.querySelector('.theme-toggle').textContent=b==='dark'?'☾ Tema':'☀ Tema';
+}
+// Smooth scroll for anchor links
+document.querySelectorAll('nav a').forEach(function(a){
+  a.addEventListener('click',function(e){
+    e.preventDefault();
+    var t=document.querySelector(this.getAttribute('href'));
+    if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+</script>
+</body>
+</html>
