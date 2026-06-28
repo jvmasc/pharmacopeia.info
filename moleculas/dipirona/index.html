@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dipirona — Pharmacopeia.info</title>
-  <meta name="description" content="Ficha educacional de leitura biofísica da dipirona (metamizol): molécula hidrofílica de interface, sistema π pequeno, UV-B/UV-C, água EZ–bulk, KIE e janela de crise aguda." />
+  <meta name="description" content="Ficha educacional de leitura biofísica da dipirona (metamizol): molécula hidrofílica de síntese, UV-C/B, sem CISS, quelação de Fe/Mg, perturbação de EZ water e segunda ordem ambígua." />
 
   <!-- Anti-FOWT: aplica o tema guardado ANTES de qualquer render -->
   <script>
@@ -14,348 +14,410 @@
   })();
   </script>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
   <style>
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       TEMA LIGHT (white/biofílico) — PADRÃO
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── RESET ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    /* ─── TOKENS — LIGHT ────────────────────────────── */
     :root {
       color-scheme: light;
 
-      --bg:        #FAF9F5;
-      --bg-2:      #F2EFE8;
-      --surface:   #FFFFFF;
-      --surface-2: #F7F5EF;
+      --paper:    #F7F4EE;
+      --paper-2:  #EDE9E0;
+      --ink:      #1A1E1C;
+      --ink-2:    #3C4640;
+      --ink-3:    #6E7A74;
 
-      --ink:       #1C2420;
-      --muted:     #4A5A54;
-      --quiet:     #7A8E87;
+      --rule:       rgba(26, 30, 28, .10);
+      --rule-heavy: rgba(26, 30, 28, .20);
 
-      --line:        rgba(28, 36, 32, .10);
-      --line-strong: rgba(184, 131, 42, .50);
+      --solar:  #9A6B18;
+      --bio:    #1E6E6A;
+      --mag:    #4A3E9C;
+      --danger: #903020;
+      --ok:     #2B6435;
 
-      --solar: #B8832A;
-      --bio:   #2B8A84;
-      --mag:   #5B4DB8;
-      --danger: #C0522E;
-      --ok:     #3A7D44;
+      --text:   'Spectral', Georgia, 'Times New Roman', serif;
+      --mono:   'Space Mono', ui-monospace, SFMono-Regular, monospace;
+      --ui:     system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 
-      --radius-xl: 28px;
-      --radius-lg: 20px;
-      --radius-md: 14px;
-
-      --shadow: 0 4px 24px rgba(28, 36, 32, .08), 0 1px 4px rgba(28, 36, 32, .05);
-      --shadow-hover: 0 8px 40px rgba(28, 36, 32, .12), 0 2px 8px rgba(28, 36, 32, .06);
-
-      --header-bg: rgba(250, 249, 245, .88);
-      --body-bg:
-        radial-gradient(ellipse at 18% 0%,  rgba(184, 131, 42, .11), transparent 38rem),
-        radial-gradient(ellipse at 84% 8%,  rgba(43, 138, 132, .09), transparent 34rem),
-        radial-gradient(ellipse at 50% 96%, rgba(91, 77, 184, .07),  transparent 40rem),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg) 62%, var(--bg-2) 100%);
-
-      --mono:  ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans:  Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      --serif:  'Spectral', Georgia, serif;
+      --sans:   system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      --bg:     var(--paper);
+      --bg-2:   var(--paper-2);
     }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       TEMA DARK — override
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── TOKENS — DARK ─────────────────────────────── */
     html[data-theme="dark"] {
       color-scheme: dark;
 
-      --bg:        #07100f;
-      --bg-2:      #0b1413;
-      --surface:   #10201e;
-      --surface-2: #142a27;
+      --paper:    #0E1412;
+      --paper-2:  #151E1B;
+      --ink:      #E0E8E2;
+      --ink-2:    #A2AFA7;
+      --ink-3:    #6B7870;
 
-      --ink:       #e7eadf;
-      --muted:     #a8b5aa;
-      --quiet:     #74827b;
+      --rule:       rgba(224, 232, 226, .09);
+      --rule-heavy: rgba(224, 232, 226, .18);
 
-      --line:        rgba(231, 234, 223, .14);
-      --line-strong: rgba(215, 168, 79, .45);
-
-      --solar: #d7a84f;
-      --bio:   #65c7c0;
-      --mag:   #8a6ee8;
-      --danger: #d8816a;
-      --ok:     #98c379;
-
-      --shadow: 0 24px 80px rgba(0, 0, 0, .42);
-      --shadow-hover: 0 24px 80px rgba(0, 0, 0, .55);
-
-      --header-bg: rgba(7, 16, 15, .72);
-      --body-bg:
-        radial-gradient(circle at 12% 0%,  rgba(215, 168, 79, .18), transparent 32rem),
-        radial-gradient(circle at 88% 10%, rgba(101, 199, 192, .14), transparent 32rem),
-        radial-gradient(circle at 48% 100%, rgba(138, 110, 232, .10), transparent 34rem),
-        linear-gradient(180deg, var(--bg), var(--bg-2) 52%, #060b0a);
+      --solar:  #C8953A;
+      --bio:    #4EAAA4;
+      --mag:    #7B6ED6;
+      --danger: #C07060;
+      --ok:     #5AA46A;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    /* ─── BASE ───────────────────────────────────────── */
     body {
-      margin: 0;
-      background: var(--body-bg);
+      background: var(--paper);
       color: var(--ink);
-      font-family: var(--sans);
-      line-height: 1.55;
+      font-family: var(--text);
+      font-size: 18px;
+      line-height: 1.68;
     }
-    a { color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--solar); }
+
     .shell { width: min(1180px, calc(100% - 36px)); margin: 0 auto; }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       HEADER / NAV
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── MASTHEAD ───────────────────────────────────── */
     header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(20px) saturate(1.3);
-      background: var(--header-bg);
-      border-bottom: 1px solid var(--line);
-      box-shadow: 0 1px 0 var(--line);
+      border-bottom: 1px solid var(--rule-heavy);
+      padding: 18px 0;
     }
-    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
-    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; letter-spacing: -.02em; font-weight: 700; color: var(--ink); }
+    .nav {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 22px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-family: var(--text);
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -.02em;
+      color: var(--ink);
+    }
     .mark {
-      width: 34px;
-      height: 34px;
-      border: 1.5px solid var(--line-strong);
+      width: 28px;
+      height: 28px;
+      border: 1.5px solid var(--rule-heavy);
       border-radius: 50%;
       display: grid;
       place-items: center;
       position: relative;
-      color: var(--solar);
-      background: var(--surface);
+      flex-shrink: 0;
     }
     .mark::before, .mark::after {
       content: "";
       position: absolute;
-      border: 1px solid rgba(43, 138, 132, .50);
+      border: 1px solid rgba(30, 110, 106, .40);
       border-radius: 50%;
-      inset: 7px 2px;
+      inset: 5px 2px;
       transform: rotate(35deg);
     }
-    .mark::after { transform: rotate(-35deg); border-color: rgba(91, 77, 184, .42); }
-
-    html[data-theme="dark"] .mark::before { border-color: rgba(101, 199, 192, .42); }
-    html[data-theme="dark"] .mark::after  { border-color: rgba(138, 110, 232, .38); }
-
+    .mark::after { transform: rotate(-35deg); border-color: rgba(74, 62, 156, .35); }
+    html[data-theme="dark"] .mark::before { border-color: rgba(78, 170, 164, .40); }
+    html[data-theme="dark"] .mark::after  { border-color: rgba(123, 110, 214, .35); }
     .mark-dot {
-      width: 6px;
-      height: 6px;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
       background: var(--solar);
       position: relative;
       z-index: 1;
     }
 
-    nav { display: flex; gap: 18px; color: var(--muted); font-size: 14px; }
-    nav a { text-decoration: none; transition: color .15s ease; }
+    nav {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+    }
+    nav a {
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--ink-3);
+      transition: color .12s;
+    }
     nav a:hover { color: var(--ink); }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       BOTÃO DE TOGGLE DE TEMA
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     .theme-btn {
-      cursor: pointer;
-      border: 1px solid var(--line-strong);
-      background: rgba(255, 255, 255, .05);
-      color: var(--solar);
-      border-radius: 999px;
-      width: 38px;
-      height: 38px;
-      display: grid;
-      place-items: center;
-      font-size: 16px;
-      transition: border-color .18s ease, background .18s ease;
-      flex-shrink: 0;
-    }
-    .theme-btn:hover {
-      background: rgba(184, 131, 42, .10);
-      border-color: var(--line-strong);
-    }
-
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       HERO
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .hero { padding: 76px 0 42px; }
-    .kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--solar);
       font-family: var(--mono);
-      font-size: 12px;
+      font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: .16em;
-      border: 1px solid rgba(184, 131, 42, .30);
-      border-radius: 999px;
-      padding: 8px 14px;
-      background: rgba(184, 131, 42, .07);
+      letter-spacing: .12em;
+      background: none;
+      border: 1px solid var(--rule-heavy);
+      color: var(--ink-3);
+      cursor: pointer;
+      padding: 4px 10px;
+      line-height: 1.6;
+      flex-shrink: 0;
+      transition: color .12s, border-color .12s;
     }
-    html[data-theme="dark"] .kicker {
-      border-color: rgba(215, 168, 79, .26);
-      background: rgba(215, 168, 79, .06);
-    }
-    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--solar); box-shadow: 0 0 18px var(--solar); }
-    h1 { margin: 26px 0 22px; max-width: 980px; font-family: var(--serif); font-size: clamp(48px, 8vw, 104px); line-height: .92; letter-spacing: -.06em; font-weight: 520; color: var(--ink); }
-    .lead { max-width: 860px; color: var(--muted); font-size: clamp(18px, 2vw, 23px); }
-    .lead strong { color: var(--ink); font-weight: 650; }
+    .theme-btn:hover { color: var(--ink); border-color: var(--ink-3); }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       LAYOUT GRIDS
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    section { padding: 48px 0; scroll-margin-top: 92px; }
+    /* ─── HERO ───────────────────────────────────────── */
+    .hero { padding: 76px 0 42px; }
+
+    /* ─── KICKER ─────────────────────────────────────── */
+    .kicker {
+      display: block;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--ink-3);
+      margin-bottom: 18px;
+    }
+
+    /* ─── HEADINGS ───────────────────────────────────── */
+    h1 {
+      font-family: var(--text);
+      font-size: clamp(48px, 7vw, 84px);
+      font-weight: 500;
+      line-height: .96;
+      letter-spacing: -.04em;
+      color: var(--ink);
+      margin-bottom: .45em;
+    }
+    h2 {
+      font-family: var(--text);
+      font-size: clamp(22px, 3.4vw, 36px);
+      font-weight: 500;
+      line-height: 1.12;
+      letter-spacing: -.025em;
+      color: var(--ink);
+      margin-bottom: .5em;
+    }
+    h3 {
+      font-family: var(--text);
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: -.015em;
+      color: var(--ink);
+      margin-bottom: .35em;
+    }
+
+    .lead {
+      max-width: 860px;
+      color: var(--ink-2);
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.62;
+    }
+    .lead strong { color: var(--ink); font-weight: 500; }
+
+    /* ─── LAYOUT ─────────────────────────────────────── */
+    section { padding: 48px 0; }
+    section + section { border-top: 1px solid var(--rule); }
     .grid-2 { display: grid; grid-template-columns: 1.05fr .95fr; gap: 22px; align-items: start; }
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       CARDS BASE
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .panel, .notice, .axis-card, .source-card, .summary-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow);
+    /* ─── FIGURE GRID ─────────────────────────────────── */
+    .figure-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .figure-card {
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 0;
     }
-    .panel { padding: 28px; }
-    .panel h2, section h2 { margin: 0 0 14px; font-family: var(--serif); letter-spacing: -.035em; font-size: clamp(30px, 4vw, 52px); line-height: 1; }
-    .panel p, .notice p, .axis-card p, .source-card p, .summary-card p { color: var(--muted); }
+    .figure-card img { display: block; width: 100%; background: var(--paper-2); }
+    .figure-card figcaption {
+      padding: 10px 14px;
+      font-size: 13px;
+      color: var(--ink-2);
+      line-height: 1.4;
+      background: var(--paper-2);
+      border-top: 1px solid var(--rule);
+    }
 
-    .summary-card { padding: 18px; box-shadow: none; min-height: 170px; }
-    .summary-card b { display: block; margin-bottom: 8px; color: var(--ink); }
+    /* ─── PANELS ─────────────────────────────────────── */
+    .panel {
+      padding: 28px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+    }
+    .panel p { color: var(--ink-2); line-height: 1.68; font-size: 16px; }
+    .panel p + p { margin-top: .9em; }
+    .panel strong { color: var(--ink); font-weight: 500; }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       STATUS TAGS
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .status { display: inline-flex; border-radius: 999px; border: 1px solid var(--line); padding: 6px 10px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
-    .established   { color: var(--ok);     border-color: rgba(58, 125, 68, .38);  background: rgba(58, 125, 68, .07);  }
-    .hypothesis    { color: var(--bio);    border-color: rgba(43, 138, 132, .38); background: rgba(43, 138, 132, .07); }
-    .investigational { color: var(--solar); border-color: rgba(184, 131, 42, .38); background: rgba(184, 131, 42, .07); }
-    .guarded       { color: var(--danger); border-color: rgba(192, 82, 46, .38);  background: rgba(192, 82, 46, .07);  }
+    /* ─── STATUS TAGS ────────────────────────────────── */
+    .status {
+      display: inline-flex;
+      border-radius: 999px;
+      border: 1px solid var(--rule);
+      padding: 5px 10px;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--ink-3);
+      margin-bottom: 12px;
+    }
+    .established   { color: var(--ok);     border-color: rgba(43, 100, 53, .32);  background: rgba(43, 100, 53, .06);  }
+    .hypothesis    { color: var(--bio);    border-color: rgba(30, 110, 106, .32); background: rgba(30, 110, 106, .06); }
+    .investigational { color: var(--solar); border-color: rgba(154, 107, 24, .32); background: rgba(154, 107, 24, .06); }
+    .guarded       { color: var(--danger); border-color: rgba(144, 48, 32, .32);  background: rgba(144, 48, 32, .06);  }
 
-    html[data-theme="dark"] .established    { border-color: rgba(152,195,121,.34); background: rgba(152,195,121,.08); }
-    html[data-theme="dark"] .hypothesis     { border-color: rgba(101,199,192,.34); background: rgba(101,199,192,.08); }
-    html[data-theme="dark"] .investigational { border-color: rgba(215,168,79,.34);  background: rgba(215,168,79,.08);  }
-    html[data-theme="dark"] .guarded        { border-color: rgba(216,129,106,.34); background: rgba(216,129,106,.08); }
+    html[data-theme="dark"] .established    { border-color: rgba(90, 164, 106, .28); background: rgba(90, 164, 106, .07); }
+    html[data-theme="dark"] .hypothesis     { border-color: rgba(78, 170, 164, .28); background: rgba(78, 170, 164, .07); }
+    html[data-theme="dark"] .investigational { border-color: rgba(200, 149, 58, .28);  background: rgba(200, 149, 58, .07);  }
+    html[data-theme="dark"] .guarded        { border-color: rgba(192, 112, 96, .28); background: rgba(192, 112, 96, .07); }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       SECTION HEAD
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── SECTION HEAD ───────────────────────────────── */
     .section-head { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 22px; }
-    .section-head p { margin: 0; max-width: 680px; color: var(--muted); }
+    .section-head p { margin: 0; max-width: 680px; color: var(--ink-2); font-size: 16px; line-height: 1.6; }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       AXIS GRID
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .axis-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-    .axis-card { padding: 18px; box-shadow: none; min-height: 230px; }
-    .axis-card .num { font-family: var(--mono); color: var(--solar); font-size: 12px; letter-spacing: .12em; }
-    .axis-card h3 { margin: 10px 0 8px; font-size: 20px; letter-spacing: -.02em; }
-    .axis-card p { font-size: 14px; margin: 0; }
-    .axis-card small { display: block; margin-top: 12px; color: var(--quiet); font-family: var(--mono); font-size: 11px; text-transform: uppercase; line-height: 1.45; }
+    /* ─── SUMMARY CARDS ──────────────────────────────── */
+    .summary-card {
+      padding: 18px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      min-height: 170px;
+    }
+    .summary-card b {
+      display: block;
+      font-family: var(--text);
+      font-weight: 500;
+      font-size: 17px;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .summary-card p { color: var(--ink-2); font-size: 15px; line-height: 1.6; }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       NOTICE
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── AXIS GRID ──────────────────────────────────── */
+    .axis-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .axis-card {
+      padding: 18px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      min-height: 230px;
+    }
+    .axis-card .num {
+      font-family: var(--mono);
+      color: var(--solar);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .axis-card h3 { margin: 10px 0 8px; }
+    .axis-card p { font-size: 14px; color: var(--ink-2); line-height: 1.6; margin: 0; }
+    .axis-card small {
+      display: block;
+      margin-top: 12px;
+      color: var(--ink-3);
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      line-height: 1.45;
+    }
+
+    /* ─── NOTICE ─────────────────────────────────────── */
     .notice {
       padding: 26px;
-      box-shadow: none;
-      border-color: rgba(184, 131, 42, .30);
-      background: linear-gradient(135deg, rgba(184, 131, 42, .06) 0%, var(--surface) 70%);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
     }
-    html[data-theme="dark"] .notice {
-      border-color: rgba(215, 168, 79, .24);
-      background: var(--surface);
-    }
+    .notice h2 { margin-bottom: .4em; }
+    .notice p { color: var(--ink-2); font-size: 16px; line-height: 1.68; }
+    .notice p + p { margin-top: .8em; }
 
-    /* Notice de aviso/warning (guardrail clínico) */
     .warning {
-      border-color: rgba(192, 82, 46, .38);
-      background: linear-gradient(135deg, rgba(192, 82, 46, .06) 0%, var(--surface) 70%);
+      border-color: rgba(144, 48, 32, .28);
     }
     html[data-theme="dark"] .warning {
-      border-color: rgba(216, 129, 106, .38);
-      background: linear-gradient(180deg, rgba(53,26,22,.82), rgba(18,24,23,.86));
+      border-color: rgba(192, 112, 96, .28);
     }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       BUTTONS
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── BUTTONS ────────────────────────────────────── */
     .button {
-      min-height: 46px;
+      min-height: 44px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      padding: 12px 20px;
-      border-radius: 999px;
-      border: 1.5px solid var(--line-strong);
-      background: rgba(184, 131, 42, .10);
+      padding: 11px 18px;
+      border-radius: 4px;
+      border: 1px solid var(--rule-heavy);
+      background: rgba(154, 107, 24, .08);
       color: var(--ink);
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 14px;
-      transition: background .18s ease, border-color .18s ease, transform .15s ease, box-shadow .18s ease;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .10em;
+      transition: background .15s, border-color .15s;
     }
     html[data-theme="dark"] .button {
-      background: rgba(215, 168, 79, .12);
+      background: rgba(200, 149, 58, .08);
     }
     .button:hover {
-      background: rgba(184, 131, 42, .18);
-      border-color: rgba(184, 131, 42, .70);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 16px rgba(184, 131, 42, .16);
+      background: rgba(154, 107, 24, .14);
+      border-color: rgba(154, 107, 24, .45);
+      color: var(--ink);
     }
     .button.secondary {
-      border-color: var(--line);
-      background: var(--surface-2);
-      color: var(--muted);
-    }
-    html[data-theme="dark"] .button.secondary {
-      background: rgba(255, 255, 255, .03);
+      border-color: var(--rule);
+      background: transparent;
+      color: var(--ink-2);
     }
     .button.secondary:hover {
-      border-color: rgba(43, 138, 132, .40);
-      background: rgba(43, 138, 132, .06);
+      border-color: var(--rule-heavy);
+      background: var(--paper-2);
       color: var(--ink);
-      box-shadow: 0 4px 16px rgba(43, 138, 132, .10);
     }
     .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       SOURCE CARDS
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .source-card { padding: 18px; box-shadow: none; }
-    .source-card h3 { margin: 0 0 8px; }
-    .source-card p { margin: 0; font-size: 14px; }
-
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       FOOTER
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    footer {
-      padding: 44px 0 70px;
-      color: var(--quiet);
-      border-top: 1px solid var(--line);
-      background: var(--bg-2);
+    /* ─── SOURCE CARDS ───────────────────────────────── */
+    .source-card {
+      padding: 18px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
     }
-    footer .shell { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-    footer strong { color: var(--muted); }
-    footer code   { font-family: var(--mono); color: var(--quiet); font-size: 13px; }
+    .source-card h3 { margin: 0 0 8px; }
+    .source-card p { margin: 0; font-size: 14px; color: var(--ink-2); line-height: 1.6; }
 
-    section + section { border-top: 1px solid var(--line); }
+    /* ─── FOOTER ─────────────────────────────────────── */
+    footer {
+      padding: 28px 0 52px;
+      border-top: 1px solid var(--rule);
+      background: var(--paper-2);
+    }
+    footer .shell {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      color: var(--ink-3);
+      text-transform: uppercase;
+    }
+    footer strong { color: var(--ink-2); font-weight: 700; }
+    footer code   { font-family: var(--mono); color: var(--ink-3); font-size: 11px; }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       RESPONSIVE
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    @media (max-width: 1000px) { .axis-grid { grid-template-columns: repeat(2, 1fr); } .grid-3 { grid-template-columns: 1fr 1fr; } }
+    /* ─── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 1000px) {
+      .axis-grid { grid-template-columns: repeat(2, 1fr); }
+      .grid-3 { grid-template-columns: 1fr 1fr; }
+      .figure-grid { grid-template-columns: repeat(2, 1fr); }
+    }
     @media (max-width: 760px) {
       nav { display: none; }
-      .grid-2, .grid-3, .axis-grid { grid-template-columns: 1fr; }
+      .grid-2, .grid-3, .axis-grid, .figure-grid { grid-template-columns: 1fr; }
       .section-head { display: block; }
+      .section-head p { margin-top: 12px; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, html { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
@@ -372,27 +434,26 @@
         <span>Pharmacopeia.info</span>
       </a>
       <nav aria-label="Navegação principal">
-        <a href="../../index.html#matriz">Matriz</a>
-        <a href="#eixos">8 eixos</a>
+        <a href="#biofisica">Biofísica</a>
+        <a href="#bioquimica">Bioquímica</a>
+        <a href="#figuras">Figuras</a>
         <a href="#evidencia">Evidência</a>
         <a href="#fontes">Fontes</a>
       </nav>
-      <button id="themeToggle" class="theme-btn" type="button" aria-label="Alternar tema">
-        <span class="theme-icon theme-icon-sun">&#9728;</span>
-        <span class="theme-icon theme-icon-moon" style="display:none">&#9790;</span>
+      <button id="themeToggle" class="theme-btn" type="button" aria-label="Mudar para tema escuro">
+        <span id="themeBtnLabel">escuro</span>
       </button>
     </div>
   </header>
 
-
   <main>
     <section class="hero shell">
-      <div class="kicker"><span class="dot"></span> Ficha · molécula · segunda ordem</div>
+      <div class="kicker">Ficha · molécula</div>
       <h1>Dipirona</h1>
-      <p class="lead"><strong>A bula vê um analgésico-antipirético banido nos EUA e onipresente na América Latina.</strong> A Pharmacopeia lê uma molécula <strong>fortemente hidrofílica</strong> (logP −1,64) que vive na água de interface, com sistema π pequeno (fenil + pirazolona) e janela óptica estreita no UV-B/UV-C. Ferramenta de segunda ordem: remove obstáculos — dor, febre, espasmo — sem construir ordem.</p>
+      <p class="lead"><strong>A bula vê um analgésico.</strong> A Pharmacopeia lê um quelante iônico sintético de 1897, nascido de bancada, sem história evolutiva em campo magnético, operando exclusivamente no compartimento aquoso — nunca entra em membranas lipídicas. Classificada como segunda ordem ambígua: remove sinais de dor e febre sem construir capacidade energética, e pela quelação de ferro e magnésio pode reduzir a velocidade da cadeia respiratória mitocondrial. Esta ficha organiza o que é estabelecido, o que é hipótese biofísica plausível e o que permanece investigacional — Biofísica primeiro, Bioquímica depois.</p>
       <div class="cta-row">
-        <a class="button" href="#eixos">Ler pelos 8 eixos</a>
-        <a class="button secondary" href="../../index.html#atlas">Voltar ao atlas</a>
+        <a class="button" href="#biofisica">BLOCO 1 — Biofísica</a>
+        <a class="button secondary" href="#bioquimica">BLOCO 2 — Bioquímica</a>
       </div>
     </section>
 
@@ -400,67 +461,189 @@
       <div class="grid-2">
         <article class="panel">
           <h2>A tese pública</h2>
-          <p>A dipirona (metamizol) — pirazolona sintetizada por Knorr na Hoechst, Frankfurt, 1920 — é altamente solúvel em água, anfotérica, e cristaliza com uma água estrutural (monohidratado). Mecanismo clássico: inibição de COX-1/COX-2, modulação endocanabinoide (CB1) e TRPA1, efeito antiespasmódico. A leitura biofísica trata-a como uma <strong>sonda da rede de água</strong>, que se concentra na interface EZ–bulk e modula localmente o KIE H⁺/D⁺.</p>
-          <p>No vocabulário da Pharmacopeia: útil, barata, bem tolerada — e estrutural ao tema "a ferramenta de segunda ordem não substitui o sol".</p>
+          <p>A dipirona não precisa de ser condenada nem celebrada para merecer leitura rigorosa. A sua relevância está no contraste: molécula de síntese total, sem memória evolutiva de campo magnético, operando no compartimento aquoso enquanto a biofísica mitocondrial acontece nas interfaces lipídicas. Eficaz. E com um custo físico real que o uso crónico não compensa.</p>
+          <p>No vocabulário da Pharmacopeia: ela é uma molécula que exige leitura de <strong>compartimento</strong>, <strong>terreno metabólico</strong> e <strong>janela de uso</strong> — não apenas receptor e dose.</p>
         </article>
         <aside class="notice warning">
           <h2>Guardrail clínico — leia antes</h2>
-          <p><strong>Esta página é educacional. Não é prescrição.</strong> A Pharmacopeia.info publica leitura biofísica e farmacológica de substâncias para estudo e contexto — não fornece dose, posologia, ciclo, indicação individual, nem recomenda compra, uso ou substituição de qualquer tratamento. Nada aqui diagnostica, trata, cura ou previne doença, nem substitui consulta, anamnese, exame ou a decisão de um profissional de saúde habilitado. Medicamentos têm riscos, interações e contraindicações que dependem do seu terreno, da sua história clínica, da sua geografia e dos medicamentos que já usa. Antes de qualquer uso, fale com o seu médico ou farmacêutico.</p>
-          <p>Dipirona/metamizol está banida em vários países (EUA, parte da Europa) e é de uso comum noutros (Brasil, México, etc.); siga sempre a regulação local. O risco mais relevante é a <strong>agranulocitose</strong> — rara mas grave: febre, dor de garganta e infeções inesperadas durante o uso exigem avaliação médica imediata. Cuidado em discrasias sanguíneas, hipersensibilidade a pirazolonas e no 3.º trimestre da gravidez. Não é recomendação de uso.</p>
+          <p>Esta página é educacional. Não é prescrição. A Pharmacopeia.info não fornece dose, ciclo, indicação individual, nem recomenda compra, uso ou substituição de acompanhamento médico. A dipirona causa agranulocitose — rara mas potencialmente fatal. Qualquer febre súbita, úlcera oral ou faringite grave durante o uso obriga interrupção imediata e hemograma de urgência.</p>
+          <p>Evitar em gestação (especialmente 1º e 3º trimestres), em lactação (metabólitos passam ao leite), em lactentes &lt;3 meses e em insuficiência renal moderada-grave. Interações críticas com ciclosporina, metotrexato e clorpromazina IV.</p>
         </aside>
       </div>
     </section>
 
-    <section id="resumo" class="shell">
+    <section class="shell">
       <div class="section-head">
         <div>
-          <div class="kicker"><span class="dot"></span> Leitura rápida</div>
-          <h2>Antes de qualquer protocolo.</h2>
+          <div class="kicker">Leitura rápida</div>
+          <h2>Dois blocos antes de qualquer protocolo.</h2>
         </div>
-        <p>A ficha pública separa mecanismo aceito, leitura biofísica, hipóteses Kruse/PKA e prudência clínica para evitar tanto reducionismo quanto propaganda terapêutica.</p>
+        <p>A ficha pública separa o mecanismo aceito (BLOCO 2) da leitura biofísica de fronteira (BLOCO 1), com estatuto epistemológico explícito em cada ponto.</p>
       </div>
       <div class="grid-3">
-        <article class="summary-card"><span class="status established">estabelecido</span><b>Analgésico/antipirético</b><p>Eficaz em dor leve-moderada e febre; não opioide, sem dependência.</p></article>
-        <article class="summary-card"><span class="status established">estabelecido</span><b>Antiespasmódico</b><p>Relaxa músculo liso visceral.</p></article>
-        <article class="summary-card"><span class="status hypothesis">hipótese biofísica</span><b>Sonda de água de interface</b><p>Hidrofílica e iônica, excluída da EZ, concentra-se na interface EZ–bulk (leitura biofísica).</p></article>
-        <article class="summary-card"><span class="status hypothesis">hipótese biofísica</span><b>Preserva EZ ao baixar febre</b><p>A febre desestrutura a EZ; ao reduzir temperatura, preserva k local.</p></article>
-        <article class="summary-card"><span class="status investigational">investigacional</span><b>KIE / depleção local de D⁺</b><p>Efeito osmótico do sulfonato empurrando D⁺ é hipótese de magnitude pequena.</p></article>
-        <article class="summary-card"><span class="status guarded">prudência</span><b>Agranulocitose</b><p>Rara (idiossincrática, imunomediada), mas real e séria; exige consciência clínica.</p></article>
+        <article class="summary-card"><span class="status hypothesis">biofísica · BLOCO 1</span><b>Antena de baixo ganho</b><p>UV-C/B (257–265 nm), sem absorção acima de 350 nm. Espectro fora da janela solar superficial e da janela NIR da mitocôndria. Molécula do escuro metabólico.</p></article>
+        <article class="summary-card"><span class="status hypothesis">biofísica · BLOCO 1</span><b>EZ water perturbada indiretamente</b><p>Quelação de Fe²⁺ na CCO → redução de DDA (água metabólica depletada de deutério) → menor EZ water mitocondrial (k=160). Custo indireto sobre a capacitância celular.</p></article>
+        <article class="summary-card"><span class="status investigational">investigacional · BLOCO 1</span><b>POMC — supressão indireta</b><p>Inibição sistémica de PGE₂ bloqueia parcialmente a via co-indutora de POMC na epiderme → menos α-MSH → menos melanina → menor filtro CISS em uso repetido.</p></article>
+        <article class="summary-card"><span class="status established">estabelecido · BLOCO 2</span><b>Analgésico / antipirético / espasmolítico</b><p>Ação via metabólito 4-MAA: inibição de COX-3, ativação de K-ATP, inibição de PDE, ativação de CB₁. Eficácia documentada em dor aguda, febre e cólica visceral.</p></article>
+        <article class="summary-card"><span class="status established">estabelecido · BLOCO 2</span><b>4-MAA — o real ativo</b><p>A dipirona não é absorvida intacta: hidrolisa pré-sistemicamente gerando 4-metilaminoantipirina (4-MAA) como metabolito ativo primário. PK: Tmáx ~1–1,5 h, t½ ~2,5–3,5 h, eliminação renal ~96%.</p></article>
+        <article class="summary-card"><span class="status guarded">prudência · ambos</span><b>Agranulocitose — rara, mas fatal</b><p>Evento imunomediado, ~0,5–1 caso/milhão/ano, mortalidade do caso grave ~5–10%. Sem preditor clínico a priori. Episódio prévio = contraindicação absoluta de reexposição.</p></article>
       </div>
     </section>
 
-    <section id="eixos" class="shell">
+    <!-- ━━━━━━━━━━━━━━━━ FIGURAS DIDÁTICAS ━━━━━━━━━━━━━━━━ -->
+    <section id="figuras" class="shell">
       <div class="section-head">
         <div>
-          <div class="kicker"><span class="dot"></span> Matriz Pharmacopeia</div>
-          <h2>Dipirona pelos oito eixos.</h2>
+          <div class="kicker">Figuras didáticas</div>
+          <h2>Fundo branco, traço limpo, leitura farmacológica.</h2>
         </div>
-        <p>A mesma molécula é lida por origem, forma, luz, água, spin, mitocôndria, campo e prudência clínica. Cada eixo tem um estatuto epistemológico diferente.</p>
+        <p>Imagens minimalistas para apoiar a ficha: arquitectura molecular, mecanismo clássico, mapa farmacológico e interface biofísica. São esquemas educacionais, não estruturas químicas completas nem protocolo clínico.</p>
+      </div>
+      <div class="figure-grid">
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/dipirona/gpt/dipirona-01-molecula-gpt.png" alt="Estrutura molecular da dipirona em fundo branco" loading="lazy" />
+          <figcaption>Molécula da dipirona: pirazolona aquiral, sistema push-pull mínimo, grupo metanossulfonato.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/dipirona/gpt/dipirona-02-mecanismo-gpt.png" alt="Mecanismo clássico da dipirona com hidrólise pré-sistémica e 4-MAA" loading="lazy" />
+          <figcaption>Mecanismo clássico: hidrólise pré-sistémica → 4-MAA → COX-3, K-ATP, PDE, CB₁.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/dipirona/gpt/dipirona-03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico ADME da dipirona" loading="lazy" />
+          <figcaption>Mapa farmacológico: absorção oral, distribuição aquosa, metabolismo hepático, eliminação renal 96%.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/dipirona/gpt/dipirona-04-interface-biofisica-gpt.png" alt="Interface biofísica da dipirona com espectro, quelação e baixa ordem" loading="lazy" />
+          <figcaption>Interface biofísica: UV-C fora da janela solar, quelação Fe²⁺→CCO→EZ water, segunda ordem ambígua.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="biofisica" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">BLOCO 1 — Biofísica</div>
+          <h2>Seis eixos de leitura do compartimento aquoso.</h2>
+        </div>
+        <p>Leitura biofísica de primeiros princípios: origem, arquitectura, espectro, spin/CISS, água EZ e classificação de ordem. Cada eixo com estatuto epistemológico declarado.</p>
       </div>
       <div class="axis-grid">
-        <article class="axis-card"><span class="num">01 · origem</span><h3>Bancada de Frankfurt (1920)</h3><p>Síntese química total; sem assinatura de organismo que navegou o campo magnético.</p><small>Estado: histórico estabelecido</small></article>
-        <article class="axis-card"><span class="num">02 · arquitetura</span><h3>Fenil + pirazolona</h3><p>Sistema π conjugado cruzado D-A pequeno; dipolo permanente; água de cristalização estrutural.</p><small>Estado: estrutura estabelecida; "antena" = hipótese fraca</small></article>
-        <article class="axis-card"><span class="num">03 · espectro</span><h3>UV-B/UV-C (257–320 nm)</h3><p>Janela estreita, próxima da absorção do DNA (260 nm); pode atuar como filtro ou, em terreno ruim, transferir energia.</p><small>Estado: absorção verde; relevância biológica âmbar</small></article>
-        <article class="axis-card"><span class="num">04 · água</span><h3>Interface EZ–bulk</h3><p>Sal hidrofílico excluído da EZ; modula a composição isotópica do pool de prótons na interface.</p><small>Estado: hipótese biofísica</small></article>
-        <article class="axis-card"><span class="num">05 · CISS</span><h3>Via albumina</h3><p>Sem quiralidade robusta própria; ligada à albumina (proteína quiral), estende a rede CISS da albumina.</p><small>Estado: investigacional</small></article>
-        <article class="axis-card"><span class="num">06 · redox</span><h3>Indireto e marginal</h3><p>Pode reduzir D⁺ local na interface, contribuição pequena para o ΔΨ.</p><small>Estado: hipótese biofísica de baixo peso</small></article>
-        <article class="axis-card"><span class="num">07 · campo</span><h3>Paradoxo da AAS</h3><p>Mais consumida onde o campo é mais comprometido (Brasil); a antena estreita tem menor suporte magnético justamente onde seria mais necessária.</p><small>Estado: hipótese biofísica</small></article>
-        <article class="axis-card"><span class="num">08 · janela</span><h3>Crise aguda</h3><p>Resgate pontual de dor/febre/espasmo. Não é construção estrutural. Limite: discrasias sanguíneas, hipersensibilidade, gravidez (3.º trimestre).</p><small>Estado: prudência obrigatória</small></article>
+        <article class="axis-card">
+          <span class="num">01 · origem</span>
+          <h3>Leipzig 1897 — sem memória magnética</h3>
+          <p>Sintetizada por Ludwig Knorr em Leipzig, Alemanha (51°N). Campo geomagnético local ~48.000–50.000 nT, estável, sem anomalias regionais. Não emergiu de organismos co-evoluídos com campo magnético — produto de design mecanicista puro, sem pressão evolutiva de luz ou campo.</p>
+          <small>Estado: histórico estabelecido + leitura geográfica investigacional</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">02 · arquitectura</span>
+          <h3>Pirazolona aquiral, hidrofílica extrema</h3>
+          <p>Anel pirazolona + benzênico lateral, sem fusão, sistema π mínimo. Sem centros estereogênicos — molécula aquiral. logP negativo (hidrofilia extrema): não penetra membranas lipídicas. Opera exclusivamente no compartimento aquoso plasmático e celular. Quelação de Fe²⁺/Mg²⁺ via grupo C=O/N do pirazolona.</p>
+          <small>Estado: estrutura estabelecida; leitura de compartimento = hipótese biofísica</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">03 · espectro</span>
+          <h3>UV-C/B — molécula do escuro</h3>
+          <p>Absorção máxima ~257–265 nm (UV-C/B profundo), ombro até ~310–320 nm. Sem absorção acima de 350 nm — transparente ao UV-A, ao visível e ao NIR. A janela NIR da CCO (665–980 nm) não é acessível. Sem emissão de fluorescência no visível. Sem estado tripleto biologicamente relevante.</p>
+          <small>Estado: absorção espectral estabelecida · ausência de triplet = concluída</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">04 · spin / CISS</span>
+          <h3>Ausência de filtro de spin</h3>
+          <p>Molécula aquiral → sem geometria helicoidal intrínseca → sem CISS. A hidrofilia extrema impede também a entrada no ambiente lipídico quiral onde o CISS ambiental existe. A dipirona não participa do filtro de spin da melanina antiferromagnética em nenhuma via directa.</p>
+          <small>Estado: ausência de CISS = concluída por estrutura</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">05 · água EZ</span>
+          <h3>Perturbação indireta via DDA</h3>
+          <p>Quelação de Fe²⁺ no heme a₃ da citocromo c oxidase (CCO) → redução da velocidade de síntese de DDA (água metabólica deutério-depletada, k=160). Menos DDA → menor EZ water mitocondrial → menor constante dielétrica → menor eficiência de sinalização biofotônica. Cascata indireta, não colapso iónico directo.</p>
+          <small>Estado: quelação estabelecida · cascata DDA→EZ = hipótese biofísica</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">06 · ordem / Landauer</span>
+          <h3>Segunda ordem ambígua</h3>
+          <p>Remove sinais (dor, febre, espasmo) sem adicionar capacidade de ordem. Não capta luz, não ativa POMC, não gera CISS, não fraciona isotopicamente H⁺/D⁺, não constrói EZ water. Quela ROS mas também remove Fe/Mg da cadeia respiratória. Silencia o alarme sem apagar o incêndio.</p>
+          <small>Estado: classificação de primeiros princípios — leitura biofísica investigacional</small>
+        </article>
+      </div>
+    </section>
+
+    <section id="bioquimica" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">BLOCO 2 — Bioquímica</div>
+          <h2>Farmacologia clássica e evidência estabelecida.</h2>
+        </div>
+        <p>Mecanismo canónico, farmacocinética, indicações reconhecidas, riscos e interações — o que o consenso biomédico sustenta com evidência rastreável.</p>
+      </div>
+      <div class="grid-2">
+        <article class="panel">
+          <h2>Mecanismo clássico e metabolito ativo</h2>
+          <p><strong>A dipirona não é absorvida intacta:</strong> sofre hidrólise não-enzimática pré-sistémica no trato gastrointestinal, gerando o metabólito ativo primário <strong>4-metilaminoantipirina (4-MAA)</strong>. É a 4-MAA que exerce a ação farmacológica.</p>
+          <p><strong>Alvos da 4-MAA:</strong> (1) Inibição preferencial de COX-3 → redução de PGE₂ → efeito antipirético e analgésico periférico; (2) Ativação de canais K-ATP nos neurônios nociceptivos → hiperpolarização → analgesia; (3) Inibição de fosfodiesterase (PDE) → AMPc ↑ → relaxamento de músculo liso visceral (efeito espasmolítico em cólicas); (4) Ativação de receptores CB₁ no SNC → analgesia central.</p>
+          <p><strong>Diferença de outros AINEs:</strong> inibição de COX-1/COX-2 é fraca → menor agressividade gástrica, sem efeito antiagregante plaquetário relevante. Não é anti-inflamatório de amplo espectro.</p>
+        </article>
+        <article class="panel">
+          <h2>Indicações e farmacocinética</h2>
+          <p><strong>Indicações reconhecidas (consenso clínico e bula ANVISA):</strong> dor aguda moderada a intensa (cefaleia, dor pós-operatória, dor oncológica coadjuvante), febre refratária ou de alta intensidade, cólicas viscerais (renal, biliar, intestinal) — onde a ação espasmolítica diferencia a dipirona do paracetamol. Incluída na Lista Modelo da OMS (metamizol, dor moderada-grave e febre).</p>
+          <p><strong>Farmacocinética da 4-MAA:</strong> biodisponibilidade oral ~85–90%; Tmáx ~1–1,5 h (oral) / ~30 min (IV); ligação proteica ~50–60%; atravessa BHE, placenta e leite materno; metabolismo CYP3A4 hepático + acetilação NAT2; eliminação renal ~96%; meia-vida ~2,5–3,5 h. Insuficiência renal prolonga t½ → acúmulo de metabólitos.</p>
+        </article>
+      </div>
+
+      <div style="margin-top: 22px;">
+        <article class="panel">
+          <h2>Riscos, contraindicações e interações</h2>
+          <p><strong>Agranulocitose — risco crítico:</strong> evento imunomediado (anticorpos contra neutrófilos induzidos por metabolitos haptênicos). Incidência estimada ~0,5–1 caso/milhão de habitantes/ano (IAAAS <em>JAMA</em> 1986, PMID:3534426); latência típica 1–3 semanas; mortalidade do caso grave ~5–10%. Sem preditor clínico a priori. Episódio prévio = contraindicação absoluta de reexposição. <strong>Sinais de alerta durante uso: febre súbita, úlceras orais, faringite grave, calafrios sem foco → interrupção imediata + hemograma de urgência.</strong></p>
+          <p><strong>Outras toxicidades:</strong> anafilaxia (especialmente IV rápido), hipersensibilidade cruzada em doentes com asma por AAS, trombocitopenia imunomediada, anemia aplástica (raro).</p>
+          <p><strong>Contraindicações / populações de risco:</strong> gestação (evitar — 1º trimestre: risco teratogênico; 3º trimestre: risco de fechamento prematuro do ducto arterioso); lactação (metabólitos excretados no leite); lactentes &lt;3 meses (imaturidade metabólica); insuficiência renal moderada-grave (acúmulo); insuficiência hepática (cautela); déficit de G6PD (risco teórico de hemólise).</p>
+          <p><strong>Interações críticas:</strong> ciclosporina (redução dos níveis séricos — monitorar em transplantados); metotrexato (redução da eliminação renal → toxicidade do MTX — evitar combinação); clorpromazina IV (hipotermia grave — contraindicado); varfarina (potencial potencialização anticoagulante — monitorar INR); lítio (redução da excreção renal → toxicidade); outros mielossupressores (risco aditivo).</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="janela" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Janela de uso</div>
+          <h2>Terreno, sequência e limites.</h2>
+        </div>
+        <p>A dipirona é uma ferramenta de segunda ordem — desobstrui o sinal de dor e febre. O terreno define o custo real de cada uso.</p>
+      </div>
+      <div class="grid-2">
+        <article class="panel">
+          <h2>Terreno favorável e terreno desfavorável</h2>
+          <p><strong>Terreno favorável:</strong> uso pontual em dor aguda intensa ou febre alta, em organismo com reservas metabólicas (hidratação adequada, exposição solar prévia ou posterior, campo magnético suportado). O custo biofísico de uma dose isolada é recuperável.</p>
+          <p><strong>Terreno desfavorável:</strong> uso crónico sem investigação da causa subjacente. Cada dose quela Fe²⁺ e Mg²⁺ do ambiente peri-mitocondrial, reduz a velocidade da CCO e da ATP-sintase, e suprime sistemicamente a PGE₂ epidérmica — comprometendo a via co-indutora de POMC. Na Anomalia do Atlântico Sul (campo magnético 30–40% abaixo do baseline global), onde o eixo CISS-melanina já opera com menor margem, o uso crónico acrescenta perturbação num sistema com menor capacidade de compensação.</p>
+          <p><strong>Circadiano:</strong> pico de 4-MAA ~1–1,5 h após a dose. Uso noturno faz coincidir a quelação de Fe/Mg com o período de produção de DDA mitocondrial durante o sono — a janela de maior custo biofísico.</p>
+        </article>
+        <article class="panel">
+          <h2>Limites absolutos</h2>
+          <p>Independentemente do enquadramento biofísico, os seguintes contextos exigem avaliação profissional obrigatória antes de qualquer uso:</p>
+          <p>Gestação (especialmente 1º e 3º trimestres) · Lactação · Lactentes &lt;3 meses · Insuficiência renal moderada-grave · Insuficiência hepática significativa · Déficit de G6PD · Uso concomitante de ciclosporina, metotrexato, varfarina ou clorpromazina · Episódio prévio de agranulocitose · Dor crónica não investigada clinicamente.</p>
+          <p><strong>A ficha pública não transforma molécula em protocolo individual.</strong> Dose, forma farmacêutica, duração e indicação pertencem à avaliação clínica, não à leitura biofísica.</p>
+        </article>
       </div>
     </section>
 
     <section id="evidencia" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Estado da evidência</div>
+          <h2>O que é consenso. O que é hipótese. O que é fronteira.</h2>
+        </div>
+      </div>
       <div class="grid-2">
         <article class="panel">
-          <h2>Terreno e janela de uso</h2>
-          <p>A dipirona é apresentada como <strong>ferramenta de segunda ordem robusta, barata e bem tolerada</strong> para remover obstáculos pontuais (febre sem hepatotoxicidade do paracetamol, espasmo visceral, dor aguda). A leitura biofísica insiste: ela não recarrega melanina, não constrói EZ onde não há campo — as ferramentas de primeira ordem (luz solar, água estruturada, campo, aterramento) vêm antes.</p>
-          <p>Leitura educacional — não é indicação, dose nem posologia.</p>
+          <h2>Camadas de evidência</h2>
+          <p><strong>Verde — estabelecido:</strong> eficácia analgésica, antipirética e espasmolítica em uso agudo; mecanismo de inibição de COX-3 e ativação de K-ATP; 4-MAA como metabolito ativo primário (Levy <em>Clin Pharmacokinet</em> 1995, PMID:7758258); risco de agranulocitose imunomediada (IAAAS <em>JAMA</em> 1986, PMID:3534426; Hedenmalm &amp; Spigset <em>Eur J Clin Pharmacol</em> 2002, PMID:12136372); hidrofilia extrema e compartimento exclusivamente aquoso.</p>
+          <p><strong>Âmbar — plausível/mecanístico:</strong> quelação de Fe²⁺ no heme a₃ da CCO como mecanismo antipirético primário (suporte em dados de quelação de metamizol, Naeim et al. <em>J Coord Chem</em> 2021); quelação de Mg²⁺ → redução da eficiência da F₁-ATPase → menor produção de DDA → perturbação da EZ water peri-mitocondrial.</p>
+          <p><strong>Ciano — hipótese biofísica exploratória:</strong> supressão de PGE₂ epidérmica → redução da co-indução POMC → menor melanogénese após exposição solar; redução da discriminação cinética H⁺/D⁺ (KIE) por queda de velocidade da ATP-sintase; impacto diferenciado em zonas de campo geomagnético reduzido (Anomalia do Atlântico Sul).</p>
+          <p><strong>Zona proibida para claims:</strong> a dipirona não é agente de depleção de deutério · não trata a causa da dor crónica · o uso crónico não é seguro por ausência de danos agudos aparentes.</p>
         </article>
         <article class="panel">
-          <h2>Camadas de evidência</h2>
-          <p><strong>Verde (estabelecido):</strong> ação analgésica/antipirética/antiespasmódica, perfil farmacocinético, risco de agranulocitose, história regulatória.</p>
-          <p><strong>Ciano (hipótese biofísica):</strong> posição na interface EZ–bulk, preservação de EZ por redução de febre.</p>
-          <p><strong>Âmbar (investigacional/fronteira):</strong> depleção local de D⁺ por sulfonato, CISS via albumina, leitura geomagnética e hipótese de agranulocitose como biomarcador de carga de deutério (especulativa).</p>
+          <h2>Nota metodológica</h2>
+          <p>A dipirona está fora de patente desde os anos 1950. A ausência de investimento em estudos biofísicos modernos (impacto sobre EZ water, KIE mitocondrial, cronobiologia da dipirona, efeito sobre PGE₂ epidérmica e POMC) não é evidência de que esses efeitos não existam — é evidência de que nenhuma empresa tem incentivo financeiro para os estudar.</p>
+          <p>As perguntas biofísicas que importam para este contexto — o que faz ao pool aquoso peri-mitocondrial? interfere com o KIE da ATP-sintase? qual o impacto de uso crónico sobre a cascata POMC? — permanecem sem resposta directa, não por impossibilidade experimental, mas por ausência de financiamento.</p>
+          <p>A ficha mantém a distinção entre evidência clínica estabelecida (BLOCO 2) e leitura biofísica exploratória (BLOCO 1) sem deixar uma contaminar a credibilidade da outra.</p>
         </article>
       </div>
     </section>
@@ -468,59 +651,73 @@
     <section id="fontes" class="shell">
       <div class="section-head">
         <div>
-          <div class="kicker"><span class="dot"></span> Fontes internas e externas</div>
+          <div class="kicker">Fontes e ligações</div>
           <h2>Base desta ficha.</h2>
         </div>
       </div>
       <div class="grid-3">
-        <article class="source-card"><h3>Monografia PKA</h3><p><em>Biofísica da Dipirona Monohidratado</em> (2026-05-23). Análise biofísica completa interna, skill biofisica-farmaco / CPC 84.</p></article>
-        <article class="source-card"><h3>CPC 84</h3><p>Molde de leitura biofísica (interface EZ–bulk, KIE H⁺/D⁺, sistema π pequeno) aplicado à pirazolona hidrofílica.</p></article>
-        <article class="source-card"><h3>Eixo água / interface</h3><p>Posição na interface EZ–bulk e modulação do pool de prótons como hipótese de fronteira, contraposta ao mecanismo COX clássico.</p></article>
+        <article class="source-card">
+          <h3>Biofísica Pura</h3>
+          <p><em>Biofísica de Dipirona Monohidratada — Análise de Primeiros Princípios</em> (2026-06-26). Nota interna de análise biofísica — base primária do BLOCO 1: origem Leipzig, arquitectura aquiral, espectro UV-C/B, ausência de CISS, interação com água EZ, mecanismos 1–4 de primeiros princípios, classificação de segunda ordem ambígua, cronologia de patente.</p>
+        </article>
+        <article class="source-card">
+          <h3>Biofísica Referenciada</h3>
+          <p><em>Biofísica de Dipirona Monohidratada — Análise Biofísica Referenciada</em> (2026-06-26). Leitura comparada com a molécula-âncora (tetraciclina/doxiciclina, CPC 84). Tabela comparativa de 15 dimensões biofísicas; acoplamento POMC via PGE₂; mecanismo Fe-CCO-DDA detalhado; Anomalia do Atlântico Sul.</p>
+        </article>
+        <article class="source-card">
+          <h3>Análise Clássica</h3>
+          <p><em>Análise Clássica — Dipirona Monohidratada</em> (2026-06-26). Base farmacológica e toxicológica convencional — base do BLOCO 2: composição, metabolismo 4-MAA, mecanismo COX-3/K-ATP/PDE/CB₁, farmacocinética, indicações reconhecidas, riscos (agranulocitose), contraindicações e interações. Referências biomédicas rastreáveis incluídas.</p>
+        </article>
+        <article class="source-card">
+          <h3>IAAAS · JAMA 1986</h3>
+          <p>International Agranulocytosis and Aplastic Anemia Study. Risks of agranulocytosis and aplastic anemia — relation to drug use with special reference to analgesics. <em>JAMA</em> 1986;256(13):1749–1757. PMID:3534426. Referência histórica fundamental sobre o risco de agranulocitose.</p>
+        </article>
+        <article class="source-card">
+          <h3>Levy · Clin Pharmacokinet 1995</h3>
+          <p>Levy M, Zylber-Katz E, Rosenkranz B. Clinical pharmacokinetics of dipyrone and its metabolites. <em>Clin Pharmacokinet</em> 1995;28(3):216–234. PMID:7758258. Referência PK fundamental para 4-MAA e demais metabolitos.</p>
+        </article>
+        <article class="source-card">
+          <h3>DrugBank · OMS · ANVISA</h3>
+          <p>DrugBank DB04817 (metamizol — dados PK actualizados). OMS Lista Modelo de Medicamentos Essenciais (metamizol, dor moderada-grave e febre). ANVISA: monografia de ingrediente ativo e bula de referência brasileira. Fontes regulatórias a verificar antes de publicação.</p>
+        </article>
       </div>
     </section>
 
     <section class="shell">
-      <article class="notice">
-        <h2>Regra editorial desta ficha</h2>
-        <p>A Pharmacopeia publica perguntas melhores, não atalhos terapêuticos. Onde há consenso, dizemos consenso. Onde há mecanismo plausível, dizemos hipótese. Onde há Kruse/PKA, dizemos fronteira investigacional. Onde há paciente real, encaminhamos para avaliação individual.</p>
-      </article>
+      <aside class="notice warning">
+        <h2>Guardrail clínico — leia antes</h2>
+        <p><strong>Esta página é educacional. Não é prescrição.</strong> A Pharmacopeia.info publica leitura biofísica e farmacológica de substâncias para estudo e contexto — não fornece dose, posologia, ciclo, indicação individual, nem recomenda compra, uso ou substituição de qualquer tratamento. Nada aqui diagnostica, trata, cura ou previne doença, nem substitui consulta, anamnese, exame ou a decisão de um profissional de saúde habilitado. Medicamentos têm riscos, interações e contraindicações que dependem do seu terreno, da sua história clínica, da sua geografia e dos medicamentos que já usa. Antes de qualquer uso, fale com o seu médico ou farmacêutico.</p>
+        <p><strong>Dipirona Monohidratada — específico:</strong> a dipirona causa agranulocitose em proporção rara mas potencialmente fatal — qualquer febre súbita, úlcera oral ou faringite grave durante o uso obriga interrupção imediata e hemograma de urgência; episódio prévio de agranulocitose é contraindicação absoluta de reexposição. Evitar em gestação (especialmente 1º e 3º trimestres), em lactação (metabólitos passam ao leite materno), em lactentes &lt;3 meses e em insuficiência renal moderada-grave (acúmulo de metabólitos); interações críticas com ciclosporina, metotrexato e clorpromazina IV.</p>
+      </aside>
     </section>
   </main>
 
   <footer>
     <div class="shell">
-      <span><strong>Pharmacopeia.info</strong> — ficha / dipirona.</span>
+      <span><strong>Pharmacopeia.info</strong> — ficha · dipirona.</span>
       <code>educacional · sem prescrição · matriz biofísica</code>
     </div>
   </footer>
 
   <script>
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       THEME TOGGLE
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── THEME TOGGLE ────────────────────────────────── */
     var themeToggle = document.getElementById('themeToggle');
-    var sunIcon  = themeToggle.querySelector('.theme-icon-sun');
-    var moonIcon = themeToggle.querySelector('.theme-icon-moon');
+    var themeBtnLabel = document.getElementById('themeBtnLabel');
 
     function applyTheme(theme) {
       document.documentElement.setAttribute('data-theme', theme);
       localStorage.setItem('ph-theme', theme);
-      if (theme === 'dark') {
-        sunIcon.style.display  = '';
-        moonIcon.style.display = 'none';
-        themeToggle.setAttribute('aria-label', 'Mudar para tema claro');
-      } else {
-        sunIcon.style.display  = 'none';
-        moonIcon.style.display = '';
-        themeToggle.setAttribute('aria-label', 'Mudar para tema escuro');
-      }
+      themeBtnLabel.textContent = theme === 'dark' ? 'claro' : 'escuro';
+      themeToggle.setAttribute('aria-label',
+        theme === 'dark' ? 'Mudar para tema claro' : 'Mudar para tema escuro');
     }
 
     applyTheme(localStorage.getItem('ph-theme') || 'light');
 
     themeToggle.addEventListener('click', function () {
-      var current = document.documentElement.getAttribute('data-theme');
-      applyTheme(current === 'dark' ? 'light' : 'dark');
+      applyTheme(
+        document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
+      );
     });
   </script>
 </body>
