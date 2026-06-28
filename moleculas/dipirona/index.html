@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dipirona — Pharmacopeia.info</title>
-  <meta name="description" content="Ficha educacional de leitura biofísica da dipirona (metamizol): molécula hidrofílica de síntese, UV-C/B, sem CISS, quelação de Fe/Mg, perturbação de EZ water e segunda ordem ambígua." />
+  <meta name="description" content="Ficha educacional de leitura biofísica da dipirona (metamizol): molécula hidrofílica de síntese, aquiral, UV-C/B, sem CISS, quelação de Fe/Mg, perturbação de EZ water e segunda ordem ambígua." />
 
   <!-- Anti-FOWT: aplica o tema guardado ANTES de qualquer render -->
   <script>
@@ -170,7 +170,6 @@
     /* ─── HERO ───────────────────────────────────────── */
     .hero { padding: 76px 0 42px; }
 
-    /* ─── KICKER ─────────────────────────────────────── */
     .kicker {
       display: block;
       font-family: var(--mono);
@@ -222,24 +221,6 @@
     section + section { border-top: 1px solid var(--rule); }
     .grid-2 { display: grid; grid-template-columns: 1.05fr .95fr; gap: 22px; align-items: start; }
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-
-    /* ─── FIGURE GRID ─────────────────────────────────── */
-    .figure-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
-    .figure-card {
-      border: 1px solid var(--rule);
-      border-radius: 4px;
-      overflow: hidden;
-      margin: 0;
-    }
-    .figure-card img { display: block; width: 100%; background: var(--paper-2); }
-    .figure-card figcaption {
-      padding: 10px 14px;
-      font-size: 13px;
-      color: var(--ink-2);
-      line-height: 1.4;
-      background: var(--paper-2);
-      border-top: 1px solid var(--rule);
-    }
 
     /* ─── PANELS ─────────────────────────────────────── */
     .panel {
@@ -295,8 +276,8 @@
     }
     .summary-card p { color: var(--ink-2); font-size: 15px; line-height: 1.6; }
 
-    /* ─── AXIS GRID ──────────────────────────────────── */
-    .axis-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    /* ─── AXIS GRID — 4 colunas ──────────────────────── */
+    .axis-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
     .axis-card {
       padding: 18px;
       border: 1px solid var(--rule);
@@ -378,6 +359,22 @@
     }
     .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 
+    /* ─── FIGURE CARDS ───────────────────────────────── */
+    .figure-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .figure-card {
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+    }
+    .figure-card img { display: block; width: 100%; background: var(--paper-2); }
+    .figure-card figcaption {
+      padding: 14px 16px 16px;
+      color: var(--ink-2);
+      font-size: 14px;
+      line-height: 1.5;
+      border-top: 1px solid var(--rule);
+    }
+
     /* ─── SOURCE CARDS ───────────────────────────────── */
     .source-card {
       padding: 18px;
@@ -411,7 +408,6 @@
     @media (max-width: 1000px) {
       .axis-grid { grid-template-columns: repeat(2, 1fr); }
       .grid-3 { grid-template-columns: 1fr 1fr; }
-      .figure-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 760px) {
       nav { display: none; }
@@ -436,7 +432,6 @@
       <nav aria-label="Navegação principal">
         <a href="#biofisica">Biofísica</a>
         <a href="#bioquimica">Bioquímica</a>
-        <a href="#figuras">Figuras</a>
         <a href="#evidencia">Evidência</a>
         <a href="#fontes">Fontes</a>
       </nav>
@@ -450,7 +445,7 @@
     <section class="hero shell">
       <div class="kicker">Ficha · molécula</div>
       <h1>Dipirona</h1>
-      <p class="lead"><strong>A bula vê um analgésico.</strong> A Pharmacopeia lê um quelante iônico sintético de 1897, nascido de bancada, sem história evolutiva em campo magnético, operando exclusivamente no compartimento aquoso — nunca entra em membranas lipídicas. Classificada como segunda ordem ambígua: remove sinais de dor e febre sem construir capacidade energética, e pela quelação de ferro e magnésio pode reduzir a velocidade da cadeia respiratória mitocondrial. Esta ficha organiza o que é estabelecido, o que é hipótese biofísica plausível e o que permanece investigacional — Biofísica primeiro, Bioquímica depois.</p>
+      <p class="lead"><strong>A bula vê um analgésico/antitérmico que espanta a febre.</strong> A Pharmacopeia lê uma molécula hidrofílica sem CISS, que remove o espasmo energético sem escrever ordem — segunda ordem pura. Sintetizada em Leipzig 1897, sem história evolutiva em campo magnético, opera exclusivamente no compartimento aquoso — nunca entra em membranas lipídicas. Classificada como segunda ordem ambígua: remove sinais de dor e febre sem construir capacidade energética, e pela quelação de ferro e magnésio pode reduzir a velocidade da cadeia respiratória mitocondrial. Esta ficha organiza o que é estabelecido, o que é hipótese biofísica plausível e o que permanece investigacional — Biofísica primeiro, Bioquímica depois.</p>
       <div class="cta-row">
         <a class="button" href="#biofisica">BLOCO 1 — Biofísica</a>
         <a class="button secondary" href="#bioquimica">BLOCO 2 — Bioquímica</a>
@@ -490,7 +485,6 @@
       </div>
     </section>
 
-    <!-- ━━━━━━━━━━━━━━━━ FIGURAS DIDÁTICAS ━━━━━━━━━━━━━━━━ -->
     <section id="figuras" class="shell">
       <div class="section-head">
         <div>
@@ -501,20 +495,20 @@
       </div>
       <div class="figure-grid">
         <figure class="figure-card">
-          <img src="../../assets/moleculas/dipirona/gpt/dipirona-01-molecula-gpt.png" alt="Estrutura molecular da dipirona em fundo branco" loading="lazy" />
-          <figcaption>Molécula da dipirona: pirazolona aquiral, sistema push-pull mínimo, grupo metanossulfonato.</figcaption>
+          <img src="../../assets/moleculas/dipirona/gpt/dipirona-01-molecula-gpt.png" alt="Estrutura química da dipirona (metamizol sódico) em duas dimensões com grupos funcionais destacados, sobre fundo branco" loading="lazy" />
+          <figcaption>Molécula da dipirona: figura editorial GPT/OpenAI em estilo farmacologia clássica.</figcaption>
         </figure>
         <figure class="figure-card">
-          <img src="../../assets/moleculas/dipirona/gpt/dipirona-02-mecanismo-gpt.png" alt="Mecanismo clássico da dipirona com hidrólise pré-sistémica e 4-MAA" loading="lazy" />
-          <figcaption>Mecanismo clássico: hidrólise pré-sistémica → 4-MAA → COX-3, K-ATP, PDE, CB₁.</figcaption>
+          <img src="../../assets/moleculas/dipirona/gpt/dipirona-02-mecanismo-gpt.png" alt="Diagrama do mecanismo da dipirona: hidrólise a 4-MAA, inibição de COX-3, ativação de K-ATP/PDE, ativação de CB₁" loading="lazy" />
+          <figcaption>Mecanismo clássico: metabolismo a 4-MAA, inibição de COX-3, canais K-ATP e recetores CB₁.</figcaption>
         </figure>
         <figure class="figure-card">
-          <img src="../../assets/moleculas/dipirona/gpt/dipirona-03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico ADME da dipirona" loading="lazy" />
-          <figcaption>Mapa farmacológico: absorção oral, distribuição aquosa, metabolismo hepático, eliminação renal 96%.</figcaption>
+          <img src="../../assets/moleculas/dipirona/gpt/dipirona-03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico da dipirona com fluxo de absorção, metabolismo hepático, excreção renal e mapa regulatório mundial" loading="lazy" />
+          <figcaption>Mapa farmacológico: ADME aquoso, metabolismo hepático e contexto regulatório global.</figcaption>
         </figure>
         <figure class="figure-card">
-          <img src="../../assets/moleculas/dipirona/gpt/dipirona-04-interface-biofisica-gpt.png" alt="Interface biofísica da dipirona com espectro, quelação e baixa ordem" loading="lazy" />
-          <figcaption>Interface biofísica: UV-C fora da janela solar, quelação Fe²⁺→CCO→EZ water, segunda ordem ambígua.</figcaption>
+          <img src="../../assets/moleculas/dipirona/gpt/dipirona-04-interface-biofisica-gpt.png" alt="Diagrama conceitual da leitura biofísica da dipirona: aquiralidade, UV-C/B, quelação Fe/Mg, perturbação EZ water e segunda ordem" loading="lazy" />
+          <figcaption>Interface biofísica: sem CISS, UV-C/B fora da janela biológica, quelação e perturbação EZ como hipóteses de fronteira.</figcaption>
         </figure>
       </div>
     </section>
@@ -523,9 +517,9 @@
       <div class="section-head">
         <div>
           <div class="kicker">BLOCO 1 — Biofísica</div>
-          <h2>Seis eixos de leitura do compartimento aquoso.</h2>
+          <h2>Oito eixos de leitura do compartimento aquoso.</h2>
         </div>
-        <p>Leitura biofísica de primeiros princípios: origem, arquitectura, espectro, spin/CISS, água EZ e classificação de ordem. Cada eixo com estatuto epistemológico declarado.</p>
+        <p>Leitura biofísica de primeiros princípios: origem, arquitectura, espectro, spin/CISS, água EZ, mitocôndria, POMC e ordem. Cada eixo com estatuto epistemológico declarado.</p>
       </div>
       <div class="axis-grid">
         <article class="axis-card">
@@ -537,7 +531,7 @@
         <article class="axis-card">
           <span class="num">02 · arquitectura</span>
           <h3>Pirazolona aquiral, hidrofílica extrema</h3>
-          <p>Anel pirazolona + benzênico lateral, sem fusão, sistema π mínimo. Sem centros estereogênicos — molécula aquiral. logP negativo (hidrofilia extrema): não penetra membranas lipídicas. Opera exclusivamente no compartimento aquoso plasmático e celular. Quelação de Fe²⁺/Mg²⁺ via grupo C=O/N do pirazolona.</p>
+          <p>Anel pirazolona + benzénico lateral, sem fusão, sistema π mínimo. Sem centros estereogénicos — molécula aquiral. logP negativo (hidrofilia extrema): não penetra membranas lipídicas. Opera exclusivamente no compartimento aquoso plasmático e celular. Quelação de Fe²⁺/Mg²⁺ via grupo C=O/N do pirazolona.</p>
           <small>Estado: estrutura estabelecida; leitura de compartimento = hipótese biofísica</small>
         </article>
         <article class="axis-card">
@@ -555,11 +549,23 @@
         <article class="axis-card">
           <span class="num">05 · água EZ</span>
           <h3>Perturbação indireta via DDA</h3>
-          <p>Quelação de Fe²⁺ no heme a₃ da citocromo c oxidase (CCO) → redução da velocidade de síntese de DDA (água metabólica deutério-depletada, k=160). Menos DDA → menor EZ water mitocondrial → menor constante dielétrica → menor eficiência de sinalização biofotônica. Cascata indireta, não colapso iónico directo.</p>
+          <p>Quelação de Fe²⁺ no heme a₃ da citocromo c oxidase (CCO) → redução da velocidade de síntese de DDA (água metabólica deutério-depletada, k=160). Menos DDA → menor EZ water mitocondrial → menor constante dielétrica → menor eficiência de sinalização biofotônica no NIR. Cascata indireta, não colapso iónico directo.</p>
           <small>Estado: quelação estabelecida · cascata DDA→EZ = hipótese biofísica</small>
         </article>
         <article class="axis-card">
-          <span class="num">06 · ordem / Landauer</span>
+          <span class="num">06 · mitocôndria</span>
+          <h3>Quelação e cadeia respiratória</h3>
+          <p>A quelação de Fe²⁺ no heme a₃ da CCO reduz a velocidade da cadeia respiratória. A quelação de Mg²⁺ reduz a eficiência da F₁-ATPase → menor produção de ATP e de DDA. O efeito é bifásico: em uso agudo, reduz ROS (via inibição de Fenton); em uso crónico, remove substrato essencial da fosforilação oxidativa.</p>
+          <small>Estado: quelação (verde) · efeito na ATP-sintase (âmbar)</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">07 · POMC / melanina</span>
+          <h3>Supressão indireta da cascata</h3>
+          <p>Inibição sistémica de PGE₂ pelo 4-MAA reduz a co-indução de POMC na epiderme em resposta a UV. A PGE₂ local atua como co-indutora da síntese de POMC em queratinócitos — menos PGE₂ → menos α-MSH → menos melanina → menor eficiência do filtro CISS cutâneo. Efeito indireto, oposto ao das tetraciclinas (que amplificam a cascata).</p>
+          <small>Estado: via PGE₂→POMC documentada · efeito dipirona = hipótese biofísica</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">08 · ordem / Landauer</span>
           <h3>Segunda ordem ambígua</h3>
           <p>Remove sinais (dor, febre, espasmo) sem adicionar capacidade de ordem. Não capta luz, não ativa POMC, não gera CISS, não fraciona isotopicamente H⁺/D⁺, não constrói EZ water. Quela ROS mas também remove Fe/Mg da cadeia respiratória. Silencia o alarme sem apagar o incêndio.</p>
           <small>Estado: classificação de primeiros princípios — leitura biofísica investigacional</small>
@@ -637,7 +643,7 @@
           <p><strong>Verde — estabelecido:</strong> eficácia analgésica, antipirética e espasmolítica em uso agudo; mecanismo de inibição de COX-3 e ativação de K-ATP; 4-MAA como metabolito ativo primário (Levy <em>Clin Pharmacokinet</em> 1995, PMID:7758258); risco de agranulocitose imunomediada (IAAAS <em>JAMA</em> 1986, PMID:3534426; Hedenmalm &amp; Spigset <em>Eur J Clin Pharmacol</em> 2002, PMID:12136372); hidrofilia extrema e compartimento exclusivamente aquoso.</p>
           <p><strong>Âmbar — plausível/mecanístico:</strong> quelação de Fe²⁺ no heme a₃ da CCO como mecanismo antipirético primário (suporte em dados de quelação de metamizol, Naeim et al. <em>J Coord Chem</em> 2021); quelação de Mg²⁺ → redução da eficiência da F₁-ATPase → menor produção de DDA → perturbação da EZ water peri-mitocondrial.</p>
           <p><strong>Ciano — hipótese biofísica exploratória:</strong> supressão de PGE₂ epidérmica → redução da co-indução POMC → menor melanogénese após exposição solar; redução da discriminação cinética H⁺/D⁺ (KIE) por queda de velocidade da ATP-sintase; impacto diferenciado em zonas de campo geomagnético reduzido (Anomalia do Atlântico Sul).</p>
-          <p><strong>Zona proibida para claims:</strong> a dipirona não é agente de depleção de deutério · não trata a causa da dor crónica · o uso crónico não é seguro por ausência de danos agudos aparentes.</p>
+          <p><strong>Vermelho — contestado / não coberto:</strong> a dipirona não é agente de depleção de deutério · não trata a causa da dor crónica · o uso crónico não é seguro por ausência de danos agudos aparentes.</p>
         </article>
         <article class="panel">
           <h2>Nota metodológica</h2>

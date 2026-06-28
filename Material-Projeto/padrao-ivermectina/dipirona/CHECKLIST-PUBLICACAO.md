@@ -1,0 +1,36 @@
+# Checklist de Publicação — Dipirona Monohidratada
+
+- [ ] DOSSIER.md completo (classificação, evidência, 8 eixos)
+- [ ] HISTORIA.md com frase-mãe
+- [ ] ROTEIRO-IMAGENS.md com especificação das 4 imagens
+- [ ] PROMPTS-IMAGENS.md com prompts, alt text e legendas
+- [ ] CHECKLIST-PUBLICACAO.md (este ficheiro)
+- [ ] 4 imagens geradas e aprovadas visualmente
+- [ ] Nav com link #figuras
+- [ ] Hero com frase-mãe
+- [ ] Resumo com 6 cards
+- [ ] Secção #figuras com grid 2×2
+- [ ] 4 imagens com alt text
+- [ ] Secção #biofisica com axis-grid 4-col e 8 eixos
+- [ ] Secção #evidencia estratificada (verde/ciano/âmbar/vermelho)
+- [ ] Secção #fontes internas e externas (grid-3)
+- [ ] Guardrail clínico específico (agranulocitose, anafilaxia, hipotensão)
+- [ ] Regra editorial final
+- [ ] "não é prescrição" e "educacional"
+- [ ] Auditoria de links: sem quebrados
+- [ ] Auditoria de imagens: todas existem
+- [ ] Auditoria de placeholders: sem TODO/lorem
+- [ ] Auditoria de âncoras: sem #quebradas
+- [ ] HTML válido (tags abertas = fechadas)
+- [ ] Nenhum claim médico não-suportado
+- [ ] Hipóteses Kruse/PKA marcadas como fronteira
+- [ ] Nenhuma dose, ciclo ou posologia
+- [ ] Secção #janela com terreno, sequência e limites
+- [ ] Dipirona classificada como segunda ordem (removedora de obstáculo)
+- [ ] Guardrail final (notice warning) no fim do main
+- [ ] Theme toggle JS funcional
+- [ ] Anti-FOWT script no head
+- [ ] Google Fonts Spectral + Space Mono
+- [ ] Tokens CSS light/dark com --paper #F7F4EE, --ink #1A1E1C
+- [ ] Responsivo até 760px
+- [ ] prefers-reduced-motion

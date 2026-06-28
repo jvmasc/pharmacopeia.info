@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Florais de Bach — Pharmacopeia.info</title>
-  <meta name="description" content="Ficha educacional e investigacional de leitura biofísica dos Florais de Bach: cromóforos florais reais e a hipótese de fronteira de água EZ pré-modulada e via vagal-entérica." />
+  <meta name="description" content="Ficha educacional de leitura biofísica dos Florais de Bach: sistema de 38 essências, infusão solar, impressão espectral em água EZ, via vagal-entérica e classificação emocional." />
 
   <!-- Anti-FOWT: aplica o tema guardado ANTES de qualquer render -->
   <script>
@@ -14,348 +14,410 @@
   })();
   </script>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
   <style>
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       TEMA LIGHT (white/biofílico) — PADRÃO
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── RESET ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    /* ─── TOKENS — LIGHT ────────────────────────────── */
     :root {
       color-scheme: light;
 
-      --bg:        #FAF9F5;
-      --bg-2:      #F2EFE8;
-      --surface:   #FFFFFF;
-      --surface-2: #F7F5EF;
+      --paper:    #F7F4EE;
+      --paper-2:  #EDE9E0;
+      --ink:      #1A1E1C;
+      --ink-2:    #3C4640;
+      --ink-3:    #6E7A74;
 
-      --ink:       #1C2420;
-      --muted:     #4A5A54;
-      --quiet:     #7A8E87;
+      --rule:       rgba(26, 30, 28, .10);
+      --rule-heavy: rgba(26, 30, 28, .20);
 
-      --line:        rgba(28, 36, 32, .10);
-      --line-strong: rgba(184, 131, 42, .50);
+      --solar:  #9A6B18;
+      --bio:    #1E6E6A;
+      --mag:    #4A3E9C;
+      --danger: #903020;
+      --ok:     #2B6435;
 
-      --solar: #B8832A;
-      --bio:   #2B8A84;
-      --mag:   #5B4DB8;
-      --danger: #C0522E;
-      --ok:     #3A7D44;
+      --text:   'Spectral', Georgia, 'Times New Roman', serif;
+      --mono:   'Space Mono', ui-monospace, SFMono-Regular, monospace;
+      --ui:     system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 
-      --radius-xl: 28px;
-      --radius-lg: 20px;
-      --radius-md: 14px;
-
-      --shadow: 0 4px 24px rgba(28, 36, 32, .08), 0 1px 4px rgba(28, 36, 32, .05);
-      --shadow-hover: 0 8px 40px rgba(28, 36, 32, .12), 0 2px 8px rgba(28, 36, 32, .06);
-
-      --header-bg: rgba(250, 249, 245, .88);
-      --body-bg:
-        radial-gradient(ellipse at 18% 0%,  rgba(184, 131, 42, .11), transparent 38rem),
-        radial-gradient(ellipse at 84% 8%,  rgba(43, 138, 132, .09), transparent 34rem),
-        radial-gradient(ellipse at 50% 96%, rgba(91, 77, 184, .07),  transparent 40rem),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg) 62%, var(--bg-2) 100%);
-
-      --mono:  ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans:  Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      /* aliases de compatibilidade */
+      --serif:  'Spectral', Georgia, serif;
+      --sans:   system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      --bg:     var(--paper);
+      --bg-2:   var(--paper-2);
     }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       TEMA DARK — override
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── TOKENS — DARK ─────────────────────────────── */
     html[data-theme="dark"] {
       color-scheme: dark;
 
-      --bg:        #07100f;
-      --bg-2:      #0b1413;
-      --surface:   #10201e;
-      --surface-2: #142a27;
+      --paper:    #0E1412;
+      --paper-2:  #151E1B;
+      --ink:      #E0E8E2;
+      --ink-2:    #A2AFA7;
+      --ink-3:    #6B7870;
 
-      --ink:       #e7eadf;
-      --muted:     #a8b5aa;
-      --quiet:     #74827b;
+      --rule:       rgba(224, 232, 226, .09);
+      --rule-heavy: rgba(224, 232, 226, .18);
 
-      --line:        rgba(231, 234, 223, .14);
-      --line-strong: rgba(215, 168, 79, .45);
-
-      --solar: #d7a84f;
-      --bio:   #65c7c0;
-      --mag:   #8a6ee8;
-      --danger: #d8816a;
-      --ok:     #98c379;
-
-      --shadow: 0 24px 80px rgba(0, 0, 0, .42);
-      --shadow-hover: 0 24px 80px rgba(0, 0, 0, .55);
-
-      --header-bg: rgba(7, 16, 15, .72);
-      --body-bg:
-        radial-gradient(circle at 12% 0%,  rgba(215, 168, 79, .18), transparent 32rem),
-        radial-gradient(circle at 88% 10%, rgba(101, 199, 192, .14), transparent 32rem),
-        radial-gradient(circle at 48% 100%, rgba(138, 110, 232, .10), transparent 34rem),
-        linear-gradient(180deg, var(--bg), var(--bg-2) 52%, #060b0a);
+      --solar:  #C8953A;
+      --bio:    #4EAAA4;
+      --mag:    #7B6ED6;
+      --danger: #C07060;
+      --ok:     #5AA46A;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    /* ─── BASE ───────────────────────────────────────── */
     body {
-      margin: 0;
-      background: var(--body-bg);
+      background: var(--paper);
       color: var(--ink);
-      font-family: var(--sans);
-      line-height: 1.55;
+      font-family: var(--text);
+      font-size: 18px;
+      line-height: 1.68;
     }
-    a { color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--solar); }
+
     .shell { width: min(1180px, calc(100% - 36px)); margin: 0 auto; }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       HEADER / NAV
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── MASTHEAD — flat, sem sticky/blur ──────────── */
     header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(20px) saturate(1.3);
-      background: var(--header-bg);
-      border-bottom: 1px solid var(--line);
-      box-shadow: 0 1px 0 var(--line);
+      border-bottom: 1px solid var(--rule-heavy);
+      padding: 18px 0;
     }
-    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
-    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; letter-spacing: -.02em; font-weight: 700; color: var(--ink); }
+    .nav {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 22px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-family: var(--text);
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -.02em;
+      color: var(--ink);
+    }
     .mark {
-      width: 34px;
-      height: 34px;
-      border: 1.5px solid var(--line-strong);
+      width: 28px;
+      height: 28px;
+      border: 1.5px solid var(--rule-heavy);
       border-radius: 50%;
       display: grid;
       place-items: center;
       position: relative;
-      color: var(--solar);
-      background: var(--surface);
+      flex-shrink: 0;
     }
     .mark::before, .mark::after {
       content: "";
       position: absolute;
-      border: 1px solid rgba(43, 138, 132, .50);
+      border: 1px solid rgba(30, 110, 106, .40);
       border-radius: 50%;
-      inset: 7px 2px;
+      inset: 5px 2px;
       transform: rotate(35deg);
     }
-    .mark::after { transform: rotate(-35deg); border-color: rgba(91, 77, 184, .42); }
-
-    html[data-theme="dark"] .mark::before { border-color: rgba(101, 199, 192, .42); }
-    html[data-theme="dark"] .mark::after  { border-color: rgba(138, 110, 232, .38); }
-
+    .mark::after { transform: rotate(-35deg); border-color: rgba(74, 62, 156, .35); }
+    html[data-theme="dark"] .mark::before { border-color: rgba(78, 170, 164, .40); }
+    html[data-theme="dark"] .mark::after  { border-color: rgba(123, 110, 214, .35); }
     .mark-dot {
-      width: 6px;
-      height: 6px;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
       background: var(--solar);
       position: relative;
       z-index: 1;
     }
 
-    nav { display: flex; gap: 18px; color: var(--muted); font-size: 14px; }
-    nav a { text-decoration: none; transition: color .15s ease; }
+    nav {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+    }
+    nav a {
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--ink-3);
+      transition: color .12s;
+    }
     nav a:hover { color: var(--ink); }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       BOTÃO DE TOGGLE DE TEMA
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* botão de tema — texto simples com borda */
     .theme-btn {
-      cursor: pointer;
-      border: 1px solid var(--line-strong);
-      background: rgba(255, 255, 255, .05);
-      color: var(--solar);
-      border-radius: 999px;
-      width: 38px;
-      height: 38px;
-      display: grid;
-      place-items: center;
-      font-size: 16px;
-      transition: border-color .18s ease, background .18s ease;
-      flex-shrink: 0;
-    }
-    .theme-btn:hover {
-      background: rgba(184, 131, 42, .10);
-      border-color: var(--line-strong);
-    }
-
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       HERO
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .hero { padding: 76px 0 42px; }
-    .kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--solar);
       font-family: var(--mono);
-      font-size: 12px;
+      font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: .16em;
-      border: 1px solid rgba(184, 131, 42, .30);
-      border-radius: 999px;
-      padding: 8px 14px;
-      background: rgba(184, 131, 42, .07);
+      letter-spacing: .12em;
+      background: none;
+      border: 1px solid var(--rule-heavy);
+      color: var(--ink-3);
+      cursor: pointer;
+      padding: 4px 10px;
+      line-height: 1.6;
+      flex-shrink: 0;
+      transition: color .12s, border-color .12s;
     }
-    html[data-theme="dark"] .kicker {
-      border-color: rgba(215, 168, 79, .26);
-      background: rgba(215, 168, 79, .06);
-    }
-    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--solar); box-shadow: 0 0 18px var(--solar); }
-    h1 { margin: 26px 0 22px; max-width: 980px; font-family: var(--serif); font-size: clamp(48px, 8vw, 104px); line-height: .92; letter-spacing: -.06em; font-weight: 520; color: var(--ink); }
-    .lead { max-width: 860px; color: var(--muted); font-size: clamp(18px, 2vw, 23px); }
-    .lead strong { color: var(--ink); font-weight: 650; }
+    .theme-btn:hover { color: var(--ink); border-color: var(--ink-3); }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       LAYOUT GRIDS
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    section { padding: 48px 0; scroll-margin-top: 92px; }
+    /* ─── HERO ───────────────────────────────────────── */
+    .hero { padding: 76px 0 42px; }
+
+    /* ─── KICKER — label mono, sem pill ─────────────── */
+    .kicker {
+      display: block;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--ink-3);
+      margin-bottom: 18px;
+    }
+
+    /* ─── HEADINGS ───────────────────────────────────── */
+    h1 {
+      font-family: var(--text);
+      font-size: clamp(48px, 7vw, 84px);
+      font-weight: 500;
+      line-height: .96;
+      letter-spacing: -.04em;
+      color: var(--ink);
+      margin-bottom: .45em;
+    }
+    h2 {
+      font-family: var(--text);
+      font-size: clamp(22px, 3.4vw, 36px);
+      font-weight: 500;
+      line-height: 1.12;
+      letter-spacing: -.025em;
+      color: var(--ink);
+      margin-bottom: .5em;
+    }
+    h3 {
+      font-family: var(--text);
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: -.015em;
+      color: var(--ink);
+      margin-bottom: .35em;
+    }
+
+    .lead {
+      max-width: 860px;
+      color: var(--ink-2);
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.62;
+    }
+    .lead strong { color: var(--ink); font-weight: 500; }
+
+    /* ─── LAYOUT ─────────────────────────────────────── */
+    section { padding: 48px 0; }
+    section + section { border-top: 1px solid var(--rule); }
     .grid-2 { display: grid; grid-template-columns: 1.05fr .95fr; gap: 22px; align-items: start; }
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       CARDS BASE
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .panel, .notice, .axis-card, .source-card, .summary-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow);
+    /* ─── PANELS — sem sombra, borda fina ───────────── */
+    .panel {
+      padding: 28px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
     }
-    .panel { padding: 28px; }
-    .panel h2, section h2 { margin: 0 0 14px; font-family: var(--serif); letter-spacing: -.035em; font-size: clamp(30px, 4vw, 52px); line-height: 1; }
-    .panel p, .notice p, .axis-card p, .source-card p, .summary-card p { color: var(--muted); }
+    .panel p { color: var(--ink-2); line-height: 1.68; font-size: 16px; }
+    .panel p + p { margin-top: .9em; }
+    .panel strong { color: var(--ink); font-weight: 500; }
 
-    .summary-card { padding: 18px; box-shadow: none; min-height: 170px; }
-    .summary-card b { display: block; margin-bottom: 8px; color: var(--ink); }
+    /* ─── STATUS TAGS ────────────────────────────────── */
+    .status {
+      display: inline-flex;
+      border-radius: 999px;
+      border: 1px solid var(--rule);
+      padding: 5px 10px;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--ink-3);
+      margin-bottom: 12px;
+    }
+    .established   { color: var(--ok);     border-color: rgba(43, 100, 53, .32);  background: rgba(43, 100, 53, .06);  }
+    .hypothesis    { color: var(--bio);    border-color: rgba(30, 110, 106, .32); background: rgba(30, 110, 106, .06); }
+    .investigational { color: var(--solar); border-color: rgba(154, 107, 24, .32); background: rgba(154, 107, 24, .06); }
+    .guarded       { color: var(--danger); border-color: rgba(144, 48, 32, .32);  background: rgba(144, 48, 32, .06);  }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       STATUS TAGS
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .status { display: inline-flex; border-radius: 999px; border: 1px solid var(--line); padding: 6px 10px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
-    .established   { color: var(--ok);     border-color: rgba(58, 125, 68, .38);  background: rgba(58, 125, 68, .07);  }
-    .hypothesis    { color: var(--bio);    border-color: rgba(43, 138, 132, .38); background: rgba(43, 138, 132, .07); }
-    .investigational { color: var(--solar); border-color: rgba(184, 131, 42, .38); background: rgba(184, 131, 42, .07); }
-    .guarded       { color: var(--danger); border-color: rgba(192, 82, 46, .38);  background: rgba(192, 82, 46, .07);  }
+    html[data-theme="dark"] .established    { border-color: rgba(90, 164, 106, .28); background: rgba(90, 164, 106, .07); }
+    html[data-theme="dark"] .hypothesis     { border-color: rgba(78, 170, 164, .28); background: rgba(78, 170, 164, .07); }
+    html[data-theme="dark"] .investigational { border-color: rgba(200, 149, 58, .28);  background: rgba(200, 149, 58, .07);  }
+    html[data-theme="dark"] .guarded        { border-color: rgba(192, 112, 96, .28); background: rgba(192, 112, 96, .07); }
 
-    html[data-theme="dark"] .established    { border-color: rgba(152,195,121,.34); background: rgba(152,195,121,.08); }
-    html[data-theme="dark"] .hypothesis     { border-color: rgba(101,199,192,.34); background: rgba(101,199,192,.08); }
-    html[data-theme="dark"] .investigational { border-color: rgba(215,168,79,.34);  background: rgba(215,168,79,.08);  }
-    html[data-theme="dark"] .guarded        { border-color: rgba(216,129,106,.34); background: rgba(216,129,106,.08); }
-
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       SECTION HEAD
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── SECTION HEAD ───────────────────────────────── */
     .section-head { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 22px; }
-    .section-head p { margin: 0; max-width: 680px; color: var(--muted); }
+    .section-head p { margin: 0; max-width: 680px; color: var(--ink-2); font-size: 16px; line-height: 1.6; }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       AXIS GRID
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── SUMMARY CARDS ──────────────────────────────── */
+    .summary-card {
+      padding: 18px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      min-height: 170px;
+    }
+    .summary-card b {
+      display: block;
+      font-family: var(--text);
+      font-weight: 500;
+      font-size: 17px;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .summary-card p { color: var(--ink-2); font-size: 15px; line-height: 1.6; }
+
+    /* ─── AXIS GRID ──────────────────────────────────── */
     .axis-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-    .axis-card { padding: 18px; box-shadow: none; min-height: 230px; }
-    .axis-card .num { font-family: var(--mono); color: var(--solar); font-size: 12px; letter-spacing: .12em; }
-    .axis-card h3 { margin: 10px 0 8px; font-size: 20px; letter-spacing: -.02em; }
-    .axis-card p { font-size: 14px; margin: 0; }
-    .axis-card small { display: block; margin-top: 12px; color: var(--quiet); font-family: var(--mono); font-size: 11px; text-transform: uppercase; line-height: 1.45; }
+    .axis-card {
+      padding: 18px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      min-height: 230px;
+    }
+    .axis-card .num {
+      font-family: var(--mono);
+      color: var(--solar);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .axis-card h3 { margin: 10px 0 8px; }
+    .axis-card p { font-size: 14px; color: var(--ink-2); line-height: 1.6; margin: 0; }
+    .axis-card small {
+      display: block;
+      margin-top: 12px;
+      color: var(--ink-3);
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      line-height: 1.45;
+    }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       NOTICE
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── NOTICE ─────────────────────────────────────── */
     .notice {
       padding: 26px;
-      box-shadow: none;
-      border-color: rgba(184, 131, 42, .30);
-      background: linear-gradient(135deg, rgba(184, 131, 42, .06) 0%, var(--surface) 70%);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
     }
-    html[data-theme="dark"] .notice {
-      border-color: rgba(215, 168, 79, .24);
-      background: var(--surface);
-    }
+    .notice h2 { margin-bottom: .4em; }
+    .notice p { color: var(--ink-2); font-size: 16px; line-height: 1.68; }
+    .notice p + p { margin-top: .8em; }
 
-    /* Notice de aviso/warning (guardrail clínico) */
+    /* Notice de aviso/warning */
     .warning {
-      border-color: rgba(192, 82, 46, .38);
-      background: linear-gradient(135deg, rgba(192, 82, 46, .06) 0%, var(--surface) 70%);
+      border-color: rgba(144, 48, 32, .28);
     }
     html[data-theme="dark"] .warning {
-      border-color: rgba(216, 129, 106, .38);
-      background: linear-gradient(180deg, rgba(53,26,22,.82), rgba(18,24,23,.86));
+      border-color: rgba(192, 112, 96, .28);
     }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       BUTTONS
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── BUTTONS ────────────────────────────────────── */
     .button {
-      min-height: 46px;
+      min-height: 44px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      padding: 12px 20px;
-      border-radius: 999px;
-      border: 1.5px solid var(--line-strong);
-      background: rgba(184, 131, 42, .10);
+      padding: 11px 18px;
+      border-radius: 4px;
+      border: 1px solid var(--rule-heavy);
+      background: rgba(154, 107, 24, .08);
       color: var(--ink);
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 14px;
-      transition: background .18s ease, border-color .18s ease, transform .15s ease, box-shadow .18s ease;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .10em;
+      transition: background .15s, border-color .15s;
     }
     html[data-theme="dark"] .button {
-      background: rgba(215, 168, 79, .12);
+      background: rgba(200, 149, 58, .08);
     }
     .button:hover {
-      background: rgba(184, 131, 42, .18);
-      border-color: rgba(184, 131, 42, .70);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 16px rgba(184, 131, 42, .16);
+      background: rgba(154, 107, 24, .14);
+      border-color: rgba(154, 107, 24, .45);
+      color: var(--ink);
     }
     .button.secondary {
-      border-color: var(--line);
-      background: var(--surface-2);
-      color: var(--muted);
-    }
-    html[data-theme="dark"] .button.secondary {
-      background: rgba(255, 255, 255, .03);
+      border-color: var(--rule);
+      background: transparent;
+      color: var(--ink-2);
     }
     .button.secondary:hover {
-      border-color: rgba(43, 138, 132, .40);
-      background: rgba(43, 138, 132, .06);
+      border-color: var(--rule-heavy);
+      background: var(--paper-2);
       color: var(--ink);
-      box-shadow: 0 4px 16px rgba(43, 138, 132, .10);
     }
     .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       SOURCE CARDS
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .source-card { padding: 18px; box-shadow: none; }
-    .source-card h3 { margin: 0 0 8px; }
-    .source-card p { margin: 0; font-size: 14px; }
-
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       FOOTER
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    footer {
-      padding: 44px 0 70px;
-      color: var(--quiet);
-      border-top: 1px solid var(--line);
-      background: var(--bg-2);
+    /* ─── SOURCE CARDS ───────────────────────────────── */
+    .source-card {
+      padding: 18px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
     }
-    footer .shell { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-    footer strong { color: var(--muted); }
-    footer code   { font-family: var(--mono); color: var(--quiet); font-size: 13px; }
+    .source-card h3 { margin: 0 0 8px; }
+    .source-card p { margin: 0; font-size: 14px; color: var(--ink-2); line-height: 1.6; }
 
-    section + section { border-top: 1px solid var(--line); }
+    /* ─── FIGURE CARDS ───────────────────────────────── */
+    .figure-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .figure-card {
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+    }
+    .figure-card img { display: block; width: 100%; background: var(--paper-2); }
+    .figure-card figcaption {
+      padding: 14px 16px 16px;
+      color: var(--ink-2);
+      font-size: 14px;
+      line-height: 1.5;
+      border-top: 1px solid var(--rule);
+    }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       RESPONSIVE
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    @media (max-width: 1000px) { .axis-grid { grid-template-columns: repeat(2, 1fr); } .grid-3 { grid-template-columns: 1fr 1fr; } }
+    /* ─── FOOTER ─────────────────────────────────────── */
+    footer {
+      padding: 28px 0 52px;
+      border-top: 1px solid var(--rule);
+      background: var(--paper-2);
+    }
+    footer .shell {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      color: var(--ink-3);
+      text-transform: uppercase;
+    }
+    footer strong { color: var(--ink-2); font-weight: 700; }
+    footer code   { font-family: var(--mono); color: var(--ink-3); font-size: 11px; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 1000px) {
+      .axis-grid { grid-template-columns: repeat(2, 1fr); }
+      .grid-3 { grid-template-columns: 1fr 1fr; }
+    }
     @media (max-width: 760px) {
       nav { display: none; }
-      .grid-2, .grid-3, .axis-grid { grid-template-columns: 1fr; }
+      .grid-2, .grid-3, .axis-grid, .figure-grid { grid-template-columns: 1fr; }
       .section-head { display: block; }
+      .section-head p { margin-top: 12px; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, html { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
@@ -372,27 +434,25 @@
         <span>Pharmacopeia.info</span>
       </a>
       <nav aria-label="Navegação principal">
-        <a href="../../index.html#matriz">Matriz</a>
-        <a href="#eixos">8 eixos</a>
+        <a href="#biofisica">Biofísica</a>
+        <a href="#bioquimica">Bioquímica</a>
         <a href="#evidencia">Evidência</a>
         <a href="#fontes">Fontes</a>
       </nav>
-      <button id="themeToggle" class="theme-btn" type="button" aria-label="Alternar tema">
-        <span class="theme-icon theme-icon-sun">&#9728;</span>
-        <span class="theme-icon theme-icon-moon" style="display:none">&#9790;</span>
+      <button id="themeToggle" class="theme-btn" type="button" aria-label="Mudar para tema escuro">
+        <span id="themeBtnLabel">escuro</span>
       </button>
     </div>
   </header>
 
-
   <main>
     <section class="hero shell">
-      <div class="kicker"><span class="dot"></span> Ficha · framework investigacional · segunda ordem</div>
+      <div class="kicker">Ficha · sistema floral · segunda ordem</div>
       <h1>Florais de Bach</h1>
-      <p class="lead"><strong>A bula vê "suplemento" ou "placebo".</strong> A Pharmacopeia lê uma camada vagal-entérica e informacional: preparações aquosas com traços de cromóforos florais (flavonoides, antocianinas), produzidas por exposição solar de pétalas em água de fonte. Hipótese central — <strong>água EZ pré-modulada que entrega uma impressão espectral ao sistema entérico-vagal</strong>. Território investigacional, marcado como tal.</p>
+      <p class="lead"><strong>A bula vê "álcool diluído com flores".</strong> A Pharmacopeia lê um sistema de 38 padrões vibracionais vegetais — informação emocional transcrita para água por infusão solar. Esta ficha organiza o que é estabelecido (química dos cromóforos florais, história de Bach, classificação emocional), o que é hipótese biofísica (impressão espectral em água EZ, via vagal-entérica) e o que permanece investigacional — sem evidência clínica consolidada de eficácia acima do placebo.</p>
       <div class="cta-row">
-        <a class="button" href="#eixos">Ler pelos 8 eixos</a>
-        <a class="button secondary" href="../../index.html#atlas">Voltar ao atlas</a>
+        <a class="button" href="#biofisica">BLOCO 1 — Biofísica</a>
+        <a class="button secondary" href="#bioquimica">BLOCO 2 — Bioquímica</a>
       </div>
     </section>
 
@@ -400,67 +460,206 @@
       <div class="grid-2">
         <article class="panel">
           <h2>A tese pública</h2>
-          <p>Edward Bach (médico bacteriologista) preparava, nos anos 1930, tinturas florais de 38 espécies por maceração solar em água de fonte. Não são fitoterápicos (sem princípio ativo em concentração farmacológica detectável) nem homeopáticos no sentido estrito.</p>
-          <p>A leitura biofísica propõe que o processo (luz solar + superfície hidrofílica da pétala) gera <strong>água EZ modulada pelos cromóforos florais</strong>, e que essa "impressão espectral" é lida pela mucosa entérica/sublingual rica em melanina, modulando o tónus vagal. A Pharmacopeia apresenta isto como <strong>hipótese de fronteira</strong>, contraposta às meta-análises convencionais que não acham efeito acima do placebo.</p>
+          <p>Edward Bach (médico bacteriologista) preparava, nos anos 1930, tinturas florais de 38 espécies por maceração solar em água de nascente. Não são fitoterápicos (sem princípio ativo em concentração farmacológica detectável nas diluições finais) nem homeopáticos no sentido estrito de dinamização seriada.</p>
+          <p>A leitura biofísica propõe que o processo (luz solar + superfície hidrofílica da pétala + água de nascente) gera <strong>água EZ modulada pela assinatura espectral dos cromóforos florais</strong> (flavonoides, antocianinas), e que essa «impressão» é lida pela mucosa sublingual/entérica rica em terminações vagais e melanossomas — modulando o tónus vagal. A Pharmacopeia apresenta isto como <strong>hipótese de fronteira</strong>, contraposta às meta-análises convencionais que não acham efeito acima do placebo.</p>
         </article>
         <aside class="notice warning">
           <h2>Guardrail clínico — leia antes</h2>
-          <p><strong>Esta página é educacional. Não é prescrição.</strong> A Pharmacopeia.info publica leitura biofísica e farmacológica de substâncias para estudo e contexto — não fornece dose, posologia, ciclo, indicação individual, nem recomenda compra, uso ou substituição de qualquer tratamento. Nada aqui diagnostica, trata, cura ou previne doença, nem substitui consulta, anamnese, exame ou a decisão de um profissional de saúde habilitado. Medicamentos têm riscos, interações e contraindicações que dependem do seu terreno, da sua história clínica, da sua geografia e dos medicamentos que já usa. Antes de qualquer uso, fale com o seu médico ou farmacêutico.</p>
-          <p>Os Florais de Bach <strong>não têm suporte de evidência clínica consolidada</strong> de eficácia acima do placebo; o mecanismo proposto (impressão espectral na água EZ) é hipótese de fronteira em debate. São classificados como suplementos ou medicamentos homeopáticos tradicionais conforme a jurisdição — siga a regulação local. Esta ficha é educacional e exploratória; não recomenda uso, não trata condições emocionais ou físicas, e não substitui acompanhamento de saúde mental ou clínica quando indicado.</p>
+          <p><strong>Esta página é educacional. Não é prescrição.</strong> A Pharmacopeia.info publica leitura biofísica e farmacológica de substâncias para estudo e contexto — não fornece dose, posologia, ciclo, indicação individual, nem recomenda compra, uso ou substituição de qualquer tratamento. Nada aqui diagnostica, trata, cura ou previne doença, nem substitui consulta, anamnese, exame ou a decisão de um profissional de saúde habilitado.</p>
+          <p>Os Florais de Bach <strong>não têm suporte de evidência clínica consolidada</strong> de eficácia acima do placebo. São classificados como suplementos ou medicamentos homeopáticos conforme a jurisdição — siga a regulação local. O risco relevante não é toxicológico (perfil de segurança direta favorável em adultos saudáveis), mas de <strong>oportunidade</strong>: o uso como substituto de tratamento baseado em evidência (ansiedade, depressão, pânico) pode atrasar ou impedir acesso a cuidado adequado. Esta ficha não recomenda uso clínico.</p>
         </aside>
       </div>
     </section>
 
-    <section id="resumo" class="shell">
+    <section class="shell">
       <div class="section-head">
         <div>
-          <div class="kicker"><span class="dot"></span> Leitura rápida</div>
-          <h2>Antes de qualquer protocolo.</h2>
+          <div class="kicker">Leitura rápida</div>
+          <h2>Dois blocos antes de qualquer protocolo.</h2>
         </div>
-        <p>A ficha pública separa mecanismo aceito, leitura biofísica, hipóteses Kruse/PKA e prudência clínica para evitar tanto reducionismo quanto propaganda terapêutica.</p>
+        <p>A ficha pública separa o sistema floral e a classificação emocional (BLOCO 2) da leitura biofísica de fronteira (BLOCO 1), com estatuto epistemológico explícito em cada ponto.</p>
       </div>
       <div class="grid-3">
-        <article class="summary-card"><span class="status established">estabelecido</span><b>Cromóforos florais reais</b><p>Flavonoides (quercetina, kaempferol, luteolina) e antocianinas com absorção UV/visível caracterizada.</p></article>
-        <article class="summary-card"><span class="status established">estabelecido</span><b>Quelação Fe/Cu</b><p>Flavonoides quelam metais paramagnéticos (química conhecida).</p></article>
-        <article class="summary-card"><span class="status investigational">investigacional</span><b>Água EZ pré-modulada</b><p>Impressão espectral na água por maceração solar (hipótese Pollack).</p></article>
-        <article class="summary-card"><span class="status investigational">investigacional</span><b>Via vagal-entérica-melanínica</b><p>Sinal lido pelo plexo entérico e nervo vago, não psicossomático (hipótese).</p></article>
-        <article class="summary-card"><span class="status investigational">investigacional</span><b>Independente de concentração</b><p>"Informação, não massa" (hipótese).</p></article>
-        <article class="summary-card"><span class="status guarded">prudência</span><b>Depende do recetor</b><p>Efeito proposto só num sistema com k≈160; sem evidência clínica consolidada de eficácia.</p></article>
+        <article class="summary-card"><span class="status hypothesis">biofísica · BLOCO 1</span><b>38 padrões vibracionais</b><p>Infusão solar de 38 espécies florais em água de nascente — sistema, não molécula única. Cada essência carrega assinatura espectral distinta dos seus cromóforos.</p></article>
+        <article class="summary-card"><span class="status hypothesis">biofísica · BLOCO 1</span><b>Água EZ e impressão espectral</b><p>Luz solar excita flavonoides/antocianinas a estados tripleto; a assinatura é impressa na rede de hidrogénio da água (k≈160).</p></article>
+        <article class="summary-card"><span class="status investigational">investigacional · BLOCO 1</span><b>Via vagal-entérica-melanínica</b><p>Hipótese: a impressão espectral é lida pela mucosa sublingual rica em melanossomas e terminações do nervo vago.</p></article>
+        <article class="summary-card"><span class="status established">estabelecido · BLOCO 2</span><b>38 essências florais de Bach</b><p>Sistema de preparações aquosas com 7 categorias emocionais. Rescue Remedy (5 essências) é o produto mais comercializado.</p></article>
+        <article class="summary-card"><span class="status established">estabelecido · BLOCO 2</span><b>Perfil de segurança direta</b><p>Não há toxicidade farmacológica detectável nas diluições padrão. O veículo é água + etanol traço (~1,7–2,5% v/v no frasco de uso).</p></article>
+        <article class="summary-card"><span class="status guarded">prudência · ambos</span><b>Sem eficácia clínica consolidada</b><p>Meta-análises (Cochrane 2009, Ernst 2010) não encontram efeito acima do placebo. Hipótese biofísica é investigacional, não consenso.</p></article>
       </div>
     </section>
 
-    <section id="eixos" class="shell">
+    <section id="figuras" class="shell">
       <div class="section-head">
         <div>
-          <div class="kicker"><span class="dot"></span> Matriz Pharmacopeia</div>
-          <h2>Florais pelos oito eixos.</h2>
+          <div class="kicker">Figuras didáticas</div>
+          <h2>Fundo claro, traço limpo, leitura floral.</h2>
         </div>
-        <p>A mesma molécula é lida por origem, forma, luz, água, spin, mitocôndria, campo e prudência clínica. Cada eixo tem um estatuto epistemológico diferente.</p>
+        <p>Imagens minimalistas para apoiar a ficha: sistema floral, preparação, mapa farmacológico e interface biofísica. São esquemas educacionais, não estruturas químicas nem protocolo clínico.</p>
+      </div>
+      <div class="figure-grid">
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/florais-de-bach/gpt/florais-de-bach-01-molecula-gpt.png" alt="Sistema de 38 essências florais dispostas em círculo concêntrico — representação editorial do conjunto completo dos Florais de Bach" loading="lazy" />
+          <figcaption>Sistema de 38 essências: figura editorial GPT/OpenAI em estilo botânico suave.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/florais-de-bach/gpt/florais-de-bach-02-mecanismo-gpt.png" alt="Diagrama sequencial do método solar de Bach: colheita, infusão solar, conservação em brandy, dose de uso" loading="lazy" />
+          <figcaption>Mecanismo de preparação: infusão solar como transcrição de padrão.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/florais-de-bach/gpt/florais-de-bach-03-mapa-farmacologico-gpt.png" alt="Mapa conceptual das 7 categorias emocionais de Bach com 38 essências distribuídas em clusters" loading="lazy" />
+          <figcaption>Mapa farmacológico: classificação emocional — não-ADME convencional.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/florais-de-bach/gpt/florais-de-bach-04-interface-biofisica-gpt.png" alt="Diagrama conceptual: flor > luz solar > água estruturada (EZ) > mucosa sublingual > nervo vago" loading="lazy" />
+          <figcaption>Interface biofísica: hipótese investigacional de via vagal-entérica para a impressão espectral.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="biofisica" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">BLOCO 1 — Biofísica</div>
+          <h2>Oito eixos de leitura vibracional.</h2>
+        </div>
+        <p>Leitura biofísica de primeiros princípios: origem, arquitectura, espectro, CISS, água interfacial, mitocôndria, vago e contexto magnético. Cada eixo tem estatuto epistemológico declarado.</p>
       </div>
       <div class="axis-grid">
-        <article class="axis-card"><span class="num">01 · origem</span><h3>Oxfordshire/Gales, 51°N</h3><p>Campo vertical forte, sol oblíquo; flores adaptadas a captar luz difusa.</p><small>Estado: botânica estabelecida; leitura geográfica investigacional</small></article>
-        <article class="axis-card"><span class="num">02 · arquitetura</span><h3>Difenilpropano (C6-C3-C6)</h3><p>Flavonoides planares conjugados; flavanonóis com centros quirais (relevante para CISS).</p><small>Estado: química estabelecida; antena/CISS investigacional</small></article>
-        <article class="axis-card"><span class="num">03 · espectro</span><h3>UVB/UVA + verde</h3><p>256–380 nm (flavonoides) e 520–535 nm (antocianinas, reemissão ~660 nm, janela do citocromo c oxidase).</p><small>Estado: absorção verde; relevância da preparação âmbar</small></article>
-        <article class="axis-card"><span class="num">04 · água</span><h3>O núcleo da hipótese</h3><p>Maceração solar como gerador de EZ com assinatura espectral; carga de deutério da água de fonte como variável.</p><small>Estado: investigacional</small></article>
-        <article class="axis-card"><span class="num">05 · CISS</span><h3>Interface floral-melanina</h3><p>EZ com informação quiral atuando como filtro de spin no TGI/sublingual.</p><small>Estado: investigacional</small></article>
-        <article class="axis-card"><span class="num">06 · redox</span><h3>ΔΨ por subtração</h3><p>Quelação de Fe/Cu reduz Fenton/peroxidação → membrana íntegra → ΔΨ mantido (mais plausível que a parte de coerência).</p><small>Estado: hipótese biofísica</small></article>
-        <article class="axis-card"><span class="num">07 · campo</span><h3>Latitude do recetor</h3><p>Efeito proposto atenuado sob a AAS (campo do paciente ~22.000 nT vs ~50.000 nT da origem).</p><small>Estado: investigacional</small></article>
-        <article class="axis-card"><span class="num">08 · janela</span><h3>Suporte vagal</h3><p>Apresentada como camada de sinal de baixo ruído para distonia vagal (ansiedade, SII), depois das fundações.</p><small>Estado: prudência + investigacional</small></article>
+        <article class="axis-card">
+          <span class="num">01 · origem</span>
+          <h3>Oxfordshire/Gales, 51°N</h3>
+          <p>Campo vertical forte (~50 µT), sol oblíquo de verão, fotoperíodo longo. Flores adaptadas a captar luz difusa UV-A dominante. A latitude determinou o espectro solar da impressão.</p>
+          <small>Estado: botânica estabelecida; leitura geográfica investigacional</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">02 · arquitectura</span>
+          <h3>C6-C3-C6 — flavonoides</h3>
+          <p>Esqueleto difenilpropano com nuvens π deslocalizadas; flavanonóis com centros quirais (relevante para CISS). Antocianinas com catião flavílio pH-dependente.</p>
+          <small>Estado: química estabelecida; antena/CISS investigacional</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">03 · espectro</span>
+          <h3>UV-A/visível — 280–660 nm</h3>
+          <p>Flavonoides (300–380 nm), antocianinas (510–560 nm), carotenoides (440–490 nm). Cobertura multiespectral que cruza com janelas de melanina e CCO (660 nm).</p>
+          <small>Estado: absorção espectral (verde) · estado tripleto in vivo (âmbar)</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">04 · CISS</span>
+          <h3>Quiralidade floral-água</h3>
+          <p>Flavonoides quirais em estado tripleto transferem energia com polarização de spin para a rede de hidrogénio da água. CISS sem molécula sólida — via quiralidade emergente da EZ.</p>
+          <small>Estado: hipótese biofísica de fronteira</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">05 · água EZ</span>
+          <h3>Infusão solar como impressão</h3>
+          <p>O núcleo da hipótese: maceração solar sobre água de nascente (baixo deutério) gera EZ com assinatura espectral impressa. O brandy estabiliza por gradiente dielétrico.</p>
+          <small>Estado: investigacional</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">06 · mitocôndria</span>
+          <h3>ΔΨ por modulação dielétrica</h3>
+          <p>Água com k≈160 na matriz mitocondrial aumenta a capacitância da interface ATP-sintase. Hipótese: mais carga por próton, maior eficiência sem ROS adicional.</p>
+          <small>Estado: hipótese biofísica de fronteira</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">07 · vago / campo</span>
+          <h3>Sublingual → vago → POMC</h3>
+          <p>A impressão espectral seria lida pela mucosa sublingual (aquaporinas, melanossomas) e transmitida via trigémio/vago ao hipotálamo arcuato, modulando POMC.</p>
+          <small>Estado: investigacional</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">08 · janela / terreno</span>
+          <h3>Segunda ordem emocional</h3>
+          <p>Apresentada como camada de suporte vagal para distonia emocional (ansiedade, stress), depois das fundações (sol, água, sono, aterramento). Não substitui terapia.</p>
+          <small>Estado: prudência + investigacional</small>
+        </article>
+      </div>
+    </section>
+
+    <section id="bioquimica" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">BLOCO 2 — Bioquímica</div>
+          <h2>Sistema floral e classificação clássica.</h2>
+        </div>
+        <p>Sistema de 38 essências, classificação emocional, composição, perfil de segurança e posição regulatória — o que o consenso biomédico e regulatório sustenta.</p>
+      </div>
+      <div class="grid-2">
+        <article class="panel">
+          <h2>O sistema floral de Bach</h2>
+          <p><strong>38 essências</strong> preparadas por método solar (flores em água de nascente sob sol direto, 3–4 h) ou fervura. Cada essência corresponde a um estado emocional negativo específico, organizado em 7 categorias: medo, incerteza, desinteresse, solidão, hipersensibilidade, desânimo, preocupação excessiva.</p>
+          <p><strong>Rescue Remedy:</strong> combinação fixa de 5 essências (Star of Bethlehem, Rock Rose, Cherry Plum, Impatiens, Clematis) — o produto mais amplamente comercializado, também em pastilhas sem álcool.</p>
+          <p><strong>Composição real:</strong> as diluições finais (frasco de tratamento, ~2 gotas stock + 30 mL água) contêm apenas água e etanol traço (~1,7–2,5% v/v). Nenhum fitoquímico floral está presente em concentração farmacologicamente detectável.</p>
+        </article>
+        <article class="panel">
+          <h2>Perfil de segurança e regulação</h2>
+          <p><strong>Toxicidade direta:</strong> extremamente baixa na formulação diluída padrão. O risco farmacológico direto é essencialmente nulo para adultos saudáveis.</p>
+          <p><strong>Populações vulneráveis:</strong> stock bottle (~27% etanol) deve ser evitado em alcoolismo, doença hepática grave, crianças pequenas. Preferir formulações sem álcool (pastilhas). Gravidez e lactação: falta de evidência de eficácia não justifica uso.</p>
+          <p><strong>Classificação regulatória:</strong> No Brasil, ANVISA enquadra como medicamento homeopático (RDC 26/2014, RDC 134/2022) — registo simplificado sem exigência de prova de eficácia clínica. FDA/EUA: suplementos alimentares. EMA: categoria homeopática.</p>
+          <p><strong>Interações medicamentosas:</strong> nenhuma interação farmacodinâmica ou farmacocinética documentada. O risco clínico relevante é indireto: substituição ou atraso no início de tratamento baseado em evidência.</p>
+        </article>
+      </div>
+
+      <div style="margin-top: 22px;">
+        <article class="panel">
+          <h2>As 38 essências — agrupamento emocional</h2>
+          <p><strong>Medo (5):</strong> Rock Rose, Mimulus, Cherry Plum, Aspen, Red Chestnut.</p>
+          <p><strong>Incerteza (6):</strong> Cerato, Scleranthus, Gentian, Gorse, Hornbeam, Wild Oat.</p>
+          <p><strong>Desinteresse pelo presente (7):</strong> Clematis, Honeysuckle, Wild Rose, Olive, White Chestnut, Mustard, Chestnut Bud.</p>
+          <p><strong>Solidão (3):</strong> Water Violet, Impatiens, Heather.</p>
+          <p><strong>Hipersensibilidade (4):</strong> Agrimony, Centaury, Walnut, Holly.</p>
+          <p><strong>Desânimo/desespero (8):</strong> Larch, Pine, Elm, Sweet Chestnut, Star of Bethlehem, Willow, Oak, Crab Apple.</p>
+          <p><strong>Preocupação excessiva (5):</strong> Chicory, Vervain, Vine, Beech, Rock Water.</p>
+          <p><em>Lista completa das 38 essências do sistema Bach original (1936).</em></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="janela" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Janela de uso</div>
+          <h2>Terreno emocional, sequência e limites.</h2>
+        </div>
+        <p>Os Florais de Bach são uma ferramenta de suporte emocional — não substituem nem concorrem com medicação psiquiátrica ou psicoterapia. A sequência importa: fundações primeiro, flores depois.</p>
+      </div>
+      <div class="grid-2">
+        <article class="panel">
+          <h2>Pré-requisitos de terreno (leitura biofísica)</h2>
+          <p><strong>Hidratação EZ e luz solar:</strong> sem exposição solar adequada e hidratação com água de qualidade (baixo deutério), a EZ endógena da mucosa sublingual está comprometida. O sinal de ressonância dos Florais depende de um recetor preparado.</p>
+          <p><strong>Janela circadiana:</strong> o uso sublingual ao nascer do sol — quando o UV-A ativa melanina e a mucosa está em máxima EZ endógena — é a janela de maior potencial de ressonância.</p>
+          <p><strong>Campo magnético:</strong> em regiões de campo enfraquecido (Anomalia do Atlântico Sul, <35 µT), a EZ da preparação pode degradar-se mais rapidamente. Armazenamento longe de nnEMF e uso em prazo curto após abertura.</p>
+        </article>
+        <article class="panel">
+          <h2>Limites absolutos</h2>
+          <p>Independentemente da leitura biofísica, os seguintes contextos exigem avaliação profissional obrigatória e os Florais não substituem:</p>
+          <p><strong>Transtorno de ansiedade generalizada, depressão maior, transtorno de pânico, TEPT, perturbação bipolar, ideação suicida</strong> — condições com tratamento baseado em evidência (ISRS, psicoterapia) que não deve ser atrasado ou substituído.</p>
+          <p><strong>Crianças com diagnóstico psiquiátrico:</strong> contraindicado como monoterapia.</p>
+          <p><strong>Uso como alternativa a medicação prescrita:</strong> nunca abandonar ou substituir medicação psiquiátrica sem acompanhamento médico.</p>
+          <p><strong>A ficha pública não transforma sistema floral em protocolo individual.</strong> Dose, escolha da essência, duração e indicação pertencem à avaliação de um profissional qualificado, não à leitura biofísica.</p>
+        </article>
       </div>
     </section>
 
     <section id="evidencia" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Estado da evidência</div>
+          <h2>O que é consenso. O que é hipótese. O que é fronteira.</h2>
+        </div>
+      </div>
       <div class="grid-2">
         <article class="panel">
-          <h2>Terreno e janela de uso</h2>
-          <p>A leitura própria é explícita: "um sistema com k=78 não consegue ler a informação de um Floral". Posicionados como <strong>camada de suporte vagal-entérico</strong> num protocolo que já tem sol matinal, aterramento, luz vermelha noturna e água limpa — nunca como alternativa às fundações nem como tratamento de doença. A Pharmacopeia mantém isto na coluna investigacional.</p>
-          <p>Leitura educacional — não é indicação terapêutica.</p>
+          <h2>Camadas de evidência</h2>
+          <p><strong>Verde — estabelecido:</strong> história de Edward Bach e os 38 Florais, botânica e química dos cromóforos florais (flavonoides, antocianinas), classificação emocional das 7 categorias, perfil de segurança direta favorável, regulação ANVISA/EMA/FDA, ausência de interações medicamentosas documentadas.</p>
+          <p><strong>Âmbar — investigacional/sem consenso:</strong> eficácia clínica dos Florais de Bach para qualquer condição — revisões sistemáticas (Cochrane 2009, Ernst 2010) não encontram efeito acima do placebo. O consenso biomédico é de ausência de evidência de eficácia.</p>
+          <p><strong>Ciano — hipótese de fronteira:</strong> impressão espectral na água EZ por infusão solar, quiralidade emergente da EZ como mediador CISS, via vagal-entérica-melanínica, modulação dielétrica da ATP-sintase, leitura geográfica-magnética (latitude 51°N, campo ~50 µT).</p>
         </article>
         <article class="panel">
-          <h2>Camadas de evidência</h2>
-          <p><strong>Verde (estabelecido):</strong> botânica, química dos cromóforos florais, quelação de Fe/Cu, história de Bach e enquadramento regulatório.</p>
-          <p><strong>Ciano (hipótese biofísica):</strong> redução de peroxidação por quelação (efeito indireto no ΔΨ).</p>
-          <p><strong>Âmbar (investigacional/fronteira, predominante):</strong> toda a camada "memória/impressão espectral na água EZ", via vagal-entérica-melanínica, CISS, independência de concentração, leitura geomagnética.</p>
+          <h2>Nota metodológica</h2>
+          <p>Os ensaios clínicos disponíveis (ECRD) foram desenhados para detetar efeitos farmacológicos de concentração-resposta — não para detetar modulação de coerência de spin em água estruturada. O instrumento pode ser inadequado ao fenómeno. Esta crítica metodológica é simétrica: a ausência de evidência de eficácia nos ensaios existentes <strong>não é o mesmo que evidência de ausência de efeito</strong>, mas também não autoriza extrapolação terapêutica não validada.</p>
+          <p>Para os Florais de Bach especificamente: a distinção entre o <em>sistema floral e classificação emocional</em> (estabelecido, histórico) e a <em>hipótese biofísica de impressão espectral na água</em> (investigacional, sem evidência clínica) é o ponto editorial mais crítico. A Pharmacopeia mantém as duas narrativas separadas, sem deixar o entusiasmo pela física contaminar a honestidade epistémica sobre eficácia clínica.</p>
         </article>
       </div>
     </section>
@@ -468,22 +667,44 @@
     <section id="fontes" class="shell">
       <div class="section-head">
         <div>
-          <div class="kicker"><span class="dot"></span> Fontes internas e externas</div>
+          <div class="kicker">Fontes e ligações</div>
           <h2>Base desta ficha.</h2>
         </div>
       </div>
       <div class="grid-3">
-        <article class="source-card"><h3>Monografia PKA</h3><p><em>Biofísica dos Florais de Bach</em> (2026-05-25). Análise biofísica completa interna, skill biofisica-farmaco / CPC 84.</p></article>
-        <article class="source-card"><h3>CPC 84</h3><p>Molde de leitura biofísica aplicado a uma preparação informacional: separa a química dos cromóforos da hipótese de impressão espectral na água.</p></article>
-        <article class="source-card"><h3>Referências de fronteira</h3><p>Pollack (água EZ), Del Giudice/Preparata (domínios de coerência), Montagnier. Mantidas como hipótese, não consenso.</p></article>
+        <article class="source-card">
+          <h3>Biofísica Pura</h3>
+          <p><em>Biofísica de Florais de Bach — Framework Dr. Jack Kruse</em> (2026-06-26). Nota interna de análise biofísica de primeiros princípios — base do BLOCO 1: origem, EZ, CISS, espectro, POMC, cronologia de patente.</p>
+        </article>
+        <article class="source-card">
+          <h3>Biofísica Referenciada</h3>
+          <p><em>Florais de Bach — Análise Biofísica Referenciada</em> (2026-06-26). Leitura comparada com a molécula-âncora (doxiciclina). Divergências e convergências em CISS, compartimento, POMC, vago, ΔΨ e janela circadiana.</p>
+        </article>
+        <article class="source-card">
+          <h3>Análise Clássica</h3>
+          <p><em>Análise Clássica — Florais de Bach</em> (2026-06-26). Base farmacológica e toxicológica convencional — base do BLOCO 2: composição, 38 essências, classificação emocional, perfil de segurança, regulação.</p>
+        </article>
+        <article class="source-card">
+          <h3>Edward Bach — obra original</h3>
+          <p><em>The Twelve Healers and Other Remedies</em> (1933/1936). Texto original do sistema. Fonte histórica primária — não é literatura científica peer-reviewed.</p>
+        </article>
+        <article class="source-card">
+          <h3>Revisões Cochrane / Ernst</h3>
+          <p>Thaler et al., BMC Complement Altern Med 2009; Ernst, Swiss Med Wkly 2010. Base da posição editorial sobre ausência de evidência de eficácia acima do placebo.</p>
+        </article>
+        <article class="source-card">
+          <h3>Referências de fronteira</h3>
+          <p>Pollack (água EZ), Del Giudice/Preparata (coerência), Montagnier (sinais EM em diluição). Mantidas como hipótese de trabalho, não consenso científico.</p>
+        </article>
       </div>
     </section>
 
     <section class="shell">
-      <article class="notice">
-        <h2>Regra editorial desta ficha</h2>
-        <p>A Pharmacopeia publica perguntas melhores, não atalhos terapêuticos. Esta é uma ficha explicitamente de fronteira: a química dos cromóforos é consenso, mas a "impressão espectral na água EZ" e a via vagal-entérica são hipóteses investigacionais sem evidência clínica consolidada de eficácia. Nada aqui trata condições emocionais ou físicas; onde há paciente real, encaminhamos para avaliação individual.</p>
-      </article>
+      <aside class="notice warning">
+        <h2>Guardrail clínico — leia antes</h2>
+        <p><strong>Esta página é educacional. Não é prescrição.</strong> A Pharmacopeia.info publica leitura biofísica e farmacológica de substâncias para estudo e contexto — não fornece dose, posologia, ciclo, indicação individual, nem recomenda compra, uso ou substituição de qualquer tratamento. Nada aqui diagnostica, trata, cura ou previne doença, nem substitui consulta, anamnese, exame ou a decisão de um profissional de saúde habilitado. Medicamentos têm riscos, interações e contraindicações que dependem do seu terreno, da sua história clínica, da sua geografia e dos medicamentos que já usa. Antes de qualquer uso, fale com o seu médico ou farmacêutico.</p>
+        <p><strong>Florais de Bach — específico:</strong> não existe evidência clínica consolidada de eficácia acima do placebo para qualquer condição de saúde. O risco relevante não é toxicológico (perfil de segurança direta favorável), mas de oportunidade: substituir ou atrasar tratamento psiquiátrico ou psicoterapêutico baseado em evidência. O hipótese de mecanismo biofísico (impressão espectral na água EZ, via vagal-entérica) é investigacional e não constitui validação clínica. Consulte profissional de saúde qualificado antes de qualquer decisão terapêutica. Esta ficha é educacional e exploratória — não recomenda uso clínico, não trata condições emocionais ou físicas, e não substitui acompanhamento de saúde mental quando indicado.</p>
+      </aside>
     </section>
   </main>
 
@@ -495,32 +716,24 @@
   </footer>
 
   <script>
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       THEME TOGGLE
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── THEME TOGGLE ────────────────────────────────── */
     var themeToggle = document.getElementById('themeToggle');
-    var sunIcon  = themeToggle.querySelector('.theme-icon-sun');
-    var moonIcon = themeToggle.querySelector('.theme-icon-moon');
+    var themeBtnLabel = document.getElementById('themeBtnLabel');
 
     function applyTheme(theme) {
       document.documentElement.setAttribute('data-theme', theme);
       localStorage.setItem('ph-theme', theme);
-      if (theme === 'dark') {
-        sunIcon.style.display  = '';
-        moonIcon.style.display = 'none';
-        themeToggle.setAttribute('aria-label', 'Mudar para tema claro');
-      } else {
-        sunIcon.style.display  = 'none';
-        moonIcon.style.display = '';
-        themeToggle.setAttribute('aria-label', 'Mudar para tema escuro');
-      }
+      themeBtnLabel.textContent = theme === 'dark' ? 'claro' : 'escuro';
+      themeToggle.setAttribute('aria-label',
+        theme === 'dark' ? 'Mudar para tema claro' : 'Mudar para tema escuro');
     }
 
     applyTheme(localStorage.getItem('ph-theme') || 'light');
 
     themeToggle.addEventListener('click', function () {
-      var current = document.documentElement.getAttribute('data-theme');
-      applyTheme(current === 'dark' ? 'light' : 'dark');
+      applyTheme(
+        document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
+      );
     });
   </script>
 </body>

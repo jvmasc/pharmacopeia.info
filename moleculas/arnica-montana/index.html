@@ -14,348 +14,410 @@
   })();
   </script>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
   <style>
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       TEMA LIGHT (white/biofílico) — PADRÃO
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── RESET ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    /* ─── TOKENS — LIGHT ────────────────────────────── */
     :root {
       color-scheme: light;
 
-      --bg:        #FAF9F5;
-      --bg-2:      #F2EFE8;
-      --surface:   #FFFFFF;
-      --surface-2: #F7F5EF;
+      --paper:    #F7F4EE;
+      --paper-2:  #EDE9E0;
+      --ink:      #1A1E1C;
+      --ink-2:    #3C4640;
+      --ink-3:    #6E7A74;
 
-      --ink:       #1C2420;
-      --muted:     #4A5A54;
-      --quiet:     #7A8E87;
+      --rule:       rgba(26, 30, 28, .10);
+      --rule-heavy: rgba(26, 30, 28, .20);
 
-      --line:        rgba(28, 36, 32, .10);
-      --line-strong: rgba(184, 131, 42, .50);
+      --solar:  #9A6B18;
+      --bio:    #1E6E6A;
+      --mag:    #4A3E9C;
+      --danger: #903020;
+      --ok:     #2B6435;
 
-      --solar: #B8832A;
-      --bio:   #2B8A84;
-      --mag:   #5B4DB8;
-      --danger: #C0522E;
-      --ok:     #3A7D44;
+      --text:   'Spectral', Georgia, 'Times New Roman', serif;
+      --mono:   'Space Mono', ui-monospace, SFMono-Regular, monospace;
+      --ui:     system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 
-      --radius-xl: 28px;
-      --radius-lg: 20px;
-      --radius-md: 14px;
-
-      --shadow: 0 4px 24px rgba(28, 36, 32, .08), 0 1px 4px rgba(28, 36, 32, .05);
-      --shadow-hover: 0 8px 40px rgba(28, 36, 32, .12), 0 2px 8px rgba(28, 36, 32, .06);
-
-      --header-bg: rgba(250, 249, 245, .88);
-      --body-bg:
-        radial-gradient(ellipse at 18% 0%,  rgba(184, 131, 42, .11), transparent 38rem),
-        radial-gradient(ellipse at 84% 8%,  rgba(43, 138, 132, .09), transparent 34rem),
-        radial-gradient(ellipse at 50% 96%, rgba(91, 77, 184, .07),  transparent 40rem),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg) 62%, var(--bg-2) 100%);
-
-      --mono:  ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans:  Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      /* aliases de compatibilidade */
+      --serif:  'Spectral', Georgia, serif;
+      --sans:   system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      --bg:     var(--paper);
+      --bg-2:   var(--paper-2);
     }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       TEMA DARK — override
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── TOKENS — DARK ─────────────────────────────── */
     html[data-theme="dark"] {
       color-scheme: dark;
 
-      --bg:        #07100f;
-      --bg-2:      #0b1413;
-      --surface:   #10201e;
-      --surface-2: #142a27;
+      --paper:    #0E1412;
+      --paper-2:  #151E1B;
+      --ink:      #E0E8E2;
+      --ink-2:    #A2AFA7;
+      --ink-3:    #6B7870;
 
-      --ink:       #e7eadf;
-      --muted:     #a8b5aa;
-      --quiet:     #74827b;
+      --rule:       rgba(224, 232, 226, .09);
+      --rule-heavy: rgba(224, 232, 226, .18);
 
-      --line:        rgba(231, 234, 223, .14);
-      --line-strong: rgba(215, 168, 79, .45);
-
-      --solar: #d7a84f;
-      --bio:   #65c7c0;
-      --mag:   #8a6ee8;
-      --danger: #d8816a;
-      --ok:     #98c379;
-
-      --shadow: 0 24px 80px rgba(0, 0, 0, .42);
-      --shadow-hover: 0 24px 80px rgba(0, 0, 0, .55);
-
-      --header-bg: rgba(7, 16, 15, .72);
-      --body-bg:
-        radial-gradient(circle at 12% 0%,  rgba(215, 168, 79, .18), transparent 32rem),
-        radial-gradient(circle at 88% 10%, rgba(101, 199, 192, .14), transparent 32rem),
-        radial-gradient(circle at 48% 100%, rgba(138, 110, 232, .10), transparent 34rem),
-        linear-gradient(180deg, var(--bg), var(--bg-2) 52%, #060b0a);
+      --solar:  #C8953A;
+      --bio:    #4EAAA4;
+      --mag:    #7B6ED6;
+      --danger: #C07060;
+      --ok:     #5AA46A;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    /* ─── BASE ───────────────────────────────────────── */
     body {
-      margin: 0;
-      background: var(--body-bg);
+      background: var(--paper);
       color: var(--ink);
-      font-family: var(--sans);
-      line-height: 1.55;
+      font-family: var(--text);
+      font-size: 18px;
+      line-height: 1.68;
     }
-    a { color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--solar); }
+
     .shell { width: min(1180px, calc(100% - 36px)); margin: 0 auto; }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       HEADER / NAV
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── MASTHEAD — flat, sem sticky/blur ──────────── */
     header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(20px) saturate(1.3);
-      background: var(--header-bg);
-      border-bottom: 1px solid var(--line);
-      box-shadow: 0 1px 0 var(--line);
+      border-bottom: 1px solid var(--rule-heavy);
+      padding: 18px 0;
     }
-    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
-    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; letter-spacing: -.02em; font-weight: 700; color: var(--ink); }
+    .nav {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 22px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-family: var(--text);
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -.02em;
+      color: var(--ink);
+    }
     .mark {
-      width: 34px;
-      height: 34px;
-      border: 1.5px solid var(--line-strong);
+      width: 28px;
+      height: 28px;
+      border: 1.5px solid var(--rule-heavy);
       border-radius: 50%;
       display: grid;
       place-items: center;
       position: relative;
-      color: var(--solar);
-      background: var(--surface);
+      flex-shrink: 0;
     }
     .mark::before, .mark::after {
       content: "";
       position: absolute;
-      border: 1px solid rgba(43, 138, 132, .50);
+      border: 1px solid rgba(30, 110, 106, .40);
       border-radius: 50%;
-      inset: 7px 2px;
+      inset: 5px 2px;
       transform: rotate(35deg);
     }
-    .mark::after { transform: rotate(-35deg); border-color: rgba(91, 77, 184, .42); }
-
-    html[data-theme="dark"] .mark::before { border-color: rgba(101, 199, 192, .42); }
-    html[data-theme="dark"] .mark::after  { border-color: rgba(138, 110, 232, .38); }
-
+    .mark::after { transform: rotate(-35deg); border-color: rgba(74, 62, 156, .35); }
+    html[data-theme="dark"] .mark::before { border-color: rgba(78, 170, 164, .40); }
+    html[data-theme="dark"] .mark::after  { border-color: rgba(123, 110, 214, .35); }
     .mark-dot {
-      width: 6px;
-      height: 6px;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
       background: var(--solar);
       position: relative;
       z-index: 1;
     }
 
-    nav { display: flex; gap: 18px; color: var(--muted); font-size: 14px; }
-    nav a { text-decoration: none; transition: color .15s ease; }
+    nav {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+    }
+    nav a {
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--ink-3);
+      transition: color .12s;
+    }
     nav a:hover { color: var(--ink); }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       BOTÃO DE TOGGLE DE TEMA
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* botão de tema — texto simples com borda */
     .theme-btn {
-      cursor: pointer;
-      border: 1px solid var(--line-strong);
-      background: rgba(255, 255, 255, .05);
-      color: var(--solar);
-      border-radius: 999px;
-      width: 38px;
-      height: 38px;
-      display: grid;
-      place-items: center;
-      font-size: 16px;
-      transition: border-color .18s ease, background .18s ease;
-      flex-shrink: 0;
-    }
-    .theme-btn:hover {
-      background: rgba(184, 131, 42, .10);
-      border-color: var(--line-strong);
-    }
-
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       HERO
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .hero { padding: 76px 0 42px; }
-    .kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--solar);
       font-family: var(--mono);
-      font-size: 12px;
+      font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: .16em;
-      border: 1px solid rgba(184, 131, 42, .30);
-      border-radius: 999px;
-      padding: 8px 14px;
-      background: rgba(184, 131, 42, .07);
+      letter-spacing: .12em;
+      background: none;
+      border: 1px solid var(--rule-heavy);
+      color: var(--ink-3);
+      cursor: pointer;
+      padding: 4px 10px;
+      line-height: 1.6;
+      flex-shrink: 0;
+      transition: color .12s, border-color .12s;
     }
-    html[data-theme="dark"] .kicker {
-      border-color: rgba(215, 168, 79, .26);
-      background: rgba(215, 168, 79, .06);
-    }
-    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--solar); box-shadow: 0 0 18px var(--solar); }
-    h1 { margin: 26px 0 22px; max-width: 980px; font-family: var(--serif); font-size: clamp(48px, 8vw, 104px); line-height: .92; letter-spacing: -.06em; font-weight: 520; color: var(--ink); }
-    .lead { max-width: 860px; color: var(--muted); font-size: clamp(18px, 2vw, 23px); }
-    .lead strong { color: var(--ink); font-weight: 650; }
+    .theme-btn:hover { color: var(--ink); border-color: var(--ink-3); }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       LAYOUT GRIDS
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    section { padding: 48px 0; scroll-margin-top: 92px; }
+    /* ─── HERO ───────────────────────────────────────── */
+    .hero { padding: 76px 0 42px; }
+
+    /* ─── KICKER — label mono, sem pill ─────────────── */
+    .kicker {
+      display: block;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--ink-3);
+      margin-bottom: 18px;
+    }
+
+    /* ─── HEADINGS ───────────────────────────────────── */
+    h1 {
+      font-family: var(--text);
+      font-size: clamp(48px, 7vw, 84px);
+      font-weight: 500;
+      line-height: .96;
+      letter-spacing: -.04em;
+      color: var(--ink);
+      margin-bottom: .45em;
+    }
+    h2 {
+      font-family: var(--text);
+      font-size: clamp(22px, 3.4vw, 36px);
+      font-weight: 500;
+      line-height: 1.12;
+      letter-spacing: -.025em;
+      color: var(--ink);
+      margin-bottom: .5em;
+    }
+    h3 {
+      font-family: var(--text);
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: -.015em;
+      color: var(--ink);
+      margin-bottom: .35em;
+    }
+
+    .lead {
+      max-width: 860px;
+      color: var(--ink-2);
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.62;
+    }
+    .lead strong { color: var(--ink); font-weight: 500; }
+
+    /* ─── LAYOUT ─────────────────────────────────────── */
+    section { padding: 48px 0; }
+    section + section { border-top: 1px solid var(--rule); }
     .grid-2 { display: grid; grid-template-columns: 1.05fr .95fr; gap: 22px; align-items: start; }
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       CARDS BASE
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .panel, .notice, .axis-card, .source-card, .summary-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow);
+    /* ─── PANELS — sem sombra, borda fina ───────────── */
+    .panel {
+      padding: 28px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
     }
-    .panel { padding: 28px; }
-    .panel h2, section h2 { margin: 0 0 14px; font-family: var(--serif); letter-spacing: -.035em; font-size: clamp(30px, 4vw, 52px); line-height: 1; }
-    .panel p, .notice p, .axis-card p, .source-card p, .summary-card p { color: var(--muted); }
+    .panel p { color: var(--ink-2); line-height: 1.68; font-size: 16px; }
+    .panel p + p { margin-top: .9em; }
+    .panel strong { color: var(--ink); font-weight: 500; }
 
-    .summary-card { padding: 18px; box-shadow: none; min-height: 170px; }
-    .summary-card b { display: block; margin-bottom: 8px; color: var(--ink); }
+    /* ─── STATUS TAGS ────────────────────────────────── */
+    .status {
+      display: inline-flex;
+      border-radius: 999px;
+      border: 1px solid var(--rule);
+      padding: 5px 10px;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--ink-3);
+      margin-bottom: 12px;
+    }
+    .established   { color: var(--ok);     border-color: rgba(43, 100, 53, .32);  background: rgba(43, 100, 53, .06);  }
+    .hypothesis    { color: var(--bio);    border-color: rgba(30, 110, 106, .32); background: rgba(30, 110, 106, .06); }
+    .investigational { color: var(--solar); border-color: rgba(154, 107, 24, .32); background: rgba(154, 107, 24, .06); }
+    .guarded       { color: var(--danger); border-color: rgba(144, 48, 32, .32);  background: rgba(144, 48, 32, .06);  }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       STATUS TAGS
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .status { display: inline-flex; border-radius: 999px; border: 1px solid var(--line); padding: 6px 10px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
-    .established   { color: var(--ok);     border-color: rgba(58, 125, 68, .38);  background: rgba(58, 125, 68, .07);  }
-    .hypothesis    { color: var(--bio);    border-color: rgba(43, 138, 132, .38); background: rgba(43, 138, 132, .07); }
-    .investigational { color: var(--solar); border-color: rgba(184, 131, 42, .38); background: rgba(184, 131, 42, .07); }
-    .guarded       { color: var(--danger); border-color: rgba(192, 82, 46, .38);  background: rgba(192, 82, 46, .07);  }
+    html[data-theme="dark"] .established    { border-color: rgba(90, 164, 106, .28); background: rgba(90, 164, 106, .07); }
+    html[data-theme="dark"] .hypothesis     { border-color: rgba(78, 170, 164, .28); background: rgba(78, 170, 164, .07); }
+    html[data-theme="dark"] .investigational { border-color: rgba(200, 149, 58, .28);  background: rgba(200, 149, 58, .07);  }
+    html[data-theme="dark"] .guarded        { border-color: rgba(192, 112, 96, .28); background: rgba(192, 112, 96, .07); }
 
-    html[data-theme="dark"] .established    { border-color: rgba(152,195,121,.34); background: rgba(152,195,121,.08); }
-    html[data-theme="dark"] .hypothesis     { border-color: rgba(101,199,192,.34); background: rgba(101,199,192,.08); }
-    html[data-theme="dark"] .investigational { border-color: rgba(215,168,79,.34);  background: rgba(215,168,79,.08);  }
-    html[data-theme="dark"] .guarded        { border-color: rgba(216,129,106,.34); background: rgba(216,129,106,.08); }
-
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       SECTION HEAD
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── SECTION HEAD ───────────────────────────────── */
     .section-head { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 22px; }
-    .section-head p { margin: 0; max-width: 680px; color: var(--muted); }
+    .section-head p { margin: 0; max-width: 680px; color: var(--ink-2); font-size: 16px; line-height: 1.6; }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       AXIS GRID
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── SUMMARY CARDS ──────────────────────────────── */
+    .summary-card {
+      padding: 18px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      min-height: 170px;
+    }
+    .summary-card b {
+      display: block;
+      font-family: var(--text);
+      font-weight: 500;
+      font-size: 17px;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .summary-card p { color: var(--ink-2); font-size: 15px; line-height: 1.6; }
+
+    /* ─── AXIS GRID ──────────────────────────────────── */
     .axis-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-    .axis-card { padding: 18px; box-shadow: none; min-height: 230px; }
-    .axis-card .num { font-family: var(--mono); color: var(--solar); font-size: 12px; letter-spacing: .12em; }
-    .axis-card h3 { margin: 10px 0 8px; font-size: 20px; letter-spacing: -.02em; }
-    .axis-card p { font-size: 14px; margin: 0; }
-    .axis-card small { display: block; margin-top: 12px; color: var(--quiet); font-family: var(--mono); font-size: 11px; text-transform: uppercase; line-height: 1.45; }
+    .axis-card {
+      padding: 18px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      min-height: 230px;
+    }
+    .axis-card .num {
+      font-family: var(--mono);
+      color: var(--solar);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .axis-card h3 { margin: 10px 0 8px; }
+    .axis-card p { font-size: 14px; color: var(--ink-2); line-height: 1.6; margin: 0; }
+    .axis-card small {
+      display: block;
+      margin-top: 12px;
+      color: var(--ink-3);
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      line-height: 1.45;
+    }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       NOTICE
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── NOTICE ─────────────────────────────────────── */
     .notice {
       padding: 26px;
-      box-shadow: none;
-      border-color: rgba(184, 131, 42, .30);
-      background: linear-gradient(135deg, rgba(184, 131, 42, .06) 0%, var(--surface) 70%);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
     }
-    html[data-theme="dark"] .notice {
-      border-color: rgba(215, 168, 79, .24);
-      background: var(--surface);
-    }
+    .notice h2 { margin-bottom: .4em; }
+    .notice p { color: var(--ink-2); font-size: 16px; line-height: 1.68; }
+    .notice p + p { margin-top: .8em; }
 
-    /* Notice de aviso/warning (guardrail clínico) */
+    /* Notice de aviso/warning */
     .warning {
-      border-color: rgba(192, 82, 46, .38);
-      background: linear-gradient(135deg, rgba(192, 82, 46, .06) 0%, var(--surface) 70%);
+      border-color: rgba(144, 48, 32, .28);
     }
     html[data-theme="dark"] .warning {
-      border-color: rgba(216, 129, 106, .38);
-      background: linear-gradient(180deg, rgba(53,26,22,.82), rgba(18,24,23,.86));
+      border-color: rgba(192, 112, 96, .28);
     }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       BUTTONS
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── BUTTONS ────────────────────────────────────── */
     .button {
-      min-height: 46px;
+      min-height: 44px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      padding: 12px 20px;
-      border-radius: 999px;
-      border: 1.5px solid var(--line-strong);
-      background: rgba(184, 131, 42, .10);
+      padding: 11px 18px;
+      border-radius: 4px;
+      border: 1px solid var(--rule-heavy);
+      background: rgba(154, 107, 24, .08);
       color: var(--ink);
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 14px;
-      transition: background .18s ease, border-color .18s ease, transform .15s ease, box-shadow .18s ease;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .10em;
+      transition: background .15s, border-color .15s;
     }
     html[data-theme="dark"] .button {
-      background: rgba(215, 168, 79, .12);
+      background: rgba(200, 149, 58, .08);
     }
     .button:hover {
-      background: rgba(184, 131, 42, .18);
-      border-color: rgba(184, 131, 42, .70);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 16px rgba(184, 131, 42, .16);
+      background: rgba(154, 107, 24, .14);
+      border-color: rgba(154, 107, 24, .45);
+      color: var(--ink);
     }
     .button.secondary {
-      border-color: var(--line);
-      background: var(--surface-2);
-      color: var(--muted);
-    }
-    html[data-theme="dark"] .button.secondary {
-      background: rgba(255, 255, 255, .03);
+      border-color: var(--rule);
+      background: transparent;
+      color: var(--ink-2);
     }
     .button.secondary:hover {
-      border-color: rgba(43, 138, 132, .40);
-      background: rgba(43, 138, 132, .06);
+      border-color: var(--rule-heavy);
+      background: var(--paper-2);
       color: var(--ink);
-      box-shadow: 0 4px 16px rgba(43, 138, 132, .10);
     }
     .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       SOURCE CARDS
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .source-card { padding: 18px; box-shadow: none; }
-    .source-card h3 { margin: 0 0 8px; }
-    .source-card p { margin: 0; font-size: 14px; }
-
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       FOOTER
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    footer {
-      padding: 44px 0 70px;
-      color: var(--quiet);
-      border-top: 1px solid var(--line);
-      background: var(--bg-2);
+    /* ─── SOURCE CARDS ───────────────────────────────── */
+    .source-card {
+      padding: 18px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
     }
-    footer .shell { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-    footer strong { color: var(--muted); }
-    footer code   { font-family: var(--mono); color: var(--quiet); font-size: 13px; }
+    .source-card h3 { margin: 0 0 8px; }
+    .source-card p { margin: 0; font-size: 14px; color: var(--ink-2); line-height: 1.6; }
 
-    section + section { border-top: 1px solid var(--line); }
+    /* ─── FIGURE CARDS ───────────────────────────────── */
+    .figure-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .figure-card {
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+    }
+    .figure-card img { display: block; width: 100%; background: var(--paper-2); }
+    .figure-card figcaption {
+      padding: 14px 16px 16px;
+      color: var(--ink-2);
+      font-size: 14px;
+      line-height: 1.5;
+      border-top: 1px solid var(--rule);
+    }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       RESPONSIVE
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    @media (max-width: 1000px) { .axis-grid { grid-template-columns: repeat(2, 1fr); } .grid-3 { grid-template-columns: 1fr 1fr; } }
+    /* ─── FOOTER ─────────────────────────────────────── */
+    footer {
+      padding: 28px 0 52px;
+      border-top: 1px solid var(--rule);
+      background: var(--paper-2);
+    }
+    footer .shell {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      color: var(--ink-3);
+      text-transform: uppercase;
+    }
+    footer strong { color: var(--ink-2); font-weight: 700; }
+    footer code   { font-family: var(--mono); color: var(--ink-3); font-size: 11px; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 1000px) {
+      .axis-grid { grid-template-columns: repeat(2, 1fr); }
+      .grid-3 { grid-template-columns: 1fr 1fr; }
+    }
     @media (max-width: 760px) {
       nav { display: none; }
-      .grid-2, .grid-3, .axis-grid { grid-template-columns: 1fr; }
+      .grid-2, .grid-3, .axis-grid, .figure-grid { grid-template-columns: 1fr; }
       .section-head { display: block; }
+      .section-head p { margin-top: 12px; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, html { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
@@ -372,27 +434,25 @@
         <span>Pharmacopeia.info</span>
       </a>
       <nav aria-label="Navegação principal">
-        <a href="../../index.html#matriz">Matriz</a>
-        <a href="#eixos">8 eixos</a>
+        <a href="#biofisica">Biofísica</a>
+        <a href="#bioquimica">Bioquímica</a>
         <a href="#evidencia">Evidência</a>
         <a href="#fontes">Fontes</a>
       </nav>
-      <button id="themeToggle" class="theme-btn" type="button" aria-label="Alternar tema">
-        <span class="theme-icon theme-icon-sun">&#9728;</span>
-        <span class="theme-icon theme-icon-moon" style="display:none">&#9790;</span>
+      <button id="themeToggle" class="theme-btn" type="button" aria-label="Mudar para tema escuro">
+        <span id="themeBtnLabel">escuro</span>
       </button>
     </div>
   </header>
 
-
   <main>
     <section class="hero shell">
-      <div class="kicker"><span class="dot"></span> Ficha · framework investigacional · segunda ordem</div>
+      <div class="kicker">Ficha · molécula</div>
       <h1>Arnica Montana 6CH</h1>
       <p class="lead"><strong>A bula vê uma planta de contusão e, na diluição 6CH, "placebo".</strong> A Pharmacopeia trata-a como um caso-fronteira: a planta-âncora (helenalina, flavonoides, carotenoides) tem mecanismos bioquímicos reais; a diluição 6CH é lida como <strong>hipótese de memória de campo na água estruturada</strong> — território investigacional, não consenso. Esta ficha marca explicitamente onde acaba a farmacognosia e começa a fronteira.</p>
       <div class="cta-row">
-        <a class="button" href="#eixos">Ler pelos 8 eixos</a>
-        <a class="button secondary" href="../../index.html#atlas">Voltar ao atlas</a>
+        <a class="button" href="#biofisica">BLOCO 1 — Biofísica</a>
+        <a class="button secondary" href="#bioquimica">BLOCO 2 — Bioquímica</a>
       </div>
     </section>
 
@@ -405,62 +465,193 @@
         </article>
         <aside class="notice warning">
           <h2>Guardrail clínico — leia antes</h2>
-          <p><strong>Esta página é educacional. Não é prescrição.</strong> A Pharmacopeia.info publica leitura biofísica e farmacológica de substâncias para estudo e contexto — não fornece dose, posologia, ciclo, indicação individual, nem recomenda compra, uso ou substituição de qualquer tratamento. Nada aqui diagnostica, trata, cura ou previne doença, nem substitui consulta, anamnese, exame ou a decisão de um profissional de saúde habilitado. Medicamentos têm riscos, interações e contraindicações que dependem do seu terreno, da sua história clínica, da sua geografia e dos medicamentos que já usa. Antes de qualquer uso, fale com o seu médico ou farmacêutico.</p>
-          <p>A eficácia da Arnica em diluição homeopática 6CH <strong>não tem suporte de evidência clínica consolidada</strong> — meta-análises convencionais não encontram efeito acima do placebo; o mecanismo de "memória da água" é hipótese de fronteira em debate científico. Arnica em forma concentrada/oral pode ser tóxica (a helenalina é citotóxica); a via homeopática diluída é distinta da planta bruta. Esta ficha é educacional e exploratória, não recomenda uso nem desencoraja acompanhamento médico de qualquer condição.</p>
+          <p><strong>Esta página é educacional. Não é prescrição.</strong> A Pharmacopeia.info publica leitura biofísica e farmacológica de substâncias para estudo e contexto — não fornece dose, posologia, ciclo, indicação individual, nem recomenda compra, uso ou substituição de qualquer tratamento. Nada aqui diagnostica, trata, cura ou previne doença, nem substitui consulta, anamnese, exame ou a decisão de um profissional de saúde habilitado. Medicamentos têm riscos, interações e contraindicações que dependem do seu terreno, da sua história clínica, da sua geografia e dos medicamentos que já usa.</p>
+          <p>A eficácia da Arnica em diluição homeopática 6CH <strong>não tem suporte de evidência clínica consolidada</strong> — meta-análises convencionais não encontram efeito acima do placebo; o mecanismo de "memória da água" é hipótese de fronteira em debate científico. Arnica em forma concentrada/oral pode ser tóxica (a helenalina é citotóxica); a via homeopática diluída é distinta da planta bruta. A Arnica fitoterápica tópica (gel/creme concentrado) tem uso tradicional reconhecido sobre pele intacta, mas <strong>não se ingere</strong>.</p>
         </aside>
       </div>
     </section>
 
-    <section id="resumo" class="shell">
+    <section class="shell">
       <div class="section-head">
         <div>
-          <div class="kicker"><span class="dot"></span> Leitura rápida</div>
-          <h2>Antes de qualquer protocolo.</h2>
+          <div class="kicker">Leitura rápida</div>
+          <h2>Dois blocos antes de qualquer protocolo.</h2>
         </div>
-        <p>A ficha pública separa mecanismo aceito, leitura biofísica, hipóteses Kruse/PKA e prudência clínica para evitar tanto reducionismo quanto propaganda terapêutica.</p>
+        <p>A ficha pública separa a química estabelecida da planta (BLOCO 2) da leitura biofísica de fronteira (BLOCO 1), com estatuto epistemológico explícito em cada ponto.</p>
       </div>
       <div class="grid-3">
-        <article class="summary-card"><span class="status established">estabelecido</span><b>Helenalina inibe NF-κB</b><p>Mecanismo bioquímico real da planta bruta (Michael acceptor, alquilação de Cys38).</p></article>
-        <article class="summary-card"><span class="status established">estabelecido</span><b>Cromóforos florais</b><p>Flavonoides e carotenoides absorvem UV/visível; quimicamente caracterizados.</p></article>
-        <article class="summary-card"><span class="status investigational">investigacional</span><b>Memória de campo na água</b><p>Assinatura eletromagnética dos sesquiterpenos impressa na EZ por sucussão. Fronteira, não consenso.</p></article>
-        <article class="summary-card"><span class="status investigational">investigacional</span><b>Ação por ressonância</b><p>Resposta por coerência de campo, não por ligação a receptor (hipótese).</p></article>
-        <article class="summary-card"><span class="status investigational">investigacional</span><b>Desinibição POMC via NF-κB</b><p>Remoção do freio inflamatório sobre POMC (planta) traduzida para a diluição por ressonância.</p></article>
-        <article class="summary-card"><span class="status guarded">prudência</span><b>Depende do "recetor"</b><p>A leitura própria diz que o efeito só ocorre num sistema com EZ coerente (k≈160); meta-análises convencionais não acham efeito acima do placebo.</p></article>
+        <article class="summary-card"><span class="status hypothesis">biofísica · BLOCO 1</span><b>Antena quiral na água EZ</b><p>Helenalina e flavonoides (antena vegetal) transcritos como molde eletromagnético na água por sucussão. Veículo aquoso k=160 portador de padrão.</p></article>
+        <article class="summary-card"><span class="status hypothesis">biofísica · BLOCO 1</span><b>CISS e ordenamento de spin</b><p>O molde quiral impresso na água atua como filtro de spin direto, convertendo corrente caótica em CC estruturada na zona ferida.</p></article>
+        <article class="summary-card"><span class="status investigational">investigacional · BLOCO 1</span><b>Nucleação de EZ e ΔΨ</b><p>A 6CH age como semente de nucleação que reconstrói água EZ (k=160) e defende o potencial de membrana mitocondrial.</p></article>
+        <article class="summary-card"><span class="status established">estabelecido · BLOCO 2</span><b>Helenalina inibe NF-κB</b><p>Mecanismo bioquímico real da planta: adição de Michael à Cys38 da subunidade p65. Planta concentrada, não a diluição 6CH.</p></article>
+        <article class="summary-card"><span class="status established">estabelecido · BLOCO 2</span><b>Cromóforos florais</b><p>Flavonoides e carotenoides absorvem UV/visível; quimicamente caracterizados na flor de Arnica montana.</p></article>
+        <article class="summary-card"><span class="status guarded">prudência · ambos</span><b>Caso-fronteira</b><p>6CH não cruza Avogadro (10⁻¹² ainda tem matéria residual), mas eficácia específica não é comprovada pelo consenso. Risco principal: atraso de tratamento eficaz.</p></article>
       </div>
     </section>
 
-    <section id="eixos" class="shell">
+    <section id="figuras" class="shell">
       <div class="section-head">
         <div>
-          <div class="kicker"><span class="dot"></span> Matriz Pharmacopeia</div>
-          <h2>Arnica 6CH pelos oito eixos.</h2>
+          <div class="kicker">Figuras didáticas</div>
+          <h2>Fundo branco, traço limpo, leitura farmacológica.</h2>
         </div>
-        <p>A mesma molécula é lida por origem, forma, luz, água, spin, mitocôndria, campo e prudência clínica. Cada eixo tem um estatuto epistemológico diferente.</p>
+        <p>Imagens minimalistas para apoiar a ficha: arquitectura molecular, mecanismo clássico, mapa farmacológico e interface biofísica. São esquemas educacionais, não estruturas químicas completas nem protocolo clínico.</p>
+      </div>
+      <div class="figure-grid">
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/arnica-montana/gpt/arnica-montana-01-molecula-gpt.png" alt="Imagem editorial GPT da molécula da Arnica Montana com helenalina, quercetina e flor alpina" loading="lazy" />
+          <figcaption>Helenalina + quercetina: antena quiral vegetal sob UV alpino.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/arnica-montana/gpt/arnica-montana-02-mecanismo-gpt.png" alt="Mecanismo clássico: helenalina inibindo NF-κB por adição de Michael à Cys38" loading="lazy" />
+          <figcaption>Helenalina alquila Cys38-p65: inibição de NF-κB por adição de Michael.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/arnica-montana/gpt/arnica-montana-03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico: planta TM → diluição 6CH → absorção sublingual → água EZ" loading="lazy" />
+          <figcaption>Da montanha à água: TM → 6CH (sucussão) → padrão EZ → nucleação no tecido.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/arnica-montana/gpt/arnica-montana-04-interface-biofisica-gpt.png" alt="Interface biofísica: UV alpino → antena vegetal → molde na água → nucleação EZ → CISS → ΔΨ" loading="lazy" />
+          <figcaption>UV alpino → antena vegetal → molde aquoso → nucleação EZ → CISS → ΔΨ. O eco fotônico da montanha na água do tecido.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="biofisica" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">BLOCO 1 — Biofísica</div>
+          <h2>Oito eixos de leitura de membrana.</h2>
+        </div>
+        <p>Leitura biofísica de primeiros princípios: origem, arquitectura, espectro, CISS, água interfacial, mitocôndria, vago e contexto magnético. Cada eixo tem estatuto epistemológico declarado.</p>
       </div>
       <div class="axis-grid">
-        <article class="axis-card"><span class="num">01 · origem</span><h3>Alpes, altitude</h3><p>UV alto, campo coerente, água de degelo de baixo deutério; "a planta é produto do campo".</p><small>Estado: botânica estabelecida; leitura geográfica investigacional</small></article>
-        <article class="axis-card"><span class="num">02 · arquitetura</span><h3>Sesquiterpenos quirais + flavonoides</h3><p>Helenalina com 6 centros quirais; cromóforos planares; carotenoides polieno.</p><small>Estado: química estabelecida; "antena quiral/CISS" investigacional</small></article>
-        <article class="axis-card"><span class="num">03 · espectro</span><h3>Multi-banda</h3><p>Helenalina 220–280 nm; flavonoides 350–380 nm; carotenoides 450–480 nm.</p><small>Estado: absorção verde; relevância da diluição âmbar</small></article>
-        <article class="axis-card"><span class="num">04 · água</span><h3>O núcleo da hipótese</h3><p>Sucussão como gerador de EZ e domínios de coerência que "guardam" a assinatura molecular.</p><small>Estado: investigacional</small></article>
-        <article class="axis-card"><span class="num">05 · CISS</span><h3>Memória quiral</h3><p>EZ com informação quiral impressa atuando como filtro de spin.</p><small>Estado: investigacional</small></article>
-        <article class="axis-card"><span class="num">06 · redox</span><h3>k=160 e KIE</h3><p>Hipótese de nucleação de EZ que fraciona D⁺/H⁺ e favorece o motor F₀-F₁.</p><small>Estado: investigacional</small></article>
-        <article class="axis-card"><span class="num">07 · campo</span><h3>Latitude do recetor</h3><p>Efeito proposto como dependente do campo local do paciente (atenuado sob a AAS).</p><small>Estado: investigacional</small></article>
-        <article class="axis-card"><span class="num">08 · janela</span><h3>Suporte, não fundação</h3><p>Apresentada como camada adicional num terreno já construído (sol, água, aterramento); trauma tecidual como contexto.</p><small>Estado: prudência + sinalização investigacional</small></article>
+        <article class="axis-card">
+          <span class="num">01 · origem</span>
+          <h3>Alpes, altitude alpina</h3>
+          <p><em>Arnica montana</em> L. (Asteraceae) em pastagens alpinas e subalpinas entre 1.000–2.800 m, solos graníticos, UV-B amplificado pela altitude. A geometria magnética do local — alta latitude, alta altitude, granito paramagnético — fabricou uma planta densa em cromóforos quirais conjugados.</p>
+          <small>Estado: botânica estabelecida; leitura geográfica investigacional</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">02 · arquitectura</span>
+          <h3>Sesquiterpenos quirais + flavonoides</h3>
+          <p>Helenalina (pseudoguaianolido, múltiplos estereocentros) + flavonoides (quercetina, kaempferol — anéis fundidos, fenóis). Quiralidade densa = pré-requisito para CISS. A lactona α-metileno-γ é aceitador de Michael; os flavonoides são antenas π.</p>
+          <small>Estado: química estabelecida; "antena quiral/CISS" investigacional</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">03 · espectro</span>
+          <h3>Multi-banda UV-A ao NIR</h3>
+          <p>Helenalina 220–280 nm (UV-B/C) com transição ao estado tripleto; flavonoides 350–380 nm (UV-A/azul); carotenoides 450–480 nm (visível). Efeito terapêutico proposto na reabertura da janela NIR da água (~160 THz) para fotorreparo.</p>
+          <small>Estado: absorção espectral (verde) · estado tripleto in vivo (âmbar)</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">04 · água EZ</span>
+          <h3>Núcleo da hipótese</h3>
+          <p>A 6CH é um veículo aquoso com padrão EZ pré-organizado que age como semente de nucleação na água tecidual colapsada (k=78 → k=160). A sucussão transcreveu o molde da antena vegetal para a rede de hidrogénio da água.</p>
+          <small>Estado: investigacional</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">05 · CISS</span>
+          <h3>Filtro de spin direto</h3>
+          <p>Molde quiral impresso na água EZ atua como seletor de spin — corrente caótica do dano convertida em CC ordenada. A geometria quiral da helenalina e flavonoides, transcrita para a água, permite filtragem de spin sem massa significativa.</p>
+          <small>Estado: hipótese biofísica de fronteira</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">06 · mitocôndria</span>
+          <h3>Defesa do ΔΨ</h3>
+          <p>A corrente CC filtrada por CISS alimenta a ATP-sintase F₀-F₁ a ~9.000 RPM, gerando ATP sem vazamento de ROS. Manutenção de k=160 na interface mitocondrial defende o potencial de membrana contra o colapso de Warburg.</p>
+          <small>Estado: dados pré-clínicos + interpretação biofísica de fronteira</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">07 · vago / POMC</span>
+          <h3>Gramática melanocortina</h3>
+          <p>Helenalina inibe NF-κB — o mesmo nó que o α-MSH (da cascata POMC) inibe. Arnica fala a língua anti-inflamatória melanocortina, reduzindo ruído aferente vagal e apoiando o ambiente condutor para a via colinérgica anti-inflamatória.</p>
+          <small>Estado: convergência POMC (ciano) · vago/α7 (investigacional)</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">08 · campo / janela</span>
+          <h3>Terreno do recetor</h3>
+          <p>O efeito proposto depende do estado da água do paciente — EZ prévia, exposição solar, baixo nnEMF. Em terreno degradado (k≈78, deutério alto, sem luz), o molde tem menos substrato. Código postal e estação são co-variáveis.</p>
+          <small>Estado: prudência + sinalização investigacional</small>
+        </article>
+      </div>
+    </section>
+
+    <section id="bioquimica" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">BLOCO 2 — Bioquímica</div>
+          <h2>Farmacologia clássica e evidência estabelecida.</h2>
+        </div>
+        <p>Mecanismo canónico, fitoquímica, indicações tradicionais, riscos e estatuto regulatório — o que o consenso biomédico sustenta com evidência rastreável.</p>
+      </div>
+      <div class="grid-2">
+        <article class="panel">
+          <h2>Fitoquímica e mecanismo da planta</h2>
+          <p><strong>Constituintes principais:</strong> sesquiterpenlactonas (helenalina, diidrohelenalina e ésteres), flavonoides (quercetina, kaempferol), ácidos fenólicos, cumarinas, carotenoides, timol.</p>
+          <p><strong>Mecanismo anti-inflamatório (planta concentrada):</strong> A helenalina inibe NF-κB por alquilação da cisteína-38 da subunidade p65 (adição de Michael do exo-metileno). A lactona α-metileno-γ e a ciclopentenona atuam como aceitadores de Michael em tióis proteicos. Efeito documentado in vitro (Lyss et al., <em>J Biol Chem</em> 1998).</p>
+          <p><strong>Distinção essencial:</strong> este mecanismo aplica-se à <strong>planta concentrada</strong> (tintura-mãe, tópico). A 6CH (10⁻¹²) não entrega helenalina em quantidade farmacologicamente ativa. Atribuir à 6CH a inibição de NF-κB pela massa do composto seria um erro factual.</p>
+        </article>
+        <article class="panel">
+          <h2>Usos tradicionais e estatuto regulatório</h2>
+          <p><strong>Uso tópico (planta concentrada):</strong> contusões, hematomas, entorses, edema pós-traumático, dores musculares — sobre <strong>pele intacta</strong>. Monografias: Comissão E (Alemanha), EMA/HMPC (uso tradicional). <strong>Não ingerir.</strong></p>
+          <p><strong>Homeopatia 6CH:</strong> uso popular difundido no pós-trauma, pós-operatório e pós-extração dentária. O consenso científico (Cochrane, NHMRC 2015, EASAC 2017) <strong>não encontra evidência robusta de efeito acima de placebo</strong>. O registo regulatório de homeopáticos não exige comprovação de eficácia nos moldes convencionais.</p>
+          <p><strong>A 6CH (10⁻¹²) está abaixo de Avogadro?</strong> Não — Avogadro só é cruzado perto da 12CH. A 6CH ainda contém matéria residual. O que se contesta é a <strong>ausência de efeito farmacológico demonstrável</strong> a essa concentração, não a ausência total de moléculas.</p>
+        </article>
+      </div>
+
+      <div style="margin-top: 22px;">
+        <article class="panel">
+          <h2>Riscos, contraindicações e interações</h2>
+          <p><strong>Arnica concentrada (tópica/oral — NÃO ingerir):</strong> A tintura-mãe e o gel tópico são tóxicos por via oral — gastroenterite, cardiotoxicidade (arritmias), hipotensão. Dermatite de contacto por alergia a Asteraceae (reatividade cruzada com camomila, calêndula). Não aplicar em feridas abertas ou mucosas.</p>
+          <p><strong>Arnica 6CH (diluída):</strong> risco direto baixo pela diluição. Risco principal = <strong>indireto</strong>: atraso ou substituição de tratamento eficaz confiando na 6CH para condição que exige cuidado convencional (fratura, lesão grave, infeção). Reações alérgicas possíveis em alérgicos a Asteraceae.</p>
+          <p><strong>Populações especiais:</strong> gravidez/lactação — evitar por falta de dados de segurança robustos (a forma concentrada é contraindicada). Crianças — cautela. Interações teóricas com anticoagulantes referem-se à planta concentrada; para a 6CH a relevância é improvável dada a diluição.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="janela" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Janela de uso</div>
+          <h2>Terreno, sequência e limites.</h2>
+        </div>
+        <p>A Arnica 6CH é um molde que precisa de substrato para imprimir. O terreno do paciente determina se o sinal pega ou não — a relação sinal-ruído é a variável operacional.</p>
+      </div>
+      <div class="grid-2">
+        <article class="panel">
+          <h2>Pré-requisitos de terreno (leitura biofísica)</h2>
+          <p><strong>Hidratação EZ:</strong> a 6CH nucleia EZ. Se o tecido já está colapsado a k=78 — desidratado de luz, encharcado de nnEMF — há pouco substrato para o molde organizar. O paciente que faz sol real, água viva e aterramento tem hardware mais receptivo.</p>
+          <p><strong>Janela circadiana de reparo:</strong> a reconstrução de EZ e o fotorreparo NIR (~160 THz) seguem o relógio. A janela de reparo é noturna/de repouso — o molde entregue perto desse período encontra a maré de reconstrução a subir.</p>
+          <p><strong>Campo magnético e nnEMF:</strong> qualquer sinal coerente compete com ruído. Reduzir nnEMF melhora a relação sinal-ruído. Em calmaria geomagnética com sol abundante e terreno sólido, o organismo precisa menos deste suporte.</p>
+        </article>
+        <article class="panel">
+          <h2>Limites absolutos</h2>
+          <p>Independentemente do enquadramento biofísico, os seguintes contextos exigem avaliação profissional obrigatória:</p>
+          <p>Gravidez (especialmente 1º trimestre) · Alergia conhecida a Asteraceae · Sinais de fratura, lesão articular significativa ou hematoma expansivo · Trauma craniano · Dor desproporcional ou sinais de infeção · Qualquer quadro que não melhora com medidas básicas.</p>
+          <p><strong>Não confundir as duas Arnicas:</strong> a forma tópica concentrada (gel/creme) tem eficácia reconhecida sobre pele intacta mas é tóxica por via oral; a 6CH (glóbulos/gotas) tem perfil de segurança direto baixo mas eficácia contestada. A ficha pública não transforma molécula em protocolo individual.</p>
+        </article>
       </div>
     </section>
 
     <section id="evidencia" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Estado da evidência</div>
+          <h2>O que é consenso. O que é hipótese. O que é fronteira.</h2>
+        </div>
+      </div>
       <div class="grid-2">
         <article class="panel">
-          <h2>Terreno e janela de uso</h2>
-          <p>A própria leitura biofísica é honesta sobre o limite: "a ferramenta é tão boa quanto o instrumento que a usa" — num sistema com EZ degradada (k≈78) o efeito proposto seria mínimo. Posicionada como <strong>camada de suporte</strong> depois das fundações (sol matinal, aterramento, água de qualidade), nunca como substituto delas. A Pharmacopeia mantém isto na coluna investigacional.</p>
-          <p>Leitura educacional — não é indicação terapêutica.</p>
+          <h2>Camadas de evidência</h2>
+          <p><strong>Verde — estabelecido:</strong> botânica e distribuição alpina da <em>Arnica montana</em>; fitoquímica completa (helenalina, flavonoides, carotenoides); mecanismo de inibição de NF-κB pela helenalina (adição de Michael in vitro); perfil de absorção espectral dos cromóforos; toxicidade oral da planta concentrada; uso tópico tradicional reconhecido (Comissão E, EMA/HMPC).</p>
+          <p><strong>Ciano — hipótese biofísica:</strong> sucussão como geradora de EZ e domínios de coerência na água; estado tripleto metaestável da helenalina fotoexcitada; acoplamento POMC/α-MSH via convergência no nó NF-κB.</p>
+          <p><strong>Âmbar — investigacional/fronteira (predominante para a 6CH):</strong> toda a camada da diluição — memória de campo, água EZ como portadora de padrão, filtragem CISS por molde quiral, nucleação de EZ no tecido, defesa do ΔΨ por sinal coerente, leitura geográfica e circadiana.</p>
         </article>
         <article class="panel">
-          <h2>Camadas de evidência</h2>
-          <p><strong>Verde (estabelecido):</strong> botânica, química dos compostos, helenalina/NF-κB, perfis de absorção dos cromóforos da planta.</p>
-          <p><strong>Ciano (hipótese biofísica):</strong> —</p>
-          <p><strong>Âmbar (investigacional/fronteira, predominante):</strong> toda a camada da diluição 6CH — memória de campo, EZ, domínios de coerência, CISS, ressonância, desinibição POMC por ressonância, leitura geomagnética.</p>
+          <h2>Nota metodológica</h2>
+          <p>A ficha separa rigorosamente a farmacognosia da planta (verde, consenso) da leitura biofísica da diluição 6CH (âmbar/ciano, hipótese de fronteira). A 6CH não é um anti-inflamatório baseado em helenalina molecular — é uma diluição homeopática cuja eficácia específica permanece <strong>não demonstrada</strong> pelo consenso científico convencional.</p>
+          <p>O modelo biofísico aqui apresentado (Pollack, Del Giudice/Preparata, CISS, EZ, domínios de coerência) é um enquadramento teórico de fronteira, não facto clínico consolidado. A Pharmacopeia mantém as duas narrativas — a química estabelecida e a hipótese de fronteira — separadas e com os seus respetivos estatutos epistemológicos declarados.</p>
         </article>
       </div>
     </section>
@@ -468,22 +659,44 @@
     <section id="fontes" class="shell">
       <div class="section-head">
         <div>
-          <div class="kicker"><span class="dot"></span> Fontes internas e externas</div>
+          <div class="kicker">Fontes e ligações</div>
           <h2>Base desta ficha.</h2>
         </div>
       </div>
       <div class="grid-3">
-        <article class="source-card"><h3>Monografia PKA</h3><p><em>Biofísica da Arnica Montana 6CH</em> (2026-05-25). Análise biofísica completa interna, skill biofisica-farmaco / CPC 84.</p></article>
-        <article class="source-card"><h3>CPC 84</h3><p>Molde de leitura biofísica aplicado a um caso-fronteira: separa a farmacognosia da planta da hipótese de memória de campo na diluição.</p></article>
-        <article class="source-card"><h3>Referências de fronteira</h3><p>Pollack (água EZ), Del Giudice/Preparata (domínios de coerência), Montagnier, Naaman (CISS), Benveniste. Mantidas como hipótese, não consenso.</p></article>
+        <article class="source-card">
+          <h3>Biofísica Pura</h3>
+          <p><em>A Antena que Sobrevive à Própria Diluição</em> (2026-06-26). Nota interna de análise biofísica de primeiros princípios — base do BLOCO 1: origem, arquitectura, espectro, água EZ, CISS, POMC, cronologia de patente.</p>
+        </article>
+        <article class="source-card">
+          <h3>Biofísica Referenciada</h3>
+          <p><em>A Antena Sem Massa Contra a Antena de Quatro Anéis</em> (2026-06-26). Leitura comparada com a molécula-âncora (tetraciclina). Divergências e convergências em CISS, compartimento, POMC, vago, ΔΨ e janela circadiana.</p>
+        </article>
+        <article class="source-card">
+          <h3>Análise Clássica</h3>
+          <p><em>Análise Clássica — Arnica Montana 6CH</em> (2026-06-26). Base farmacológica e toxicológica convencional — base do BLOCO 2: fitoquímica, helenalina/NF-κB, indicações tópicas, riscos, estatuto regulatório da homeopatia.</p>
+        </article>
+        <article class="source-card">
+          <h3>Pollack · Água EZ</h3>
+          <p>Geral Pollack, <em>The Fourth Phase of Water</em>. Zonas de exclusão (EZ), água interfacial, constante dielétrica k=160, separação de carga e capacidade de carregar informação. Fonte de fronteira, não consenso.</p>
+        </article>
+        <article class="source-card">
+          <h3>Del Giudice · Domínios de Coerência</h3>
+          <p>Eletrodinâmica quântica da água (Del Giudice, Preparata, Vitiello). Domínios de coerência na água como osciladores em fase com o campo eletromagnético. Fonte de fronteira, não consenso.</p>
+        </article>
+        <article class="source-card">
+          <h3>Revisões Cochrane · NHMRC · EASAC</h3>
+          <p>Cochrane (homeopatia / Arnica); NHMRC 2015 (ausência de evidência confiável); EASAC 2017 (sem plausibilidade biofísica nem evidência clínica robusta). Base da posição editorial sobre o estatuto contestado da eficácia da diluição 6CH.</p>
+        </article>
       </div>
     </section>
 
     <section class="shell">
-      <article class="notice">
-        <h2>Regra editorial desta ficha</h2>
-        <p>A Pharmacopeia publica perguntas melhores, não atalhos terapêuticos. Esta é uma ficha explicitamente de fronteira: a química da planta é consenso, mas a diluição 6CH e a "memória da água" são hipóteses investigacionais em debate científico, sem evidência clínica consolidada de eficácia. Onde há paciente real, encaminhamos para avaliação individual.</p>
-      </article>
+      <aside class="notice warning">
+        <h2>Guardrail clínico — leia antes</h2>
+        <p><strong>Esta página é educacional. Não é prescrição.</strong> A Pharmacopeia.info publica leitura biofísica e farmacológica de substâncias para estudo e contexto — não fornece dose, posologia, ciclo, indicação individual, nem recomenda compra, uso ou substituição de qualquer tratamento. Nada aqui diagnostica, trata, cura ou previne doença, nem substitui consulta, anamnese, exame ou a decisão de um profissional de saúde habilitado. Medicamentos têm riscos, interações e contraindicações que dependem do seu terreno, da sua história clínica, da sua geografia e dos medicamentos que já usa.</p>
+        <p><strong>Arnica — específico:</strong> a eficácia da Arnica em diluição homeopática 6CH <strong>não tem suporte de evidência clínica consolidada</strong> — meta-análises convencionais não encontram efeito acima do placebo; o mecanismo de "memória da água" é hipótese de fronteira em debate científico. Arnica em forma concentrada/oral <strong>pode ser tóxica</strong> (a helenalina é citotóxica); a via homeopática diluída é distinta da planta bruta. A Arnica fitoterápica tópica (gel/creme concentrado) tem uso tradicional reconhecido sobre pele intacta para contusões e entorses, mas <strong>não se ingere</strong>. A ficha separa explicitamente as duas realidades. Antes de qualquer uso, fale com o seu médico ou farmacêutico.</p>
+      </aside>
     </section>
   </main>
 
@@ -495,32 +708,24 @@
   </footer>
 
   <script>
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       THEME TOGGLE
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── THEME TOGGLE ────────────────────────────────── */
     var themeToggle = document.getElementById('themeToggle');
-    var sunIcon  = themeToggle.querySelector('.theme-icon-sun');
-    var moonIcon = themeToggle.querySelector('.theme-icon-moon');
+    var themeBtnLabel = document.getElementById('themeBtnLabel');
 
     function applyTheme(theme) {
       document.documentElement.setAttribute('data-theme', theme);
       localStorage.setItem('ph-theme', theme);
-      if (theme === 'dark') {
-        sunIcon.style.display  = '';
-        moonIcon.style.display = 'none';
-        themeToggle.setAttribute('aria-label', 'Mudar para tema claro');
-      } else {
-        sunIcon.style.display  = 'none';
-        moonIcon.style.display = '';
-        themeToggle.setAttribute('aria-label', 'Mudar para tema escuro');
-      }
+      themeBtnLabel.textContent = theme === 'dark' ? 'claro' : 'escuro';
+      themeToggle.setAttribute('aria-label',
+        theme === 'dark' ? 'Mudar para tema claro' : 'Mudar para tema escuro');
     }
 
     applyTheme(localStorage.getItem('ph-theme') || 'light');
 
     themeToggle.addEventListener('click', function () {
-      var current = document.documentElement.getAttribute('data-theme');
-      applyTheme(current === 'dark' ? 'light' : 'dark');
+      applyTheme(
+        document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
+      );
     });
   </script>
 </body>

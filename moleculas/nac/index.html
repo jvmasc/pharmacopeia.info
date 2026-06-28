@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>N-Acetil-Cisteína (NAC) — Pharmacopeia.info</title>
-  <meta name="description" content="Ficha educacional de leitura biofísica do NAC: tampão redox da fase aquosa, precursor de glutationa, quelante universal de metais, defesa da água EZ e terminal de spin." />
+  <title>N-Acetilcisteína (NAC) — Pharmacopeia.info</title>
+  <meta name="description" content="Ficha educacional de leitura biofísica do NAC: doador de tiol, precursor de glutationa, quelante universal de metais, removedor de ROS, defesa da água EZ e terminal de spin molecular." />
 
   <!-- Anti-FOWT: aplica o tema guardado ANTES de qualquer render -->
   <script>
@@ -14,348 +14,410 @@
   })();
   </script>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
   <style>
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       TEMA LIGHT (white/biofílico) — PADRÃO
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── RESET ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    /* ─── TOKENS — LIGHT ────────────────────────────── */
     :root {
       color-scheme: light;
 
-      --bg:        #FAF9F5;
-      --bg-2:      #F2EFE8;
-      --surface:   #FFFFFF;
-      --surface-2: #F7F5EF;
+      --paper:    #F7F4EE;
+      --paper-2:  #EDE9E0;
+      --ink:      #1A1E1C;
+      --ink-2:    #3C4640;
+      --ink-3:    #6E7A74;
 
-      --ink:       #1C2420;
-      --muted:     #4A5A54;
-      --quiet:     #7A8E87;
+      --rule:       rgba(26, 30, 28, .10);
+      --rule-heavy: rgba(26, 30, 28, .20);
 
-      --line:        rgba(28, 36, 32, .10);
-      --line-strong: rgba(184, 131, 42, .50);
+      --solar:  #9A6B18;
+      --bio:    #1E6E6A;
+      --mag:    #4A3E9C;
+      --danger: #903020;
+      --ok:     #2B6435;
 
-      --solar: #B8832A;
-      --bio:   #2B8A84;
-      --mag:   #5B4DB8;
-      --danger: #C0522E;
-      --ok:     #3A7D44;
+      --text:   'Spectral', Georgia, 'Times New Roman', serif;
+      --mono:   'Space Mono', ui-monospace, SFMono-Regular, monospace;
+      --ui:     system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 
-      --radius-xl: 28px;
-      --radius-lg: 20px;
-      --radius-md: 14px;
-
-      --shadow: 0 4px 24px rgba(28, 36, 32, .08), 0 1px 4px rgba(28, 36, 32, .05);
-      --shadow-hover: 0 8px 40px rgba(28, 36, 32, .12), 0 2px 8px rgba(28, 36, 32, .06);
-
-      --header-bg: rgba(250, 249, 245, .88);
-      --body-bg:
-        radial-gradient(ellipse at 18% 0%,  rgba(184, 131, 42, .11), transparent 38rem),
-        radial-gradient(ellipse at 84% 8%,  rgba(43, 138, 132, .09), transparent 34rem),
-        radial-gradient(ellipse at 50% 96%, rgba(91, 77, 184, .07),  transparent 40rem),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg) 62%, var(--bg-2) 100%);
-
-      --mono:  ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans:  Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      /* aliases de compatibilidade com index.html */
+      --serif:  'Spectral', Georgia, serif;
+      --sans:   system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      --bg:     var(--paper);
+      --bg-2:   var(--paper-2);
     }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       TEMA DARK — override
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── TOKENS — DARK ─────────────────────────────── */
     html[data-theme="dark"] {
       color-scheme: dark;
 
-      --bg:        #07100f;
-      --bg-2:      #0b1413;
-      --surface:   #10201e;
-      --surface-2: #142a27;
+      --paper:    #0E1412;
+      --paper-2:  #151E1B;
+      --ink:      #E0E8E2;
+      --ink-2:    #A2AFA7;
+      --ink-3:    #6B7870;
 
-      --ink:       #e7eadf;
-      --muted:     #a8b5aa;
-      --quiet:     #74827b;
+      --rule:       rgba(224, 232, 226, .09);
+      --rule-heavy: rgba(224, 232, 226, .18);
 
-      --line:        rgba(231, 234, 223, .14);
-      --line-strong: rgba(215, 168, 79, .45);
-
-      --solar: #d7a84f;
-      --bio:   #65c7c0;
-      --mag:   #8a6ee8;
-      --danger: #d8816a;
-      --ok:     #98c379;
-
-      --shadow: 0 24px 80px rgba(0, 0, 0, .42);
-      --shadow-hover: 0 24px 80px rgba(0, 0, 0, .55);
-
-      --header-bg: rgba(7, 16, 15, .72);
-      --body-bg:
-        radial-gradient(circle at 12% 0%,  rgba(215, 168, 79, .18), transparent 32rem),
-        radial-gradient(circle at 88% 10%, rgba(101, 199, 192, .14), transparent 32rem),
-        radial-gradient(circle at 48% 100%, rgba(138, 110, 232, .10), transparent 34rem),
-        linear-gradient(180deg, var(--bg), var(--bg-2) 52%, #060b0a);
+      --solar:  #C8953A;
+      --bio:    #4EAAA4;
+      --mag:    #7B6ED6;
+      --danger: #C07060;
+      --ok:     #5AA46A;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    /* ─── BASE ───────────────────────────────────────── */
     body {
-      margin: 0;
-      background: var(--body-bg);
+      background: var(--paper);
       color: var(--ink);
-      font-family: var(--sans);
-      line-height: 1.55;
+      font-family: var(--text);
+      font-size: 18px;
+      line-height: 1.68;
     }
-    a { color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--solar); }
+
     .shell { width: min(1180px, calc(100% - 36px)); margin: 0 auto; }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       HEADER / NAV
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── MASTHEAD — flat, sem sticky/blur ──────────── */
     header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(20px) saturate(1.3);
-      background: var(--header-bg);
-      border-bottom: 1px solid var(--line);
-      box-shadow: 0 1px 0 var(--line);
+      border-bottom: 1px solid var(--rule-heavy);
+      padding: 18px 0;
     }
-    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
-    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; letter-spacing: -.02em; font-weight: 700; color: var(--ink); }
+    .nav {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 22px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-family: var(--text);
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -.02em;
+      color: var(--ink);
+    }
     .mark {
-      width: 34px;
-      height: 34px;
-      border: 1.5px solid var(--line-strong);
+      width: 28px;
+      height: 28px;
+      border: 1.5px solid var(--rule-heavy);
       border-radius: 50%;
       display: grid;
       place-items: center;
       position: relative;
-      color: var(--solar);
-      background: var(--surface);
+      flex-shrink: 0;
     }
     .mark::before, .mark::after {
       content: "";
       position: absolute;
-      border: 1px solid rgba(43, 138, 132, .50);
+      border: 1px solid rgba(30, 110, 106, .40);
       border-radius: 50%;
-      inset: 7px 2px;
+      inset: 5px 2px;
       transform: rotate(35deg);
     }
-    .mark::after { transform: rotate(-35deg); border-color: rgba(91, 77, 184, .42); }
-
-    html[data-theme="dark"] .mark::before { border-color: rgba(101, 199, 192, .42); }
-    html[data-theme="dark"] .mark::after  { border-color: rgba(138, 110, 232, .38); }
-
+    .mark::after { transform: rotate(-35deg); border-color: rgba(74, 62, 156, .35); }
+    html[data-theme="dark"] .mark::before { border-color: rgba(78, 170, 164, .40); }
+    html[data-theme="dark"] .mark::after  { border-color: rgba(123, 110, 214, .35); }
     .mark-dot {
-      width: 6px;
-      height: 6px;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
       background: var(--solar);
       position: relative;
       z-index: 1;
     }
 
-    nav { display: flex; gap: 18px; color: var(--muted); font-size: 14px; }
-    nav a { text-decoration: none; transition: color .15s ease; }
+    nav {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+    }
+    nav a {
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--ink-3);
+      transition: color .12s;
+    }
     nav a:hover { color: var(--ink); }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       BOTÃO DE TOGGLE DE TEMA
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* botão de tema — texto simples com borda */
     .theme-btn {
-      cursor: pointer;
-      border: 1px solid var(--line-strong);
-      background: rgba(255, 255, 255, .05);
-      color: var(--solar);
-      border-radius: 999px;
-      width: 38px;
-      height: 38px;
-      display: grid;
-      place-items: center;
-      font-size: 16px;
-      transition: border-color .18s ease, background .18s ease;
-      flex-shrink: 0;
-    }
-    .theme-btn:hover {
-      background: rgba(184, 131, 42, .10);
-      border-color: var(--line-strong);
-    }
-
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       HERO
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .hero { padding: 76px 0 42px; }
-    .kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--solar);
       font-family: var(--mono);
-      font-size: 12px;
+      font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: .16em;
-      border: 1px solid rgba(184, 131, 42, .30);
-      border-radius: 999px;
-      padding: 8px 14px;
-      background: rgba(184, 131, 42, .07);
+      letter-spacing: .12em;
+      background: none;
+      border: 1px solid var(--rule-heavy);
+      color: var(--ink-3);
+      cursor: pointer;
+      padding: 4px 10px;
+      line-height: 1.6;
+      flex-shrink: 0;
+      transition: color .12s, border-color .12s;
     }
-    html[data-theme="dark"] .kicker {
-      border-color: rgba(215, 168, 79, .26);
-      background: rgba(215, 168, 79, .06);
-    }
-    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--solar); box-shadow: 0 0 18px var(--solar); }
-    h1 { margin: 26px 0 22px; max-width: 980px; font-family: var(--serif); font-size: clamp(48px, 8vw, 104px); line-height: .92; letter-spacing: -.06em; font-weight: 520; color: var(--ink); }
-    .lead { max-width: 860px; color: var(--muted); font-size: clamp(18px, 2vw, 23px); }
-    .lead strong { color: var(--ink); font-weight: 650; }
+    .theme-btn:hover { color: var(--ink); border-color: var(--ink-3); }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       LAYOUT GRIDS
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    section { padding: 48px 0; scroll-margin-top: 92px; }
+    /* ─── HERO ───────────────────────────────────────── */
+    .hero { padding: 76px 0 42px; }
+
+    /* ─── KICKER — label mono, sem pill ─────────────── */
+    .kicker {
+      display: block;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--ink-3);
+      margin-bottom: 18px;
+    }
+
+    /* ─── HEADINGS ───────────────────────────────────── */
+    h1 {
+      font-family: var(--text);
+      font-size: clamp(48px, 7vw, 84px);
+      font-weight: 500;
+      line-height: .96;
+      letter-spacing: -.04em;
+      color: var(--ink);
+      margin-bottom: .45em;
+    }
+    h2 {
+      font-family: var(--text);
+      font-size: clamp(22px, 3.4vw, 36px);
+      font-weight: 500;
+      line-height: 1.12;
+      letter-spacing: -.025em;
+      color: var(--ink);
+      margin-bottom: .5em;
+    }
+    h3 {
+      font-family: var(--text);
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: -.015em;
+      color: var(--ink);
+      margin-bottom: .35em;
+    }
+
+    .lead {
+      max-width: 860px;
+      color: var(--ink-2);
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.62;
+    }
+    .lead strong { color: var(--ink); font-weight: 500; }
+
+    /* ─── LAYOUT ─────────────────────────────────────── */
+    section { padding: 48px 0; }
+    section + section { border-top: 1px solid var(--rule); }
     .grid-2 { display: grid; grid-template-columns: 1.05fr .95fr; gap: 22px; align-items: start; }
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       CARDS BASE
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .panel, .notice, .axis-card, .source-card, .summary-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow);
+    /* ─── PANELS — sem sombra, borda fina ───────────── */
+    .panel {
+      padding: 28px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
     }
-    .panel { padding: 28px; }
-    .panel h2, section h2 { margin: 0 0 14px; font-family: var(--serif); letter-spacing: -.035em; font-size: clamp(30px, 4vw, 52px); line-height: 1; }
-    .panel p, .notice p, .axis-card p, .source-card p, .summary-card p { color: var(--muted); }
+    .panel p { color: var(--ink-2); line-height: 1.68; font-size: 16px; }
+    .panel p + p { margin-top: .9em; }
+    .panel strong { color: var(--ink); font-weight: 500; }
 
-    .summary-card { padding: 18px; box-shadow: none; min-height: 170px; }
-    .summary-card b { display: block; margin-bottom: 8px; color: var(--ink); }
+    /* ─── STATUS TAGS ────────────────────────────────── */
+    .status {
+      display: inline-flex;
+      border-radius: 999px;
+      border: 1px solid var(--rule);
+      padding: 5px 10px;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--ink-3);
+      margin-bottom: 12px;
+    }
+    .established   { color: var(--ok);     border-color: rgba(43, 100, 53, .32);  background: rgba(43, 100, 53, .06);  }
+    .hypothesis    { color: var(--bio);    border-color: rgba(30, 110, 106, .32); background: rgba(30, 110, 106, .06); }
+    .investigational { color: var(--solar); border-color: rgba(154, 107, 24, .32); background: rgba(154, 107, 24, .06); }
+    .guarded       { color: var(--danger); border-color: rgba(144, 48, 32, .32);  background: rgba(144, 48, 32, .06);  }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       STATUS TAGS
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .status { display: inline-flex; border-radius: 999px; border: 1px solid var(--line); padding: 6px 10px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
-    .established   { color: var(--ok);     border-color: rgba(58, 125, 68, .38);  background: rgba(58, 125, 68, .07);  }
-    .hypothesis    { color: var(--bio);    border-color: rgba(43, 138, 132, .38); background: rgba(43, 138, 132, .07); }
-    .investigational { color: var(--solar); border-color: rgba(184, 131, 42, .38); background: rgba(184, 131, 42, .07); }
-    .guarded       { color: var(--danger); border-color: rgba(192, 82, 46, .38);  background: rgba(192, 82, 46, .07);  }
+    html[data-theme="dark"] .established    { border-color: rgba(90, 164, 106, .28); background: rgba(90, 164, 106, .07); }
+    html[data-theme="dark"] .hypothesis     { border-color: rgba(78, 170, 164, .28); background: rgba(78, 170, 164, .07); }
+    html[data-theme="dark"] .investigational { border-color: rgba(200, 149, 58, .28);  background: rgba(200, 149, 58, .07);  }
+    html[data-theme="dark"] .guarded        { border-color: rgba(192, 112, 96, .28); background: rgba(192, 112, 96, .07); }
 
-    html[data-theme="dark"] .established    { border-color: rgba(152,195,121,.34); background: rgba(152,195,121,.08); }
-    html[data-theme="dark"] .hypothesis     { border-color: rgba(101,199,192,.34); background: rgba(101,199,192,.08); }
-    html[data-theme="dark"] .investigational { border-color: rgba(215,168,79,.34);  background: rgba(215,168,79,.08);  }
-    html[data-theme="dark"] .guarded        { border-color: rgba(216,129,106,.34); background: rgba(216,129,106,.08); }
-
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       SECTION HEAD
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── SECTION HEAD ───────────────────────────────── */
     .section-head { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 22px; }
-    .section-head p { margin: 0; max-width: 680px; color: var(--muted); }
+    .section-head p { margin: 0; max-width: 680px; color: var(--ink-2); font-size: 16px; line-height: 1.6; }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       AXIS GRID
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── SUMMARY CARDS ──────────────────────────────── */
+    .summary-card {
+      padding: 18px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      min-height: 170px;
+    }
+    .summary-card b {
+      display: block;
+      font-family: var(--text);
+      font-weight: 500;
+      font-size: 17px;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .summary-card p { color: var(--ink-2); font-size: 15px; line-height: 1.6; }
+
+    /* ─── AXIS GRID ──────────────────────────────────── */
     .axis-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-    .axis-card { padding: 18px; box-shadow: none; min-height: 230px; }
-    .axis-card .num { font-family: var(--mono); color: var(--solar); font-size: 12px; letter-spacing: .12em; }
-    .axis-card h3 { margin: 10px 0 8px; font-size: 20px; letter-spacing: -.02em; }
-    .axis-card p { font-size: 14px; margin: 0; }
-    .axis-card small { display: block; margin-top: 12px; color: var(--quiet); font-family: var(--mono); font-size: 11px; text-transform: uppercase; line-height: 1.45; }
+    .axis-card {
+      padding: 18px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      min-height: 230px;
+    }
+    .axis-card .num {
+      font-family: var(--mono);
+      color: var(--solar);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .axis-card h3 { margin: 10px 0 8px; }
+    .axis-card p { font-size: 14px; color: var(--ink-2); line-height: 1.6; margin: 0; }
+    .axis-card small {
+      display: block;
+      margin-top: 12px;
+      color: var(--ink-3);
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      line-height: 1.45;
+    }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       NOTICE
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── NOTICE ─────────────────────────────────────── */
     .notice {
       padding: 26px;
-      box-shadow: none;
-      border-color: rgba(184, 131, 42, .30);
-      background: linear-gradient(135deg, rgba(184, 131, 42, .06) 0%, var(--surface) 70%);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
     }
-    html[data-theme="dark"] .notice {
-      border-color: rgba(215, 168, 79, .24);
-      background: var(--surface);
-    }
+    .notice h2 { margin-bottom: .4em; }
+    .notice p { color: var(--ink-2); font-size: 16px; line-height: 1.68; }
+    .notice p + p { margin-top: .8em; }
 
-    /* Notice de aviso/warning (guardrail clínico) */
+    /* Notice de aviso/warning */
     .warning {
-      border-color: rgba(192, 82, 46, .38);
-      background: linear-gradient(135deg, rgba(192, 82, 46, .06) 0%, var(--surface) 70%);
+      border-color: rgba(144, 48, 32, .28);
     }
     html[data-theme="dark"] .warning {
-      border-color: rgba(216, 129, 106, .38);
-      background: linear-gradient(180deg, rgba(53,26,22,.82), rgba(18,24,23,.86));
+      border-color: rgba(192, 112, 96, .28);
     }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       BUTTONS
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── BUTTONS ────────────────────────────────────── */
     .button {
-      min-height: 46px;
+      min-height: 44px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      padding: 12px 20px;
-      border-radius: 999px;
-      border: 1.5px solid var(--line-strong);
-      background: rgba(184, 131, 42, .10);
+      padding: 11px 18px;
+      border-radius: 4px;
+      border: 1px solid var(--rule-heavy);
+      background: rgba(154, 107, 24, .08);
       color: var(--ink);
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 14px;
-      transition: background .18s ease, border-color .18s ease, transform .15s ease, box-shadow .18s ease;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .10em;
+      transition: background .15s, border-color .15s;
     }
     html[data-theme="dark"] .button {
-      background: rgba(215, 168, 79, .12);
+      background: rgba(200, 149, 58, .08);
     }
     .button:hover {
-      background: rgba(184, 131, 42, .18);
-      border-color: rgba(184, 131, 42, .70);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 16px rgba(184, 131, 42, .16);
+      background: rgba(154, 107, 24, .14);
+      border-color: rgba(154, 107, 24, .45);
+      color: var(--ink);
     }
     .button.secondary {
-      border-color: var(--line);
-      background: var(--surface-2);
-      color: var(--muted);
-    }
-    html[data-theme="dark"] .button.secondary {
-      background: rgba(255, 255, 255, .03);
+      border-color: var(--rule);
+      background: transparent;
+      color: var(--ink-2);
     }
     .button.secondary:hover {
-      border-color: rgba(43, 138, 132, .40);
-      background: rgba(43, 138, 132, .06);
+      border-color: var(--rule-heavy);
+      background: var(--paper-2);
       color: var(--ink);
-      box-shadow: 0 4px 16px rgba(43, 138, 132, .10);
     }
     .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       SOURCE CARDS
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .source-card { padding: 18px; box-shadow: none; }
-    .source-card h3 { margin: 0 0 8px; }
-    .source-card p { margin: 0; font-size: 14px; }
-
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       FOOTER
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    footer {
-      padding: 44px 0 70px;
-      color: var(--quiet);
-      border-top: 1px solid var(--line);
-      background: var(--bg-2);
+    /* ─── SOURCE CARDS ───────────────────────────────── */
+    .source-card {
+      padding: 18px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
     }
-    footer .shell { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-    footer strong { color: var(--muted); }
-    footer code   { font-family: var(--mono); color: var(--quiet); font-size: 13px; }
+    .source-card h3 { margin: 0 0 8px; }
+    .source-card p { margin: 0; font-size: 14px; color: var(--ink-2); line-height: 1.6; }
 
-    section + section { border-top: 1px solid var(--line); }
+    /* ─── FIGURE CARDS ───────────────────────────────── */
+    .figure-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .figure-card {
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+    }
+    .figure-card img { display: block; width: 100%; background: var(--paper-2); }
+    .figure-card figcaption {
+      padding: 14px 16px 16px;
+      color: var(--ink-2);
+      font-size: 14px;
+      line-height: 1.5;
+      border-top: 1px solid var(--rule);
+    }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       RESPONSIVE
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    @media (max-width: 1000px) { .axis-grid { grid-template-columns: repeat(2, 1fr); } .grid-3 { grid-template-columns: 1fr 1fr; } }
+    /* ─── FOOTER ─────────────────────────────────────── */
+    footer {
+      padding: 28px 0 52px;
+      border-top: 1px solid var(--rule);
+      background: var(--paper-2);
+    }
+    footer .shell {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      color: var(--ink-3);
+      text-transform: uppercase;
+    }
+    footer strong { color: var(--ink-2); font-weight: 700; }
+    footer code   { font-family: var(--mono); color: var(--ink-3); font-size: 11px; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 1000px) {
+      .axis-grid { grid-template-columns: repeat(2, 1fr); }
+      .grid-3 { grid-template-columns: 1fr 1fr; }
+    }
     @media (max-width: 760px) {
       nav { display: none; }
-      .grid-2, .grid-3, .axis-grid { grid-template-columns: 1fr; }
+      .grid-2, .grid-3, .axis-grid, .figure-grid { grid-template-columns: 1fr; }
       .section-head { display: block; }
+      .section-head p { margin-top: 12px; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, html { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
@@ -372,27 +434,25 @@
         <span>Pharmacopeia.info</span>
       </a>
       <nav aria-label="Navegação principal">
-        <a href="../../index.html#matriz">Matriz</a>
-        <a href="#eixos">8 eixos</a>
+        <a href="#biofisica">Biofísica</a>
+        <a href="#bioquimica">Bioquímica</a>
         <a href="#evidencia">Evidência</a>
         <a href="#fontes">Fontes</a>
       </nav>
-      <button id="themeToggle" class="theme-btn" type="button" aria-label="Alternar tema">
-        <span class="theme-icon theme-icon-sun">&#9728;</span>
-        <span class="theme-icon theme-icon-moon" style="display:none">&#9790;</span>
+      <button id="themeToggle" class="theme-btn" type="button" aria-label="Mudar para tema escuro">
+        <span id="themeBtnLabel">escuro</span>
       </button>
     </div>
   </header>
 
-
   <main>
     <section class="hero shell">
-      <div class="kicker"><span class="dot"></span> Ficha · molécula · segunda ordem</div>
-      <h1>N-Acetil-Cisteína (NAC)</h1>
-      <p class="lead"><strong>A bula vê um mucolítico e o antídoto da overdose de paracetamol.</strong> A Pharmacopeia lê uma <strong>ferramenta de segunda ordem honesta</strong>: não é antena, não capta luz, não escreve melanina. É o tampão redox da fase aquosa — precursor de glutationa, quelante universal de metais, defensor da água EZ — que mantém o terreno limpo para que a primeira ordem funcione.</p>
+      <div class="kicker">Ficha · molécula</div>
+      <h1>N-Acetilcisteína (NAC)</h1>
+      <p class="lead"><strong>A bula vê um mucolítico e antídoto de paracetamol.</strong> A Pharmacopeia lê um doador de tiol que recarrega a bateria glutationa — remove o obstáculo, não escreve ordem. Esta ficha organiza o que é estabelecido, o que é hipótese biofísica plausível e o que permanece investigacional — Biofísica primeiro, Bioquímica depois.</p>
       <div class="cta-row">
-        <a class="button" href="#eixos">Ler pelos 8 eixos</a>
-        <a class="button secondary" href="../../index.html#atlas">Voltar ao atlas</a>
+        <a class="button" href="#biofisica">BLOCO 1 — Biofísica</a>
+        <a class="button secondary" href="#bioquimica">BLOCO 2 — Bioquímica</a>
       </div>
     </section>
 
@@ -400,67 +460,201 @@
       <div class="grid-2">
         <article class="panel">
           <h2>A tese pública</h2>
-          <p>O NAC (cisteína acetilada, ~163 Da, hidrofílico, logP ~−0,6) tem o seu poder concentrado num único átomo: o enxofre do tiol (−SH/−S⁻). É um doador de elétrons e nucleófilo macio — não absorve fótons, <strong>previne o apagamento de informação</strong> removendo os agentes que corromperiam o registo.</p>
-          <p>Mecanisticamente: precursor limitante de glutationa (GSH), quelante de Hg/Cd/Pb/Cu/Fe/Zn (apaga a faísca de Fenton), e protetor da EZ por subtração de OH·. No vocabulário da Pharmacopeia: o zelador sem o qual a catedral desmorona.</p>
+          <p>O NAC (N-acetilcisteína, C₅H₉NO₃S, ~163 Da) concentra o seu poder num único átomo: o enxofre do tiol (−SH/−S⁻). É um doador de eletrões e nucleófilo macio — não absorve fotões, previne o apagamento de informação removendo os agentes que corromperiam o registo biológico. Mecanisticamente: precursor limitante de glutationa (GSH), quelante de metais pesados (Hg, Pb, Cd, Cu, Fe) que apaga a faísca de Fenton, e removedor direto de ROS que protege a água EZ das membranas.</p>
+          <p>No vocabulário da Pharmacopeia: é uma molécula de <strong>segunda ordem</strong> — o zelador sem o qual a catedral desmorona. Não é antena, não capta luz, não escreve melanina. É o tampão redox da fase aquosa que mantém o terreno limpo para que a primeira ordem funcione.</p>
         </article>
         <aside class="notice warning">
           <h2>Guardrail clínico — leia antes</h2>
           <p><strong>Esta página é educacional. Não é prescrição.</strong> A Pharmacopeia.info publica leitura biofísica e farmacológica de substâncias para estudo e contexto — não fornece dose, posologia, ciclo, indicação individual, nem recomenda compra, uso ou substituição de qualquer tratamento. Nada aqui diagnostica, trata, cura ou previne doença, nem substitui consulta, anamnese, exame ou a decisão de um profissional de saúde habilitado. Medicamentos têm riscos, interações e contraindicações que dependem do seu terreno, da sua história clínica, da sua geografia e dos medicamentos que já usa. Antes de qualquer uso, fale com o seu médico ou farmacêutico.</p>
-          <p>NAC é geralmente bem tolerado, mas tem interações relevantes: pode afetar a coagulação e potenciar o efeito de nitratos (risco de hipotensão). Em excesso crónico, a sobrecarga de enxofre pode ser contraproducente. O seu uso como antídoto de overdose de paracetamol é uma emergência hospitalar — não auto-tratamento. Esta ficha é educacional; dose, duração e adequação ao seu caso pertencem ao profissional de saúde.</p>
+          <p><strong>NAC — específico:</strong> interage com nitrovasodilatadores (risco de hipotensão). Risco anafilático documentado em administração IV rápida. Quelante de metais pesados — pode mobilizar e redistribuir Hg, Pb e Cd em ambiente de carga metálica alta. Sobrecarga crónica de enxofre pode ser contraproducente (investigacional). O uso como antídoto de paracetamol é uma emergência hospitalar, não auto-tratamento.</p>
         </aside>
       </div>
     </section>
 
-    <section id="resumo" class="shell">
+    <section class="shell">
       <div class="section-head">
         <div>
-          <div class="kicker"><span class="dot"></span> Leitura rápida</div>
-          <h2>Antes de qualquer protocolo.</h2>
+          <div class="kicker">Leitura rápida</div>
+          <h2>Dois blocos antes de qualquer protocolo.</h2>
         </div>
-        <p>A ficha pública separa mecanismo aceito, leitura biofísica, hipóteses Kruse/PKA e prudência clínica para evitar tanto reducionismo quanto propaganda terapêutica.</p>
+        <p>A ficha pública separa o mecanismo aceito (BLOCO 2) da leitura biofísica de fronteira (BLOCO 1), com estatuto epistemológico explícito em cada ponto.</p>
       </div>
       <div class="grid-3">
-        <article class="summary-card"><span class="status established">estabelecido</span><b>Mucolítico / antídoto</b><p>Quebra dissulfetos do muco; repõe glutationa hepática na intoxicação por paracetamol. Lista de medicamentos essenciais da OMS.</p></article>
-        <article class="summary-card"><span class="status established">estabelecido</span><b>Precursor de glutationa</b><p>Abastece a síntese de GSH (o verdadeiro tampão redox celular).</p></article>
-        <article class="summary-card"><span class="status established">estabelecido</span><b>Quelante universal de metais</b><p>Sequestra metais redox-ativos, prevenindo a química de Fenton.</p></article>
-        <article class="summary-card"><span class="status hypothesis">hipótese biofísica</span><b>Defesa da água EZ</b><p>Cada OH· abatido é uma ligação-H da EZ preservada (leitura biofísica).</p></article>
-        <article class="summary-card"><span class="status investigational">investigacional</span><b>Terminal de spin (CISS)</b><p>O enxofre não é o filtro quiral; é o eletrodo molecular por onde o spin entra/sai das proteínas quirais.</p></article>
-        <article class="summary-card"><span class="status guarded">prudência</span><b>Dose e balança da melanina</b><p>Excesso crónico de enxofre pode desviar eumelanina→feomelanina; interações (coagulação, nitratos).</p></article>
+        <article class="summary-card"><span class="status established">bioquímica · BLOCO 2</span><b>Mucolítico / antídoto</b><p>Quebra dissulfetos do muco; repõe glutationa hepática na intoxicação por paracetamol. Lista de medicamentos essenciais da OMS.</p></article>
+        <article class="summary-card"><span class="status established">bioquímica · BLOCO 2</span><b>Precursor de glutationa</b><p>Abastece a síntese de GSH — o verdadeiro tampão redox celular. Via: glutamato-cisteína ligase + glutationa sintetase.</p></article>
+        <article class="summary-card"><span class="status established">bioquímica · BLOCO 2</span><b>Quelante de metais</b><p>Sequestra catiões divalentes (Hg²⁺, Pb²⁺, Cd²⁺, Cu²⁺, Fe²⁺), prevenindo a química de Fenton e o dano oxidativo secundário.</p></article>
+        <article class="summary-card"><span class="status hypothesis">biofísica · BLOCO 1</span><b>Defesa da água EZ</b><p>Cada OH· abatido pelo tiol é uma ligação-H da água interfacial (EZ) preservada. Protege a camada de exclusão das membranas.</p></article>
+        <article class="summary-card"><span class="status investigational">investigacional · BLOCO 1</span><b>Terminal de spin (CISS)</b><p>O enxofre do tiol não é filtro quiral (NAC é aquiral macroscópica), mas funciona como eletrodo molecular — ponto de injeção/coleta de spin em proteínas quirais como melanina e DNA.</p></article>
+        <article class="summary-card"><span class="status guarded">prudência · ambos</span><b>Janela e interações</b><p>Interações com nitratos (hipotensão), risco anafilático IV, potencial redistribuição de metais. Sobrecarga de enxofre: hipótese de desvio eumelanina→feomelanina (investigacional, não alarme).</p></article>
       </div>
     </section>
 
-    <section id="eixos" class="shell">
+    <section id="figuras" class="shell">
       <div class="section-head">
         <div>
-          <div class="kicker"><span class="dot"></span> Matriz Pharmacopeia</div>
-          <h2>NAC pelos oito eixos.</h2>
+          <div class="kicker">Figuras didáticas</div>
+          <h2>Fundo branco, traço limpo, leitura farmacológica.</h2>
         </div>
-        <p>A mesma molécula é lida por origem, forma, luz, água, spin, mitocôndria, campo e prudência clínica. Cada eixo tem um estatuto epistemológico diferente.</p>
+        <p>Imagens minimalistas para apoiar a ficha: estrutura molecular, mecanismo de biossíntese de GSH, mapa farmacológico e interface biofísica. São esquemas educacionais, não estruturas químicas completas nem protocolo clínico.</p>
+      </div>
+      <div class="figure-grid">
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/nac/gpt/nac-01-molecula-gpt.png" alt="Estrutura química da N-Acetilcisteína (C₅H₉NO₃S, 163.19 Da) com grupo tiol livre (-SH) destacado em âmbar" loading="lazy" />
+          <figcaption>Molécula da NAC: figura editorial GPT/OpenAI em estilo farmacologia clássica.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/nac/gpt/nac-02-mecanismo-gpt.png" alt="Via de biossíntese da glutationa a partir da NAC: deacetilação a L-cisteína, combinação com glutamato e glicina, produção de GSH" loading="lazy" />
+          <figcaption>Mecanismo clássico: NAC → L-Cisteína → Glutationa (GSH), com ciclo redox GSH/GSSG.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/nac/gpt/nac-03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico da NAC: absorção oral, metabolismo hepático, distribuição tecidual, excreção renal e quelação de metais" loading="lazy" />
+          <figcaption>Mapa farmacológico: biodisponibilidade oral, pool hepático de GSH, distribuição e função quelante.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/nac/gpt/nac-04-interface-biofisica-gpt.png" alt="Interface biofísica da NAC na fase aquosa: quelante de metais, removedor de ROS e terminal de spin em proteínas quirais" loading="lazy" />
+          <figcaption>Interface biofísica: quelante, removedor de ROS e eletrodo de spin molecular.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="biofisica" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">BLOCO 1 — Biofísica</div>
+          <h2>Oito eixos de leitura aquosa.</h2>
+        </div>
+        <p>Leitura biofísica de primeiros princípios: origem, arquitectura, espectro, CISS, água interfacial, redox, campo magnético e janela clínica. Cada eixo tem estatuto epistemológico declarado.</p>
       </div>
       <div class="axis-grid">
-        <article class="axis-card"><span class="num">01 · origem</span><h3>Síntese "apátrida"</h3><p>Industrial, sem geografia de fabrico; a geografia relevante é a do uso (onde o OH· chove mais).</p><small>Estado: histórico estabelecido</small></article>
-        <article class="axis-card"><span class="num">02 · arquitetura</span><h3>Fragmento alifático + tiol</h3><p>Sem sistema π, sem anel; o reator é o enxofre polarizável.</p><small>Estado: estrutura estabelecida; explicitamente NÃO antena</small></article>
-        <article class="axis-card"><span class="num">03 · espectro</span><h3>Borda ionizante + S–H IR</h3><p>Quase transparente no visível; absorção fraca em UV-C (&lt;250 nm) e banda S–H em ~2550 cm⁻¹. Opera no lado destrutivo do espectro, não no informacional.</p><small>Estado: verde para a química</small></article>
-        <article class="axis-card"><span class="num">04 · água</span><h3>Defende a EZ por subtração</h3><p>Hidrofílico, vive onde mora a EZ; remove OH· que cortaria as ligações-H.</p><small>Estado: hipótese biofísica</small></article>
-        <article class="axis-card"><span class="num">05 · CISS</span><h3>Eletrodo, não filtro</h3><p>Tiol como terminal de injeção/coleta de spin em proteínas quirais (melanina, DNA, colágeno).</p><small>Estado: investigacional</small></article>
-        <article class="axis-card"><span class="num">06 · redox</span><h3>Núcleo da molécula</h3><p>Sustenta NADPH/GSH, protege cardiolipina e clusters Fe-S, mantém o ΔΨ e os shuttles de fracionamento de D⁺.</p><small>Estado: hipótese biofísica + bioquímica estabelecida</small></article>
-        <article class="axis-card"><span class="num">07 · campo</span><h3>Geografia da necessidade</h3><p>Máxima utilidade sob a AAS e em poços de nnEMF, onde a carga de radical é alta.</p><small>Estado: hipótese biofísica</small></article>
-        <article class="axis-card"><span class="num">08 · janela</span><h3>Cobertura contínua</h3><p>Sem dependência fotônica; cobre o organismo no escuro/madrugada. Dose clássica de manutenção.</p><small>Estado: prudência: interações e dose</small></article>
+        <article class="axis-card">
+          <span class="num">01 · origem</span>
+          <h3>Aminoácido sulfurado ancestral</h3>
+          <p>Derivado semissintético da L-cisteína — um dos aminoácidos mais antigos da bioquímica planetária. A cisteína está presente em proteínas arqueanas e nos clusters [Fe-S] que estruturaram a primeira transferência de eletrões da vida. A acetilação protege o tiol e melhora a biodisponibilidade oral.</p>
+          <small>Estado: histórico estabelecido</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">02 · arquitectura</span>
+          <h3>Fragmento alifático + tiol</h3>
+          <p>Sem sistema π conjugado, sem anel aromático. O reator químico é o enxofre polarizável do grupo tiol (-SH/−S⁻). A geometria é linear e flexível — oposta à rigidez planar das tetraciclinas e macrolactonas. A aquiralidade macroscópica significa ausência de CISS fotónico.</p>
+          <small>Estado: estrutura estabelecida; explicitamente NÃO antena</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">03 · espectro</span>
+          <h3>Borda ionizante + S–H IR</h3>
+          <p>Quase transparente no visível e UV-A. Absorção fraca em UV-C (&lt;250 nm) — borda de ionização, não cromóforo funcional. Banda S–H em ~2550 cm⁻¹ no IV. Opera no lado destrutivo do espectro (neutraliza dano), não no informacional.</p>
+          <small>Estado: espetroscopia estabelecida</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">04 · água EZ</span>
+          <h3>Defende a EZ por subtração</h3>
+          <p>Molécula hidrofílica (logP ~−0,6) que vive onde mora a camada de exclusão (EZ). Cada radical OH· que o tiol neutraliza é uma ligação-H da EZ que não é cortada. Proteção indireta, não nucleação direta como o oleandrosil da ivermectina.</p>
+          <small>Estado: hipótese biofísica</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">05 · CISS</span>
+          <h3>Eletrodo, não filtro</h3>
+          <p>A NAC é aquiral a nível macroscópico — não há CISS fotónico como nas tetraciclinas ou ivermectina. Porém, o grupo tiol funciona como terminal de injeção/coleta de spin em proteínas quirais (melanina, DNA, colágeno). É o conector, não a antena.</p>
+          <small>Estado: investigacional</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">06 · redox</span>
+          <h3>Núcleo da molécula</h3>
+          <p>Sustenta NADPH/GSH: o par redox que defende a cardiolipina mitocondrial, protege clusters Fe-S, mantém o ΔΨ e alimenta os shuttles de fracionamento de D⁺. O NAC não faz isto sozinho — é o fornecedor da matéria-prima (cisteína) para a fábrica GSH.</p>
+          <small>Estado: bioquímica estabelecida + leitura biofísica</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">07 · campo</span>
+          <h3>Geografia da necessidade</h3>
+          <p>A utilidade máxima manifesta-se onde a carga de radical é maior: sob a Anomalia do Atlântico Sul (AAS), em ambientes de nnEMF fraturado, no inverno de pouca luz reparadora. A geografia relevante é a do uso, não a da produção.</p>
+          <small>Estado: hipótese biofísica</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">08 · janela</span>
+          <h3>Cobertura contínua</h3>
+          <p>Sem dependência fotónica — cobre o organismo no escuro, na madrugada, em ambientes de baixa luz. A janela é de manutenção contínua, não de intervenção aguda. Dose clássica de manutenção redox, não terapia de choque.</p>
+          <small>Estado: prudência: interações documentadas + hipótese de sobrecarga</small>
+        </article>
+      </div>
+    </section>
+
+    <section id="bioquimica" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">BLOCO 2 — Bioquímica</div>
+          <h2>Farmacologia clássica e evidência estabelecida.</h2>
+        </div>
+        <p>Mecanismo canónico, farmacocinética, indicações aprovadas, riscos e interações — o que o consenso biomédico sustenta com evidência rastreável.</p>
+      </div>
+      <div class="grid-2">
+        <article class="panel">
+          <h2>Mecanismo clássico e farmacocinética</h2>
+          <p><strong>Mucolítico:</strong> o grupo tiol livre (-SH) reduz as pontes dissulfeto (-S-S-) do muco compactado nas vias aéreas, tornando-o mais fluido. Aprovado para fibrose quística, DPOC, bronquite crónica.</p>
+          <p><strong>Antídoto para paracetamol:</strong> o metabolito tóxico NAPQI depleta glutationa hepática. A NAC reabastece GSH e previne necrose hepática. Protocolo NACET — emergência hospitalar, primeiras 8 horas.</p>
+          <p><strong>Farmacocinética:</strong> biodisponibilidade oral ~6-10% (baixa, mas suficiente para efeito clínico). Metabolismo hepático (deacetilação, conjugação). Eliminação renal de metabolitos. pKa tiol ~8,3; logP ~−0,6.</p>
+        </article>
+        <article class="panel">
+          <h2>Indicações estabelecidas e usos expandidos</h2>
+          <p><strong>Indicações aprovadas:</strong> mucolítico em doenças respiratórias obstrutivas; antídoto de paracetamol (intoxicação hepática). Lista de Medicamentos Essenciais da OMS.</p>
+          <p><strong>Usos adjuvantes documentados:</strong> TOC (modulação glutamatérgica), adição (craving em cocaína/nicotina), transtorno bipolar (estabilização de humor), doença de Parkinson e Alzheimer (proteção redox neuronal).</p>
+          <p><strong>Precursor de GSH:</strong> entra na célula, é deacetilado em L-cisteína, que combina com glutamato e glicina via glutamato-cisteína ligase e glutationa sintetase para produzir GSH — o verdadeiro tampão redox celular.</p>
+        </article>
+      </div>
+
+      <div style="margin-top: 22px;">
+        <article class="panel">
+          <h2>Riscos, contraindicações e interações</h2>
+          <p><strong>Reações adversas comuns:</strong> náusea, vómito, diarreia (especialmente oral). Gosto sulfuroso característico.</p>
+          <p><strong>Anafilaxia IV:</strong> risco documentado de reação anafilactoide com administração intravenosa rápida (broncoespasmo, hipotensão, urticária). Exige monitorização hospitalar.</p>
+          <p><strong>Interações:</strong> nitrovasodilatadores (nitroglicerina, isossorbida) — potenciação do efeito vasodilatador, risco de hipotensão grave. Pode afetar coagulação (monitorizar INR com varfarina).</p>
+          <p><strong>Precaução com metais:</strong> quelante universal — pode remover oligoelementos essenciais (cobre, zinco) em uso crónico e potencialmente redistribuir metais pesados acumulados.</p>
+          <p><strong>Sobrecarga de enxofre:</strong> hipótese investigacional de que o excesso crónico pode desviar a via de melanogénese de eumelanina para feomelanina (pigmentação clara, menos proteção UV). Mecanismo plausível, dados limitados.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="janela" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Janela de uso</div>
+          <h2>Terreno, sequência e limites.</h2>
+        </div>
+        <p>O NAC é uma ferramenta de segunda ordem — remove obstáculos para que a primeira ordem funcione. A sequência importa: limpeza do terreno primeiro, sinalização depois.</p>
+      </div>
+      <div class="grid-2">
+        <article class="panel">
+          <h2>Pré-requisitos de terreno (leitura biofísica)</h2>
+          <p><strong>Hidratação EZ:</strong> sem a camada de exclusão interfacial, o tiol não encontra o meio aquoso organizado onde a sua química é mais eficaz. Água de qualidade, sol real e movimento carregam o sistema antes.</p>
+          <p><strong>Janela circadiana:</strong> o NAC não depende de luz para atuar — é uma ferramenta de manutenção contínua que cobre o organismo na madrugada, no escuro, no inverno. A sua máxima relevância é no período de reparo (jejum/noite), quando a carga de ROS endógena é maior.</p>
+          <p><strong>Geografia da carga radical:</strong> a necessidade aumenta sob a AAS, em ambientes de nnEMF elevado, no inverno de pouca luz reparadora. Onde há mais OH·, o doador de tiol é mais necessário.</p>
+        </article>
+        <article class="panel">
+          <h2>Limites absolutos</h2>
+          <p>Independentemente do enquadramento biofísico, os seguintes contextos exigem avaliação profissional obrigatória antes de qualquer uso:</p>
+          <p>Gravidez e lactação · Uso concomitante de nitrovasodilatadores · História de anafilaxia · Distúrbios hemorrágicos ou anticoagulação · Hemocromatose ou sobrecarga de ferro · Contexto de metais pesados elevados (redistribuição) · Uso crónico sem supervisão (sobrecarga de enxofre, desvio de oligoelementos).</p>
+          <p><strong>A ficha pública não transforma molécula em protocolo individual.</strong> Dose, forma farmacêutica, duração e indicação pertencem à avaliação clínica, não à leitura biofísica.</p>
+        </article>
       </div>
     </section>
 
     <section id="evidencia" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Estado da evidência</div>
+          <h2>O que é consenso. O que é hipótese. O que é fronteira.</h2>
+        </div>
+      </div>
       <div class="grid-2">
         <article class="panel">
-          <h2>Terreno e janela de uso</h2>
-          <p>Apresentado como o <strong>par dialético</strong> das antenas: "um constrói o escudo, o outro drena o dilúvio". Posicionado para quem vive sob campo fraturado (AAS), em ambiente de nnEMF, ou no inverno de pouca luz reparadora — como manutenção de infraestrutura redox, não intervenção heroica. A leitura é explícita em não inflar o NAC num superpoder que não tem.</p>
-          <p>Leitura educacional — não é indicação, dose nem posologia.</p>
+          <h2>Camadas de evidência</h2>
+          <p><strong>Verde — estabelecido:</strong> estrutura molecular, história, mucolítico, antídoto de paracetamol, precursor de GSH, quelante de metais, lista essencial OMS, farmacocinética, riscos e interações documentados.</p>
+          <p><strong>Ciano — hipótese biofísica:</strong> defesa da água EZ por subtração de OH·, manutenção de NADPH/GSH, proteção de cardiolipina e clusters Fe-S, leitura geográfica-magnética da necessidade.</p>
+          <p><strong>Âmbar — investigacional/fronteira:</strong> terminal de spin/CISS em proteínas quirais, desvio eumelanina→feomelanina em excesso (aviso, não promessa), manutenção dos shuttles de depleção de deutério.</p>
+          <p><strong>Vermelho — contestado:</strong> eficácia como agente antienvelhecimento ou antineoplásico isolado (sem contexto de terreno e janela) não é validada pelos padrões biomédicos convencionais.</p>
         </article>
         <article class="panel">
-          <h2>Camadas de evidência</h2>
-          <p><strong>Verde (estabelecido):</strong> mucolítico, antídoto de paracetamol, precursor de glutationa, quelação de metais, lista essencial OMS.</p>
-          <p><strong>Ciano (hipótese biofísica):</strong> defesa da EZ por remoção de OH·, manutenção de NADPH/GSH e proteção de cardiolipina/Fe-S/ΔΨ.</p>
-          <p><strong>Âmbar (investigacional/fronteira):</strong> terminal de spin/CISS, manutenção dos shuttles de depleção de deutério, leitura geomagnética; desvio eumelanina/feomelanina em excesso (aviso, não promessa).</p>
+          <h2>Nota metodológica</h2>
+          <p>A maioria dos estudos de toxicologia e eficácia foi conduzida em modelos de dose aguda sem controlo de terreno (hidratação EZ, campo magnético, espectro luminoso, estado redox basal). Isso subestima consistentemente a janela de utilidade biofísica e sobrestima o sinal de risco em condições humanas com terreno adequado — a crítica é estrutural ao desenho desses estudos, não genérica.</p>
+          <p>Para o NAC especificamente: a distinção entre o <em>mecanismo bioquímico estabelecido</em> (precursor de GSH, quelante, mucolítico) e as <em>leituras biofísicas de fronteira</em> (água EZ, terminal de spin, leitura geográfica) é o ponto editorial mais delicado. A Pharmacopeia mantém as duas narrativas separadas para que o entusiasmo de uma não contamine a credibilidade da outra.</p>
         </article>
       </div>
     </section>
@@ -468,22 +662,32 @@
     <section id="fontes" class="shell">
       <div class="section-head">
         <div>
-          <div class="kicker"><span class="dot"></span> Fontes internas e externas</div>
+          <div class="kicker">Fontes e ligações</div>
           <h2>Base desta ficha.</h2>
         </div>
       </div>
       <div class="grid-3">
-        <article class="source-card"><h3>Monografia PKA</h3><p><em>Biofísica da N-Acetil-Cisteína</em> (2026-06-18). Análise biofísica completa interna, skill biofisica-farmaco / CPC 84.</p></article>
-        <article class="source-card"><h3>CPC 84</h3><p>Molde de leitura biofísica (tiol como eletrodo de spin, defesa da EZ por subtração de OH·, redox NADPH/GSH) aplicado ao tampão redox aquoso.</p></article>
-        <article class="source-card"><h3>Eixo redox / glutationa</h3><p>Sustentação de NADPH/GSH, proteção de cardiolipina e clusters Fe-S como base bioquímica estabelecida da leitura de manutenção do ΔΨ.</p></article>
+        <article class="source-card">
+          <h3>Biofísica Pura</h3>
+          <p><em>Biofísica de N-Acetil-Cisteína (NAC) — Análise de Primeiros Princípios</em> (2026-06-26). Nota interna de análise biofísica de primeiros princípios — base do BLOCO 1: origem, CISS, espectro, água EZ, redox, geografia do campo.</p>
+        </article>
+        <article class="source-card">
+          <h3>Biofísica Referenciada</h3>
+          <p><em>Biofísica de N-Acetil-Cisteína (NAC) — Análise Referenciada</em> (2026-06-26). Leitura comparada com moléculas de primeira ordem (tetraciclina, ivermectina). Definição de NAC como ferramenta de segunda ordem.</p>
+        </article>
+        <article class="source-card">
+          <h3>Análise Clássica</h3>
+          <p><em>Análise Clássica — N-Acetil-Cisteína (NAC)</em> (2026-06-26). Base farmacológica e toxicológica convencional — base do BLOCO 2: mucolítico, GSH, farmacocinética, indicações, riscos, interações.</p>
+        </article>
       </div>
     </section>
 
     <section class="shell">
-      <article class="notice">
-        <h2>Regra editorial desta ficha</h2>
-        <p>A Pharmacopeia publica perguntas melhores, não atalhos terapêuticos. Onde há consenso, dizemos consenso. Onde há mecanismo plausível, dizemos hipótese. Onde há Kruse/PKA, dizemos fronteira investigacional. Onde há paciente real, encaminhamos para avaliação individual.</p>
-      </article>
+      <aside class="notice warning">
+        <h2>Guardrail clínico — leia antes</h2>
+        <p><strong>Esta página é educacional. Não é prescrição.</strong> A Pharmacopeia.info publica leitura biofísica e farmacológica de substâncias para estudo e contexto — não fornece dose, posologia, ciclo, indicação individual, nem recomenda compra, uso ou substituição de qualquer tratamento. Nada aqui diagnostica, trata, cura ou previne doença, nem substitui consulta, anamnese, exame ou a decisão de um profissional de saúde habilitado. Medicamentos têm riscos, interações e contraindicações que dependem do seu terreno, da sua história clínica, da sua geografia e dos medicamentos que já usa. Antes de qualquer uso, fale com o seu médico ou farmacêutico.</p>
+        <p><strong>NAC — específico:</strong> interage com nitrovasodilatadores (risco de hipotensão). Risco anafilático documentado em administração IV rápida. Quelante de metais pesados — pode mobilizar e redistribuir Hg, Pb e Cd em ambiente de carga metálica alta. Sobrecarga crónica de enxofre pode ser contraproducente (investigacional). O uso como antídoto de paracetamol é uma emergência hospitalar, não auto-tratamento.</p>
+      </aside>
     </section>
   </main>
 
@@ -495,32 +699,24 @@
   </footer>
 
   <script>
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       THEME TOGGLE
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── THEME TOGGLE ────────────────────────────────── */
     var themeToggle = document.getElementById('themeToggle');
-    var sunIcon  = themeToggle.querySelector('.theme-icon-sun');
-    var moonIcon = themeToggle.querySelector('.theme-icon-moon');
+    var themeBtnLabel = document.getElementById('themeBtnLabel');
 
     function applyTheme(theme) {
       document.documentElement.setAttribute('data-theme', theme);
       localStorage.setItem('ph-theme', theme);
-      if (theme === 'dark') {
-        sunIcon.style.display  = '';
-        moonIcon.style.display = 'none';
-        themeToggle.setAttribute('aria-label', 'Mudar para tema claro');
-      } else {
-        sunIcon.style.display  = 'none';
-        moonIcon.style.display = '';
-        themeToggle.setAttribute('aria-label', 'Mudar para tema escuro');
-      }
+      themeBtnLabel.textContent = theme === 'dark' ? 'claro' : 'escuro';
+      themeToggle.setAttribute('aria-label',
+        theme === 'dark' ? 'Mudar para tema claro' : 'Mudar para tema escuro');
     }
 
     applyTheme(localStorage.getItem('ph-theme') || 'light');
 
     themeToggle.addEventListener('click', function () {
-      var current = document.documentElement.getAttribute('data-theme');
-      applyTheme(current === 'dark' ? 'light' : 'dark');
+      applyTheme(
+        document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
+      );
     });
   </script>
 </body>
