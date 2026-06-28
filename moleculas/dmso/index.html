@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>DMSO — Pharmacopeia.info</title>
-  <meta name="description" content="Ficha educacional de leitura biofísica do DMSO: reorganizador de água e carreador transdérmico, momento dipolar, água EZ, deutério, OH·, fibrose fascial e janela de uso." />
+  <meta name="description" content="Ficha educacional do DMSO: reorganizador de água estruturada (EZ), modulador de spin via átomo pesado de enxofre, carreador transdérmico, segunda ordem biofísica. Mecanismo clássico, única indicação aprovada (cistite intersticial), riscos e contraindicações." />
 
   <!-- Anti-FOWT: aplica o tema guardado ANTES de qualquer render -->
   <script>
@@ -14,348 +14,413 @@
   })();
   </script>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
   <style>
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       TEMA LIGHT (white/biofílico) — PADRÃO
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── RESET ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    /* ─── TOKENS — LIGHT ────────────────────────────── */
     :root {
       color-scheme: light;
 
-      --bg:        #FAF9F5;
-      --bg-2:      #F2EFE8;
-      --surface:   #FFFFFF;
-      --surface-2: #F7F5EF;
+      --paper:    #F7F4EE;
+      --paper-2:  #EDE9E0;
+      --ink:      #1A1E1C;
+      --ink-2:    #3C4640;
+      --ink-3:    #6E7A74;
 
-      --ink:       #1C2420;
-      --muted:     #4A5A54;
-      --quiet:     #7A8E87;
+      --rule:       rgba(26, 30, 28, .10);
+      --rule-heavy: rgba(26, 30, 28, .20);
 
-      --line:        rgba(28, 36, 32, .10);
-      --line-strong: rgba(184, 131, 42, .50);
+      --solar:  #9A6B18;
+      --bio:    #1E6E6A;
+      --mag:    #4A3E9C;
+      --danger: #903020;
+      --ok:     #2B6435;
 
-      --solar: #B8832A;
-      --bio:   #2B8A84;
-      --mag:   #5B4DB8;
-      --danger: #C0522E;
-      --ok:     #3A7D44;
+      --text:   'Spectral', Georgia, 'Times New Roman', serif;
+      --mono:   'Space Mono', ui-monospace, SFMono-Regular, monospace;
+      --ui:     system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 
-      --radius-xl: 28px;
-      --radius-lg: 20px;
-      --radius-md: 14px;
-
-      --shadow: 0 4px 24px rgba(28, 36, 32, .08), 0 1px 4px rgba(28, 36, 32, .05);
-      --shadow-hover: 0 8px 40px rgba(28, 36, 32, .12), 0 2px 8px rgba(28, 36, 32, .06);
-
-      --header-bg: rgba(250, 249, 245, .88);
-      --body-bg:
-        radial-gradient(ellipse at 18% 0%,  rgba(184, 131, 42, .11), transparent 38rem),
-        radial-gradient(ellipse at 84% 8%,  rgba(43, 138, 132, .09), transparent 34rem),
-        radial-gradient(ellipse at 50% 96%, rgba(91, 77, 184, .07),  transparent 40rem),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg) 62%, var(--bg-2) 100%);
-
-      --mono:  ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans:  Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      --serif:  'Spectral', Georgia, serif;
+      --sans:   system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      --bg:     var(--paper);
+      --bg-2:   var(--paper-2);
     }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       TEMA DARK — override
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── TOKENS — DARK ─────────────────────────────── */
     html[data-theme="dark"] {
       color-scheme: dark;
 
-      --bg:        #07100f;
-      --bg-2:      #0b1413;
-      --surface:   #10201e;
-      --surface-2: #142a27;
+      --paper:    #0E1412;
+      --paper-2:  #151E1B;
+      --ink:      #E0E8E2;
+      --ink-2:    #A2AFA7;
+      --ink-3:    #6B7870;
 
-      --ink:       #e7eadf;
-      --muted:     #a8b5aa;
-      --quiet:     #74827b;
+      --rule:       rgba(224, 232, 226, .09);
+      --rule-heavy: rgba(224, 232, 226, .18);
 
-      --line:        rgba(231, 234, 223, .14);
-      --line-strong: rgba(215, 168, 79, .45);
-
-      --solar: #d7a84f;
-      --bio:   #65c7c0;
-      --mag:   #8a6ee8;
-      --danger: #d8816a;
-      --ok:     #98c379;
-
-      --shadow: 0 24px 80px rgba(0, 0, 0, .42);
-      --shadow-hover: 0 24px 80px rgba(0, 0, 0, .55);
-
-      --header-bg: rgba(7, 16, 15, .72);
-      --body-bg:
-        radial-gradient(circle at 12% 0%,  rgba(215, 168, 79, .18), transparent 32rem),
-        radial-gradient(circle at 88% 10%, rgba(101, 199, 192, .14), transparent 32rem),
-        radial-gradient(circle at 48% 100%, rgba(138, 110, 232, .10), transparent 34rem),
-        linear-gradient(180deg, var(--bg), var(--bg-2) 52%, #060b0a);
+      --solar:  #C8953A;
+      --bio:    #4EAAA4;
+      --mag:    #7B6ED6;
+      --danger: #C07060;
+      --ok:     #5AA46A;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    /* ─── BASE ───────────────────────────────────────── */
     body {
-      margin: 0;
-      background: var(--body-bg);
+      background: var(--paper);
       color: var(--ink);
-      font-family: var(--sans);
-      line-height: 1.55;
+      font-family: var(--text);
+      font-size: 18px;
+      line-height: 1.68;
     }
-    a { color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--solar); }
+
     .shell { width: min(1180px, calc(100% - 36px)); margin: 0 auto; }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       HEADER / NAV
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── MASTHEAD ───────────────────────────────────── */
     header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(20px) saturate(1.3);
-      background: var(--header-bg);
-      border-bottom: 1px solid var(--line);
-      box-shadow: 0 1px 0 var(--line);
+      border-bottom: 1px solid var(--rule-heavy);
+      padding: 18px 0;
     }
-    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
-    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; letter-spacing: -.02em; font-weight: 700; color: var(--ink); }
+    .nav {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 22px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-family: var(--text);
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -.02em;
+      color: var(--ink);
+    }
     .mark {
-      width: 34px;
-      height: 34px;
-      border: 1.5px solid var(--line-strong);
+      width: 28px;
+      height: 28px;
+      border: 1.5px solid var(--rule-heavy);
       border-radius: 50%;
       display: grid;
       place-items: center;
       position: relative;
-      color: var(--solar);
-      background: var(--surface);
+      flex-shrink: 0;
     }
     .mark::before, .mark::after {
       content: "";
       position: absolute;
-      border: 1px solid rgba(43, 138, 132, .50);
+      border: 1px solid rgba(30, 110, 106, .40);
       border-radius: 50%;
-      inset: 7px 2px;
+      inset: 5px 2px;
       transform: rotate(35deg);
     }
-    .mark::after { transform: rotate(-35deg); border-color: rgba(91, 77, 184, .42); }
-
-    html[data-theme="dark"] .mark::before { border-color: rgba(101, 199, 192, .42); }
-    html[data-theme="dark"] .mark::after  { border-color: rgba(138, 110, 232, .38); }
-
+    .mark::after { transform: rotate(-35deg); border-color: rgba(74, 62, 156, .35); }
+    html[data-theme="dark"] .mark::before { border-color: rgba(78, 170, 164, .40); }
+    html[data-theme="dark"] .mark::after  { border-color: rgba(123, 110, 214, .35); }
     .mark-dot {
-      width: 6px;
-      height: 6px;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
       background: var(--solar);
       position: relative;
       z-index: 1;
     }
 
-    nav { display: flex; gap: 18px; color: var(--muted); font-size: 14px; }
-    nav a { text-decoration: none; transition: color .15s ease; }
+    nav {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+    }
+    nav a {
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--ink-3);
+      transition: color .12s;
+    }
     nav a:hover { color: var(--ink); }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       BOTÃO DE TOGGLE DE TEMA
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     .theme-btn {
-      cursor: pointer;
-      border: 1px solid var(--line-strong);
-      background: rgba(255, 255, 255, .05);
-      color: var(--solar);
-      border-radius: 999px;
-      width: 38px;
-      height: 38px;
-      display: grid;
-      place-items: center;
-      font-size: 16px;
-      transition: border-color .18s ease, background .18s ease;
-      flex-shrink: 0;
-    }
-    .theme-btn:hover {
-      background: rgba(184, 131, 42, .10);
-      border-color: var(--line-strong);
-    }
-
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       HERO
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .hero { padding: 76px 0 42px; }
-    .kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--solar);
       font-family: var(--mono);
-      font-size: 12px;
+      font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: .16em;
-      border: 1px solid rgba(184, 131, 42, .30);
-      border-radius: 999px;
-      padding: 8px 14px;
-      background: rgba(184, 131, 42, .07);
+      letter-spacing: .12em;
+      background: none;
+      border: 1px solid var(--rule-heavy);
+      color: var(--ink-3);
+      cursor: pointer;
+      padding: 4px 10px;
+      line-height: 1.6;
+      flex-shrink: 0;
+      transition: color .12s, border-color .12s;
     }
-    html[data-theme="dark"] .kicker {
-      border-color: rgba(215, 168, 79, .26);
-      background: rgba(215, 168, 79, .06);
-    }
-    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--solar); box-shadow: 0 0 18px var(--solar); }
-    h1 { margin: 26px 0 22px; max-width: 980px; font-family: var(--serif); font-size: clamp(48px, 8vw, 104px); line-height: .92; letter-spacing: -.06em; font-weight: 520; color: var(--ink); }
-    .lead { max-width: 860px; color: var(--muted); font-size: clamp(18px, 2vw, 23px); }
-    .lead strong { color: var(--ink); font-weight: 650; }
+    .theme-btn:hover { color: var(--ink); border-color: var(--ink-3); }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       LAYOUT GRIDS
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    section { padding: 48px 0; scroll-margin-top: 92px; }
+    /* ─── HERO ───────────────────────────────────────── */
+    .hero { padding: 76px 0 42px; }
+
+    .kicker {
+      display: block;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--ink-3);
+      margin-bottom: 18px;
+    }
+
+    /* ─── HEADINGS ───────────────────────────────────── */
+    h1 {
+      font-family: var(--text);
+      font-size: clamp(48px, 7vw, 84px);
+      font-weight: 500;
+      line-height: .96;
+      letter-spacing: -.04em;
+      color: var(--ink);
+      margin-bottom: .45em;
+    }
+    h2 {
+      font-family: var(--text);
+      font-size: clamp(22px, 3.4vw, 36px);
+      font-weight: 500;
+      line-height: 1.12;
+      letter-spacing: -.025em;
+      color: var(--ink);
+      margin-bottom: .5em;
+    }
+    h3 {
+      font-family: var(--text);
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: -.015em;
+      color: var(--ink);
+      margin-bottom: .35em;
+    }
+
+    .lead {
+      max-width: 860px;
+      color: var(--ink-2);
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.62;
+    }
+    .lead strong { color: var(--ink); font-weight: 500; }
+
+    /* ─── LAYOUT ─────────────────────────────────────── */
+    section { padding: 48px 0; }
+    section + section { border-top: 1px solid var(--rule); }
     .grid-2 { display: grid; grid-template-columns: 1.05fr .95fr; gap: 22px; align-items: start; }
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       CARDS BASE
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .panel, .notice, .axis-card, .source-card, .summary-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow);
+    /* ─── PANELS ─────────────────────────────────────── */
+    .panel {
+      padding: 28px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
     }
-    .panel { padding: 28px; }
-    .panel h2, section h2 { margin: 0 0 14px; font-family: var(--serif); letter-spacing: -.035em; font-size: clamp(30px, 4vw, 52px); line-height: 1; }
-    .panel p, .notice p, .axis-card p, .source-card p, .summary-card p { color: var(--muted); }
+    .panel p { color: var(--ink-2); line-height: 1.68; font-size: 16px; }
+    .panel p + p { margin-top: .9em; }
+    .panel strong { color: var(--ink); font-weight: 500; }
 
-    .summary-card { padding: 18px; box-shadow: none; min-height: 170px; }
-    .summary-card b { display: block; margin-bottom: 8px; color: var(--ink); }
+    /* ─── STATUS TAGS ────────────────────────────────── */
+    .status {
+      display: inline-flex;
+      border-radius: 999px;
+      border: 1px solid var(--rule);
+      padding: 5px 10px;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--ink-3);
+      margin-bottom: 12px;
+    }
+    .established   { color: var(--ok);     border-color: rgba(43, 100, 53, .32);  background: rgba(43, 100, 53, .06);  }
+    .hypothesis    { color: var(--bio);    border-color: rgba(30, 110, 106, .32); background: rgba(30, 110, 106, .06); }
+    .investigational { color: var(--solar); border-color: rgba(154, 107, 24, .32); background: rgba(154, 107, 24, .06); }
+    .guarded       { color: var(--danger); border-color: rgba(144, 48, 32, .32);  background: rgba(144, 48, 32, .06);  }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       STATUS TAGS
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .status { display: inline-flex; border-radius: 999px; border: 1px solid var(--line); padding: 6px 10px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
-    .established   { color: var(--ok);     border-color: rgba(58, 125, 68, .38);  background: rgba(58, 125, 68, .07);  }
-    .hypothesis    { color: var(--bio);    border-color: rgba(43, 138, 132, .38); background: rgba(43, 138, 132, .07); }
-    .investigational { color: var(--solar); border-color: rgba(184, 131, 42, .38); background: rgba(184, 131, 42, .07); }
-    .guarded       { color: var(--danger); border-color: rgba(192, 82, 46, .38);  background: rgba(192, 82, 46, .07);  }
+    html[data-theme="dark"] .established    { border-color: rgba(90, 164, 106, .28); background: rgba(90, 164, 106, .07); }
+    html[data-theme="dark"] .hypothesis     { border-color: rgba(78, 170, 164, .28); background: rgba(78, 170, 164, .07); }
+    html[data-theme="dark"] .investigational { border-color: rgba(200, 149, 58, .28);  background: rgba(200, 149, 58, .07);  }
+    html[data-theme="dark"] .guarded        { border-color: rgba(192, 112, 96, .28); background: rgba(192, 112, 96, .07); }
 
-    html[data-theme="dark"] .established    { border-color: rgba(152,195,121,.34); background: rgba(152,195,121,.08); }
-    html[data-theme="dark"] .hypothesis     { border-color: rgba(101,199,192,.34); background: rgba(101,199,192,.08); }
-    html[data-theme="dark"] .investigational { border-color: rgba(215,168,79,.34);  background: rgba(215,168,79,.08);  }
-    html[data-theme="dark"] .guarded        { border-color: rgba(216,129,106,.34); background: rgba(216,129,106,.08); }
-
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       SECTION HEAD
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── SECTION HEAD ───────────────────────────────── */
     .section-head { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 22px; }
-    .section-head p { margin: 0; max-width: 680px; color: var(--muted); }
+    .section-head p { margin: 0; max-width: 680px; color: var(--ink-2); font-size: 16px; line-height: 1.6; }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       AXIS GRID
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── SUMMARY CARDS ──────────────────────────────── */
+    .summary-card {
+      padding: 18px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      min-height: 170px;
+    }
+    .summary-card b {
+      display: block;
+      font-family: var(--text);
+      font-weight: 500;
+      font-size: 17px;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .summary-card p { color: var(--ink-2); font-size: 15px; line-height: 1.6; }
+
+    /* ─── AXIS GRID ──────────────────────────────────── */
     .axis-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-    .axis-card { padding: 18px; box-shadow: none; min-height: 230px; }
-    .axis-card .num { font-family: var(--mono); color: var(--solar); font-size: 12px; letter-spacing: .12em; }
-    .axis-card h3 { margin: 10px 0 8px; font-size: 20px; letter-spacing: -.02em; }
-    .axis-card p { font-size: 14px; margin: 0; }
-    .axis-card small { display: block; margin-top: 12px; color: var(--quiet); font-family: var(--mono); font-size: 11px; text-transform: uppercase; line-height: 1.45; }
+    .axis-card {
+      padding: 18px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      min-height: 230px;
+    }
+    .axis-card .num {
+      font-family: var(--mono);
+      color: var(--solar);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .axis-card h3 { margin: 10px 0 8px; }
+    .axis-card p { font-size: 14px; color: var(--ink-2); line-height: 1.6; margin: 0; }
+    .axis-card small {
+      display: block;
+      margin-top: 12px;
+      color: var(--ink-3);
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      line-height: 1.45;
+    }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       NOTICE
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── NOTICE ─────────────────────────────────────── */
     .notice {
       padding: 26px;
-      box-shadow: none;
-      border-color: rgba(184, 131, 42, .30);
-      background: linear-gradient(135deg, rgba(184, 131, 42, .06) 0%, var(--surface) 70%);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
     }
-    html[data-theme="dark"] .notice {
-      border-color: rgba(215, 168, 79, .24);
-      background: var(--surface);
-    }
+    .notice h2 { margin-bottom: .4em; }
+    .notice p { color: var(--ink-2); font-size: 16px; line-height: 1.68; }
+    .notice p + p { margin-top: .8em; }
 
-    /* Notice de aviso/warning (guardrail clínico) */
     .warning {
-      border-color: rgba(192, 82, 46, .38);
-      background: linear-gradient(135deg, rgba(192, 82, 46, .06) 0%, var(--surface) 70%);
+      border-color: rgba(144, 48, 32, .28);
     }
     html[data-theme="dark"] .warning {
-      border-color: rgba(216, 129, 106, .38);
-      background: linear-gradient(180deg, rgba(53,26,22,.82), rgba(18,24,23,.86));
+      border-color: rgba(192, 112, 96, .28);
     }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       BUTTONS
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── BUTTONS ────────────────────────────────────── */
     .button {
-      min-height: 46px;
+      min-height: 44px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      padding: 12px 20px;
-      border-radius: 999px;
-      border: 1.5px solid var(--line-strong);
-      background: rgba(184, 131, 42, .10);
+      padding: 11px 18px;
+      border-radius: 4px;
+      border: 1px solid var(--rule-heavy);
+      background: rgba(154, 107, 24, .08);
       color: var(--ink);
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 14px;
-      transition: background .18s ease, border-color .18s ease, transform .15s ease, box-shadow .18s ease;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .10em;
+      transition: background .15s, border-color .15s;
     }
     html[data-theme="dark"] .button {
-      background: rgba(215, 168, 79, .12);
+      background: rgba(200, 149, 58, .08);
     }
     .button:hover {
-      background: rgba(184, 131, 42, .18);
-      border-color: rgba(184, 131, 42, .70);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 16px rgba(184, 131, 42, .16);
+      background: rgba(154, 107, 24, .14);
+      border-color: rgba(154, 107, 24, .45);
+      color: var(--ink);
     }
     .button.secondary {
-      border-color: var(--line);
-      background: var(--surface-2);
-      color: var(--muted);
-    }
-    html[data-theme="dark"] .button.secondary {
-      background: rgba(255, 255, 255, .03);
+      border-color: var(--rule);
+      background: transparent;
+      color: var(--ink-2);
     }
     .button.secondary:hover {
-      border-color: rgba(43, 138, 132, .40);
-      background: rgba(43, 138, 132, .06);
+      border-color: var(--rule-heavy);
+      background: var(--paper-2);
       color: var(--ink);
-      box-shadow: 0 4px 16px rgba(43, 138, 132, .10);
     }
     .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       SOURCE CARDS
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .source-card { padding: 18px; box-shadow: none; }
-    .source-card h3 { margin: 0 0 8px; }
-    .source-card p { margin: 0; font-size: 14px; }
-
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       FOOTER
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    footer {
-      padding: 44px 0 70px;
-      color: var(--quiet);
-      border-top: 1px solid var(--line);
-      background: var(--bg-2);
+    /* ─── SOURCE CARDS ───────────────────────────────── */
+    .source-card {
+      padding: 18px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
     }
-    footer .shell { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-    footer strong { color: var(--muted); }
-    footer code   { font-family: var(--mono); color: var(--quiet); font-size: 13px; }
+    .source-card h3 { margin: 0 0 8px; }
+    .source-card p { margin: 0; font-size: 14px; color: var(--ink-2); line-height: 1.6; }
 
-    section + section { border-top: 1px solid var(--line); }
+    /* ─── FOOTER ─────────────────────────────────────── */
+    footer {
+      padding: 28px 0 52px;
+      border-top: 1px solid var(--rule);
+      background: var(--paper-2);
+    }
+    footer .shell {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      color: var(--ink-3);
+      text-transform: uppercase;
+    }
+    footer strong { color: var(--ink-2); font-weight: 700; }
+    footer code   { font-family: var(--mono); color: var(--ink-3); font-size: 11px; }
 
     /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       RESPONSIVE
+       FIGURE GRID (figuras didáticas)
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    @media (max-width: 1000px) { .axis-grid { grid-template-columns: repeat(2, 1fr); } .grid-3 { grid-template-columns: 1fr 1fr; } }
+    .figure-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .figure-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin: 0;
+      box-shadow: var(--shadow);
+    }
+    .figure-card img { display: block; width: 100%; background: #f0ede6; }
+    .figure-card figcaption {
+      padding: 10px 14px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.4;
+      background: var(--surface-2);
+      border-top: 1px solid var(--line);
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 1000px) {
+      .axis-grid { grid-template-columns: repeat(2, 1fr); }
+      .grid-3 { grid-template-columns: 1fr 1fr; }
+      .figure-grid { grid-template-columns: repeat(2, 1fr); }
+    }
     @media (max-width: 760px) {
       nav { display: none; }
-      .grid-2, .grid-3, .axis-grid { grid-template-columns: 1fr; }
+      .grid-2, .grid-3, .axis-grid, .figure-grid { grid-template-columns: 1fr; }
       .section-head { display: block; }
+      .section-head p { margin-top: 12px; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, html { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
@@ -373,25 +438,26 @@
       </a>
       <nav aria-label="Navegação principal">
         <a href="../../index.html#matriz">Matriz</a>
-        <a href="#eixos">8 eixos</a>
+        <a href="#figuras">Figuras</a>
+        <a href="#biofisica">Biofísica</a>
+        <a href="#bioquimica">Bioquímica</a>
         <a href="#evidencia">Evidência</a>
         <a href="#fontes">Fontes</a>
       </nav>
-      <button id="themeToggle" class="theme-btn" type="button" aria-label="Alternar tema">
-        <span class="theme-icon theme-icon-sun">&#9728;</span>
-        <span class="theme-icon theme-icon-moon" style="display:none">&#9790;</span>
+      <button id="themeToggle" class="theme-btn" type="button" aria-label="Mudar para tema escuro">
+        <span id="themeBtnLabel">escuro</span>
       </button>
     </div>
   </header>
 
   <main>
     <section class="hero shell">
-      <div class="kicker"><span class="dot"></span> Ficha · molécula · segunda ordem</div>
+      <div class="kicker">Ficha · molécula</div>
       <h1>DMSO</h1>
-      <p class="lead"><strong>A bula vê um solvente aprovado para uma única indicação (cistite intersticial).</strong> A Pharmacopeia lê um <strong>reorganizador de água e carreador transdérmico</strong>: sem cromóforo UV, mas com momento dipolar enorme (3,96 D), expulsa deutério das camadas de hidratação, protege a água EZ e leva outras moléculas para compartimentos onde elas sozinhas não chegariam. Não é antena; é infraestrutura de segunda ordem.</p>
+      <p class="lead"><strong>A bula vê um solvente industrial reaproveitado.</strong> A Pharmacopeia lê uma molécula dipolar de enxofre pesado com 78 daltons que atravessa qualquer barreira do corpo, ancora-se nas ligações de hidrogênio e reescreve a rede de água. Não tem cromóforo UV-A, não capta fótons visíveis, não dispara o POMC com luz. Opera num nível mais primordial: o nível da água, do deutério e do campo dielétrico onde cada processo celular vive ou morre. A dose define o efeito — baixa concentração nucleia EZ, alta concentração a colapsa. O grau de pureza define o risco. Segunda ordem soberana: não escreve a informação, limpa o palco onde ela é escrita. Biofísica primeiro, Bioquímica depois.</p>
       <div class="cta-row">
-        <a class="button" href="#eixos">Ler pelos 8 eixos</a>
-        <a class="button secondary" href="../../index.html#atlas">Voltar ao atlas</a>
+        <a class="button" href="#biofisica">BLOCO 1 — Biofísica</a>
+        <a class="button secondary" href="#bioquimica">BLOCO 2 — Bioquímica</a>
       </div>
     </section>
 
@@ -399,67 +465,205 @@
       <div class="grid-2">
         <article class="panel">
           <h2>A tese pública</h2>
-          <p>O dimetilsulfóxido — (CH₃)₂SO, MW 78,13, subproduto da indústria de polpa de papel — é líquido à temperatura corporal, totalmente miscível em água e altamente penetrante (atravessa a pele em ~1,5 cm/min). A bioquímica clássica chama-o de "solvente que dissolve lipídios"; a leitura biofísica descreve-o como uma <strong>frente de reorganização de EZ</strong> que abre caminho por campos de hidratação.</p>
-          <p>No vocabulário da Pharmacopeia: opera no eixo <strong>campo-dipolar–EZ–deutério</strong>, dimensão ortogonal à das antenas fotônicas.</p>
+          <p>O DMSO não é uma antena fotônica — é um engenheiro de meio. Os 78 daltons com dipolo de ~4 D atravessam qualquer barreira do corpo e ancoram-se diretamente nas ligações de hidrogênio da rede de água. Em concentração correta, nucleia água de exclusão (EZ, k=160) e favorece a soberania isotópica do protium sobre o deutério. O átomo pesado de enxofre, com seu acoplamento spin-órbita forte, acopla-se às estruturas quirais nativas — colágeno, melanina, APOE — e estabiliza os filtros CISS que o corpo já opera.</p>
+          <p>Não aciona o POMC com luz. Não filtra spin por si mesmo (é aquiral). No vocabulário da Pharmacopeia: <strong>segunda ordem soberana — faxineiro dielétrico da rede de água. Dose define o efeito; pureza define o risco.</strong></p>
         </article>
         <aside class="notice warning">
           <h2>Guardrail clínico — leia antes</h2>
-          <p><strong>Esta página é educacional. Não é prescrição.</strong> A Pharmacopeia.info publica leitura biofísica e farmacológica de substâncias para estudo e contexto — não fornece dose, posologia, ciclo, indicação individual, nem recomenda compra, uso ou substituição de qualquer tratamento. Nada aqui diagnostica, trata, cura ou previne doença, nem substitui consulta, anamnese, exame ou a decisão de um profissional de saúde habilitado. Medicamentos têm riscos, interações e contraindicações que dependem do seu terreno, da sua história clínica, da sua geografia e dos medicamentos que já usa. Antes de qualquer uso, fale com o seu médico ou farmacêutico.</p>
-          <p>O DMSO tem apenas uma indicação formalmente aprovada (cistite intersticial intravesical). A sua penetração transdérmica universal significa que qualquer impureza, resíduo ou substância na pele ou na solução é transportada para dentro do corpo — a pureza é crítica e o uso requer familiaridade profissional. Pode causar odor sistémico, irritação cutânea e interações. Não é recomendação de uso tópico ou oral.</p>
+          <p>Esta página é educacional. Não é prescrição. A Pharmacopeia.info não fornece dose, ciclo, indicação individual, nem recomenda compra, uso ou substituição de qualquer tratamento.</p>
+          <p><strong>DMSO — específico:</strong> usar apenas grau farmacêutico/USP — DMSO industrial carrega contaminantes sistemicamente pela pele. Aplicar sempre sobre pele limpa, sem cosméticos ou loções na área — qualquer substância sobre a pele será arrastada para a circulação. Contraindicado em gravidez e lactação (sinais teratogênicos animais, sem dados humanos robustos). Sem dados de segurança em crianças. Cautela em disfunção renal e hepática. Concentrações altas causam irritação intensa — não usar DMSO puro sem supervisão. O único uso com aprovação regulatória é a instilação intravesical para cistite intersticial (RIMSO-50) — procedimento clínico, não autoaplicação.</p>
         </aside>
       </div>
     </section>
 
-    <section id="resumo" class="shell">
+    <section class="shell">
       <div class="section-head">
         <div>
-          <div class="kicker"><span class="dot"></span> Leitura rápida</div>
-          <h2>Antes de qualquer protocolo.</h2>
+          <div class="kicker">Leitura rápida</div>
+          <h2>Dois blocos antes de qualquer protocolo.</h2>
         </div>
-        <p>A ficha pública separa mecanismo aceito, leitura biofísica, hipóteses Kruse/PKA e prudência clínica para evitar tanto reducionismo quanto propaganda terapêutica.</p>
+        <p>A ficha pública separa o mecanismo aceito (BLOCO 2) da leitura biofísica de fronteira (BLOCO 1), com estatuto epistemológico explícito em cada ponto.</p>
       </div>
       <div class="grid-3">
-        <article class="summary-card"><span class="status established">estabelecido</span><b>Penetração transdérmica</b><p>Atravessa membranas mais rápido que qualquer solvente comum; carrega solutos consigo (portador universal).</p></article>
-        <article class="summary-card"><span class="status established">estabelecido</span><b>Quelante de OH·</b><p>Neutraliza radicais hidroxila (efeito documentado).</p></article>
-        <article class="summary-card"><span class="status hypothesis">hipótese biofísica</span><b>Reorganizador de EZ</b><p>Clusters DMSO-água ordenados que expulsam D⁺ por KIE e empurram k local em direção a 160 (leitura biofísica).</p></article>
-        <article class="summary-card"><span class="status hypothesis">hipótese biofísica</span><b>Anti-inflamatório por EZ</b><p>A ação descrita não como inibição de COX, mas como proteção da água estruturada.</p></article>
-        <article class="summary-card"><span class="status investigational">investigacional</span><b>Carreador de antenas</b><p>Levar doxiciclina/iodo/DHA a compartimentos profundos antes da exposição solar é heurística de protocolo.</p></article>
-        <article class="summary-card"><span class="status guarded">prudência</span><b>Pureza é tudo</b><p>A penetração universal transporta também qualquer contaminante na pele ou na solução.</p></article>
+        <article class="summary-card"><span class="status hypothesis">biofísica · BLOCO 1</span><b>Antena dipolar, não fotônica</b><p>PM 78,13 g/mol. Dipolo ~3,96 D (dos maiores de moléculas pequenas). Sem cromóforo UV-A/Vis — transparente acima de ~265 nm. Banda S=O intensa em ~1050 cm⁻¹ (IR médio). Opera no IR e no campo dielétrico, não na janela fotônica da melanina ou do POMC.</p></article>
+        <article class="summary-card"><span class="status hypothesis">biofísica · BLOCO 1</span><b>Reorganizador de água EZ — bifásico por dose</b><p>Em concentração baixa-moderada (~10–50%): nucleia EZ, ordena a rede de H-bonds, empurra k em direção a 160. Em concentração alta e bruta: colapsa a EZ, desidrata e queima. A dose não é farmacológica — é dielétrica. A janela terapêutica é a janela de nucleação de EZ.</p></article>
+        <article class="summary-card"><span class="status investigational">investigacional · BLOCO 1</span><b>Segunda ordem biofísica</b><p>Não adiciona ordem informacional (não capta luz, não escreve POMC, não filtra spin diretamente — é aquiral). Remove obstáculos à ordem nativa: reconstrói H-bonds, discrimina deutério (KIE), aterra ·OH, estabiliza filtros CISS via enxofre pesado. Potencializa qualquer primeira ordem que venha depois.</p></article>
+        <article class="summary-card"><span class="status established">estabelecido · BLOCO 2</span><b>Única indicação aprovada: cistite intersticial</b><p>RIMSO-50 (DMSO 50% estéril) para instilação intravesical no tratamento sintomático da cistite intersticial — procedimento clínico hospitalar. A única indicação humana com aprovação regulatória. Quase todo uso restante é off-label/popular com evidência heterogênea.</p></article>
+        <article class="summary-card"><span class="status established">estabelecido · BLOCO 2</span><b>Carreador transdérmico e crioprotetor</b><p>Penetração transdérmica excepcional: aumenta a permeabilidade cutânea e transporta outras substâncias (penetration enhancer). Padrão-ouro laboratorial para crioproteção celular. Efeito scavenger de radicais hidroxila (·OH) documentado in vitro. Anti-inflamatório/analgésico local com evidência contestada.</p></article>
+        <article class="summary-card"><span class="status guarded">prudência · ambos</span><b>Pureza, dose e contexto definem segurança</b><p>DMSO industrial ≠ grau farmacêutico/USP — contaminantes são carreados sistemicamente. Contraindicado em gravidez, crianças, disfunção renal/hepática. Qualquer substância sobre a pele é arrastada para a corrente sanguínea. Odor de alho/ostra universal e inevitável. A ficha não transforma molécula em protocolo individual.</p></article>
       </div>
     </section>
 
-    <section id="eixos" class="shell">
+    <!-- ━━━━━━━━━━━━━━━━ FIGURAS DIDÁTICAS ━━━━━━━━━━━━━━━━ -->
+    <section id="figuras" class="shell">
       <div class="section-head">
         <div>
-          <div class="kicker"><span class="dot"></span> Matriz Pharmacopeia</div>
-          <h2>DMSO pelos oito eixos.</h2>
+          <div class="kicker">Figuras didáticas</div>
+          <h2>Fundo branco, traço limpo, leitura farmacológica.</h2>
         </div>
-        <p>A mesma molécula é lida por origem, forma, luz, água, spin, mitocôndria, campo e prudência clínica. Cada eixo tem um estatuto epistemológico diferente.</p>
+        <p>Imagens minimalistas para apoiar a ficha: arquitectura molecular, mecanismo clássico, mapa farmacológico e interface biofísica. São esquemas educacionais, não estruturas químicas completas nem protocolo clínico.</p>
+      </div>
+      <div class="figure-grid">
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/dmso/gpt/01-molecula-gpt.png" alt="Estrutura molecular do DMSO" loading="lazy" />
+          <figcaption>DMSO: sulfóxido dipolar, reorganizador de EZ, carreador transdérmico.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/dmso/gpt/02-mecanismo-gpt.png" alt="Mecanismo do DMSO: penetração, quelação, EZ, fibrose" loading="lazy" />
+          <figcaption>Mecanismo clássico: penetração transdérmica, quelação de OH·, reorganização de EZ.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/dmso/gpt/03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico ADME do DMSO" loading="lazy" />
+          <figcaption>Mapa farmacológico: penetração, distribuição universal, oxidação hepática, excreção pulmonar.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/dmso/gpt/04-interface-biofisica-gpt.png" alt="Interface biofísica do DMSO com água, campo e deutério" loading="lazy" />
+          <figcaption>Interface biofísica: campo dipolar, água EZ, CISS indireto e Anomalia do Atlântico Sul.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="biofisica" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">BLOCO 1 — Biofísica</div>
+          <h2>Oito eixos do engenheiro dielétrico.</h2>
+        </div>
+        <p>Leitura biofísica de primeiros princípios: origem, arquitetura, espectro, água EZ, CISS, mitocôndria, POMC/melanina e campo magnético. Biofísica Pura lidera (peso 2); Biofísica Referenciada corrige e contextualiza. Cada eixo tem estatuto epistemológico declarado.</p>
       </div>
       <div class="axis-grid">
-        <article class="axis-card"><span class="num">01 · origem</span><h3>Lignina / processo Kraft</h3><p>Resíduo industrial de latitudes boreais (campo magnético denso) e também do Brasil (Aracruz, dentro da AAS).</p><small>Estado: histórico estabelecido + leitura geográfica investigacional</small></article>
-        <article class="axis-card"><span class="num">02 · arquitetura</span><h3>Sulfóxido S=O, sem anéis</h3><p>Momento dipolar 3,96 D (mais do dobro da água); antena de campo elétrico local, não de luz.</p><small>Estado: estrutura estabelecida; "antena" no sentido dipolar = hipótese</small></article>
-        <article class="axis-card"><span class="num">03 · espectro</span><h3>Transparente em UV-A</h3><p>Sem cromóforo próprio; a assinatura biofísica é o espectro IR da água que ele organiza (~3200 cm⁻¹), não o seu.</p><small>Estado: verde para a química; biológico âmbar</small></article>
-        <article class="axis-card"><span class="num">04 · água</span><h3>Núcleo da molécula</h3><p>Organiza 4–5 águas por molécula, expulsa deutério das camadas de hidratação, eleva k local.</p><small>Estado: hipótese biofísica central</small></article>
-        <article class="axis-card"><span class="num">05 · CISS</span><h3>Indireto</h3><p>Não tem quiralidade própria; amplia a EZ ao redor de superfícies quirais onde o CISS opera.</p><small>Estado: investigacional</small></article>
-        <article class="axis-card"><span class="num">06 · redox</span><h3>Pool de H⁺ mais puro</h3><p>Ao expulsar D⁺ localmente, "recarrega" o pool de prótons que alimenta a ATP-sintase (leitura de tunelamento de prótons).</p><small>Estado: hipótese biofísica</small></article>
-        <article class="axis-card"><span class="num">07 · campo</span><h3>Mais útil sob a AAS</h3><p>Onde o campo está fraturado e o OH· cósmico é maior, o valor como limpador de radicais cresce.</p><small>Estado: hipótese biofísica</small></article>
-        <article class="axis-card"><span class="num">08 · janela</span><h3>Sem dependência solar</h3><p>Pode ser usado em qualquer hora; prepara o terreno antes do sol. Limite duro: pureza do produto e do que está na pele.</p><small>Estado: prudência obrigatória</small></article>
+        <article class="axis-card">
+          <span class="num">01 · origem</span>
+          <h3>Respiro de enxofre do oceano e da floresta</h3>
+          <p>Nasce duas vezes: no plâncton marinho (DMS oceânico → fotoxidação atmosférica → DMSO) e na lignina das florestas boreais (processo Kraft). Enxofre da interface oceano-atmosfera, moldado por fotoperíodo extremo e campo geomagnético forte de alta latitude. Parte da hipótese CLAW (DMS → aerossóis → nuvens → acoplado à física de raios cósmicos de Svensmark). Open source molecular — sem patente defensável há décadas.</p>
+          <small>Estado: histórico e origem estabelecidos · leitura geofísica e acoplamento CLAW investigacionais</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">02 · arquitetura</span>
+          <h3>Dipolo de 3,96 D — antena dielétrica, não fotônica</h3>
+          <p>PM 78,13 g/mol. Enxofre piramidal central, ligação S=O semipolar hipervalente (dipolo ~3,96 D). Sem anéis conjugados, sem nuvem π, sem cromóforo UV-A. Log P ≈ −1,35 (hidrofílico mas anfipático — atravessa membranas lipídicas sem seguir a lei de partição clássica). <strong>Aquiral</strong> — dois metilas idênticos, enxofre não é centro estereogênico.</p>
+          <small>Estado: estrutura e propriedades físico-químicas estabelecidas</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">03 · espectro</span>
+          <h3>IR/THz — transparente no UV-A e visível</h3>
+          <p>Corte de absorção ~265 nm — transparente no UV-A (320–400 nm) e no visível. Não fotossensibiliza, não bronzeia, não aciona POMC via luz. Não compete com melanina ou CCO pelos fótons. Banda S=O intensíssima em ~1050 cm⁻¹ (~9,5 µm, IR médio) — hipersensível ao estado de hidratação da rede de água circundante: desloca de frequência e relata o próprio trabalho.</p>
+          <small>Estado: espectro UV/Vis/IR estabelecido · consequências biológicas investigacionais</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">04 · água EZ</span>
+          <h3>Bifásico por dose: k→160 ou colapso</h3>
+          <p>Em concentração baixa-moderada: cada DMSO ancora 2–3 moléculas de água em ligações de hidrogênio mais fortes que água-água → rede mais estruturada → nucleia EZ → k→160. Em concentração alta e bruta: desidrata e despolimeriza a rede → colapsa a EZ → queima. A dose não é farmacológica — é dielétrica. Este é o eixo que nenhum bulário captura.</p>
+          <small>Estado: comportamento bifásico em DM/difração de nêutrons · extrapolação terapêutica investigacional</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">05 · CISS / spin</span>
+          <h3>Enxofre pesado, CISS indireto — não filtra sozinho</h3>
+          <p>Enxofre da terceira fileira: acoplamento spin-órbita forte → doador de spin pesado. Mas o DMSO é <strong>aquiral</strong> — não filtra spin por si mesmo. CISS é indireto: molda o meio dielétrico onde os filtros CISS reais (melanina, colágeno helicoidal, APOE) operam. Em dose certa, favorece o filtro e aterra spin caótico; em excesso, pode desordenar a quiralidade helicoidal. Ambiente do CISS, não ator CISS.</p>
+          <small>Estado: hipótese biofísica de fronteira</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">06 · mitocôndria</span>
+          <h3>Protege ΔΨ em dose baixa, dissipar em dose alta</h3>
+          <p>Contribui para os três pré-requisitos do rotor F₀-F₁: (1) soberania isotópica — discrimina H/D e favorece protium nos sítios do rotor (KIE); (2) nucleação de EZ na interface da membrana mitocondrial interna; (3) aterramento de spin via CISS indireto. Protege o motor em dose baixa. Em dose alta, permeabiliza membranas e dissipa o ΔΨ. A mesma molécula que lubrifica o motor pode pará-lo.</p>
+          <small>Estado: mecanismos indiretos investigacionais · toxicidade de dose alta documentada</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">07 · POMC / melanina</span>
+          <h3>Prepara o palco — não dispara a cascata</h3>
+          <p>Sem cromóforo UV-A: não aciona POMC diretamente via luz. O que faz de real: (1) reorganiza o ambiente dielétrico dos melanócitos (k→160), preparando o meio para síntese de melanina fiel; (2) modula o equilíbrio redox eumelanina/feomelanina via enxofre; (3) governa a hidratação da melanina → modula condutividade e bandgap efetivo do semicondutor. A doxiciclina é a antena. O DMSO é o oceano onde a antena ressoa.</p>
+          <small>Estado: hidratação estabelecida · modulação de melanina e POMC investigacionais</small>
+        </article>
+        <article class="axis-card">
+          <span class="num">08 · campo / janela</span>
+          <h3>Robusto em sol fraco, dependente de hidratação EZ</h3>
+          <p>Não precisa de UV-A — mais robusto geograficamente que a doxiciclina em zonas de baixa irradiância e campo colapsado (Anomalia do Atlântico Sul). Mas: sem luz solar que construa a EZ do tecido, trabalha sobre substrato degradado. Em campo colapsado e nnEMF elevado, a água já está em k=78 e a margem de erro de dose sobe. Variável mestra: hidratação EZ prévia, não latitude solar.</p>
+          <small>Estado: hipótese biofísica de fronteira · KIE/deutério investigacional</small>
+        </article>
+      </div>
+    </section>
+
+    <section id="bioquimica" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">BLOCO 2 — Bioquímica</div>
+          <h2>Farmacologia clássica e evidência estabelecida.</h2>
+        </div>
+        <p>Mecanismo canónico, farmacocinética, indicação aprovada, usos estabelecidos, riscos e interações — o que o consenso biomédico sustenta com evidência rastreável.</p>
+      </div>
+      <div class="grid-2">
+        <article class="panel">
+          <h2>O solvente, o grau e o carreador</h2>
+          <p><strong>O que é:</strong> solvente dipolar aprótico. PM 78,13 g/mol. Miscível em água em todas as proporções e na maioria dos solventes orgânicos. Higroscópico. Ponto de congelamento ~18,5 °C (solidifica perto da temperatura ambiente — não é defeito do produto). Metabolizado a dimetilsulfona (DMSO₂ = MSM) e sulfeto de dimetila (DMS, responsável pelo odor de alho/ostra no hálito e na pele — universal e inevitável).</p>
+          <p><strong>Grau de pureza — distinção crítica de segurança:</strong> DMSO industrial ≠ grau farmacêutico/USP. O grau industrial pode conter contaminantes — e DMSO os transporta sistemicamente pela pele com extrema eficiência. Boa parte do produto vendido no mercado popular é grau industrial reembalado. Para qualquer uso humano: apenas grau farmacêutico/USP com pureza certificada.</p>
+          <p><strong>O carreador transdérmico:</strong> penetra a barreira do estrato córneo desorganizando temporariamente o empacotamento lipídico e <em>aumenta a permeabilidade cutânea a outras substâncias</em>. O efeito mais consensual e reprodutível da molécula. E o eixo central de risco: ao penetrar a pele, arrasta consigo <em>tudo o que estiver sobre ela</em> — resíduos de cosméticos, metais, impurezas do próprio produto. Aplicar sempre sobre pele limpa.</p>
+        </article>
+        <article class="panel">
+          <h2>Indicação aprovada e usos estabelecidos</h2>
+          <p><strong>Única indicação humana aprovada pela FDA:</strong> RIMSO-50 (DMSO 50% estéril) para <strong>instilação intravesical</strong> no tratamento sintomático da cistite intersticial (síndrome da bexiga dolorosa). Procedimento clínico hospitalar/ambulatorial, com monitorização definida pelo profissional de saúde — não autoaplicação.</p>
+          <p><strong>Uso laboratorial sólido:</strong> crioprotetor padrão-ouro para congelamento de células, linhagens celulares, medula óssea e tecidos. Limita formação de cristais intracelulares. Uso técnico bem caracterizado. Solvente universal de pesquisa (com a ressalva de que o próprio DMSO tem efeitos biológicos — controle de veículo é obrigatório).</p>
+          <p><strong>Usos off-label populares:</strong> tópico para dor musculoesquelética, artrite, tendinopatias (evidência fragmentada, história regulatória controvertida); uso oral/sistêmico "detox" e antineoplásico (sem validação regulatória). O MSM (DMSO₂) é comercializado à parte como suplemento — entidade distinta, com perfil próprio.</p>
+        </article>
+      </div>
+
+      <div style="margin-top: 22px;">
+        <article class="panel">
+          <h2>Riscos, contraindicações e interações</h2>
+          <p><strong>Risco estrutural — carreamento de contaminantes:</strong> a propriedade que torna o DMSO útil é o mesmo mecanismo pelo qual ele é perigoso. Ao penetrar a pele, arrasta consigo impurezas do produto, resíduos cutâneos e qualquer substância presente — diretamente para a circulação. DMSO de grau industrial reembalado é risco concreto de contaminação sistémica. Esta é a precaução mais importante e mais frequentemente ignorada.</p>
+          <p><strong>Locais (tópico):</strong> queimação, ardor, eritema, prurido, ressecamento e descamação no local de aplicação — especialmente em concentrações altas. Intensificam com concentração e frequência.</p>
+          <p><strong>Odor sistémico:</strong> hálito e odor corporal de alho/ostra (via DMS) — praticamente universal, não evitável. Persiste horas a dias. Fator operacional e social relevante a comunicar antes do uso.</p>
+          <p><strong>Sinal toxicológico histórico — cristalino:</strong> estudos toxicológicos em animais com doses altas associaram DMSO a alterações do cristalino (catarata/mudanças no índice de refração). Este achado animal foi o principal argumento do freio regulatório da FDA em 1965. A extrapolação direta para humanos em doses usuais é incerta e contestada, mas motivou recomendações históricas de monitorização oftalmológica em uso prolongado.</p>
+          <p><strong>Contraindicações principais:</strong> gravidez e lactação (DMSO atravessa barreiras com facilidade; sinais de teratogenicidade em modelos animais em doses altas; ausência de dados humanos robustos — tratar como contraindicação prática) · crianças (ausência de dados de segurança) · disfunção renal significativa (excreção de metabólitos predominantemente renal) · disfunção hepática (cautela metabólica) · hipersensibilidade ao DMSO.</p>
+          <p><strong>Interações — a mais importante:</strong> qualquer fármaco ou substância de uso tópico concomitante. O DMSO potencia a absorção transdérmica de tudo que estiver na pele — pode transformar agente tópico de ação local em exposição sistémica inesperada. Esta interação é a mais subestimada e a de maior consequência prática. Adicionalmente: anticoagulantes/antiplaquetários (potencial interferência com função plaquetária); sedativos/depressores do SNC (potencial potencialização); agentes nefrotóxicos (pioram o perfil de eliminação renal).</p>
+          <p><strong>Cronologia regulatória:</strong> 1866 — Zaytsev sintetiza o DMSO. Anos 1960 — Stanley Jacob (Oregon HSU) documenta efeitos clínicos; onda de entusiasmo. 1965 — FDA suspende ensaios clínicos por achado ocular animal (nunca reproduzido robustamente em humanos). 1978 — aprovação de RIMSO-50 para cistite intersticial apenas. Uso veterinário (cavalos de corrida) permaneceu amplo. Molécula barata, não-patenteável, carreador universal — enterrada pela regulação no exato momento em que ameaçava o modelo de patente.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="janela" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Janela de uso</div>
+          <h2>Dose, pureza, terreno e sequência.</h2>
+        </div>
+        <p>O DMSO é um modulador de meio de segunda ordem — a sua janela é definida pela dose dielétrica (não farmacológica), pela pureza, pelo estado de hidratação EZ do tecido e pela sequência de uso.</p>
+      </div>
+      <div class="grid-2">
+        <article class="panel">
+          <h2>Pré-requisitos de terreno (leitura biofísica)</h2>
+          <p><strong>Hidratação EZ prévia é a variável mestra:</strong> DMSO em tecido já hidratado e com EZ robusta soma e amplifica. Em tecido desidratado e deuterado trabalha sobre substrato degradado — o efeito é mais errático e exige mais cuidado de dose.</p>
+          <p><strong>Exposição solar prévia:</strong> a luz solar (especialmente IR) é quem constrói a EZ do tecido. O DMSO amplifica uma estrutura que a luz preparou — não a substitui. Carregue a água e pegue o sol primeiro.</p>
+          <p><strong>Grau farmacêutico/USP obrigatório:</strong> nunca industrial. Pureza certificada é pré-requisito de qualquer uso humano com algum grau de razoabilidade.</p>
+          <p><strong>Pele limpa:</strong> sem cosméticos, loções ou outras substâncias na área de aplicação. Qualquer resíduo sobre a pele será carreado sistemicamente — sem exceção.</p>
+          <p><strong>Campo e circadiano:</strong> em ambientes de alto nnEMF e campo geomagnético colapsado, a margem de erro de dose sobe. Janela de reparo/recuperação (período noturno) tem lógica — não de pico catabólico diurno.</p>
+        </article>
+        <article class="panel">
+          <h2>Limites absolutos</h2>
+          <p>Independentemente do enquadramento biofísico, os seguintes contextos exigem avaliação profissional obrigatória antes de qualquer uso:</p>
+          <p>Gravidez e lactação (sinais teratogênicos em animais, ausência de dados humanos) · Crianças (sem dados de segurança) · Disfunção renal significativa · Disfunção hepática · Uso de grau industrial (risco de contaminação sistémica directa) · Pele com qualquer substância não intencional · Concentrações altas e brutas sem supervisão clínica · Qualquer substância tópica concomitante sem avaliação do risco de absorção sistémica potenciada.</p>
+          <p><strong>A ficha pública não transforma molécula em protocolo individual.</strong> Dose, concentração, forma e indicação pertencem à avaliação clínica com contexto individual.</p>
+        </article>
       </div>
     </section>
 
     <section id="evidencia" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Estado da evidência</div>
+          <h2>O que é consenso. O que é hipótese. O que é fronteira.</h2>
+        </div>
+      </div>
       <div class="grid-2">
         <article class="panel">
-          <h2>Terreno e janela de uso</h2>
-          <p>Na leitura biofísica, o DMSO é descrito como <strong>preparador e portador</strong>: limpa OH·, eleva k local, dissolve fibrose fascial (canal de condução biofotônica) e abre compartimentos para ferramentas de primeira ordem (sol, doxiciclina, iodo, DHA). Apresentado como especialmente relevante para quem vive sob a Anomalia do Atlântico Sul.</p>
-          <p>Leitura educacional de terreno — não é indicação de uso nem instrução de preparo.</p>
+          <h2>Camadas de evidência</h2>
+          <p><strong>Verde — estabelecido:</strong> estrutura química (Zaytsev 1866), propriedades físico-químicas (dipolo ~3,96 D, log P ≈ −1,35, miscibilidade universal), penetração transdérmica e carreamento, metabolismo a DMSO₂ e DMS, odor sistémico de alho/ostra, única indicação aprovada (RIMSO-50 para cistite intersticial intravesical), uso como crioprotetor laboratorial, efeito scavenger de ·OH in vitro, reações locais em dose alta, toxicidade por carreamento de contaminantes, sinal ocular em animais com dose alta.</p>
+          <p><strong>Âmbar — investigacional:</strong> anti-inflamatório/analgésico clínico (magnitude e robustez debatidas); alterações de cristalino (animal, extrapolação humana incerta); comportamento bifásico na EZ water por concentração (dados de DM e difração de nêutrons; extrapolação terapêutica em investigação); discriminação isotópica H/D no contexto biológico.</p>
+          <p><strong>Ciano — hipótese de fronteira:</strong> nucleação de EZ como mecanismo central (k→160 em dose baixa), soberania isotópica via KIE e partição H/D, acoplamento CISS indireto via enxofre pesado e matrizes quirais hospedeiras (melanina, colágeno, APOE), modulação de spin via acoplamento spin-órbita do enxofre, classificação como segunda ordem biofísica, dependência de campo geomagnético e circadiana, acoplamento ao ciclo oceânico do enxofre e à física de nuvens (hipótese CLAW/Svensmark).</p>
         </article>
         <article class="panel">
-          <h2>Camadas de evidência</h2>
-          <p><strong>Verde (estabelecido):</strong> penetração transdérmica, papel de solvente/carreador, quelação de OH·, história clínica e regulatória (Jacob, FDA, Rimso-50).</p>
-          <p><strong>Ciano (hipótese biofísica):</strong> reorganização de EZ, depleção local de D⁺, mobilização de fibrose fascial.</p>
-          <p><strong>Âmbar (investigacional/fronteira):</strong> "antena dipolar", restauração de k=160, papel em CISS indireto, leitura geomagnética.</p>
+          <h2>Nota metodológica</h2>
+          <p>A divisão editorial entre BLOCO 1 (biofísica de fronteira) e BLOCO 2 (farmacologia estabelecida) é deliberada. A maioria dos estudos clínicos disponíveis não controla concentração com precisão dielétrica, não distingue grau farmacêutico de industrial, não mede estado de hidratação EZ nem carga isotópica do tecido — o que sistematicamente limita a compreensão do perfil real da molécula em condições biofísicas variáveis.</p>
+          <p>A distinção mais importante para o DMSO: a bifasicidade por dose é o eixo que une biofísica e bioquímica. Baixa concentração ordena a água e protege o ΔΨ; alta concentração destrói a rede e permeabiliza membranas. Esta não é uma hipótese — é compatível com a irritação documentada em altas doses e com os dados biofísicos de dinâmica molecular. A Pharmacopeia mantém as duas narrativas separadas sem deixar o entusiasmo biofísico contaminar a prudência clínica.</p>
         </article>
       </div>
     </section>
@@ -467,59 +671,61 @@
     <section id="fontes" class="shell">
       <div class="section-head">
         <div>
-          <div class="kicker"><span class="dot"></span> Fontes internas e externas</div>
+          <div class="kicker">Fontes e ligações</div>
           <h2>Base desta ficha.</h2>
         </div>
       </div>
       <div class="grid-3">
-        <article class="source-card"><h3>Monografia PKA</h3><p><em>Biofísica do DMSO</em> (2026-05-23). Análise biofísica completa interna, derivada da skill biofisica-farmaco / CPC 84.</p></article>
-        <article class="source-card"><h3>CPC 84</h3><p>Molde de leitura biofísica (água EZ, deutério, KIE, campo dipolar) aplicado ao reorganizador de hidratação.</p></article>
-        <article class="source-card"><h3>Referências externas</h3><p>Pollack (água EZ), Walker, Jacob (DMSO clínico), Landauer (limite físico de informação), Naaman (CISS).</p></article>
+        <article class="source-card">
+          <h3>Biofísica Pura (peso 2)</h3>
+          <p><em>A molécula que carrega o solvente para dentro da água que você é</em> (2026-06-26). Análise de primeiros princípios: origem oceânica/geomagnética, arquitetura dipolar e enxofre pesado, espectro IR, quatro mecanismos biofísicos (EZ, KIE, CISS indireto, tripleto), POMC como porta lateral, ATP-sintase, classificação como segunda ordem soberana, cronologia de patente e leitura BigHarma. Base do BLOCO 1 (lidera com peso 2).</p>
+        </article>
+        <article class="source-card">
+          <h3>Biofísica Referenciada (peso 1)</h3>
+          <p><em>O Solvente Que Reorganiza a Água: Uma Leitura de Primeiros Princípios</em> (2026-06-26). Comparação com a molécula-âncora CPC 84 (tetraciclina/doxiciclina). Aquiralidade do DMSO como distinção fundamental (CISS indireto); transparência no UV-A vs. doxiciclina; bifasicidade por dose (EZ nucleada em baixa, colapsada em alta); DMSO-d6 como prova de discriminação isotópica; tabela comparativa completa dos eixos. Corrige e matiza o BLOCO 1.</p>
+        </article>
+        <article class="source-card">
+          <h3>Análise Clássica</h3>
+          <p><em>Análise Clássica — DMSO</em> (2026-06-26). Farmacologia e toxicologia convencionais — base do BLOCO 2: propriedades físico-químicas, distinção crítica grau industrial/farmacêutico, única indicação aprovada (RIMSO-50 cistite intersticial), usos laboratoriais, farmacocinética, metabolismo (DMSO₂ + DMS), efeitos adversos, sinal ocular animal, contraindicações, interações e cronologia regulatória (Jacob 1960s, freio FDA 1965, aprovação RIMSO-50 1978).</p>
+        </article>
       </div>
     </section>
 
     <section class="shell">
-      <article class="notice">
-        <h2>Regra editorial desta ficha</h2>
-        <p>A Pharmacopeia publica perguntas melhores, não atalhos terapêuticos. Onde há consenso, dizemos consenso. Onde há mecanismo plausível, dizemos hipótese. Onde há Kruse/PKA, dizemos fronteira investigacional. Onde há paciente real, encaminhamos para avaliação individual.</p>
-      </article>
+      <aside class="notice warning">
+        <h2>Guardrail clínico — leia antes</h2>
+        <p><strong>Esta página é educacional. Não é prescrição.</strong> A Pharmacopeia.info publica leitura biofísica e farmacológica de substâncias para estudo e contexto — não fornece dose, posologia, ciclo, indicação individual, nem recomenda compra, uso ou substituição de qualquer tratamento. Nada aqui diagnostica, trata, cura ou previne doença, nem substitui consulta, anamnese, exame ou a decisão de um profissional de saúde habilitado. Medicamentos têm riscos, interações e contraindicações que dependem do seu terreno, da sua história clínica, da sua geografia e dos medicamentos que já usa. Antes de qualquer uso, fale com o seu médico ou farmacêutico.</p>
+        <p><strong>DMSO — específico:</strong> usar apenas grau farmacêutico/USP — DMSO industrial contém contaminantes que são transportados sistemicamente pela pele com eficiência extrema; a propriedade de penetração transdérmica que o torna útil é o mesmo mecanismo pelo qual impurezas e substâncias sobre a pele entram na corrente sanguínea. Aplicar sempre sobre pele limpa, sem cosméticos, loções ou outros produtos na área. Contraindicado em gravidez e lactação (sinais de teratogenicidade em modelos animais com doses altas; ausência de dados humanos robustos). Sem dados de segurança em crianças. Disfunção renal ou hepática requer avaliação profissional. Concentrações altas causam irritação cutânea intensa — não usar DMSO puro ou muito concentrado sem supervisão clínica. Odor de alho/ostra no hálito e na pele é universal e inevitável após uso. O único uso humano com aprovação regulatória é a instilação intravesical para cistite intersticial (RIMSO-50) — procedimento clínico, não autoaplicação.</p>
+      </aside>
     </section>
   </main>
 
   <footer>
     <div class="shell">
-      <span><strong>Pharmacopeia.info</strong> — ficha / DMSO.</span>
+      <span><strong>Pharmacopeia.info</strong> — DMSO.</span>
       <code>educacional · sem prescrição · matriz biofísica</code>
     </div>
   </footer>
 
   <script>
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       THEME TOGGLE
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── THEME TOGGLE ────────────────────────────────── */
     var themeToggle = document.getElementById('themeToggle');
-    var sunIcon  = themeToggle.querySelector('.theme-icon-sun');
-    var moonIcon = themeToggle.querySelector('.theme-icon-moon');
+    var themeBtnLabel = document.getElementById('themeBtnLabel');
 
     function applyTheme(theme) {
       document.documentElement.setAttribute('data-theme', theme);
       localStorage.setItem('ph-theme', theme);
-      if (theme === 'dark') {
-        sunIcon.style.display  = '';
-        moonIcon.style.display = 'none';
-        themeToggle.setAttribute('aria-label', 'Mudar para tema claro');
-      } else {
-        sunIcon.style.display  = 'none';
-        moonIcon.style.display = '';
-        themeToggle.setAttribute('aria-label', 'Mudar para tema escuro');
-      }
+      themeBtnLabel.textContent = theme === 'dark' ? 'claro' : 'escuro';
+      themeToggle.setAttribute('aria-label',
+        theme === 'dark' ? 'Mudar para tema claro' : 'Mudar para tema escuro');
     }
 
     applyTheme(localStorage.getItem('ph-theme') || 'light');
 
     themeToggle.addEventListener('click', function () {
-      var current = document.documentElement.getAttribute('data-theme');
-      applyTheme(current === 'dark' ? 'light' : 'dark');
+      applyTheme(
+        document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
+      );
     });
   </script>
 </body>
