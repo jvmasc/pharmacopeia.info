@@ -299,9 +299,9 @@
     .axis-card small {
       display: block;
       margin-top: 12px;
-      color: var(--ink-3);
+      color: var(--ink-2);
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 13px;
       text-transform: uppercase;
       letter-spacing: .06em;
       line-height: 1.45;
@@ -408,6 +408,66 @@
     footer strong { color: var(--ink-2); font-weight: 700; }
     footer code   { font-family: var(--mono); color: var(--ink-3); font-size: 11px; }
 
+    
+    /* ─── BREADCRUMB ─────────────────────────────────── */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 14px 0;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--ink-3);
+    }
+    .breadcrumb a { color: var(--ink-3); }
+    .breadcrumb a:hover { color: var(--solar); }
+    .breadcrumb .bc-name { color: var(--ink-2); }
+    .breadcrumb .bc-sep { color: var(--rule-heavy); margin: 0 1px; }
+    
+    /* ─── MOBILE NAV ────────────────────────────────── */
+    .mobile-nav { display: none; }
+      .mobile-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 18px;
+      }
+      .mobile-nav a {
+        font-family: var(--mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: .10em;
+        color: var(--ink-3);
+        border: 1px solid var(--rule);
+        padding: 5px 11px;
+        border-radius: 999px;
+        transition: color .12s, border-color .12s;
+      }
+      .mobile-nav a:hover { color: var(--ink); border-color: var(--ink-2); }
+
+      .mobile-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 18px;
+      }
+      .mobile-nav a {
+        font-family: var(--mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: .10em;
+        color: var(--ink-3);
+        border: 1px solid var(--rule);
+        padding: 5px 11px;
+        border-radius: 999px;
+        transition: color .12s, border-color .12s;
+      }
+      .mobile-nav a:hover { color: var(--ink); border-color: var(--ink-2); }
+
     /* ─── RESPONSIVE ─────────────────────────────────── */
     @media (max-width: 1000px) {
       .axis-grid { grid-template-columns: repeat(2, 1fr); }
@@ -437,6 +497,7 @@
         <a href="#biofisica">Biofísica</a>
         <a href="#bioquimica">Bioquímica</a>
         <a href="#evidencia">Evidência</a>
+        <a href="#janela">Janela</a>
         <a href="#fontes">Fontes</a>
       </nav>
       <button id="themeToggle" class="theme-btn" type="button" aria-label="Mudar para tema escuro">
@@ -446,6 +507,13 @@
   </header>
 
   <main>
+    <nav class="breadcrumb shell" aria-label="Caminho da página">
+      <a href="../../index.html">Pharmacopeia.info</a>
+      <span class="bc-sep" aria-hidden="true">/</span>
+      <a href="../../index.html#moleculas">Moléculas</a>
+      <span class="bc-sep" aria-hidden="true">/</span>
+      <span class="bc-name">Florais de Bach</span>
+    </nav>
     <section class="hero shell">
       <div class="kicker">Ficha · sistema floral · segunda ordem</div>
       <h1>Florais de Bach</h1>
@@ -454,6 +522,13 @@
         <a class="button" href="#biofisica">BLOCO 1 — Biofísica</a>
         <a class="button secondary" href="#bioquimica">BLOCO 2 — Bioquímica</a>
       </div>
+      <nav class="mobile-nav" aria-label="Navegação por seção">
+        <a href="#biofisica">Biofísica</a>
+        <a href="#bioquimica">Bioquímica</a>
+        <a href="#evidencia">Evidência</a>
+        <a href="#janela">Janela</a>
+        <a href="#fontes">Fontes</a>
+      </nav>
     </section>
 
     <section class="shell">
@@ -486,34 +561,6 @@
         <article class="summary-card"><span class="status established">estabelecido · BLOCO 2</span><b>38 essências florais de Bach</b><p>Sistema de preparações aquosas com 7 categorias emocionais. Rescue Remedy (5 essências) é o produto mais comercializado.</p></article>
         <article class="summary-card"><span class="status established">estabelecido · BLOCO 2</span><b>Perfil de segurança direta</b><p>Não há toxicidade farmacológica detectável nas diluições padrão. O veículo é água + etanol traço (~1,7–2,5% v/v no frasco de uso).</p></article>
         <article class="summary-card"><span class="status guarded">prudência · ambos</span><b>Sem eficácia clínica consolidada</b><p>Meta-análises (Cochrane 2009, Ernst 2010) não encontram efeito acima do placebo. Hipótese biofísica é investigacional, não consenso.</p></article>
-      </div>
-    </section>
-
-    <section id="figuras" class="shell">
-      <div class="section-head">
-        <div>
-          <div class="kicker">Figuras didáticas</div>
-          <h2>Fundo claro, traço limpo, leitura floral.</h2>
-        </div>
-        <p>Imagens minimalistas para apoiar a ficha: sistema floral, preparação, mapa farmacológico e interface biofísica. São esquemas educacionais, não estruturas químicas nem protocolo clínico.</p>
-      </div>
-      <div class="figure-grid">
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/florais-de-bach/gpt/florais-de-bach-01-molecula-gpt.png" alt="Sistema de 38 essências florais dispostas em círculo concêntrico — representação editorial do conjunto completo dos Florais de Bach" loading="lazy" />
-          <figcaption>Sistema de 38 essências: figura editorial GPT/OpenAI em estilo botânico suave.</figcaption>
-        </figure>
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/florais-de-bach/gpt/florais-de-bach-02-mecanismo-gpt.png" alt="Diagrama sequencial do método solar de Bach: colheita, infusão solar, conservação em brandy, dose de uso" loading="lazy" />
-          <figcaption>Mecanismo de preparação: infusão solar como transcrição de padrão.</figcaption>
-        </figure>
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/florais-de-bach/gpt/florais-de-bach-03-mapa-farmacologico-gpt.png" alt="Mapa conceptual das 7 categorias emocionais de Bach com 38 essências distribuídas em clusters" loading="lazy" />
-          <figcaption>Mapa farmacológico: classificação emocional — não-ADME convencional.</figcaption>
-        </figure>
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/florais-de-bach/gpt/florais-de-bach-04-interface-biofisica-gpt.png" alt="Diagrama conceptual: flor > luz solar > água estruturada (EZ) > mucosa sublingual > nervo vago" loading="lazy" />
-          <figcaption>Interface biofísica: hipótese investigacional de via vagal-entérica para a impressão espectral.</figcaption>
-        </figure>
       </div>
     </section>
 
@@ -860,6 +907,56 @@
       </div>
     </section>
 
+    <section id="figuras" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Figuras didáticas</div>
+          <h2>Fundo claro, traço limpo, leitura floral.</h2>
+        </div>
+        <p>Imagens minimalistas para apoiar a ficha: sistema floral, preparação, mapa farmacológico e interface biofísica. São esquemas educacionais, não estruturas químicas nem protocolo clínico.</p>
+      </div>
+      <div class="figure-grid">
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/florais-de-bach/gpt/florais-de-bach-01-molecula-gpt.png" alt="Sistema de 38 essências florais dispostas em círculo concêntrico — representação editorial do conjunto completo dos Florais de Bach" loading="lazy" />
+          <figcaption>Sistema de 38 essências: figura editorial GPT/OpenAI em estilo botânico suave.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/florais-de-bach/gpt/florais-de-bach-02-mecanismo-gpt.png" alt="Diagrama sequencial do método solar de Bach: colheita, infusão solar, conservação em brandy, dose de uso" loading="lazy" />
+          <figcaption>Mecanismo de preparação: infusão solar como transcrição de padrão.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/florais-de-bach/gpt/florais-de-bach-03-mapa-farmacologico-gpt.png" alt="Mapa conceptual das 7 categorias emocionais de Bach com 38 essências distribuídas em clusters" loading="lazy" />
+          <figcaption>Mapa farmacológico: classificação emocional — não-ADME convencional.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/florais-de-bach/gpt/florais-de-bach-04-interface-biofisica-gpt.png" alt="Diagrama conceptual: flor > luz solar > água estruturada (EZ) > mucosa sublingual > nervo vago" loading="lazy" />
+          <figcaption>Interface biofísica: hipótese investigacional de via vagal-entérica para a impressão espectral.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="evidencia" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Estado da evidência</div>
+          <h2>O que é consenso. O que é hipótese. O que é fronteira.</h2>
+        </div>
+      </div>
+      <div class="grid-2">
+        <article class="panel">
+          <h2>Camadas de evidência</h2>
+          <p><strong>Verde — estabelecido:</strong> história de Edward Bach e os 38 Florais, botânica e química dos cromóforos florais (flavonoides, antocianinas), classificação emocional das 7 categorias, perfil de segurança direta favorável, regulação ANVISA/EMA/FDA, ausência de interações medicamentosas documentadas.</p>
+          <p><strong>Âmbar — investigacional/sem consenso:</strong> eficácia clínica dos Florais de Bach para qualquer condição — revisões sistemáticas (Cochrane 2009, Ernst 2010) não encontram efeito acima do placebo. O consenso biomédico é de ausência de evidência de eficácia.</p>
+          <p><strong>Ciano — hipótese de fronteira:</strong> impressão espectral na água EZ por infusão solar, quiralidade emergente da EZ como mediador CISS, via vagal-entérica-melanínica, modulação dielétrica da ATP-sintase, leitura geográfica-magnética (latitude 51°N, campo ~50 µT).</p>
+        </article>
+        <article class="panel">
+          <h2>Nota metodológica</h2>
+          <p>Os ensaios clínicos disponíveis (ECRD) foram desenhados para detetar efeitos farmacológicos de concentração-resposta — não para detetar modulação de coerência de spin em água estruturada. O instrumento pode ser inadequado ao fenómeno. Esta crítica metodológica é simétrica: a ausência de evidência de eficácia nos ensaios existentes <strong>não é o mesmo que evidência de ausência de efeito</strong>, mas também não autoriza extrapolação terapêutica não validada.</p>
+          <p>Para os Florais de Bach especificamente: a distinção entre o <em>sistema floral e classificação emocional</em> (estabelecido, histórico) e a <em>hipótese biofísica de impressão espectral na água</em> (investigacional, sem evidência clínica) é o ponto editorial mais crítico. A Pharmacopeia mantém as duas narrativas separadas, sem deixar o entusiasmo pela física contaminar a honestidade epistémica sobre eficácia clínica.</p>
+        </article>
+      </div>
+    </section>
+
     <section id="janela" class="shell">
       <div class="section-head">
         <div>
@@ -882,28 +979,6 @@
           <p><strong>Crianças com diagnóstico psiquiátrico:</strong> contraindicado como monoterapia.</p>
           <p><strong>Uso como alternativa a medicação prescrita:</strong> nunca abandonar ou substituir medicação psiquiátrica sem acompanhamento médico.</p>
           <p><strong>A ficha pública não transforma sistema floral em protocolo individual.</strong> Dose, escolha da essência, duração e indicação pertencem à avaliação de um profissional qualificado, não à leitura biofísica.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="evidencia" class="shell">
-      <div class="section-head">
-        <div>
-          <div class="kicker">Estado da evidência</div>
-          <h2>O que é consenso. O que é hipótese. O que é fronteira.</h2>
-        </div>
-      </div>
-      <div class="grid-2">
-        <article class="panel">
-          <h2>Camadas de evidência</h2>
-          <p><strong>Verde — estabelecido:</strong> história de Edward Bach e os 38 Florais, botânica e química dos cromóforos florais (flavonoides, antocianinas), classificação emocional das 7 categorias, perfil de segurança direta favorável, regulação ANVISA/EMA/FDA, ausência de interações medicamentosas documentadas.</p>
-          <p><strong>Âmbar — investigacional/sem consenso:</strong> eficácia clínica dos Florais de Bach para qualquer condição — revisões sistemáticas (Cochrane 2009, Ernst 2010) não encontram efeito acima do placebo. O consenso biomédico é de ausência de evidência de eficácia.</p>
-          <p><strong>Ciano — hipótese de fronteira:</strong> impressão espectral na água EZ por infusão solar, quiralidade emergente da EZ como mediador CISS, via vagal-entérica-melanínica, modulação dielétrica da ATP-sintase, leitura geográfica-magnética (latitude 51°N, campo ~50 µT).</p>
-        </article>
-        <article class="panel">
-          <h2>Nota metodológica</h2>
-          <p>Os ensaios clínicos disponíveis (ECRD) foram desenhados para detetar efeitos farmacológicos de concentração-resposta — não para detetar modulação de coerência de spin em água estruturada. O instrumento pode ser inadequado ao fenómeno. Esta crítica metodológica é simétrica: a ausência de evidência de eficácia nos ensaios existentes <strong>não é o mesmo que evidência de ausência de efeito</strong>, mas também não autoriza extrapolação terapêutica não validada.</p>
-          <p>Para os Florais de Bach especificamente: a distinção entre o <em>sistema floral e classificação emocional</em> (estabelecido, histórico) e a <em>hipótese biofísica de impressão espectral na água</em> (investigacional, sem evidência clínica) é o ponto editorial mais crítico. A Pharmacopeia mantém as duas narrativas separadas, sem deixar o entusiasmo pela física contaminar a honestidade epistémica sobre eficácia clínica.</p>
         </article>
       </div>
     </section>
@@ -943,13 +1018,6 @@
       </div>
     </section>
 
-    <section class="shell">
-      <aside class="notice warning">
-        <h2>Guardrail clínico — leia antes</h2>
-        <p><strong>Esta página é educacional. Não é prescrição.</strong> A Pharmacopeia.info publica leitura biofísica e farmacológica de substâncias para estudo e contexto — não fornece dose, posologia, ciclo, indicação individual, nem recomenda compra, uso ou substituição de qualquer tratamento. Nada aqui diagnostica, trata, cura ou previne doença, nem substitui consulta, anamnese, exame ou a decisão de um profissional de saúde habilitado. Medicamentos têm riscos, interações e contraindicações que dependem do seu terreno, da sua história clínica, da sua geografia e dos medicamentos que já usa. Antes de qualquer uso, fale com o seu médico ou farmacêutico.</p>
-        <p><strong>Florais de Bach — específico:</strong> não existe evidência clínica consolidada de eficácia acima do placebo para qualquer condição de saúde. O risco relevante não é toxicológico (perfil de segurança direta favorável), mas de oportunidade: substituir ou atrasar tratamento psiquiátrico ou psicoterapêutico baseado em evidência. O hipótese de mecanismo biofísico (impressão espectral na água EZ, via vagal-entérica) é investigacional e não constitui validação clínica. Consulte profissional de saúde qualificado antes de qualquer decisão terapêutica. Esta ficha é educacional e exploratória — não recomenda uso clínico, não trata condições emocionais ou físicas, e não substitui acompanhamento de saúde mental quando indicado.</p>
-      </aside>
-    </section>
   </main>
 
   <footer>

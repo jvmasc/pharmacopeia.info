@@ -578,6 +578,25 @@ nav a:hover{
   padding-left:20px;
   line-height:1.8;
 }
+
+/* ─── BREADCRUMB ─────────────────────────────── */
+.breadcrumb-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 24px;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+.breadcrumb-bar a { color: var(--muted); }
+.breadcrumb-bar a:hover { color: var(--solar); }
+.breadcrumb-bar .bc-current { color: var(--solar); }
+.breadcrumb-bar .bc-sep { margin: 0 2px; }
 /* footer */
 footer{
   padding:40px 0;
@@ -616,10 +635,19 @@ footer .mono{
     <a href="#biofisica">Biofísica</a>
     <a href="#bioquimica">Bioquímica</a>
     <a href="#evidencia">Evidência</a>
+    <a href="#janela">Janela</a>
     <a href="#fontes">Fontes</a>
   </nav>
   <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">☀ Tema</button>
 </header>
+
+<nav class="breadcrumb-bar" aria-label="Caminho da página">
+  <a href="../../index.html">Pharmacopeia.info</a>
+  <span class="bc-sep" aria-hidden="true">/</span>
+  <a href="../../index.html#moleculas">Moléculas</a>
+  <span class="bc-sep" aria-hidden="true">/</span>
+  <span class="bc-current">Bórax / Borato de Sódio</span>
+</nav>
 
 <main class="container">
   <!-- Hero -->
@@ -685,31 +713,8 @@ footer .mono{
   </section>
 
   <!-- Figuras -->
-  <section id="figuras">
-    <h2>Figuras</h2>
-    <p class="subtitle">Arquitectura molecular, mecanismo, farmacologia e interface biofísica</p>
-    <div class="figuras-grid">
-      <div class="figura-item">
-        <img src="../../assets/moleculas/borax-borato-de-sodio/gpt/borax-borato-de-sodio-01-molecula-gpt.png" alt="Estrutura iónica do tetraborato de sódio decaidratado em solução aquosa. Representação das espécies B(OH)₄⁻ tetraédrico e B(OH)₃ trigonal planar. Destaque para a ausência de anéis aromáticos, sistema π conjugado e cromóforo UV/Vis." loading="lazy">
-        <div class="legenda"><span class="label">01 — Molécula</span><br>A molécula mineral mais simples da farmacopeia. Sem anéis aromáticos, sem cromóforo, sem sistema π — o bórax não capta luz, mas modula o ambiente dielétrico onde a luz atua.</div>
-      </div>
-      <div class="figura-item">
-        <img src="../../assets/moleculas/borax-borato-de-sodio/gpt/borax-borato-de-sodio-02-mecanismo-gpt.png" alt="Diagrama de mecanismo bioquímico: formação de ésteres covalentes reversíveis entre o borato e grupos OH vicinais (ribose, frutose, DOPA). Inibição da enzima DPP-IV pelo boro, prolongando a meia-vida de α-MSH." loading="lazy">
-        <div class="legenda"><span class="label">02 — Mecanismo</span><br>O borato forma ligações covalentes reversíveis com diols vicinais — ribose do NAD⁺, frutose, catecóis da via melanogénica. Ao inibir DPP-IV, prolonga o sinal de α-MSH.</div>
-      </div>
-      <div class="figura-item">
-        <img src="../../assets/moleculas/borax-borato-de-sodio/gpt/borax-borato-de-sodio-03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico do bórax: absorção oral com biodisponibilidade >90%, distribuição óssea, excreção renal, atravessa barreira placentária. Painel de toxicidade com LD50, UL e contraindicações." loading="lazy">
-        <div class="legenda"><span class="label">03 — Mapa Farmacológico</span><br>Absorvido rapidamente pelo TGI, distribuído para ossos e dentes, excretado pelos rins. Alerta: atravessa placenta, contraindicado em gravidez, crianças e insuficiência renal.</div>
-      </div>
-      <div class="figura-item">
-        <img src="../../assets/moleculas/borax-borato-de-sodio/gpt/borax-borato-de-sodio-04-interface-biofisica-gpt.png" alt="Mapa conceitual biofísico integrando os mecanismos do bórax: tampão pH 9,2, estabilização de água EZ, quelação de cofatores, inibição DPP-IV, modulação do deutério e KIE." loading="lazy">
-        <div class="legenda"><span class="label">04 — Interface Biofísica</span><br>O bórax não é o motor da vida — é o estabilizador do ambiente onde os motores operam. Tampão alcalino, quelante de cofatores, inibidor de DPP-IV: a fiação elétrica de qualidade do edifício biológico.</div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Biofísica -->
-  <section id="biofisica">
+<section id="biofisica">
     <h2>Biofísica</h2>
     <p class="section-lead">O bórax / borato de sódio é uma ferramenta de <strong>segunda ordem</strong>: não transduz energia do ambiente, mas remove obstáculos e estabiliza o microambiente para que os sistemas de primeira ordem operem.</p>
     <div class="axis-grid">
@@ -764,8 +769,7 @@ footer .mono{
     </div>
   </section>
 
-  <!-- Bioquímica -->
-  <section id="bioquimica">
+<section id="bioquimica">
     <h2>Bioquímica Clássica</h2>
     <p class="section-lead">Farmacologia, fisiologia e mecanismos conforme a literatura convencional.</p>
     <div class="bioquimica-panels">
@@ -798,8 +802,67 @@ footer .mono{
     </div>
   </section>
 
-  <!-- Janela -->
-  <section id="janela">
+<section id="figuras">
+    <h2>Figuras</h2>
+    <p class="subtitle">Arquitectura molecular, mecanismo, farmacologia e interface biofísica</p>
+    <div class="figuras-grid">
+      <div class="figura-item">
+        <img src="../../assets/moleculas/borax-borato-de-sodio/gpt/borax-borato-de-sodio-01-molecula-gpt.png" alt="Estrutura iónica do tetraborato de sódio decaidratado em solução aquosa. Representação das espécies B(OH)₄⁻ tetraédrico e B(OH)₃ trigonal planar. Destaque para a ausência de anéis aromáticos, sistema π conjugado e cromóforo UV/Vis." loading="lazy">
+        <div class="legenda"><span class="label">01 — Molécula</span><br>A molécula mineral mais simples da farmacopeia. Sem anéis aromáticos, sem cromóforo, sem sistema π — o bórax não capta luz, mas modula o ambiente dielétrico onde a luz atua.</div>
+      </div>
+      <div class="figura-item">
+        <img src="../../assets/moleculas/borax-borato-de-sodio/gpt/borax-borato-de-sodio-02-mecanismo-gpt.png" alt="Diagrama de mecanismo bioquímico: formação de ésteres covalentes reversíveis entre o borato e grupos OH vicinais (ribose, frutose, DOPA). Inibição da enzima DPP-IV pelo boro, prolongando a meia-vida de α-MSH." loading="lazy">
+        <div class="legenda"><span class="label">02 — Mecanismo</span><br>O borato forma ligações covalentes reversíveis com diols vicinais — ribose do NAD⁺, frutose, catecóis da via melanogénica. Ao inibir DPP-IV, prolonga o sinal de α-MSH.</div>
+      </div>
+      <div class="figura-item">
+        <img src="../../assets/moleculas/borax-borato-de-sodio/gpt/borax-borato-de-sodio-03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico do bórax: absorção oral com biodisponibilidade >90%, distribuição óssea, excreção renal, atravessa barreira placentária. Painel de toxicidade com LD50, UL e contraindicações." loading="lazy">
+        <div class="legenda"><span class="label">03 — Mapa Farmacológico</span><br>Absorvido rapidamente pelo TGI, distribuído para ossos e dentes, excretado pelos rins. Alerta: atravessa placenta, contraindicado em gravidez, crianças e insuficiência renal.</div>
+      </div>
+      <div class="figura-item">
+        <img src="../../assets/moleculas/borax-borato-de-sodio/gpt/borax-borato-de-sodio-04-interface-biofisica-gpt.png" alt="Mapa conceitual biofísico integrando os mecanismos do bórax: tampão pH 9,2, estabilização de água EZ, quelação de cofatores, inibição DPP-IV, modulação do deutério e KIE." loading="lazy">
+        <div class="legenda"><span class="label">04 — Interface Biofísica</span><br>O bórax não é o motor da vida — é o estabilizador do ambiente onde os motores operam. Tampão alcalino, quelante de cofatores, inibidor de DPP-IV: a fiação elétrica de qualidade do edifício biológico.</div>
+      </div>
+    </div>
+  </section>
+
+<section id="evidencia">
+    <h2>Evidência</h2>
+    <p class="section-lead">Navegação editorial pela qualidade e maturidade da evidência sobre o boro elementar.</p>
+    <div class="evidencia-grid">
+      <div class="evidencia-card verde">
+        <span class="badge badge-verde">SÓLIDA</span>
+        <h3>Candidíase vaginal (ácido bórico tópico)</h3>
+        <p>600 mg/dia intravaginal para candidíase recorrente/refratária, especialmente espécies não-albicans. ACOG e CDC reconhecem como alternativa de segunda linha. Evidência clínica consolidada.</p>
+      </div>
+      <div class="evidencia-card ciano">
+        <span class="badge badge-ciano">MISTA</span>
+        <h3>Metabolismo ósseo e hormonal</h3>
+        <p>Nielsen (1987-1994): suplementação com 3 mg/dia de boro reduz perda de cálcio urinário e eleva estradiol/testosterona em mulheres pós-menopausa. Estudos pequenos, sem replicação independente robusta.</p>
+      </div>
+      <div class="evidencia-card ciano">
+        <span class="badge badge-ciano">MISTA</span>
+        <h3>Inibição DPP-IV in vitro</h3>
+        <p>Smoum et al. (2010), Ciani et al. (2019): compostos de boro inibem DPP-IV e prolil oligopeptidase. Evidência in vitro forte, mas sem dados clínicos de extensão de meia-vida de α-MSH em humanos.</p>
+      </div>
+      <div class="evidencia-card amber">
+        <span class="badge badge-amber">CONTROVERSO</span>
+        <h3>Saúde articular (boro oral)</h3>
+        <p>Rex Newnham (1990s): observação epidemiológica de que artrite é rara em solos ricos em boro. Ensaio clínico pequeno mostrou melhora sintomática com suplementação. Não replicado, sem financiamento.</p>
+      </div>
+      <div class="evidencia-card amber">
+        <span class="badge badge-amber">CONTROVERSO</span>
+        <h3>Modulação de NF-κB e COX-2</h3>
+        <p>Estudos in vitro documentam inibição de vias inflamatórias por boro. Extrapolação clínica limitada. Dados de modelos animais existem mas sem tradução para humanos em ensaios controlados.</p>
+      </div>
+      <div class="evidencia-card red">
+        <span class="badge badge-red">FRACA</span>
+        <h3>Suplementação oral de bórax</h3>
+        <p>Nenhuma aprovação regulatória para uso oral. Sem ensaios fase III. Evidência de eficácia para qualquer indicação oral é insuficiente. Risco de toxicidade real em autoadministração. Não recomendado.</p>
+      </div>
+    </div>
+  </section>
+
+<section id="janela">
     <h2>Janela de Intervenção</h2>
     <p class="section-lead">O bórax não tem dose nem ciclo definidos nesta ficha — é uma ferramenta contextual de segunda ordem. Eis o terreno, a sequência e os limites. NÃO há recomendação de uso oral.</p>
     <div class="janela-grid">
@@ -839,46 +902,7 @@ footer .mono{
     </div>
   </section>
 
-  <!-- Evidência -->
-  <section id="evidencia">
-    <h2>Evidência</h2>
-    <p class="section-lead">Navegação editorial pela qualidade e maturidade da evidência sobre o boro elementar.</p>
-    <div class="evidencia-grid">
-      <div class="evidencia-card verde">
-        <span class="badge badge-verde">SÓLIDA</span>
-        <h3>Candidíase vaginal (ácido bórico tópico)</h3>
-        <p>600 mg/dia intravaginal para candidíase recorrente/refratária, especialmente espécies não-albicans. ACOG e CDC reconhecem como alternativa de segunda linha. Evidência clínica consolidada.</p>
-      </div>
-      <div class="evidencia-card ciano">
-        <span class="badge badge-ciano">MISTA</span>
-        <h3>Metabolismo ósseo e hormonal</h3>
-        <p>Nielsen (1987-1994): suplementação com 3 mg/dia de boro reduz perda de cálcio urinário e eleva estradiol/testosterona em mulheres pós-menopausa. Estudos pequenos, sem replicação independente robusta.</p>
-      </div>
-      <div class="evidencia-card ciano">
-        <span class="badge badge-ciano">MISTA</span>
-        <h3>Inibição DPP-IV in vitro</h3>
-        <p>Smoum et al. (2010), Ciani et al. (2019): compostos de boro inibem DPP-IV e prolil oligopeptidase. Evidência in vitro forte, mas sem dados clínicos de extensão de meia-vida de α-MSH em humanos.</p>
-      </div>
-      <div class="evidencia-card amber">
-        <span class="badge badge-amber">CONTROVERSO</span>
-        <h3>Saúde articular (boro oral)</h3>
-        <p>Rex Newnham (1990s): observação epidemiológica de que artrite é rara em solos ricos em boro. Ensaio clínico pequeno mostrou melhora sintomática com suplementação. Não replicado, sem financiamento.</p>
-      </div>
-      <div class="evidencia-card amber">
-        <span class="badge badge-amber">CONTROVERSO</span>
-        <h3>Modulação de NF-κB e COX-2</h3>
-        <p>Estudos in vitro documentam inibição de vias inflamatórias por boro. Extrapolação clínica limitada. Dados de modelos animais existem mas sem tradução para humanos em ensaios controlados.</p>
-      </div>
-      <div class="evidencia-card red">
-        <span class="badge badge-red">FRACA</span>
-        <h3>Suplementação oral de bórax</h3>
-        <p>Nenhuma aprovação regulatória para uso oral. Sem ensaios fase III. Evidência de eficácia para qualquer indicação oral é insuficiente. Risco de toxicidade real em autoadministração. Não recomendado.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Fontes -->
-  <section id="fontes">
+<section id="fontes">
     <h2>Fontes</h2>
     <p class="section-lead">Esta ficha é sintetizada a partir de três monografias — os documentos-fonte completos.</p>
     <div class="fontes-grid">
@@ -903,19 +927,6 @@ footer .mono{
     </div>
   </section>
 
-  <!-- Guardrail Final -->
-  <section class="guardrail-final">
-    <h2>⚠ Guardrail de Segurança</h2>
-    <div class="content">
-      <p><strong>Bórax NÃO é suplemento oral seguro.</strong> A toxicidade do boro é dose-dependente, com janela terapêutica estreita e sem ensaios clínicos de fase III para qualquer indicação oral. O LD50 oral em ratos é ~2,6 g/kg; em humanos adultos, doses superiores a 5-10 g de bórax em ingestão única são consideradas tóxicas, com risco de nefrotoxicidade, convulsões e colapso circulatório.</p>
-      <p><strong>Contraindicações absolutas:</strong> gestação (teratogénico em modelos animais, atravessa placenta), lactação (secretado no leite), crianças menores de 12 anos (toxicidade aguda documentada fatal em doses >1-3 g), insuficiência renal (clearance dependente de filtração glomerular, acumula com toxicidade progressiva).</p>
-      <p><strong>Uso tópico controlado:</strong> aplicação em mucosas íntegras em concentrações de 1-3% (como ácido bórico farmacêutico grau USP) tem histórico de segurança documentada para candidíase vaginal refratária. Não é equivalente ao bórax industrial ou doméstico.</p>
-      <p><strong>Interações:</strong> potencial elevação de estradiol (uso com terapia hormonal ou contraceptivos orais requer monitorização); quelação potencial com tetraciclinas e fluoroquinolonas reduzindo absorção; interação com anticoagulantes não confirmada mas plausível.</p>
-      <p><strong>Boro dietético:</strong> a fonte mais segura de boro é alimentar — vegetais, nozes, frutas, leguminosas, vinho tinto. A ingestão média numa dieta rica em vegetais é de 1-3 mg/dia de boro. A UL é de 10-20 mg/dia.</p>
-      <p><strong>Esta ficha não prescreve, não dosifica e não recomenda uso oral de bórax.</strong> A análise biofísica aqui apresentada é educacional e teórica. Qualquer uso clínico de derivados de boro deve ser supervisionado por profissional de saúde habilitado, com monitorização laboratorial adequada.</p>
-      <p><em>Consulte profissional de saúde habilitado antes de qualquer uso terapêutico. Esta ficha é material educativo, não prescrição médica.</em></p>
-    </div>
-  </section>
 </main>
 
 <footer class="container">

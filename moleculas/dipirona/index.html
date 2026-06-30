@@ -296,9 +296,9 @@
     .axis-card small {
       display: block;
       margin-top: 12px;
-      color: var(--ink-3);
+      color: var(--ink-2);
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 13px;
       text-transform: uppercase;
       letter-spacing: .06em;
       line-height: 1.45;
@@ -404,6 +404,66 @@
     footer strong { color: var(--ink-2); font-weight: 700; }
     footer code   { font-family: var(--mono); color: var(--ink-3); font-size: 11px; }
 
+    
+    /* ─── BREADCRUMB ─────────────────────────────────── */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 14px 0;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--ink-3);
+    }
+    .breadcrumb a { color: var(--ink-3); }
+    .breadcrumb a:hover { color: var(--solar); }
+    .breadcrumb .bc-name { color: var(--ink-2); }
+    .breadcrumb .bc-sep { color: var(--rule-heavy); margin: 0 1px; }
+    
+    /* ─── MOBILE NAV ────────────────────────────────── */
+    .mobile-nav { display: none; }
+      .mobile-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 18px;
+      }
+      .mobile-nav a {
+        font-family: var(--mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: .10em;
+        color: var(--ink-3);
+        border: 1px solid var(--rule);
+        padding: 5px 11px;
+        border-radius: 999px;
+        transition: color .12s, border-color .12s;
+      }
+      .mobile-nav a:hover { color: var(--ink); border-color: var(--ink-2); }
+
+      .mobile-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 18px;
+      }
+      .mobile-nav a {
+        font-family: var(--mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: .10em;
+        color: var(--ink-3);
+        border: 1px solid var(--rule);
+        padding: 5px 11px;
+        border-radius: 999px;
+        transition: color .12s, border-color .12s;
+      }
+      .mobile-nav a:hover { color: var(--ink); border-color: var(--ink-2); }
+
     /* ─── RESPONSIVE ─────────────────────────────────── */
     @media (max-width: 1000px) {
       .axis-grid { grid-template-columns: repeat(2, 1fr); }
@@ -433,6 +493,7 @@
         <a href="#biofisica">Biofísica</a>
         <a href="#bioquimica">Bioquímica</a>
         <a href="#evidencia">Evidência</a>
+        <a href="#janela">Janela</a>
         <a href="#fontes">Fontes</a>
       </nav>
       <button id="themeToggle" class="theme-btn" type="button" aria-label="Mudar para tema escuro">
@@ -442,6 +503,13 @@
   </header>
 
   <main>
+    <nav class="breadcrumb shell" aria-label="Caminho da página">
+      <a href="../../index.html">Pharmacopeia.info</a>
+      <span class="bc-sep" aria-hidden="true">/</span>
+      <a href="../../index.html#moleculas">Moléculas</a>
+      <span class="bc-sep" aria-hidden="true">/</span>
+      <span class="bc-name">Dipirona</span>
+    </nav>
     <section class="hero shell">
       <div class="kicker">Ficha · molécula</div>
       <h1>Dipirona</h1>
@@ -450,6 +518,13 @@
         <a class="button" href="#biofisica">BLOCO 1 — Biofísica</a>
         <a class="button secondary" href="#bioquimica">BLOCO 2 — Bioquímica</a>
       </div>
+      <nav class="mobile-nav" aria-label="Navegação por seção">
+        <a href="#biofisica">Biofísica</a>
+        <a href="#bioquimica">Bioquímica</a>
+        <a href="#evidencia">Evidência</a>
+        <a href="#janela">Janela</a>
+        <a href="#fontes">Fontes</a>
+      </nav>
     </section>
 
     <section class="shell">
@@ -482,34 +557,6 @@
         <article class="summary-card"><span class="status established">estabelecido · BLOCO 2</span><b>Analgésico / antipirético / espasmolítico</b><p>Ação via metabólito 4-MAA: inibição de COX-3, ativação de K-ATP, inibição de PDE, ativação de CB₁. Eficácia documentada em dor aguda, febre e cólica visceral.</p></article>
         <article class="summary-card"><span class="status established">estabelecido · BLOCO 2</span><b>4-MAA — o real ativo</b><p>A dipirona não é absorvida intacta: hidrolisa pré-sistemicamente gerando 4-metilaminoantipirina (4-MAA) como metabolito ativo primário. PK: Tmáx ~1–1,5 h, t½ ~2,5–3,5 h, eliminação renal ~96%.</p></article>
         <article class="summary-card"><span class="status guarded">prudência · ambos</span><b>Agranulocitose — rara, mas fatal</b><p>Evento imunomediado, ~0,5–1 caso/milhão/ano, mortalidade do caso grave ~5–10%. Sem preditor clínico a priori. Episódio prévio = contraindicação absoluta de reexposição.</p></article>
-      </div>
-    </section>
-
-    <section id="figuras" class="shell">
-      <div class="section-head">
-        <div>
-          <div class="kicker">Figuras didáticas</div>
-          <h2>Fundo branco, traço limpo, leitura farmacológica.</h2>
-        </div>
-        <p>Imagens minimalistas para apoiar a ficha: arquitectura molecular, mecanismo clássico, mapa farmacológico e interface biofísica. São esquemas educacionais, não estruturas químicas completas nem protocolo clínico.</p>
-      </div>
-      <div class="figure-grid">
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/dipirona/gpt/dipirona-01-molecula-gpt.png" alt="Estrutura química da dipirona (metamizol sódico) em duas dimensões com grupos funcionais destacados, sobre fundo branco" loading="lazy" />
-          <figcaption>Molécula da dipirona: figura editorial GPT/OpenAI em estilo farmacologia clássica.</figcaption>
-        </figure>
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/dipirona/gpt/dipirona-02-mecanismo-gpt.png" alt="Diagrama do mecanismo da dipirona: hidrólise a 4-MAA, inibição de COX-3, ativação de K-ATP/PDE, ativação de CB₁" loading="lazy" />
-          <figcaption>Mecanismo clássico: metabolismo a 4-MAA, inibição de COX-3, canais K-ATP e recetores CB₁.</figcaption>
-        </figure>
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/dipirona/gpt/dipirona-03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico da dipirona com fluxo de absorção, metabolismo hepático, excreção renal e mapa regulatório mundial" loading="lazy" />
-          <figcaption>Mapa farmacológico: ADME aquoso, metabolismo hepático e contexto regulatório global.</figcaption>
-        </figure>
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/dipirona/gpt/dipirona-04-interface-biofisica-gpt.png" alt="Diagrama conceitual da leitura biofísica da dipirona: aquiralidade, UV-C/B, quelação Fe/Mg, perturbação EZ water e segunda ordem" loading="lazy" />
-          <figcaption>Interface biofísica: sem CISS, UV-C/B fora da janela biológica, quelação e perturbação EZ como hipóteses de fronteira.</figcaption>
-        </figure>
       </div>
     </section>
 
@@ -606,27 +653,31 @@
       </div>
     </section>
 
-    <section id="janela" class="shell">
+    <section id="figuras" class="shell">
       <div class="section-head">
         <div>
-          <div class="kicker">Janela de uso</div>
-          <h2>Terreno, sequência e limites.</h2>
+          <div class="kicker">Figuras didáticas</div>
+          <h2>Fundo branco, traço limpo, leitura farmacológica.</h2>
         </div>
-        <p>A dipirona é uma ferramenta de segunda ordem — desobstrui o sinal de dor e febre. O terreno define o custo real de cada uso.</p>
+        <p>Imagens minimalistas para apoiar a ficha: arquitectura molecular, mecanismo clássico, mapa farmacológico e interface biofísica. São esquemas educacionais, não estruturas químicas completas nem protocolo clínico.</p>
       </div>
-      <div class="grid-2">
-        <article class="panel">
-          <h2>Terreno favorável e terreno desfavorável</h2>
-          <p><strong>Terreno favorável:</strong> uso pontual em dor aguda intensa ou febre alta, em organismo com reservas metabólicas (hidratação adequada, exposição solar prévia ou posterior, campo magnético suportado). O custo biofísico de uma dose isolada é recuperável.</p>
-          <p><strong>Terreno desfavorável:</strong> uso crónico sem investigação da causa subjacente. Cada dose quela Fe²⁺ e Mg²⁺ do ambiente peri-mitocondrial, reduz a velocidade da CCO e da ATP-sintase, e suprime sistemicamente a PGE₂ epidérmica — comprometendo a via co-indutora de POMC. Na Anomalia do Atlântico Sul (campo magnético 30–40% abaixo do baseline global), onde o eixo CISS-melanina já opera com menor margem, o uso crónico acrescenta perturbação num sistema com menor capacidade de compensação.</p>
-          <p><strong>Circadiano:</strong> pico de 4-MAA ~1–1,5 h após a dose. Uso noturno faz coincidir a quelação de Fe/Mg com o período de produção de DDA mitocondrial durante o sono — a janela de maior custo biofísico.</p>
-        </article>
-        <article class="panel">
-          <h2>Limites absolutos</h2>
-          <p>Independentemente do enquadramento biofísico, os seguintes contextos exigem avaliação profissional obrigatória antes de qualquer uso:</p>
-          <p>Gestação (especialmente 1º e 3º trimestres) · Lactação · Lactentes &lt;3 meses · Insuficiência renal moderada-grave · Insuficiência hepática significativa · Déficit de G6PD · Uso concomitante de ciclosporina, metotrexato, varfarina ou clorpromazina · Episódio prévio de agranulocitose · Dor crónica não investigada clinicamente.</p>
-          <p><strong>A ficha pública não transforma molécula em protocolo individual.</strong> Dose, forma farmacêutica, duração e indicação pertencem à avaliação clínica, não à leitura biofísica.</p>
-        </article>
+      <div class="figure-grid">
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/dipirona/gpt/dipirona-01-molecula-gpt.png" alt="Estrutura química da dipirona (metamizol sódico) em duas dimensões com grupos funcionais destacados, sobre fundo branco" loading="lazy" />
+          <figcaption>Molécula da dipirona: figura editorial GPT/OpenAI em estilo farmacologia clássica.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/dipirona/gpt/dipirona-02-mecanismo-gpt.png" alt="Diagrama do mecanismo da dipirona: hidrólise a 4-MAA, inibição de COX-3, ativação de K-ATP/PDE, ativação de CB₁" loading="lazy" />
+          <figcaption>Mecanismo clássico: metabolismo a 4-MAA, inibição de COX-3, canais K-ATP e recetores CB₁.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/dipirona/gpt/dipirona-03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico da dipirona com fluxo de absorção, metabolismo hepático, excreção renal e mapa regulatório mundial" loading="lazy" />
+          <figcaption>Mapa farmacológico: ADME aquoso, metabolismo hepático e contexto regulatório global.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/dipirona/gpt/dipirona-04-interface-biofisica-gpt.png" alt="Diagrama conceitual da leitura biofísica da dipirona: aquiralidade, UV-C/B, quelação Fe/Mg, perturbação EZ water e segunda ordem" loading="lazy" />
+          <figcaption>Interface biofísica: sem CISS, UV-C/B fora da janela biológica, quelação e perturbação EZ como hipóteses de fronteira.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -650,6 +701,30 @@
           <p>A dipirona está fora de patente desde os anos 1950. A ausência de investimento em estudos biofísicos modernos (impacto sobre EZ water, KIE mitocondrial, cronobiologia da dipirona, efeito sobre PGE₂ epidérmica e POMC) não é evidência de que esses efeitos não existam — é evidência de que nenhuma empresa tem incentivo financeiro para os estudar.</p>
           <p>As perguntas biofísicas que importam para este contexto — o que faz ao pool aquoso peri-mitocondrial? interfere com o KIE da ATP-sintase? qual o impacto de uso crónico sobre a cascata POMC? — permanecem sem resposta directa, não por impossibilidade experimental, mas por ausência de financiamento.</p>
           <p>A ficha mantém a distinção entre evidência clínica estabelecida (BLOCO 2) e leitura biofísica exploratória (BLOCO 1) sem deixar uma contaminar a credibilidade da outra.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="janela" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Janela de uso</div>
+          <h2>Terreno, sequência e limites.</h2>
+        </div>
+        <p>A dipirona é uma ferramenta de segunda ordem — desobstrui o sinal de dor e febre. O terreno define o custo real de cada uso.</p>
+      </div>
+      <div class="grid-2">
+        <article class="panel">
+          <h2>Terreno favorável e terreno desfavorável</h2>
+          <p><strong>Terreno favorável:</strong> uso pontual em dor aguda intensa ou febre alta, em organismo com reservas metabólicas (hidratação adequada, exposição solar prévia ou posterior, campo magnético suportado). O custo biofísico de uma dose isolada é recuperável.</p>
+          <p><strong>Terreno desfavorável:</strong> uso crónico sem investigação da causa subjacente. Cada dose quela Fe²⁺ e Mg²⁺ do ambiente peri-mitocondrial, reduz a velocidade da CCO e da ATP-sintase, e suprime sistemicamente a PGE₂ epidérmica — comprometendo a via co-indutora de POMC. Na Anomalia do Atlântico Sul (campo magnético 30–40% abaixo do baseline global), onde o eixo CISS-melanina já opera com menor margem, o uso crónico acrescenta perturbação num sistema com menor capacidade de compensação.</p>
+          <p><strong>Circadiano:</strong> pico de 4-MAA ~1–1,5 h após a dose. Uso noturno faz coincidir a quelação de Fe/Mg com o período de produção de DDA mitocondrial durante o sono — a janela de maior custo biofísico.</p>
+        </article>
+        <article class="panel">
+          <h2>Limites absolutos</h2>
+          <p>Independentemente do enquadramento biofísico, os seguintes contextos exigem avaliação profissional obrigatória antes de qualquer uso:</p>
+          <p>Gestação (especialmente 1º e 3º trimestres) · Lactação · Lactentes &lt;3 meses · Insuficiência renal moderada-grave · Insuficiência hepática significativa · Déficit de G6PD · Uso concomitante de ciclosporina, metotrexato, varfarina ou clorpromazina · Episódio prévio de agranulocitose · Dor crónica não investigada clinicamente.</p>
+          <p><strong>A ficha pública não transforma molécula em protocolo individual.</strong> Dose, forma farmacêutica, duração e indicação pertencem à avaliação clínica, não à leitura biofísica.</p>
         </article>
       </div>
     </section>
@@ -689,13 +764,6 @@
       </div>
     </section>
 
-    <section class="shell">
-      <aside class="notice warning">
-        <h2>Guardrail clínico — leia antes</h2>
-        <p><strong>Esta página é educacional. Não é prescrição.</strong> A Pharmacopeia.info publica leitura biofísica e farmacológica de substâncias para estudo e contexto — não fornece dose, posologia, ciclo, indicação individual, nem recomenda compra, uso ou substituição de qualquer tratamento. Nada aqui diagnostica, trata, cura ou previne doença, nem substitui consulta, anamnese, exame ou a decisão de um profissional de saúde habilitado. Medicamentos têm riscos, interações e contraindicações que dependem do seu terreno, da sua história clínica, da sua geografia e dos medicamentos que já usa. Antes de qualquer uso, fale com o seu médico ou farmacêutico.</p>
-        <p><strong>Dipirona Monohidratada — específico:</strong> a dipirona causa agranulocitose em proporção rara mas potencialmente fatal — qualquer febre súbita, úlcera oral ou faringite grave durante o uso obriga interrupção imediata e hemograma de urgência; episódio prévio de agranulocitose é contraindicação absoluta de reexposição. Evitar em gestação (especialmente 1º e 3º trimestres), em lactação (metabólitos passam ao leite materno), em lactentes &lt;3 meses e em insuficiência renal moderada-grave (acúmulo de metabólitos); interações críticas com ciclosporina, metotrexato e clorpromazina IV.</p>
-      </aside>
-    </section>
   </main>
 
   <footer>

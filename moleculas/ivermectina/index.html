@@ -299,9 +299,9 @@
     .axis-card small {
       display: block;
       margin-top: 12px;
-      color: var(--ink-3);
+      color: var(--ink-2);
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 13px;
       text-transform: uppercase;
       letter-spacing: .06em;
       line-height: 1.45;
@@ -408,6 +408,66 @@
     footer strong { color: var(--ink-2); font-weight: 700; }
     footer code   { font-family: var(--mono); color: var(--ink-3); font-size: 11px; }
 
+    
+    /* ─── BREADCRUMB ─────────────────────────────────── */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 14px 0;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--ink-3);
+    }
+    .breadcrumb a { color: var(--ink-3); }
+    .breadcrumb a:hover { color: var(--solar); }
+    .breadcrumb .bc-name { color: var(--ink-2); }
+    .breadcrumb .bc-sep { color: var(--rule-heavy); margin: 0 1px; }
+    
+    /* ─── MOBILE NAV ────────────────────────────────── */
+    .mobile-nav { display: none; }
+      .mobile-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 18px;
+      }
+      .mobile-nav a {
+        font-family: var(--mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: .10em;
+        color: var(--ink-3);
+        border: 1px solid var(--rule);
+        padding: 5px 11px;
+        border-radius: 999px;
+        transition: color .12s, border-color .12s;
+      }
+      .mobile-nav a:hover { color: var(--ink); border-color: var(--ink-2); }
+
+      .mobile-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 18px;
+      }
+      .mobile-nav a {
+        font-family: var(--mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: .10em;
+        color: var(--ink-3);
+        border: 1px solid var(--rule);
+        padding: 5px 11px;
+        border-radius: 999px;
+        transition: color .12s, border-color .12s;
+      }
+      .mobile-nav a:hover { color: var(--ink); border-color: var(--ink-2); }
+
     /* ─── RESPONSIVE ─────────────────────────────────── */
     @media (max-width: 1000px) {
       .axis-grid { grid-template-columns: repeat(2, 1fr); }
@@ -437,6 +497,7 @@
         <a href="#biofisica">Biofísica</a>
         <a href="#bioquimica">Bioquímica</a>
         <a href="#evidencia">Evidência</a>
+        <a href="#janela">Janela</a>
         <a href="#fontes">Fontes</a>
       </nav>
       <button id="themeToggle" class="theme-btn" type="button" aria-label="Mudar para tema escuro">
@@ -446,6 +507,13 @@
   </header>
 
   <main>
+    <nav class="breadcrumb shell" aria-label="Caminho da página">
+      <a href="../../index.html">Pharmacopeia.info</a>
+      <span class="bc-sep" aria-hidden="true">/</span>
+      <a href="../../index.html#moleculas">Moléculas</a>
+      <span class="bc-sep" aria-hidden="true">/</span>
+      <span class="bc-name">Ivermectina</span>
+    </nav>
     <section class="hero shell">
       <div class="kicker">Ficha 01 · molécula</div>
       <h1>Ivermectina</h1>
@@ -454,6 +522,13 @@
         <a class="button" href="#biofisica">BLOCO 1 — Biofísica</a>
         <a class="button secondary" href="#bioquimica">BLOCO 2 — Bioquímica</a>
       </div>
+      <nav class="mobile-nav" aria-label="Navegação por seção">
+        <a href="#biofisica">Biofísica</a>
+        <a href="#bioquimica">Bioquímica</a>
+        <a href="#evidencia">Evidência</a>
+        <a href="#janela">Janela</a>
+        <a href="#fontes">Fontes</a>
+      </nav>
     </section>
 
     <section class="shell">
@@ -486,34 +561,6 @@
         <article class="summary-card"><span class="status established">estabelecido · BLOCO 2</span><b>Antiparasitário</b><p>Ligação a canais GluCl em invertebrados → hiperpolarização e paralisia do parasita. Nobel de Medicina 2015 (Ōmura &amp; Campbell) pela descoberta das avermectinas.</p></article>
         <article class="summary-card"><span class="status established">estabelecido · BLOCO 2</span><b>Molécula lipofílica</b><p>logP 3,2–5,8; metabolismo CYP3A4; eliminação biliar/fecal (~99%). A seletividade em mamíferos depende da P-glicoproteína (MDR1) na barreira hematoencefálica.</p></article>
         <article class="summary-card"><span class="status guarded">prudência · ambos</span><b>Janela clínica</b><p>Risco real de neurotoxicidade com P-gp comprometida; encefalopatia grave em coinfecção <em>Loa loa</em>. A ficha pública não transforma molécula em protocolo individual.</p></article>
-      </div>
-    </section>
-
-    <section id="figuras" class="shell">
-      <div class="section-head">
-        <div>
-          <div class="kicker">Figuras didáticas</div>
-          <h2>Fundo branco, traço limpo, leitura farmacológica.</h2>
-        </div>
-        <p>Imagens minimalistas para apoiar a ficha: arquitectura molecular, mecanismo clássico, mapa farmacológico e interface biofísica. São esquemas educacionais, não estruturas químicas completas nem protocolo clínico.</p>
-      </div>
-      <div class="figure-grid">
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/ivermectina/gpt/ivermectina-01-molecula-gpt.png" alt="Imagem editorial GPT da molécula da ivermectina em fundo branco" loading="lazy" />
-          <figcaption>Molécula da ivermectina: figura editorial GPT/OpenAI em estilo farmacologia clássica.</figcaption>
-        </figure>
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/ivermectina/gpt/ivermectina-02-canal-cloro-gpt.png" alt="Mecanismo clássico da ivermectina em canal de cloro glutamato-dependente" loading="lazy" />
-          <figcaption>Mecanismo clássico: canal de Cl⁻ glutamato-dependente em invertebrados.</figcaption>
-        </figure>
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/ivermectina/gpt/ivermectina-03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico da ivermectina com lipofilicidade, fígado, P-gp e janela clínica" loading="lazy" />
-          <figcaption>Mapa farmacológico: lipofilicidade, barreiras, fígado e prudência clínica.</figcaption>
-        </figure>
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/ivermectina/gpt/ivermectina-04-interface-biofisica-gpt.png" alt="Interface biofísica da ivermectina com água, membrana e espectro" loading="lazy" />
-          <figcaption>Interface biofísica: água, membrana e espectro como perguntas de pesquisa.</figcaption>
-        </figure>
       </div>
     </section>
 
@@ -612,27 +659,31 @@
       </div>
     </section>
 
-    <section id="janela" class="shell">
+    <section id="figuras" class="shell">
       <div class="section-head">
         <div>
-          <div class="kicker">Janela de uso</div>
-          <h2>Terreno, sequência e limites.</h2>
+          <div class="kicker">Figuras didáticas</div>
+          <h2>Fundo branco, traço limpo, leitura farmacológica.</h2>
         </div>
-        <p>A ivermectina é uma ferramenta de desbloqueio — remove obstáculos para que o terreno reconstrua. A sequência importa: desbloqueio primeiro, reconstrução depois.</p>
+        <p>Imagens minimalistas para apoiar a ficha: arquitectura molecular, mecanismo clássico, mapa farmacológico e interface biofísica. São esquemas educacionais, não estruturas químicas completas nem protocolo clínico.</p>
       </div>
-      <div class="grid-2">
-        <article class="panel">
-          <h2>Pré-requisitos de terreno (leitura biofísica)</h2>
-          <p><strong>Hidratação EZ:</strong> sem a camada de exclusão (k≈160) nas membranas alvo, a ancoragem CISS não tem substrato onde travar o spin. Água depletada em deutério, sol real e movimento carregam o sistema antes.</p>
-          <p><strong>Janela circadiana de reparo:</strong> a molécula abranda o ciclo celular e baixa o ΔΨ — é uma ferramenta de fase de reparo (jejum/noite), não de fase de construção anabólica diurna. Administrá-la fora de fase é contra o ritmo de reconstrução.</p>
-          <p><strong>Campo magnético:</strong> o valor máximo manifesta-se quando o campo geomagnético está enfraquecido — anomalia, excursão, ambiente saturado de nnEMF. Em calmaria geomagnética com sol abundante e terreno sólido, o organismo precisa menos deste suporte.</p>
-        </article>
-        <article class="panel">
-          <h2>Limites absolutos</h2>
-          <p>Independentemente do enquadramento biofísico, os seguintes contextos exigem avaliação profissional obrigatória antes de qualquer uso:</p>
-          <p>Gravidez (especialmente 1º trimestre) · MDR1/P-gp comprometido · Inibidores activos de P-gp ou CYP3A4 · SNC vulnerável (crianças de baixo peso, imaturidade BHE) · Coinfecção por <em>Loa loa</em> não rastreada em regiões coendêmicas · Hepatopatia significativa · Contexto parasitário não confirmado clinicamente.</p>
-          <p><strong>A ficha pública não transforma molécula em protocolo individual.</strong> Dose, forma farmacêutica, duração e indicação pertencem à avaliação clínica, não à leitura biofísica.</p>
-        </article>
+      <div class="figure-grid">
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/ivermectina/gpt/ivermectina-01-molecula-gpt.png" alt="Imagem editorial GPT da molécula da ivermectina em fundo branco" loading="lazy" />
+          <figcaption>Molécula da ivermectina: figura editorial GPT/OpenAI em estilo farmacologia clássica.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/ivermectina/gpt/ivermectina-02-canal-cloro-gpt.png" alt="Mecanismo clássico da ivermectina em canal de cloro glutamato-dependente" loading="lazy" />
+          <figcaption>Mecanismo clássico: canal de Cl⁻ glutamato-dependente em invertebrados.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/ivermectina/gpt/ivermectina-03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico da ivermectina com lipofilicidade, fígado, P-gp e janela clínica" loading="lazy" />
+          <figcaption>Mapa farmacológico: lipofilicidade, barreiras, fígado e prudência clínica.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/ivermectina/gpt/ivermectina-04-interface-biofisica-gpt.png" alt="Interface biofísica da ivermectina com água, membrana e espectro" loading="lazy" />
+          <figcaption>Interface biofísica: água, membrana e espectro como perguntas de pesquisa.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -655,6 +706,30 @@
           <h2>Nota metodológica</h2>
           <p>A maioria dos estudos de toxicidade foi conduzida em roedores noturnos sem controlo de janela circadiana, espectro luminoso, campo magnético ou estado de hidratação EZ. Isso sistematicamente subestima a janela terapêutica e sobrestima o sinal de risco em condições humanas solares com terreno adequado — a crítica é estrutural ao desenho desses estudos, não genérica.</p>
           <p>Para a ivermectina especificamente: a distinção entre o <em>mecanismo antiparasitário</em> (sólido, Nobel) e os <em>usos antivirais/antiproliferativos</em> (investigacionais ou contestados) é o ponto editorial mais crítico desta molécula. A Pharmacopeia mantém as duas narrativas separadas sem deixar o entusiasmo de uma contaminar a credibilidade da outra.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="janela" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Janela de uso</div>
+          <h2>Terreno, sequência e limites.</h2>
+        </div>
+        <p>A ivermectina é uma ferramenta de desbloqueio — remove obstáculos para que o terreno reconstrua. A sequência importa: desbloqueio primeiro, reconstrução depois.</p>
+      </div>
+      <div class="grid-2">
+        <article class="panel">
+          <h2>Pré-requisitos de terreno (leitura biofísica)</h2>
+          <p><strong>Hidratação EZ:</strong> sem a camada de exclusão (k≈160) nas membranas alvo, a ancoragem CISS não tem substrato onde travar o spin. Água depletada em deutério, sol real e movimento carregam o sistema antes.</p>
+          <p><strong>Janela circadiana de reparo:</strong> a molécula abranda o ciclo celular e baixa o ΔΨ — é uma ferramenta de fase de reparo (jejum/noite), não de fase de construção anabólica diurna. Administrá-la fora de fase é contra o ritmo de reconstrução.</p>
+          <p><strong>Campo magnético:</strong> o valor máximo manifesta-se quando o campo geomagnético está enfraquecido — anomalia, excursão, ambiente saturado de nnEMF. Em calmaria geomagnética com sol abundante e terreno sólido, o organismo precisa menos deste suporte.</p>
+        </article>
+        <article class="panel">
+          <h2>Limites absolutos</h2>
+          <p>Independentemente do enquadramento biofísico, os seguintes contextos exigem avaliação profissional obrigatória antes de qualquer uso:</p>
+          <p>Gravidez (especialmente 1º trimestre) · MDR1/P-gp comprometido · Inibidores activos de P-gp ou CYP3A4 · SNC vulnerável (crianças de baixo peso, imaturidade BHE) · Coinfecção por <em>Loa loa</em> não rastreada em regiões coendêmicas · Hepatopatia significativa · Contexto parasitário não confirmado clinicamente.</p>
+          <p><strong>A ficha pública não transforma molécula em protocolo individual.</strong> Dose, forma farmacêutica, duração e indicação pertencem à avaliação clínica, não à leitura biofísica.</p>
         </article>
       </div>
     </section>
@@ -694,13 +769,6 @@
       </div>
     </section>
 
-    <section class="shell">
-      <aside class="notice warning">
-        <h2>Guardrail clínico — leia antes</h2>
-        <p><strong>Esta página é educacional. Não é prescrição.</strong> A Pharmacopeia.info publica leitura biofísica e farmacológica de substâncias para estudo e contexto — não fornece dose, posologia, ciclo, indicação individual, nem recomenda compra, uso ou substituição de qualquer tratamento. Nada aqui diagnostica, trata, cura ou previne doença, nem substitui consulta, anamnese, exame ou a decisão de um profissional de saúde habilitado. Medicamentos têm riscos, interações e contraindicações que dependem do seu terreno, da sua história clínica, da sua geografia e dos medicamentos que já usa. Antes de qualquer uso, fale com o seu médico ou farmacêutico.</p>
-        <p><strong>Ivermectina — específico:</strong> formulações veterinárias não são intercambiáveis com formulações humanas. Coinfecção por <em>Loa loa</em> com microfilaremia alta constitui risco de encefalopatia grave. Deficiência de P-gp (MDR1), uso de inibidores de P-gp/CYP3A4, gravidez (especialmente 1º trimestre) e baixo peso corporal em crianças reduzem a margem de segurança e exigem avaliação profissional obrigatória. O uso off-label para COVID-19 não é validado pelo consenso biomédico.</p>
-      </aside>
-    </section>
   </main>
 
   <footer>

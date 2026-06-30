@@ -296,9 +296,9 @@
     .axis-card small {
       display: block;
       margin-top: 12px;
-      color: var(--ink-3);
+      color: var(--ink-2);
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 13px;
       text-transform: uppercase;
       letter-spacing: .06em;
       line-height: 1.45;
@@ -410,6 +410,66 @@
       border-top: 1px solid var(--rule);
     }
 
+    
+    /* ─── BREADCRUMB ─────────────────────────────────── */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 14px 0;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--ink-3);
+    }
+    .breadcrumb a { color: var(--ink-3); }
+    .breadcrumb a:hover { color: var(--solar); }
+    .breadcrumb .bc-name { color: var(--ink-2); }
+    .breadcrumb .bc-sep { color: var(--rule-heavy); margin: 0 1px; }
+    
+    /* ─── MOBILE NAV ────────────────────────────────── */
+    .mobile-nav { display: none; }
+      .mobile-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 18px;
+      }
+      .mobile-nav a {
+        font-family: var(--mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: .10em;
+        color: var(--ink-3);
+        border: 1px solid var(--rule);
+        padding: 5px 11px;
+        border-radius: 999px;
+        transition: color .12s, border-color .12s;
+      }
+      .mobile-nav a:hover { color: var(--ink); border-color: var(--ink-2); }
+
+      .mobile-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 18px;
+      }
+      .mobile-nav a {
+        font-family: var(--mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: .10em;
+        color: var(--ink-3);
+        border: 1px solid var(--rule);
+        padding: 5px 11px;
+        border-radius: 999px;
+        transition: color .12s, border-color .12s;
+      }
+      .mobile-nav a:hover { color: var(--ink); border-color: var(--ink-2); }
+
     /* ─── RESPONSIVE ─────────────────────────────────── */
     @media (max-width: 1000px) {
       .axis-grid { grid-template-columns: repeat(2, 1fr); }
@@ -439,9 +499,8 @@
       <nav aria-label="Navegação principal">
         <a href="#biofisica">Biofísica</a>
         <a href="#bioquimica">Bioquímica</a>
-        <a href="#biofisica">Biofísica</a>
-        <a href="#bioquimica">Bioquímica</a>
         <a href="#evidencia">Evidência</a>
+        <a href="#janela">Janela</a>
         <a href="#fontes">Fontes</a>
       </nav>
       <button id="themeToggle" class="theme-btn" type="button" aria-label="Mudar para tema escuro">
@@ -451,6 +510,13 @@
   </header>
 
   <main>
+    <nav class="breadcrumb shell" aria-label="Caminho da página">
+      <a href="../../index.html">Pharmacopeia.info</a>
+      <span class="bc-sep" aria-hidden="true">/</span>
+      <a href="../../index.html#moleculas">Moléculas</a>
+      <span class="bc-sep" aria-hidden="true">/</span>
+      <span class="bc-name">DMSO</span>
+    </nav>
     <section class="hero shell">
       <div class="kicker">Ficha · molécula</div>
       <h1>DMSO</h1>
@@ -459,6 +525,13 @@
         <a class="button" href="#biofisica">BLOCO 1 — Biofísica</a>
         <a class="button secondary" href="#bioquimica">BLOCO 2 — Bioquímica</a>
       </div>
+      <nav class="mobile-nav" aria-label="Navegação por seção">
+        <a href="#biofisica">Biofísica</a>
+        <a href="#bioquimica">Bioquímica</a>
+        <a href="#evidencia">Evidência</a>
+        <a href="#janela">Janela</a>
+        <a href="#fontes">Fontes</a>
+      </nav>
     </section>
 
     <section class="shell">
@@ -495,33 +568,6 @@
     </section>
 
     <!-- ━━━━━━━━━━━━━━━━ FIGURAS DIDÁTICAS ━━━━━━━━━━━━━━━━ -->
-    <section id="figuras" class="shell">
-      <div class="section-head">
-        <div>
-          <div class="kicker">Figuras didáticas</div>
-          <h2>Fundo branco, traço limpo, leitura farmacológica.</h2>
-        </div>
-        <p>Imagens minimalistas para apoiar a ficha: arquitectura molecular, mecanismo clássico, mapa farmacológico e interface biofísica. São esquemas educacionais, não estruturas químicas completas nem protocolo clínico.</p>
-      </div>
-      <div class="figure-grid">
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/dmso/gpt/dmso-01-molecula-gpt.png" alt="Estrutura molecular do DMSO: sulfóxido dipolar com enxofre central, oxigénio e dois grupos metil" loading="lazy" />
-          <figcaption>Molécula do DMSO: figura editorial GPT/OpenAI em estilo farmacologia clássica.</figcaption>
-        </figure>
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/dmso/gpt/dmso-02-mecanismo-gpt.png" alt="Mecanismo do DMSO: penetração transdérmica, reorganização de EZ, scavenger de OH·" loading="lazy" />
-          <figcaption>Mecanismo: penetração transdérmica, organização de EZ, quelação de radicais.</figcaption>
-        </figure>
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/dmso/gpt/dmso-03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico ADME do DMSO: penetração universal, metabolismo hepático, excreção pulmonar" loading="lazy" />
-          <figcaption>Mapa farmacológico: penetração universal, metabolismo a DMSO2, excreção dupla.</figcaption>
-        </figure>
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/dmso/gpt/dmso-04-interface-biofisica-gpt.png" alt="Interface biofísica do DMSO: dipolo, água EZ, CISS indireto, campo e deutério" loading="lazy" />
-          <figcaption>Interface biofísica: dipolo, água EZ, CISS indirecto (hipótese).</figcaption>
-        </figure>
-      </div>
-    </section>
 
     <section id="biofisica" class="shell">
       <div class="section-head">
@@ -620,6 +666,56 @@
       </div>
     </section>
 
+    <section id="figuras" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Figuras didáticas</div>
+          <h2>Fundo branco, traço limpo, leitura farmacológica.</h2>
+        </div>
+        <p>Imagens minimalistas para apoiar a ficha: arquitectura molecular, mecanismo clássico, mapa farmacológico e interface biofísica. São esquemas educacionais, não estruturas químicas completas nem protocolo clínico.</p>
+      </div>
+      <div class="figure-grid">
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/dmso/gpt/dmso-01-molecula-gpt.png" alt="Estrutura molecular do DMSO: sulfóxido dipolar com enxofre central, oxigénio e dois grupos metil" loading="lazy" />
+          <figcaption>Molécula do DMSO: figura editorial GPT/OpenAI em estilo farmacologia clássica.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/dmso/gpt/dmso-02-mecanismo-gpt.png" alt="Mecanismo do DMSO: penetração transdérmica, reorganização de EZ, scavenger de OH·" loading="lazy" />
+          <figcaption>Mecanismo: penetração transdérmica, organização de EZ, quelação de radicais.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/dmso/gpt/dmso-03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico ADME do DMSO: penetração universal, metabolismo hepático, excreção pulmonar" loading="lazy" />
+          <figcaption>Mapa farmacológico: penetração universal, metabolismo a DMSO2, excreção dupla.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/dmso/gpt/dmso-04-interface-biofisica-gpt.png" alt="Interface biofísica do DMSO: dipolo, água EZ, CISS indireto, campo e deutério" loading="lazy" />
+          <figcaption>Interface biofísica: dipolo, água EZ, CISS indirecto (hipótese).</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="evidencia" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Estado da evidência</div>
+          <h2>O que é consenso. O que é hipótese. O que é fronteira.</h2>
+        </div>
+      </div>
+      <div class="grid-2">
+        <article class="panel">
+          <h2>Camadas de evidência</h2>
+          <p><strong>Verde — estabelecido:</strong> estrutura química (Zaytsev 1866), propriedades físico-químicas (dipolo ~3,96 D, log P ≈ −1,35, miscibilidade universal), penetração transdérmica e carreamento, metabolismo a DMSO₂ e DMS, odor sistémico de alho/ostra, única indicação aprovada (RIMSO-50 para cistite intersticial intravesical), uso como crioprotetor laboratorial, efeito scavenger de ·OH in vitro, reações locais em dose alta, toxicidade por carreamento de contaminantes, sinal ocular em animais com dose alta.</p>
+          <p><strong>Âmbar — investigacional:</strong> anti-inflamatório/analgésico clínico (magnitude e robustez debatidas); alterações de cristalino (animal, extrapolação humana incerta); comportamento bifásico na EZ water por concentração (dados de DM e difração de nêutrons; extrapolação terapêutica em investigação); discriminação isotópica H/D no contexto biológico.</p>
+          <p><strong>Ciano — hipótese de fronteira:</strong> nucleação de EZ como mecanismo central (k→160 em dose baixa), soberania isotópica via KIE e partição H/D, acoplamento CISS indireto via enxofre pesado e matrizes quirais hospedeiras (melanina, colágeno, APOE), modulação de spin via acoplamento spin-órbita do enxofre, classificação como segunda ordem biofísica, dependência de campo geomagnético e circadiana, acoplamento ao ciclo oceânico do enxofre e à física de nuvens (hipótese CLAW/Svensmark).</p>
+        </article>
+        <article class="panel">
+          <h2>Nota metodológica</h2>
+          <p>A divisão editorial entre BLOCO 1 (biofísica de fronteira) e BLOCO 2 (farmacologia estabelecida) é deliberada. A maioria dos estudos clínicos disponíveis não controla concentração com precisão dielétrica, não distingue grau farmacêutico de industrial, não mede estado de hidratação EZ nem carga isotópica do tecido — o que sistematicamente limita a compreensão do perfil real da molécula em condições biofísicas variáveis.</p>
+          <p>A distinção mais importante para o DMSO: a bifasicidade por dose é o eixo que une biofísica e bioquímica. Baixa concentração ordena a água e protege o ΔΨ; alta concentração destrói a rede e permeabiliza membranas. Esta não é uma hipótese — é compatível com a irritação documentada em altas doses e com os dados biofísicos de dinâmica molecular. A Pharmacopeia mantém as duas narrativas separadas sem deixar o entusiasmo biofísico contaminar a prudência clínica.</p>
+        </article>
+      </div>
+    </section>
+
     <section id="janela" class="shell">
       <div class="section-head">
         <div>
@@ -642,28 +738,6 @@
           <p>Independentemente do enquadramento biofísico, os seguintes contextos exigem avaliação profissional obrigatória antes de qualquer uso:</p>
           <p>Gravidez e lactação (sinais teratogênicos em animais, ausência de dados humanos) · Crianças (sem dados de segurança) · Disfunção renal significativa · Disfunção hepática · Uso de grau industrial (risco de contaminação sistémica directa) · Pele com qualquer substância não intencional · Concentrações altas e brutas sem supervisão clínica · Qualquer substância tópica concomitante sem avaliação do risco de absorção sistémica potenciada.</p>
           <p><strong>A ficha pública não transforma molécula em protocolo individual.</strong> Dose, concentração, forma e indicação pertencem à avaliação clínica com contexto individual.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="evidencia" class="shell">
-      <div class="section-head">
-        <div>
-          <div class="kicker">Estado da evidência</div>
-          <h2>O que é consenso. O que é hipótese. O que é fronteira.</h2>
-        </div>
-      </div>
-      <div class="grid-2">
-        <article class="panel">
-          <h2>Camadas de evidência</h2>
-          <p><strong>Verde — estabelecido:</strong> estrutura química (Zaytsev 1866), propriedades físico-químicas (dipolo ~3,96 D, log P ≈ −1,35, miscibilidade universal), penetração transdérmica e carreamento, metabolismo a DMSO₂ e DMS, odor sistémico de alho/ostra, única indicação aprovada (RIMSO-50 para cistite intersticial intravesical), uso como crioprotetor laboratorial, efeito scavenger de ·OH in vitro, reações locais em dose alta, toxicidade por carreamento de contaminantes, sinal ocular em animais com dose alta.</p>
-          <p><strong>Âmbar — investigacional:</strong> anti-inflamatório/analgésico clínico (magnitude e robustez debatidas); alterações de cristalino (animal, extrapolação humana incerta); comportamento bifásico na EZ water por concentração (dados de DM e difração de nêutrons; extrapolação terapêutica em investigação); discriminação isotópica H/D no contexto biológico.</p>
-          <p><strong>Ciano — hipótese de fronteira:</strong> nucleação de EZ como mecanismo central (k→160 em dose baixa), soberania isotópica via KIE e partição H/D, acoplamento CISS indireto via enxofre pesado e matrizes quirais hospedeiras (melanina, colágeno, APOE), modulação de spin via acoplamento spin-órbita do enxofre, classificação como segunda ordem biofísica, dependência de campo geomagnético e circadiana, acoplamento ao ciclo oceânico do enxofre e à física de nuvens (hipótese CLAW/Svensmark).</p>
-        </article>
-        <article class="panel">
-          <h2>Nota metodológica</h2>
-          <p>A divisão editorial entre BLOCO 1 (biofísica de fronteira) e BLOCO 2 (farmacologia estabelecida) é deliberada. A maioria dos estudos clínicos disponíveis não controla concentração com precisão dielétrica, não distingue grau farmacêutico de industrial, não mede estado de hidratação EZ nem carga isotópica do tecido — o que sistematicamente limita a compreensão do perfil real da molécula em condições biofísicas variáveis.</p>
-          <p>A distinção mais importante para o DMSO: a bifasicidade por dose é o eixo que une biofísica e bioquímica. Baixa concentração ordena a água e protege o ΔΨ; alta concentração destrói a rede e permeabiliza membranas. Esta não é uma hipótese — é compatível com a irritação documentada em altas doses e com os dados biofísicos de dinâmica molecular. A Pharmacopeia mantém as duas narrativas separadas sem deixar o entusiasmo biofísico contaminar a prudência clínica.</p>
         </article>
       </div>
     </section>
@@ -691,13 +765,6 @@
       </div>
     </section>
 
-    <section class="shell">
-      <aside class="notice warning">
-        <h2>Guardrail clínico — leia antes</h2>
-        <p><strong>Esta página é educacional. Não é prescrição.</strong> A Pharmacopeia.info publica leitura biofísica e farmacológica de substâncias para estudo e contexto — não fornece dose, posologia, ciclo, indicação individual, nem recomenda compra, uso ou substituição de qualquer tratamento. Nada aqui diagnostica, trata, cura ou previne doença, nem substitui consulta, anamnese, exame ou a decisão de um profissional de saúde habilitado. Medicamentos têm riscos, interações e contraindicações que dependem do seu terreno, da sua história clínica, da sua geografia e dos medicamentos que já usa. Antes de qualquer uso, fale com o seu médico ou farmacêutico.</p>
-        <p><strong>DMSO — específico:</strong> usar apenas grau farmacêutico/USP — DMSO industrial contém contaminantes que são transportados sistemicamente pela pele com eficiência extrema; a propriedade de penetração transdérmica que o torna útil é o mesmo mecanismo pelo qual impurezas e substâncias sobre a pele entram na corrente sanguínea. Aplicar sempre sobre pele limpa, sem cosméticos, loções ou outros produtos na área. Contraindicado em gravidez e lactação (sinais de teratogenicidade em modelos animais com doses altas; ausência de dados humanos robustos). Sem dados de segurança em crianças. Disfunção renal ou hepática requer avaliação profissional. Concentrações altas causam irritação cutânea intensa — não usar DMSO puro ou muito concentrado sem supervisão clínica. Odor de alho/ostra no hálito e na pele é universal e inevitável após uso. O único uso humano com aprovação regulatória é a instilação intravesical para cistite intersticial (RIMSO-50) — procedimento clínico, não autoaplicação.</p>
-      </aside>
-    </section>
   </main>
 
   <footer>

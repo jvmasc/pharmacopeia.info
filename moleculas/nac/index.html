@@ -299,9 +299,9 @@
     .axis-card small {
       display: block;
       margin-top: 12px;
-      color: var(--ink-3);
+      color: var(--ink-2);
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 13px;
       text-transform: uppercase;
       letter-spacing: .06em;
       line-height: 1.45;
@@ -408,6 +408,66 @@
     footer strong { color: var(--ink-2); font-weight: 700; }
     footer code   { font-family: var(--mono); color: var(--ink-3); font-size: 11px; }
 
+    
+    /* ─── BREADCRUMB ─────────────────────────────────── */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 14px 0;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--ink-3);
+    }
+    .breadcrumb a { color: var(--ink-3); }
+    .breadcrumb a:hover { color: var(--solar); }
+    .breadcrumb .bc-name { color: var(--ink-2); }
+    .breadcrumb .bc-sep { color: var(--rule-heavy); margin: 0 1px; }
+    
+    /* ─── MOBILE NAV ────────────────────────────────── */
+    .mobile-nav { display: none; }
+      .mobile-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 18px;
+      }
+      .mobile-nav a {
+        font-family: var(--mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: .10em;
+        color: var(--ink-3);
+        border: 1px solid var(--rule);
+        padding: 5px 11px;
+        border-radius: 999px;
+        transition: color .12s, border-color .12s;
+      }
+      .mobile-nav a:hover { color: var(--ink); border-color: var(--ink-2); }
+
+      .mobile-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 18px;
+      }
+      .mobile-nav a {
+        font-family: var(--mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: .10em;
+        color: var(--ink-3);
+        border: 1px solid var(--rule);
+        padding: 5px 11px;
+        border-radius: 999px;
+        transition: color .12s, border-color .12s;
+      }
+      .mobile-nav a:hover { color: var(--ink); border-color: var(--ink-2); }
+
     /* ─── RESPONSIVE ─────────────────────────────────── */
     @media (max-width: 1000px) {
       .axis-grid { grid-template-columns: repeat(2, 1fr); }
@@ -437,6 +497,7 @@
         <a href="#biofisica">Biofísica</a>
         <a href="#bioquimica">Bioquímica</a>
         <a href="#evidencia">Evidência</a>
+        <a href="#janela">Janela</a>
         <a href="#fontes">Fontes</a>
       </nav>
       <button id="themeToggle" class="theme-btn" type="button" aria-label="Mudar para tema escuro">
@@ -446,6 +507,13 @@
   </header>
 
   <main>
+    <nav class="breadcrumb shell" aria-label="Caminho da página">
+      <a href="../../index.html">Pharmacopeia.info</a>
+      <span class="bc-sep" aria-hidden="true">/</span>
+      <a href="../../index.html#moleculas">Moléculas</a>
+      <span class="bc-sep" aria-hidden="true">/</span>
+      <span class="bc-name">N-Acetilcisteína (NAC)</span>
+    </nav>
     <section class="hero shell">
       <div class="kicker">Ficha · molécula</div>
       <h1>N-Acetilcisteína (NAC)</h1>
@@ -454,6 +522,13 @@
         <a class="button" href="#biofisica">BLOCO 1 — Biofísica</a>
         <a class="button secondary" href="#bioquimica">BLOCO 2 — Bioquímica</a>
       </div>
+      <nav class="mobile-nav" aria-label="Navegação por seção">
+        <a href="#biofisica">Biofísica</a>
+        <a href="#bioquimica">Bioquímica</a>
+        <a href="#evidencia">Evidência</a>
+        <a href="#janela">Janela</a>
+        <a href="#fontes">Fontes</a>
+      </nav>
     </section>
 
     <section class="shell">
@@ -486,34 +561,6 @@
         <article class="summary-card"><span class="status hypothesis">biofísica · BLOCO 1</span><b>Defesa da água EZ</b><p>Cada OH· abatido pelo tiol é uma ligação-H da água interfacial (EZ) preservada. Protege a camada de exclusão das membranas.</p></article>
         <article class="summary-card"><span class="status investigational">investigacional · BLOCO 1</span><b>Terminal de spin (CISS)</b><p>O enxofre do tiol não é filtro quiral (NAC é aquiral macroscópica), mas funciona como eletrodo molecular — ponto de injeção/coleta de spin em proteínas quirais como melanina e DNA.</p></article>
         <article class="summary-card"><span class="status guarded">prudência · ambos</span><b>Janela e interações</b><p>Interações com nitratos (hipotensão), risco anafilático IV, potencial redistribuição de metais. Sobrecarga de enxofre: hipótese de desvio eumelanina→feomelanina (investigacional, não alarme).</p></article>
-      </div>
-    </section>
-
-    <section id="figuras" class="shell">
-      <div class="section-head">
-        <div>
-          <div class="kicker">Figuras didáticas</div>
-          <h2>Fundo branco, traço limpo, leitura farmacológica.</h2>
-        </div>
-        <p>Imagens minimalistas para apoiar a ficha: estrutura molecular, mecanismo de biossíntese de GSH, mapa farmacológico e interface biofísica. São esquemas educacionais, não estruturas químicas completas nem protocolo clínico.</p>
-      </div>
-      <div class="figure-grid">
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/nac/gpt/nac-01-molecula-gpt.png" alt="Estrutura química da N-Acetilcisteína (C₅H₉NO₃S, 163.19 Da) com grupo tiol livre (-SH) destacado em âmbar" loading="lazy" />
-          <figcaption>Molécula da NAC: figura editorial GPT/OpenAI em estilo farmacologia clássica.</figcaption>
-        </figure>
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/nac/gpt/nac-02-mecanismo-gpt.png" alt="Via de biossíntese da glutationa a partir da NAC: deacetilação a L-cisteína, combinação com glutamato e glicina, produção de GSH" loading="lazy" />
-          <figcaption>Mecanismo clássico: NAC → L-Cisteína → Glutationa (GSH), com ciclo redox GSH/GSSG.</figcaption>
-        </figure>
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/nac/gpt/nac-03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico da NAC: absorção oral, metabolismo hepático, distribuição tecidual, excreção renal e quelação de metais" loading="lazy" />
-          <figcaption>Mapa farmacológico: biodisponibilidade oral, pool hepático de GSH, distribuição e função quelante.</figcaption>
-        </figure>
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/nac/gpt/nac-04-interface-biofisica-gpt.png" alt="Interface biofísica da NAC na fase aquosa: quelante de metais, removedor de ROS e terminal de spin em proteínas quirais" loading="lazy" />
-          <figcaption>Interface biofísica: quelante, removedor de ROS e eletrodo de spin molecular.</figcaption>
-        </figure>
       </div>
     </section>
 
@@ -612,27 +659,31 @@
       </div>
     </section>
 
-    <section id="janela" class="shell">
+    <section id="figuras" class="shell">
       <div class="section-head">
         <div>
-          <div class="kicker">Janela de uso</div>
-          <h2>Terreno, sequência e limites.</h2>
+          <div class="kicker">Figuras didáticas</div>
+          <h2>Fundo branco, traço limpo, leitura farmacológica.</h2>
         </div>
-        <p>O NAC é uma ferramenta de segunda ordem — remove obstáculos para que a primeira ordem funcione. A sequência importa: limpeza do terreno primeiro, sinalização depois.</p>
+        <p>Imagens minimalistas para apoiar a ficha: estrutura molecular, mecanismo de biossíntese de GSH, mapa farmacológico e interface biofísica. São esquemas educacionais, não estruturas químicas completas nem protocolo clínico.</p>
       </div>
-      <div class="grid-2">
-        <article class="panel">
-          <h2>Pré-requisitos de terreno (leitura biofísica)</h2>
-          <p><strong>Hidratação EZ:</strong> sem a camada de exclusão interfacial, o tiol não encontra o meio aquoso organizado onde a sua química é mais eficaz. Água de qualidade, sol real e movimento carregam o sistema antes.</p>
-          <p><strong>Janela circadiana:</strong> o NAC não depende de luz para atuar — é uma ferramenta de manutenção contínua que cobre o organismo na madrugada, no escuro, no inverno. A sua máxima relevância é no período de reparo (jejum/noite), quando a carga de ROS endógena é maior.</p>
-          <p><strong>Geografia da carga radical:</strong> a necessidade aumenta sob a AAS, em ambientes de nnEMF elevado, no inverno de pouca luz reparadora. Onde há mais OH·, o doador de tiol é mais necessário.</p>
-        </article>
-        <article class="panel">
-          <h2>Limites absolutos</h2>
-          <p>Independentemente do enquadramento biofísico, os seguintes contextos exigem avaliação profissional obrigatória antes de qualquer uso:</p>
-          <p>Gravidez e lactação · Uso concomitante de nitrovasodilatadores · História de anafilaxia · Distúrbios hemorrágicos ou anticoagulação · Hemocromatose ou sobrecarga de ferro · Contexto de metais pesados elevados (redistribuição) · Uso crónico sem supervisão (sobrecarga de enxofre, desvio de oligoelementos).</p>
-          <p><strong>A ficha pública não transforma molécula em protocolo individual.</strong> Dose, forma farmacêutica, duração e indicação pertencem à avaliação clínica, não à leitura biofísica.</p>
-        </article>
+      <div class="figure-grid">
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/nac/gpt/nac-01-molecula-gpt.png" alt="Estrutura química da N-Acetilcisteína (C₅H₉NO₃S, 163.19 Da) com grupo tiol livre (-SH) destacado em âmbar" loading="lazy" />
+          <figcaption>Molécula da NAC: figura editorial GPT/OpenAI em estilo farmacologia clássica.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/nac/gpt/nac-02-mecanismo-gpt.png" alt="Via de biossíntese da glutationa a partir da NAC: deacetilação a L-cisteína, combinação com glutamato e glicina, produção de GSH" loading="lazy" />
+          <figcaption>Mecanismo clássico: NAC → L-Cisteína → Glutationa (GSH), com ciclo redox GSH/GSSG.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/nac/gpt/nac-03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico da NAC: absorção oral, metabolismo hepático, distribuição tecidual, excreção renal e quelação de metais" loading="lazy" />
+          <figcaption>Mapa farmacológico: biodisponibilidade oral, pool hepático de GSH, distribuição e função quelante.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/nac/gpt/nac-04-interface-biofisica-gpt.png" alt="Interface biofísica da NAC na fase aquosa: quelante de metais, removedor de ROS e terminal de spin em proteínas quirais" loading="lazy" />
+          <figcaption>Interface biofísica: quelante, removedor de ROS e eletrodo de spin molecular.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -655,6 +706,30 @@
           <h2>Nota metodológica</h2>
           <p>A maioria dos estudos de toxicologia e eficácia foi conduzida em modelos de dose aguda sem controlo de terreno (hidratação EZ, campo magnético, espectro luminoso, estado redox basal). Isso subestima consistentemente a janela de utilidade biofísica e sobrestima o sinal de risco em condições humanas com terreno adequado — a crítica é estrutural ao desenho desses estudos, não genérica.</p>
           <p>Para o NAC especificamente: a distinção entre o <em>mecanismo bioquímico estabelecido</em> (precursor de GSH, quelante, mucolítico) e as <em>leituras biofísicas de fronteira</em> (água EZ, terminal de spin, leitura geográfica) é o ponto editorial mais delicado. A Pharmacopeia mantém as duas narrativas separadas para que o entusiasmo de uma não contamine a credibilidade da outra.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="janela" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Janela de uso</div>
+          <h2>Terreno, sequência e limites.</h2>
+        </div>
+        <p>O NAC é uma ferramenta de segunda ordem — remove obstáculos para que a primeira ordem funcione. A sequência importa: limpeza do terreno primeiro, sinalização depois.</p>
+      </div>
+      <div class="grid-2">
+        <article class="panel">
+          <h2>Pré-requisitos de terreno (leitura biofísica)</h2>
+          <p><strong>Hidratação EZ:</strong> sem a camada de exclusão interfacial, o tiol não encontra o meio aquoso organizado onde a sua química é mais eficaz. Água de qualidade, sol real e movimento carregam o sistema antes.</p>
+          <p><strong>Janela circadiana:</strong> o NAC não depende de luz para atuar — é uma ferramenta de manutenção contínua que cobre o organismo na madrugada, no escuro, no inverno. A sua máxima relevância é no período de reparo (jejum/noite), quando a carga de ROS endógena é maior.</p>
+          <p><strong>Geografia da carga radical:</strong> a necessidade aumenta sob a AAS, em ambientes de nnEMF elevado, no inverno de pouca luz reparadora. Onde há mais OH·, o doador de tiol é mais necessário.</p>
+        </article>
+        <article class="panel">
+          <h2>Limites absolutos</h2>
+          <p>Independentemente do enquadramento biofísico, os seguintes contextos exigem avaliação profissional obrigatória antes de qualquer uso:</p>
+          <p>Gravidez e lactação · Uso concomitante de nitrovasodilatadores · História de anafilaxia · Distúrbios hemorrágicos ou anticoagulação · Hemocromatose ou sobrecarga de ferro · Contexto de metais pesados elevados (redistribuição) · Uso crónico sem supervisão (sobrecarga de enxofre, desvio de oligoelementos).</p>
+          <p><strong>A ficha pública não transforma molécula em protocolo individual.</strong> Dose, forma farmacêutica, duração e indicação pertencem à avaliação clínica, não à leitura biofísica.</p>
         </article>
       </div>
     </section>
@@ -682,13 +757,6 @@
       </div>
     </section>
 
-    <section class="shell">
-      <aside class="notice warning">
-        <h2>Guardrail clínico — leia antes</h2>
-        <p><strong>Esta página é educacional. Não é prescrição.</strong> A Pharmacopeia.info publica leitura biofísica e farmacológica de substâncias para estudo e contexto — não fornece dose, posologia, ciclo, indicação individual, nem recomenda compra, uso ou substituição de qualquer tratamento. Nada aqui diagnostica, trata, cura ou previne doença, nem substitui consulta, anamnese, exame ou a decisão de um profissional de saúde habilitado. Medicamentos têm riscos, interações e contraindicações que dependem do seu terreno, da sua história clínica, da sua geografia e dos medicamentos que já usa. Antes de qualquer uso, fale com o seu médico ou farmacêutico.</p>
-        <p><strong>NAC — específico:</strong> interage com nitrovasodilatadores (risco de hipotensão). Risco anafilático documentado em administração IV rápida. Quelante de metais pesados — pode mobilizar e redistribuir Hg, Pb e Cd em ambiente de carga metálica alta. Sobrecarga crónica de enxofre pode ser contraproducente (investigacional). O uso como antídoto de paracetamol é uma emergência hospitalar, não auto-tratamento.</p>
-      </aside>
-    </section>
   </main>
 
   <footer>

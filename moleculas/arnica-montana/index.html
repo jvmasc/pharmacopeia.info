@@ -299,9 +299,9 @@
     .axis-card small {
       display: block;
       margin-top: 12px;
-      color: var(--ink-3);
+      color: var(--ink-2);
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 13px;
       text-transform: uppercase;
       letter-spacing: .06em;
       line-height: 1.45;
@@ -408,6 +408,66 @@
     footer strong { color: var(--ink-2); font-weight: 700; }
     footer code   { font-family: var(--mono); color: var(--ink-3); font-size: 11px; }
 
+    
+    /* ─── BREADCRUMB ─────────────────────────────────── */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 14px 0;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--ink-3);
+    }
+    .breadcrumb a { color: var(--ink-3); }
+    .breadcrumb a:hover { color: var(--solar); }
+    .breadcrumb .bc-name { color: var(--ink-2); }
+    .breadcrumb .bc-sep { color: var(--rule-heavy); margin: 0 1px; }
+    
+    /* ─── MOBILE NAV ────────────────────────────────── */
+    .mobile-nav { display: none; }
+      .mobile-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 18px;
+      }
+      .mobile-nav a {
+        font-family: var(--mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: .10em;
+        color: var(--ink-3);
+        border: 1px solid var(--rule);
+        padding: 5px 11px;
+        border-radius: 999px;
+        transition: color .12s, border-color .12s;
+      }
+      .mobile-nav a:hover { color: var(--ink); border-color: var(--ink-2); }
+
+      .mobile-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 18px;
+      }
+      .mobile-nav a {
+        font-family: var(--mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: .10em;
+        color: var(--ink-3);
+        border: 1px solid var(--rule);
+        padding: 5px 11px;
+        border-radius: 999px;
+        transition: color .12s, border-color .12s;
+      }
+      .mobile-nav a:hover { color: var(--ink); border-color: var(--ink-2); }
+
     /* ─── RESPONSIVE ─────────────────────────────────── */
     @media (max-width: 1000px) {
       .axis-grid { grid-template-columns: repeat(2, 1fr); }
@@ -437,6 +497,7 @@
         <a href="#biofisica">Biofísica</a>
         <a href="#bioquimica">Bioquímica</a>
         <a href="#evidencia">Evidência</a>
+        <a href="#janela">Janela</a>
         <a href="#fontes">Fontes</a>
       </nav>
       <button id="themeToggle" class="theme-btn" type="button" aria-label="Mudar para tema escuro">
@@ -446,6 +507,13 @@
   </header>
 
   <main>
+    <nav class="breadcrumb shell" aria-label="Caminho da página">
+      <a href="../../index.html">Pharmacopeia.info</a>
+      <span class="bc-sep" aria-hidden="true">/</span>
+      <a href="../../index.html#moleculas">Moléculas</a>
+      <span class="bc-sep" aria-hidden="true">/</span>
+      <span class="bc-name">Arnica Montana 6CH</span>
+    </nav>
     <section class="hero shell">
       <div class="kicker">Ficha · molécula</div>
       <h1>Arnica Montana 6CH</h1>
@@ -454,6 +522,13 @@
         <a class="button" href="#biofisica">BLOCO 1 — Biofísica</a>
         <a class="button secondary" href="#bioquimica">BLOCO 2 — Bioquímica</a>
       </div>
+      <nav class="mobile-nav" aria-label="Navegação por seção">
+        <a href="#biofisica">Biofísica</a>
+        <a href="#bioquimica">Bioquímica</a>
+        <a href="#evidencia">Evidência</a>
+        <a href="#janela">Janela</a>
+        <a href="#fontes">Fontes</a>
+      </nav>
     </section>
 
     <section class="shell">
@@ -486,34 +561,6 @@
         <article class="summary-card"><span class="status established">estabelecido · BLOCO 2</span><b>Helenalina inibe NF-κB</b><p>Mecanismo bioquímico real da planta: adição de Michael à Cys38 da subunidade p65. Planta concentrada, não a diluição 6CH.</p></article>
         <article class="summary-card"><span class="status established">estabelecido · BLOCO 2</span><b>Cromóforos florais</b><p>Flavonoides e carotenoides absorvem UV/visível; quimicamente caracterizados na flor de Arnica montana.</p></article>
         <article class="summary-card"><span class="status guarded">prudência · ambos</span><b>Caso-fronteira</b><p>6CH não cruza Avogadro (10⁻¹² ainda tem matéria residual), mas eficácia específica não é comprovada pelo consenso. Risco principal: atraso de tratamento eficaz.</p></article>
-      </div>
-    </section>
-
-    <section id="figuras" class="shell">
-      <div class="section-head">
-        <div>
-          <div class="kicker">Figuras didáticas</div>
-          <h2>Fundo branco, traço limpo, leitura farmacológica.</h2>
-        </div>
-        <p>Imagens minimalistas para apoiar a ficha: arquitectura molecular, mecanismo clássico, mapa farmacológico e interface biofísica. São esquemas educacionais, não estruturas químicas completas nem protocolo clínico.</p>
-      </div>
-      <div class="figure-grid">
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/arnica-montana/gpt/arnica-montana-01-molecula-gpt.png" alt="Imagem editorial GPT da molécula da Arnica Montana com helenalina, quercetina e flor alpina" loading="lazy" />
-          <figcaption>Helenalina + quercetina: antena quiral vegetal sob UV alpino.</figcaption>
-        </figure>
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/arnica-montana/gpt/arnica-montana-02-mecanismo-gpt.png" alt="Mecanismo clássico: helenalina inibindo NF-κB por adição de Michael à Cys38" loading="lazy" />
-          <figcaption>Helenalina alquila Cys38-p65: inibição de NF-κB por adição de Michael.</figcaption>
-        </figure>
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/arnica-montana/gpt/arnica-montana-03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico: planta TM → diluição 6CH → absorção sublingual → água EZ" loading="lazy" />
-          <figcaption>Da montanha à água: TM → 6CH (sucussão) → padrão EZ → nucleação no tecido.</figcaption>
-        </figure>
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/arnica-montana/gpt/arnica-montana-04-interface-biofisica-gpt.png" alt="Interface biofísica: UV alpino → antena vegetal → molde na água → nucleação EZ → CISS → ΔΨ" loading="lazy" />
-          <figcaption>UV alpino → antena vegetal → molde aquoso → nucleação EZ → CISS → ΔΨ. O eco fotônico da montanha na água do tecido.</figcaption>
-        </figure>
       </div>
     </section>
 
@@ -610,27 +657,31 @@
       </div>
     </section>
 
-    <section id="janela" class="shell">
+    <section id="figuras" class="shell">
       <div class="section-head">
         <div>
-          <div class="kicker">Janela de uso</div>
-          <h2>Terreno, sequência e limites.</h2>
+          <div class="kicker">Figuras didáticas</div>
+          <h2>Fundo branco, traço limpo, leitura farmacológica.</h2>
         </div>
-        <p>A Arnica 6CH é um molde que precisa de substrato para imprimir. O terreno do paciente determina se o sinal pega ou não — a relação sinal-ruído é a variável operacional.</p>
+        <p>Imagens minimalistas para apoiar a ficha: arquitectura molecular, mecanismo clássico, mapa farmacológico e interface biofísica. São esquemas educacionais, não estruturas químicas completas nem protocolo clínico.</p>
       </div>
-      <div class="grid-2">
-        <article class="panel">
-          <h2>Pré-requisitos de terreno (leitura biofísica)</h2>
-          <p><strong>Hidratação EZ:</strong> a 6CH nucleia EZ. Se o tecido já está colapsado a k=78 — desidratado de luz, encharcado de nnEMF — há pouco substrato para o molde organizar. O paciente que faz sol real, água viva e aterramento tem hardware mais receptivo.</p>
-          <p><strong>Janela circadiana de reparo:</strong> a reconstrução de EZ e o fotorreparo NIR (~160 THz) seguem o relógio. A janela de reparo é noturna/de repouso — o molde entregue perto desse período encontra a maré de reconstrução a subir.</p>
-          <p><strong>Campo magnético e nnEMF:</strong> qualquer sinal coerente compete com ruído. Reduzir nnEMF melhora a relação sinal-ruído. Em calmaria geomagnética com sol abundante e terreno sólido, o organismo precisa menos deste suporte.</p>
-        </article>
-        <article class="panel">
-          <h2>Limites absolutos</h2>
-          <p>Independentemente do enquadramento biofísico, os seguintes contextos exigem avaliação profissional obrigatória:</p>
-          <p>Gravidez (especialmente 1º trimestre) · Alergia conhecida a Asteraceae · Sinais de fratura, lesão articular significativa ou hematoma expansivo · Trauma craniano · Dor desproporcional ou sinais de infeção · Qualquer quadro que não melhora com medidas básicas.</p>
-          <p><strong>Não confundir as duas Arnicas:</strong> a forma tópica concentrada (gel/creme) tem eficácia reconhecida sobre pele intacta mas é tóxica por via oral; a 6CH (glóbulos/gotas) tem perfil de segurança direto baixo mas eficácia contestada. A ficha pública não transforma molécula em protocolo individual.</p>
-        </article>
+      <div class="figure-grid">
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/arnica-montana/gpt/arnica-montana-01-molecula-gpt.png" alt="Imagem editorial GPT da molécula da Arnica Montana com helenalina, quercetina e flor alpina" loading="lazy" />
+          <figcaption>Helenalina + quercetina: antena quiral vegetal sob UV alpino.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/arnica-montana/gpt/arnica-montana-02-mecanismo-gpt.png" alt="Mecanismo clássico: helenalina inibindo NF-κB por adição de Michael à Cys38" loading="lazy" />
+          <figcaption>Helenalina alquila Cys38-p65: inibição de NF-κB por adição de Michael.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/arnica-montana/gpt/arnica-montana-03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico: planta TM → diluição 6CH → absorção sublingual → água EZ" loading="lazy" />
+          <figcaption>Da montanha à água: TM → 6CH (sucussão) → padrão EZ → nucleação no tecido.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/arnica-montana/gpt/arnica-montana-04-interface-biofisica-gpt.png" alt="Interface biofísica: UV alpino → antena vegetal → molde na água → nucleação EZ → CISS → ΔΨ" loading="lazy" />
+          <figcaption>UV alpino → antena vegetal → molde aquoso → nucleação EZ → CISS → ΔΨ. O eco fotônico da montanha na água do tecido.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -652,6 +703,30 @@
           <h2>Nota metodológica</h2>
           <p>A ficha separa rigorosamente a farmacognosia da planta (verde, consenso) da leitura biofísica da diluição 6CH (âmbar/ciano, hipótese de fronteira). A 6CH não é um anti-inflamatório baseado em helenalina molecular — é uma diluição homeopática cuja eficácia específica permanece <strong>não demonstrada</strong> pelo consenso científico convencional.</p>
           <p>O modelo biofísico aqui apresentado (Pollack, Del Giudice/Preparata, CISS, EZ, domínios de coerência) é um enquadramento teórico de fronteira, não facto clínico consolidado. A Pharmacopeia mantém as duas narrativas — a química estabelecida e a hipótese de fronteira — separadas e com os seus respetivos estatutos epistemológicos declarados.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="janela" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Janela de uso</div>
+          <h2>Terreno, sequência e limites.</h2>
+        </div>
+        <p>A Arnica 6CH é um molde que precisa de substrato para imprimir. O terreno do paciente determina se o sinal pega ou não — a relação sinal-ruído é a variável operacional.</p>
+      </div>
+      <div class="grid-2">
+        <article class="panel">
+          <h2>Pré-requisitos de terreno (leitura biofísica)</h2>
+          <p><strong>Hidratação EZ:</strong> a 6CH nucleia EZ. Se o tecido já está colapsado a k=78 — desidratado de luz, encharcado de nnEMF — há pouco substrato para o molde organizar. O paciente que faz sol real, água viva e aterramento tem hardware mais receptivo.</p>
+          <p><strong>Janela circadiana de reparo:</strong> a reconstrução de EZ e o fotorreparo NIR (~160 THz) seguem o relógio. A janela de reparo é noturna/de repouso — o molde entregue perto desse período encontra a maré de reconstrução a subir.</p>
+          <p><strong>Campo magnético e nnEMF:</strong> qualquer sinal coerente compete com ruído. Reduzir nnEMF melhora a relação sinal-ruído. Em calmaria geomagnética com sol abundante e terreno sólido, o organismo precisa menos deste suporte.</p>
+        </article>
+        <article class="panel">
+          <h2>Limites absolutos</h2>
+          <p>Independentemente do enquadramento biofísico, os seguintes contextos exigem avaliação profissional obrigatória:</p>
+          <p>Gravidez (especialmente 1º trimestre) · Alergia conhecida a Asteraceae · Sinais de fratura, lesão articular significativa ou hematoma expansivo · Trauma craniano · Dor desproporcional ou sinais de infeção · Qualquer quadro que não melhora com medidas básicas.</p>
+          <p><strong>Não confundir as duas Arnicas:</strong> a forma tópica concentrada (gel/creme) tem eficácia reconhecida sobre pele intacta mas é tóxica por via oral; a 6CH (glóbulos/gotas) tem perfil de segurança direto baixo mas eficácia contestada. A ficha pública não transforma molécula em protocolo individual.</p>
         </article>
       </div>
     </section>
@@ -691,13 +766,6 @@
       </div>
     </section>
 
-    <section class="shell">
-      <aside class="notice warning">
-        <h2>Guardrail clínico — leia antes</h2>
-        <p><strong>Esta página é educacional. Não é prescrição.</strong> A Pharmacopeia.info publica leitura biofísica e farmacológica de substâncias para estudo e contexto — não fornece dose, posologia, ciclo, indicação individual, nem recomenda compra, uso ou substituição de qualquer tratamento. Nada aqui diagnostica, trata, cura ou previne doença, nem substitui consulta, anamnese, exame ou a decisão de um profissional de saúde habilitado. Medicamentos têm riscos, interações e contraindicações que dependem do seu terreno, da sua história clínica, da sua geografia e dos medicamentos que já usa.</p>
-        <p><strong>Arnica — específico:</strong> a eficácia da Arnica em diluição homeopática 6CH <strong>não tem suporte de evidência clínica consolidada</strong> — meta-análises convencionais não encontram efeito acima do placebo; o mecanismo de "memória da água" é hipótese de fronteira em debate científico. Arnica em forma concentrada/oral <strong>pode ser tóxica</strong> (a helenalina é citotóxica); a via homeopática diluída é distinta da planta bruta. A Arnica fitoterápica tópica (gel/creme concentrado) tem uso tradicional reconhecido sobre pele intacta para contusões e entorses, mas <strong>não se ingere</strong>. A ficha separa explicitamente as duas realidades. Antes de qualquer uso, fale com o seu médico ou farmacêutico.</p>
-      </aside>
-    </section>
   </main>
 
   <footer>

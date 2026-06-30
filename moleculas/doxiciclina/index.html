@@ -296,9 +296,9 @@
     .axis-card small {
       display: block;
       margin-top: 12px;
-      color: var(--ink-3);
+      color: var(--ink-2);
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 13px;
       text-transform: uppercase;
       letter-spacing: .06em;
       line-height: 1.45;
@@ -404,6 +404,66 @@
     footer strong { color: var(--ink-2); font-weight: 700; }
     footer code   { font-family: var(--mono); color: var(--ink-3); font-size: 11px; }
 
+    
+    /* ─── BREADCRUMB ─────────────────────────────────── */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 14px 0;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--ink-3);
+    }
+    .breadcrumb a { color: var(--ink-3); }
+    .breadcrumb a:hover { color: var(--solar); }
+    .breadcrumb .bc-name { color: var(--ink-2); }
+    .breadcrumb .bc-sep { color: var(--rule-heavy); margin: 0 1px; }
+    
+    /* ─── MOBILE NAV ────────────────────────────────── */
+    .mobile-nav { display: none; }
+      .mobile-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 18px;
+      }
+      .mobile-nav a {
+        font-family: var(--mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: .10em;
+        color: var(--ink-3);
+        border: 1px solid var(--rule);
+        padding: 5px 11px;
+        border-radius: 999px;
+        transition: color .12s, border-color .12s;
+      }
+      .mobile-nav a:hover { color: var(--ink); border-color: var(--ink-2); }
+
+      .mobile-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 18px;
+      }
+      .mobile-nav a {
+        font-family: var(--mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: .10em;
+        color: var(--ink-3);
+        border: 1px solid var(--rule);
+        padding: 5px 11px;
+        border-radius: 999px;
+        transition: color .12s, border-color .12s;
+      }
+      .mobile-nav a:hover { color: var(--ink); border-color: var(--ink-2); }
+
     /* ─── RESPONSIVE ─────────────────────────────────── */
     @media (max-width: 1000px) {
       .axis-grid { grid-template-columns: repeat(2, 1fr); }
@@ -432,8 +492,8 @@
       <nav aria-label="Navegação principal">
         <a href="#biofisica">Biofísica</a>
         <a href="#bioquimica">Bioquímica</a>
-        
         <a href="#evidencia">Evidência</a>
+        <a href="#janela">Janela</a>
         <a href="#fontes">Fontes</a>
       </nav>
       <button id="themeToggle" class="theme-btn" type="button" aria-label="Mudar para tema escuro">
@@ -443,6 +503,13 @@
   </header>
 
   <main>
+    <nav class="breadcrumb shell" aria-label="Caminho da página">
+      <a href="../../index.html">Pharmacopeia.info</a>
+      <span class="bc-sep" aria-hidden="true">/</span>
+      <a href="../../index.html#moleculas">Moléculas</a>
+      <span class="bc-sep" aria-hidden="true">/</span>
+      <span class="bc-name">Doxiciclina</span>
+    </nav>
     <section class="hero shell">
       <div class="kicker">Ficha 03 · molécula</div>
       <h1>Doxiciclina</h1>
@@ -451,6 +518,13 @@
         <a class="button" href="#biofisica">BLOCO 1 — Biofísica</a>
         <a class="button secondary" href="#bioquimica">BLOCO 2 — Bioquímica</a>
       </div>
+      <nav class="mobile-nav" aria-label="Navegação por seção">
+        <a href="#biofisica">Biofísica</a>
+        <a href="#bioquimica">Bioquímica</a>
+        <a href="#evidencia">Evidência</a>
+        <a href="#janela">Janela</a>
+        <a href="#fontes">Fontes</a>
+      </nav>
     </section>
 
     <section class="shell">
@@ -485,35 +559,7 @@
       </div>
     </section>
 
-    <section id="figuras" class="shell">
-      <div class="section-head">
-        <div>
-          <div class="kicker">Figuras didáticas</div>
-          <h2>Fundo branco, traço limpo, leitura farmacológica.</h2>
-        </div>
-        <p>Imagens minimalistas para apoiar a ficha: arquitetura molecular, mecanismo clássico, mapa farmacológico e interface biofísica. São esquemas educacionais, não estruturas químicas completas nem protocolo clínico.</p>
-      </div>
-      <div class="figure-grid">
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/doxiciclina/gpt/doxiciclina-01-molecula-gpt.png" alt="Estrutura química da doxiciclina com núcleo hidronaftaceno de quatro anéis, grupos funcionais e lipofilicidade aumentada em relação à tetraciclina-mãe, sobre fundo branco." loading="lazy" />
-          <figcaption>Molécula da doxiciclina: quatro anéis conjugados planos, gaiola quelante β-diceto-fenol, centros quirais e substituição 6-metil que aumenta a lipofilicidade — arquitetura de antena durável.</figcaption>
-        </figure>
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/doxiciclina/gpt/doxiciclina-02-ribossomo-30s-gpt.png" alt="Diagrama do mecanismo clássico da doxiciclina: bloqueio do sítio A da subunidade ribossomal 30S e distribuição lipofílica incluindo barreira hematoencefálica." loading="lazy" />
-          <figcaption>Mecanismo clássico: bloqueio reversível do aminoacil-tRNA na subunidade 30S + distribuição lipofílica que atravessa a barreira hematoencefálica. Bacteriostático de amplo espectro.</figcaption>
-        </figure>
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/doxiciclina/gpt/doxiciclina-03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico da doxiciclina: absorção oral alimento-tolerante, distribuição tecidual lipofílica profunda, metabolismo hepático limitado e eliminação não-renal com meia-vida longa." loading="lazy" />
-          <figcaption>Mapa farmacológico: absorção alimento-tolerante (~90–100%), distribuição lipofílica profunda incluindo SNC, metabolismo mínimo e eliminação não-renal — meia-vida 18–22 h.</figcaption>
-        </figure>
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/doxiciclina/gpt/doxiciclina-04-interface-biofisica-gpt.png" alt="Diagrama da interface biofísica da doxiciclina: UV-A, estado tripleto, cascata POMC/neuromelanina, CISS, APOE/DHA e freio mitocondrial — com marcação de hipótese investigacional." loading="lazy" />
-          <figcaption>Interface biofísica (hipótese investigacional): UV-A → estado tripleto → POMC/α-MSH → eumelanina e neuromelanina → CISS → APOE/DHA → freio mitocondrial. Fronteira investigacional, não consenso biomédico.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-<section id="biofisica" class="shell">
+    <section id="biofisica" class="shell">
       <div class="section-head">
         <div>
           <div class="kicker">BLOCO 1 — Biofísica</div>
@@ -608,29 +654,31 @@
       </div>
     </section>
 
-    
-
-    <section id="janela" class="shell">
+    <section id="figuras" class="shell">
       <div class="section-head">
         <div>
-          <div class="kicker">Janela de uso</div>
-          <h2>Terreno, latitude e limites absolutos.</h2>
+          <div class="kicker">Figuras didáticas</div>
+          <h2>Fundo branco, traço limpo, leitura farmacológica.</h2>
         </div>
-        <p>A doxiciclina é uma antena lipofílica de longa duração — o que amplifica é determinado pelo estado do meio e pela profundidade do compartimento, não apenas pela molécula. Terreno, latitude e contexto clínico são variáveis de primeira ordem.</p>
+        <p>Imagens minimalistas para apoiar a ficha: arquitetura molecular, mecanismo clássico, mapa farmacológico e interface biofísica. São esquemas educacionais, não estruturas químicas completas nem protocolo clínico.</p>
       </div>
-      <div class="grid-2">
-        <article class="panel">
-          <h2>Pré-requisitos de terreno (leitura biofísica)</h2>
-          <p><strong>Melanina basal prévia:</strong> a inversão de spin onde a corrente CISS aterra eficientemente precisa estar montada. Chegar à doxiciclina sem melanina solar prévia é ligar a antena sem o receptor. Em terreno cru, o risco de fototoxicidade convencional aumenta — a diferença entre fototoxicidade e fotossíntese de pigmento está no estado do meio, não na molécula.</p>
-          <p><strong>Água EZ como substrato dielétrico:</strong> a lipofilicidade da doxiciclina coloca-a na interface membrana-água estruturada. Sem essa rede intacta (sol real matinal, aterramento, baixo nnEMF), a corrente CISS fotoexcitada não tem substrato quiral onde filtrar o spin.</p>
-          <p><strong>Janela circadiana e latitude:</strong> UV-A existe de dia, sob sol real — não LED azul (que não tem UV-A e desidrata a rede). A meia-vida longa (~18–22 h) permite que os níveis teciduais coincidam com janelas solares matinal e vespertina sem exigir temporização rigorosa da toma. Em latitude alta/inverno sem UV-A, o efeito fotónico é mudo.</p>
-        </article>
-        <article class="panel">
-          <h2>Limites absolutos</h2>
-          <p>Independentemente do enquadramento biofísico, os seguintes contextos exigem avaliação profissional obrigatória antes de qualquer uso:</p>
-          <p>Gestação (especialmente 1º trimestre) e lactação · Crianças abaixo de ~8 anos como regra (exceção clínica em ricketsiose grave) · Insuficiência hepática significativa · Uso concomitante de varfarina (monitorizar INR) ou retinóides sistémicos · Produto com validade expirada (risco de tubulopatia renal) · Qualquer contexto de infeção bacteriana ativa (exige diagnóstico, antibiograma e prescrição) · Esôfago de risco (tomar sempre com bastante água e na posição vertical).</p>
-          <p><strong>A ficha pública não transforma molécula em protocolo individual.</strong> Dose, forma farmacêutica, duração, indicação e monitorização pertencem à avaliação clínica. O uso inadequado de antibiótico seleciona resistência bacteriana — dano individual e coletivo real.</p>
-        </article>
+      <div class="figure-grid">
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/doxiciclina/gpt/doxiciclina-01-molecula-gpt.png" alt="Estrutura química da doxiciclina com núcleo hidronaftaceno de quatro anéis, grupos funcionais e lipofilicidade aumentada em relação à tetraciclina-mãe, sobre fundo branco." loading="lazy" />
+          <figcaption>Molécula da doxiciclina: quatro anéis conjugados planos, gaiola quelante β-diceto-fenol, centros quirais e substituição 6-metil que aumenta a lipofilicidade — arquitetura de antena durável.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/doxiciclina/gpt/doxiciclina-02-ribossomo-30s-gpt.png" alt="Diagrama do mecanismo clássico da doxiciclina: bloqueio do sítio A da subunidade ribossomal 30S e distribuição lipofílica incluindo barreira hematoencefálica." loading="lazy" />
+          <figcaption>Mecanismo clássico: bloqueio reversível do aminoacil-tRNA na subunidade 30S + distribuição lipofílica que atravessa a barreira hematoencefálica. Bacteriostático de amplo espectro.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/doxiciclina/gpt/doxiciclina-03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico da doxiciclina: absorção oral alimento-tolerante, distribuição tecidual lipofílica profunda, metabolismo hepático limitado e eliminação não-renal com meia-vida longa." loading="lazy" />
+          <figcaption>Mapa farmacológico: absorção alimento-tolerante (~90–100%), distribuição lipofílica profunda incluindo SNC, metabolismo mínimo e eliminação não-renal — meia-vida 18–22 h.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/doxiciclina/gpt/doxiciclina-04-interface-biofisica-gpt.png" alt="Diagrama da interface biofísica da doxiciclina: UV-A, estado tripleto, cascata POMC/neuromelanina, CISS, APOE/DHA e freio mitocondrial — com marcação de hipótese investigacional." loading="lazy" />
+          <figcaption>Interface biofísica (hipótese investigacional): UV-A → estado tripleto → POMC/α-MSH → eumelanina e neuromelanina → CISS → APOE/DHA → freio mitocondrial. Fronteira investigacional, não consenso biomédico.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -653,6 +701,30 @@
           <h2>Nota metodológica</h2>
           <p>A farmacologia convencional da doxiciclina foi maioritariamente construída sobre modelos de roedores noturnos sem controlo de espectro luminoso, latitude, campo magnético ou estado de hidratação. Isso sistematicamente enquadra os efeitos fotossensibilizantes como "toxicidade" sem avaliar o papel do estado do meio na determinação do resultado.</p>
           <p>A distinção editorial crítica desta molécula é entre o <em>mecanismo antibiótico</em> (sólido, consenso) e a <em>leitura biofísica de antena UV-A lipofílica</em> (investigacional, Pharmacopeia). A ficha mantém as duas narrativas separadas: onde há consenso, dizemos consenso; onde há hipótese, dizemos hipótese; onde há fronteira, dizemos fronteira. O diferencial lipofílico vs. tetraciclina-mãe é o ponto editorial central desta ficha.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="janela" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Janela de uso</div>
+          <h2>Terreno, latitude e limites absolutos.</h2>
+        </div>
+        <p>A doxiciclina é uma antena lipofílica de longa duração — o que amplifica é determinado pelo estado do meio e pela profundidade do compartimento, não apenas pela molécula. Terreno, latitude e contexto clínico são variáveis de primeira ordem.</p>
+      </div>
+      <div class="grid-2">
+        <article class="panel">
+          <h2>Pré-requisitos de terreno (leitura biofísica)</h2>
+          <p><strong>Melanina basal prévia:</strong> a inversão de spin onde a corrente CISS aterra eficientemente precisa estar montada. Chegar à doxiciclina sem melanina solar prévia é ligar a antena sem o receptor. Em terreno cru, o risco de fototoxicidade convencional aumenta — a diferença entre fototoxicidade e fotossíntese de pigmento está no estado do meio, não na molécula.</p>
+          <p><strong>Água EZ como substrato dielétrico:</strong> a lipofilicidade da doxiciclina coloca-a na interface membrana-água estruturada. Sem essa rede intacta (sol real matinal, aterramento, baixo nnEMF), a corrente CISS fotoexcitada não tem substrato quiral onde filtrar o spin.</p>
+          <p><strong>Janela circadiana e latitude:</strong> UV-A existe de dia, sob sol real — não LED azul (que não tem UV-A e desidrata a rede). A meia-vida longa (~18–22 h) permite que os níveis teciduais coincidam com janelas solares matinal e vespertina sem exigir temporização rigorosa da toma. Em latitude alta/inverno sem UV-A, o efeito fotónico é mudo.</p>
+        </article>
+        <article class="panel">
+          <h2>Limites absolutos</h2>
+          <p>Independentemente do enquadramento biofísico, os seguintes contextos exigem avaliação profissional obrigatória antes de qualquer uso:</p>
+          <p>Gestação (especialmente 1º trimestre) e lactação · Crianças abaixo de ~8 anos como regra (exceção clínica em ricketsiose grave) · Insuficiência hepática significativa · Uso concomitante de varfarina (monitorizar INR) ou retinóides sistémicos · Produto com validade expirada (risco de tubulopatia renal) · Qualquer contexto de infeção bacteriana ativa (exige diagnóstico, antibiograma e prescrição) · Esôfago de risco (tomar sempre com bastante água e na posição vertical).</p>
+          <p><strong>A ficha pública não transforma molécula em protocolo individual.</strong> Dose, forma farmacêutica, duração, indicação e monitorização pertencem à avaliação clínica. O uso inadequado de antibiótico seleciona resistência bacteriana — dano individual e coletivo real.</p>
         </article>
       </div>
     </section>
@@ -692,13 +764,6 @@
       </div>
     </section>
 
-    <section class="shell">
-      <aside class="notice warning">
-        <h2>Guardrail clínico — leia antes</h2>
-        <p><strong>Esta página é educacional. Não é prescrição.</strong> A Pharmacopeia.info publica leitura biofísica e farmacológica de substâncias para estudo e contexto — não fornece dose, posologia, ciclo, indicação individual, nem recomenda compra, uso ou substituição de qualquer tratamento. Nada aqui diagnostica, trata, cura ou previne doença, nem substitui consulta, anamnese, exame ou a decisão de um profissional de saúde habilitado. Medicamentos têm riscos, interações e contraindicações que dependem do seu terreno, da sua história clínica, da sua geografia e dos medicamentos que já usa. Antes de qualquer uso, fale com o seu médico ou farmacêutico.</p>
-        <p><strong>Doxiciclina — específico:</strong> esofagite ulcerativa documentada — tomar sempre com bastante água e na posição vertical, nunca imediatamente antes de deitar. Fotossensibilidade é efeito de classe documentado: proteção solar durante o tratamento. Contraindicada em gestação, lactação e crianças abaixo de ~8 anos como regra geral (descoloração dentária permanente e efeito ósseo — exceção reconhecida em ricketsioses graves, decisão clínica). Nunca usar produto com validade expirada (risco de síndrome de Fanconi). Quelação com antiácidos, ferro e laticínios em excesso — separar no tempo. Interações relevantes: indutores enzimáticos (rifampicina, fenitoína, carbamazepina, barbitúricos reduzem níveis e meia-vida), varfarina (potenciação anticoagulante — monitorizar INR), retinóides sistémicos (isotretinoína/acitretina — evitar, risco aditivo de hipertensão intracraniana). A doxiciclina é antibiótico de prescrição — uso inadequado e automedicação contribuem para seleção de resistência bacteriana, com impacto individual e coletivo real.</p>
-      </aside>
-    </section>
   </main>
 
   <footer>

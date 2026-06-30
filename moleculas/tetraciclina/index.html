@@ -296,9 +296,9 @@
     .axis-card small {
       display: block;
       margin-top: 12px;
-      color: var(--ink-3);
+      color: var(--ink-2);
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 13px;
       text-transform: uppercase;
       letter-spacing: .06em;
       line-height: 1.45;
@@ -404,6 +404,66 @@
     footer strong { color: var(--ink-2); font-weight: 700; }
     footer code   { font-family: var(--mono); color: var(--ink-3); font-size: 11px; }
 
+    
+    /* ─── BREADCRUMB ─────────────────────────────────── */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 14px 0;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--ink-3);
+    }
+    .breadcrumb a { color: var(--ink-3); }
+    .breadcrumb a:hover { color: var(--solar); }
+    .breadcrumb .bc-name { color: var(--ink-2); }
+    .breadcrumb .bc-sep { color: var(--rule-heavy); margin: 0 1px; }
+    
+    /* ─── MOBILE NAV ────────────────────────────────── */
+    .mobile-nav { display: none; }
+      .mobile-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 18px;
+      }
+      .mobile-nav a {
+        font-family: var(--mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: .10em;
+        color: var(--ink-3);
+        border: 1px solid var(--rule);
+        padding: 5px 11px;
+        border-radius: 999px;
+        transition: color .12s, border-color .12s;
+      }
+      .mobile-nav a:hover { color: var(--ink); border-color: var(--ink-2); }
+
+      .mobile-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 18px;
+      }
+      .mobile-nav a {
+        font-family: var(--mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: .10em;
+        color: var(--ink-3);
+        border: 1px solid var(--rule);
+        padding: 5px 11px;
+        border-radius: 999px;
+        transition: color .12s, border-color .12s;
+      }
+      .mobile-nav a:hover { color: var(--ink); border-color: var(--ink-2); }
+
     /* ─── RESPONSIVE ─────────────────────────────────── */
     @media (max-width: 1000px) {
       .axis-grid { grid-template-columns: repeat(2, 1fr); }
@@ -433,6 +493,7 @@
         <a href="#biofisica">Biofísica</a>
         <a href="#bioquimica">Bioquímica</a>
         <a href="#evidencia">Evidência</a>
+        <a href="#janela">Janela</a>
         <a href="#fontes">Fontes</a>
       </nav>
       <button id="themeToggle" class="theme-btn" type="button" aria-label="Mudar para tema escuro">
@@ -442,6 +503,13 @@
   </header>
 
   <main>
+    <nav class="breadcrumb shell" aria-label="Caminho da página">
+      <a href="../../index.html">Pharmacopeia.info</a>
+      <span class="bc-sep" aria-hidden="true">/</span>
+      <a href="../../index.html#moleculas">Moléculas</a>
+      <span class="bc-sep" aria-hidden="true">/</span>
+      <span class="bc-name">Tetraciclina</span>
+    </nav>
     <section class="hero shell">
       <div class="kicker">Ficha 02 · molécula</div>
       <h1>Tetraciclina</h1>
@@ -450,6 +518,13 @@
         <a class="button" href="#biofisica">BLOCO 1 — Biofísica</a>
         <a class="button secondary" href="#bioquimica">BLOCO 2 — Bioquímica</a>
       </div>
+      <nav class="mobile-nav" aria-label="Navegação por seção">
+        <a href="#biofisica">Biofísica</a>
+        <a href="#bioquimica">Bioquímica</a>
+        <a href="#evidencia">Evidência</a>
+        <a href="#janela">Janela</a>
+        <a href="#fontes">Fontes</a>
+      </nav>
     </section>
 
     <section class="shell">
@@ -481,34 +556,6 @@
         <article class="summary-card"><span class="status established">estabelecido · BLOCO 2</span><b>Antibiótico 30S</b><p>Bloqueio reversível da ligação do aminoacil-tRNA à subunidade ribossomal 30S bacteriana, dependente de Mg²⁺. Bacteriostático de amplo espectro. Mecanismo e seletividade bem documentados.</p></article>
         <article class="summary-card"><span class="status established">estabelecido · BLOCO 2</span><b>Quelação e fotossensibilidade</b><p>Bolso tricarbonil de alta afinidade para Ca²⁺, Mg²⁺, Fe²⁺/³⁺, Zn²⁺ — base da deposição em tecidos calcificados, interferência alimentar e fotossensibilidade como efeito de classe documentado.</p></article>
         <article class="summary-card"><span class="status guarded">prudência · ambos</span><b>Janela estreita</b><p>Contraindicações absolutas em gestação/lactação/crianças &lt;8 anos; risco em insuficiência renal; produto vencido → síndrome de Fanconi; resistência bacteriana por uso inadequado. Não é molécula para slogan.</p></article>
-      </div>
-    </section>
-
-    <section id="figuras" class="shell">
-      <div class="section-head">
-        <div>
-          <div class="kicker">Figuras didáticas</div>
-          <h2>Fundo branco, traço limpo, leitura farmacológica.</h2>
-        </div>
-        <p>Imagens minimalistas para apoiar a ficha: arquitetura molecular, mecanismo clássico, mapa farmacológico e interface biofísica. São esquemas educacionais, não estruturas químicas completas nem protocolo clínico.</p>
-      </div>
-      <div class="figure-grid">
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/tetraciclina/gpt/tetraciclina-01-molecula-gpt.png" alt="Diagrama editorial da molécula de tetraciclina com núcleo octahidronaftaceno de quatro anéis, grupos carbonila, hidroxila e dimetilamino destacados em estilo de atlas farmacológico." loading="lazy" />
-          <figcaption>Molécula da tetraciclina: quatro anéis conjugados planos, carbonilas, hidroxilas e grupo dimetilamino — arquitetura simultânea de cromóforo e quelante de metais.</figcaption>
-        </figure>
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/tetraciclina/gpt/tetraciclina-02-ribossomo-30s-gpt.png" alt="Diagrama do mecanismo clássico da tetraciclina: molécula posicionada na subunidade ribossomal 30S a bloquear o aminoacil-tRNA, com dependência de Mg²⁺." loading="lazy" />
-          <figcaption>Mecanismo clássico: bloqueio reversível da ligação do aminoacil-tRNA à subunidade 30S do ribossoma bacteriano, dependente de Mg²⁺. Efeito bacteriostático de amplo espectro.</figcaption>
-        </figure>
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/tetraciclina/gpt/tetraciclina-03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico da tetraciclina: absorção oral com filtro de quelação, metabolismo hepático mínimo, deposição em tecidos calcificados, excreção renal e circulação êntero-hepática." loading="lazy" />
-          <figcaption>Mapa farmacológico simplificado: absorção oral com filtro de quelação intestinal, distribuição para tecidos calcificados, metabolismo mínimo e excreção predominantemente renal.</figcaption>
-        </figure>
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/tetraciclina/gpt/tetraciclina-04-interface-biofisica-gpt.png" alt="Diagrama da interface biofísica da tetraciclina: UV-A atinge a molécula, transição para estado tripleto, cascata POMC-melanina, corrente de electrões polarizados por spin e conexão mitocondrial — com marcação de hipótese." loading="lazy" />
-          <figcaption>Interface biofísica (hipótese investigacional): UV-A → estado tripleto → POMC/α-MSH → melanina semicondutora → corrente CISS → mitocôndria. Fronteira investigacional, não consenso biomédico.</figcaption>
-        </figure>
       </div>
     </section>
 
@@ -607,27 +654,31 @@
       </div>
     </section>
 
-    <section id="janela" class="shell">
+    <section id="figuras" class="shell">
       <div class="section-head">
         <div>
-          <div class="kicker">Janela de uso</div>
-          <h2>Terreno, latitude e limites absolutos.</h2>
+          <div class="kicker">Figuras didáticas</div>
+          <h2>Fundo branco, traço limpo, leitura farmacológica.</h2>
         </div>
-        <p>A tetraciclina é uma antena de fase aquosa — o que amplifica é determinado pelo estado do meio, não apenas pela molécula. Terreno e latitude são variáveis de primeira ordem.</p>
+        <p>Imagens minimalistas para apoiar a ficha: arquitetura molecular, mecanismo clássico, mapa farmacológico e interface biofísica. São esquemas educacionais, não estruturas químicas completas nem protocolo clínico.</p>
       </div>
-      <div class="grid-2">
-        <article class="panel">
-          <h2>Pré-requisitos de terreno (leitura biofísica)</h2>
-          <p><strong>Água EZ como substrato:</strong> a hidrofilia da tetraciclina (log P ≈ −1,3) coloca-a dentro da rede de água estruturada (k=160). Sem essa rede intacta, a corrente CISS fotoexcitada não tem substrato de melanina quiral onde filtrar o spin — e vira radicais livres. Construir a base de água (sol real matinal, aterramento, baixo nnEMF) antes de usar a antena.</p>
-          <p><strong>Melanina basal prévia:</strong> exposição solar prévia que já depositou eumelanina é o inversor de spin onde a corrente CISS aterra eficientemente. Em terreno cru sem melanina, o risco de fototoxicidade convencional aumenta. A diferença entre fototoxicidade e fotossíntese de pigmento está no estado do meio, não na molécula.</p>
-          <p><strong>Janela circadiana e latitude:</strong> UV-A só existe de dia, sob sol real — não LED azul (que não tem UV-A e desidrata a rede). Em latitude alta/inverno sem UV-A, o efeito fotónico é mudo. Em latitude tropical/verão com UV-A abundante, a cascata POMC dispara com força.</p>
-        </article>
-        <article class="panel">
-          <h2>Limites absolutos</h2>
-          <p>Independentemente do enquadramento biofísico, os seguintes contextos exigem avaliação profissional obrigatória antes de qualquer uso:</p>
-          <p>Gestação (especialmente 1º trimestre) e lactação · Crianças abaixo de ~8 anos · Insuficiência renal ou hepática significativa · Uso concomitante de varfarina ou retinóides sistémicos · Produto com validade expirada (risco de tubulopatia renal por epianidrotetraciclina) · Qualquer contexto de infecção bacteriana activa (exige diagnóstico clínico, antibiograma e prescrição).</p>
-          <p><strong>A ficha pública não transforma molécula em protocolo individual.</strong> Dose, forma farmacêutica, duração, indicação e monitorização pertencem à avaliação clínica. O uso inadequado de antibiótico selecciona resistência bacteriana — dano individual e colectivo real.</p>
-        </article>
+      <div class="figure-grid">
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/tetraciclina/gpt/tetraciclina-01-molecula-gpt.png" alt="Diagrama editorial da molécula de tetraciclina com núcleo octahidronaftaceno de quatro anéis, grupos carbonila, hidroxila e dimetilamino destacados em estilo de atlas farmacológico." loading="lazy" />
+          <figcaption>Molécula da tetraciclina: quatro anéis conjugados planos, carbonilas, hidroxilas e grupo dimetilamino — arquitetura simultânea de cromóforo e quelante de metais.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/tetraciclina/gpt/tetraciclina-02-ribossomo-30s-gpt.png" alt="Diagrama do mecanismo clássico da tetraciclina: molécula posicionada na subunidade ribossomal 30S a bloquear o aminoacil-tRNA, com dependência de Mg²⁺." loading="lazy" />
+          <figcaption>Mecanismo clássico: bloqueio reversível da ligação do aminoacil-tRNA à subunidade 30S do ribossoma bacteriano, dependente de Mg²⁺. Efeito bacteriostático de amplo espectro.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/tetraciclina/gpt/tetraciclina-03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico da tetraciclina: absorção oral com filtro de quelação, metabolismo hepático mínimo, deposição em tecidos calcificados, excreção renal e circulação êntero-hepática." loading="lazy" />
+          <figcaption>Mapa farmacológico simplificado: absorção oral com filtro de quelação intestinal, distribuição para tecidos calcificados, metabolismo mínimo e excreção predominantemente renal.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/tetraciclina/gpt/tetraciclina-04-interface-biofisica-gpt.png" alt="Diagrama da interface biofísica da tetraciclina: UV-A atinge a molécula, transição para estado tripleto, cascata POMC-melanina, corrente de electrões polarizados por spin e conexão mitocondrial — com marcação de hipótese." loading="lazy" />
+          <figcaption>Interface biofísica (hipótese investigacional): UV-A → estado tripleto → POMC/α-MSH → melanina semicondutora → corrente CISS → mitocôndria. Fronteira investigacional, não consenso biomédico.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -650,6 +701,30 @@
           <h2>Nota metodológica</h2>
           <p>A farmacologia convencional da tetraciclina foi maioritariamente construída sobre modelos de roedores noturnos sem controlo de espectro luminoso, latitude, campo magnético ou estado de hidratação. Isso sistematicamente enquadra os efeitos fotóssensibilizantes como "toxicidade" sem avaliar o papel do estado do meio na determinação do resultado.</p>
           <p>A distinção editorial crítica desta molécula é entre o <em>mecanismo antibiótico</em> (sólido, consenso) e a <em>leitura biofísica de antena UV-A</em> (investigacional, Pharmacopeia). A ficha mantém as duas narrativas separadas sem deixar o entusiasmo de uma contaminar a credibilidade da outra. Onde há consenso, dizemos consenso. Onde há hipótese, dizemos hipótese. Onde há fronteira, dizemos fronteira.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="janela" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Janela de uso</div>
+          <h2>Terreno, latitude e limites absolutos.</h2>
+        </div>
+        <p>A tetraciclina é uma antena de fase aquosa — o que amplifica é determinado pelo estado do meio, não apenas pela molécula. Terreno e latitude são variáveis de primeira ordem.</p>
+      </div>
+      <div class="grid-2">
+        <article class="panel">
+          <h2>Pré-requisitos de terreno (leitura biofísica)</h2>
+          <p><strong>Água EZ como substrato:</strong> a hidrofilia da tetraciclina (log P ≈ −1,3) coloca-a dentro da rede de água estruturada (k=160). Sem essa rede intacta, a corrente CISS fotoexcitada não tem substrato de melanina quiral onde filtrar o spin — e vira radicais livres. Construir a base de água (sol real matinal, aterramento, baixo nnEMF) antes de usar a antena.</p>
+          <p><strong>Melanina basal prévia:</strong> exposição solar prévia que já depositou eumelanina é o inversor de spin onde a corrente CISS aterra eficientemente. Em terreno cru sem melanina, o risco de fototoxicidade convencional aumenta. A diferença entre fototoxicidade e fotossíntese de pigmento está no estado do meio, não na molécula.</p>
+          <p><strong>Janela circadiana e latitude:</strong> UV-A só existe de dia, sob sol real — não LED azul (que não tem UV-A e desidrata a rede). Em latitude alta/inverno sem UV-A, o efeito fotónico é mudo. Em latitude tropical/verão com UV-A abundante, a cascata POMC dispara com força.</p>
+        </article>
+        <article class="panel">
+          <h2>Limites absolutos</h2>
+          <p>Independentemente do enquadramento biofísico, os seguintes contextos exigem avaliação profissional obrigatória antes de qualquer uso:</p>
+          <p>Gestação (especialmente 1º trimestre) e lactação · Crianças abaixo de ~8 anos · Insuficiência renal ou hepática significativa · Uso concomitante de varfarina ou retinóides sistémicos · Produto com validade expirada (risco de tubulopatia renal por epianidrotetraciclina) · Qualquer contexto de infecção bacteriana activa (exige diagnóstico clínico, antibiograma e prescrição).</p>
+          <p><strong>A ficha pública não transforma molécula em protocolo individual.</strong> Dose, forma farmacêutica, duração, indicação e monitorização pertencem à avaliação clínica. O uso inadequado de antibiótico selecciona resistência bacteriana — dano individual e colectivo real.</p>
         </article>
       </div>
     </section>
@@ -689,13 +764,6 @@
       </div>
     </section>
 
-    <section class="shell">
-      <aside class="notice warning">
-        <h2>Guardrail clínico — leia antes</h2>
-        <p><strong>Esta página é educacional. Não é prescrição.</strong> A Pharmacopeia.info publica leitura biofísica e farmacológica de substâncias para estudo e contexto — não fornece dose, posologia, ciclo, indicação individual, nem recomenda compra, uso ou substituição de qualquer tratamento. Nada aqui diagnostica, trata, cura ou previne doença, nem substitui consulta, anamnese, exame ou a decisão de um profissional de saúde habilitado. Medicamentos têm riscos, interações e contraindicações que dependem do seu terreno, da sua história clínica, da sua geografia e dos medicamentos que já usa. Antes de qualquer uso, fale com o seu médico ou farmacêutico.</p>
-        <p><strong>Tetraciclina — específico:</strong> contraindicada na gestação, na lactação e em crianças abaixo de ~8 anos (descoloração dentária permanente e hipoplasia do esmalte — dano irreversível). Pode agravar insuficiência renal (↑ BUN, acumulação) — a doxiciclina é a alternativa de classe preferida na doença renal. Nunca usar produto com validade expirada (epianidrotetraciclina pode causar síndrome de Fanconi). Fotossensibilidade é efeito de classe documentado: protecção solar durante o tratamento. A tetraciclina é antibiótico de prescrição — o uso inadequado e a auto-medicação contribuem directamente para selecção de resistência bacteriana, com impacto individual e colectivo real.</p>
-      </aside>
-    </section>
   </main>
 
   <footer>

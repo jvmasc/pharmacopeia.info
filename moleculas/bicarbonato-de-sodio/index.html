@@ -578,6 +578,25 @@ nav a:hover{
   padding-left:20px;
   line-height:1.8;
 }
+
+/* ─── BREADCRUMB ─────────────────────────────── */
+.breadcrumb-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 24px;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+.breadcrumb-bar a { color: var(--muted); }
+.breadcrumb-bar a:hover { color: var(--solar); }
+.breadcrumb-bar .bc-current { color: var(--solar); }
+.breadcrumb-bar .bc-sep { margin: 0 2px; }
 /* footer */
 footer{
   padding:40px 0;
@@ -616,10 +635,19 @@ footer .mono{
     <a href="#biofisica">Biofísica</a>
     <a href="#bioquimica">Bioquímica</a>
     <a href="#evidencia">Evidência</a>
+    <a href="#janela">Janela</a>
     <a href="#fontes">Fontes</a>
   </nav>
   <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">☀ Tema</button>
 </header>
+
+<nav class="breadcrumb-bar" aria-label="Caminho da página">
+  <a href="../../index.html">Pharmacopeia.info</a>
+  <span class="bc-sep" aria-hidden="true">/</span>
+  <a href="../../index.html#moleculas">Moléculas</a>
+  <span class="bc-sep" aria-hidden="true">/</span>
+  <span class="bc-current">Bicarbonato de Sódio</span>
+</nav>
 
 <main class="container">
   <!-- Hero -->
@@ -685,31 +713,8 @@ footer .mono{
   </section>
 
   <!-- Figuras -->
-  <section id="figuras">
-    <h2>Figuras</h2>
-    <p class="subtitle">Arquitectura molecular, mecanismo, farmacologia e interface biofísica</p>
-    <div class="figuras-grid">
-      <div class="figura-item">
-        <img src="../../assets/moleculas/bicarbonato-de-sodio/gpt/bicarbonato-de-sodio-01-molecula-gpt.png" alt="Estrutura iónica do bicarbonato de sódio em solução aquosa: catião Na⁺ hidratado e anião HCO₃⁻ com geometria planar trigonal. Sem anéis aromáticos, sem sistema π, sem cromóforo." loading="lazy">
-        <div class="legenda"><span class="label">01 — Molécula</span><br>A molécula mais simples da farmacopeia. Um sal inorgânico sem anéis aromáticos, sem sistema π, sem cromóforo UV/Vis — que preserva o gradiente de pH da ATP-sintase.</div>
-      </div>
-      <div class="figura-item">
-        <img src="../../assets/moleculas/bicarbonato-de-sodio/gpt/bicarbonato-de-sodio-02-mecanismo-gpt.png" alt="Ciclo do sistema tampão bicarbonato: HCO₃⁻ captura H⁺ → H₂CO₃ → CO₂ + H₂O. Anidrase carbónica catalisa a reação reversível. Equação de Henderson-Hasselbalch." loading="lazy">
-        <div class="legenda"><span class="label">02 — Mecanismo</span><br>O tampão que a vida escolheu. Sistema CO₂/HCO₃⁻: rim controla o HCO₃⁻, pulmão controla o CO₂. Dois órgãos, um tampão, milhões de anos de evolução.</div>
-      </div>
-      <div class="figura-item">
-        <img src="../../assets/moleculas/bicarbonato-de-sodio/gpt/bicarbonato-de-sodio-03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico do bicarbonato de sódio: absorção oral no intestino delgado, distribuição no líquido extracelular, excreção renal como HCO₃⁻ e excreção respiratória como CO₂." loading="lazy">
-        <div class="legenda"><span class="label">03 — Mapa Farmacológico</span><br>Absorvido no intestino delgado em 30–60 min, distribuído no LEC. Excretado por duas vias: rim (HCO₃⁻) em horas, pulmão (CO₂) em segundos.</div>
-      </div>
-      <div class="figura-item">
-        <img src="../../assets/moleculas/bicarbonato-de-sodio/gpt/bicarbonato-de-sodio-04-interface-biofisica-gpt.png" alt="Mapa conceitual biofísico: pH → ΔpH → fluxo de protões → ATP-sintase a 9.000 RPM. CO₂ como gasotransmissor. Sem CISS, sem cromóforo — ferramenta de terreno." loading="lazy">
-        <div class="legenda"><span class="label">04 — Interface Biofísica</span><br>Não acende o motor — preserva o gradiente que o faz girar. Ferramenta de segunda ordem: remove o obstáculo ácido para que luz, água e campo magnético operem.</div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Biofísica -->
-  <section id="biofisica">
+<section id="biofisica">
     <h2>Biofísica</h2>
     <p class="section-lead">O bicarbonato de sódio é uma ferramenta de <strong>segunda ordem</strong>: não transduz energia do ambiente, mas remove o obstáculo ácido que bloqueia os sistemas de primeira ordem.</p>
     <div class="axis-grid">
@@ -764,8 +769,7 @@ footer .mono{
     </div>
   </section>
 
-  <!-- Bioquímica -->
-  <section id="bioquimica">
+<section id="bioquimica">
     <h2>Bioquímica Clássica</h2>
     <p class="section-lead">Farmacologia, fisiologia e mecanismos conforme a literatura convencional.</p>
     <div class="bioquimica-panels">
@@ -798,8 +802,67 @@ footer .mono{
     </div>
   </section>
 
-  <!-- Janela -->
-  <section id="janela">
+<section id="figuras">
+    <h2>Figuras</h2>
+    <p class="subtitle">Arquitectura molecular, mecanismo, farmacologia e interface biofísica</p>
+    <div class="figuras-grid">
+      <div class="figura-item">
+        <img src="../../assets/moleculas/bicarbonato-de-sodio/gpt/bicarbonato-de-sodio-01-molecula-gpt.png" alt="Estrutura iónica do bicarbonato de sódio em solução aquosa: catião Na⁺ hidratado e anião HCO₃⁻ com geometria planar trigonal. Sem anéis aromáticos, sem sistema π, sem cromóforo." loading="lazy">
+        <div class="legenda"><span class="label">01 — Molécula</span><br>A molécula mais simples da farmacopeia. Um sal inorgânico sem anéis aromáticos, sem sistema π, sem cromóforo UV/Vis — que preserva o gradiente de pH da ATP-sintase.</div>
+      </div>
+      <div class="figura-item">
+        <img src="../../assets/moleculas/bicarbonato-de-sodio/gpt/bicarbonato-de-sodio-02-mecanismo-gpt.png" alt="Ciclo do sistema tampão bicarbonato: HCO₃⁻ captura H⁺ → H₂CO₃ → CO₂ + H₂O. Anidrase carbónica catalisa a reação reversível. Equação de Henderson-Hasselbalch." loading="lazy">
+        <div class="legenda"><span class="label">02 — Mecanismo</span><br>O tampão que a vida escolheu. Sistema CO₂/HCO₃⁻: rim controla o HCO₃⁻, pulmão controla o CO₂. Dois órgãos, um tampão, milhões de anos de evolução.</div>
+      </div>
+      <div class="figura-item">
+        <img src="../../assets/moleculas/bicarbonato-de-sodio/gpt/bicarbonato-de-sodio-03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico do bicarbonato de sódio: absorção oral no intestino delgado, distribuição no líquido extracelular, excreção renal como HCO₃⁻ e excreção respiratória como CO₂." loading="lazy">
+        <div class="legenda"><span class="label">03 — Mapa Farmacológico</span><br>Absorvido no intestino delgado em 30–60 min, distribuído no LEC. Excretado por duas vias: rim (HCO₃⁻) em horas, pulmão (CO₂) em segundos.</div>
+      </div>
+      <div class="figura-item">
+        <img src="../../assets/moleculas/bicarbonato-de-sodio/gpt/bicarbonato-de-sodio-04-interface-biofisica-gpt.png" alt="Mapa conceitual biofísico: pH → ΔpH → fluxo de protões → ATP-sintase a 9.000 RPM. CO₂ como gasotransmissor. Sem CISS, sem cromóforo — ferramenta de terreno." loading="lazy">
+        <div class="legenda"><span class="label">04 — Interface Biofísica</span><br>Não acende o motor — preserva o gradiente que o faz girar. Ferramenta de segunda ordem: remove o obstáculo ácido para que luz, água e campo magnético operem.</div>
+      </div>
+    </div>
+  </section>
+
+<section id="evidencia">
+    <h2>Evidência</h2>
+    <p class="section-lead">Navegação editorial pela qualidade e maturidade da evidência.</p>
+    <div class="evidencia-grid">
+      <div class="evidencia-card verde">
+        <span class="badge badge-verde">SÓLIDA</span>
+        <h3>Acidose metabólica grave (IV)</h3>
+        <p>Primeira linha em acidose metabólica não-lática. Corrige déficit de HCO₃⁻ com mecanismo racional e bem documentado. Consenso clínico robusto.</p>
+      </div>
+      <div class="evidencia-card verde">
+        <span class="badge badge-verde">SÓLIDA</span>
+        <h3>Intoxicação por salicilatos / ADT</h3>
+        <p>Aprisionamento iónico (salicilatos) e reversão de bloqueio de canal de Na⁺ (ADT). Indicações bem estabelecidas em toxicologia de emergência.</p>
+      </div>
+      <div class="evidencia-card ciano">
+        <span class="badge badge-ciano">MISTA</span>
+        <h3>DRC com acidose metabólica</h3>
+        <p>Suplementação oral (1–3 g/dia) demonstrou retardar progressão da DRC (de Brito-Ashurst 2009, Mahajan 2010). Evidência crescente mas não universal.</p>
+      </div>
+      <div class="evidencia-card ciano">
+        <span class="badge badge-ciano">MISTA</span>
+        <h3>Alcalinização urinária</h3>
+        <p>Protocolo padrão para nefrolitíase por ácido úrico e MTX. Evidência de benefício do NaHCO₃ vs. solução salina em rabdomiólise é moderada.</p>
+      </div>
+      <div class="evidencia-card amber">
+        <span class="badge badge-amber">CONTROVERSO</span>
+        <h3>DKA (cetoacidose diabética)</h3>
+        <p>Não recomendado rotineiramente (ADA, ISPAD). Insulina corrige a causa. NaHCO₃ pode piorar hipocalemia e mascarar gravidade. Apenas em pH &lt; 6,9 com instabilidade.</p>
+      </div>
+      <div class="evidencia-card red">
+        <span class="badge badge-red">FRACA</span>
+        <h3>Acidose lática</h3>
+        <p>Evidência de que NaHCO₃ melhora desfechos na acidose lática tipo A é fraca. Pode piorar prognóstico ao mascarar a gravidade. Uso apenas como ponte em UCI.</p>
+      </div>
+    </div>
+  </section>
+
+<section id="janela">
     <h2>Janela de Intervenção</h2>
     <p class="section-lead">O bicarbonato não tem dose nem ciclo definidos nesta ficha — é uma ferramenta contextual. Eis o terreno, a sequência e os limites.</p>
     <div class="janela-grid">
@@ -839,46 +902,7 @@ footer .mono{
     </div>
   </section>
 
-  <!-- Evidência -->
-  <section id="evidencia">
-    <h2>Evidência</h2>
-    <p class="section-lead">Navegação editorial pela qualidade e maturidade da evidência.</p>
-    <div class="evidencia-grid">
-      <div class="evidencia-card verde">
-        <span class="badge badge-verde">SÓLIDA</span>
-        <h3>Acidose metabólica grave (IV)</h3>
-        <p>Primeira linha em acidose metabólica não-lática. Corrige déficit de HCO₃⁻ com mecanismo racional e bem documentado. Consenso clínico robusto.</p>
-      </div>
-      <div class="evidencia-card verde">
-        <span class="badge badge-verde">SÓLIDA</span>
-        <h3>Intoxicação por salicilatos / ADT</h3>
-        <p>Aprisionamento iónico (salicilatos) e reversão de bloqueio de canal de Na⁺ (ADT). Indicações bem estabelecidas em toxicologia de emergência.</p>
-      </div>
-      <div class="evidencia-card ciano">
-        <span class="badge badge-ciano">MISTA</span>
-        <h3>DRC com acidose metabólica</h3>
-        <p>Suplementação oral (1–3 g/dia) demonstrou retardar progressão da DRC (de Brito-Ashurst 2009, Mahajan 2010). Evidência crescente mas não universal.</p>
-      </div>
-      <div class="evidencia-card ciano">
-        <span class="badge badge-ciano">MISTA</span>
-        <h3>Alcalinização urinária</h3>
-        <p>Protocolo padrão para nefrolitíase por ácido úrico e MTX. Evidência de benefício do NaHCO₃ vs. solução salina em rabdomiólise é moderada.</p>
-      </div>
-      <div class="evidencia-card amber">
-        <span class="badge badge-amber">CONTROVERSO</span>
-        <h3>DKA (cetoacidose diabética)</h3>
-        <p>Não recomendado rotineiramente (ADA, ISPAD). Insulina corrige a causa. NaHCO₃ pode piorar hipocalemia e mascarar gravidade. Apenas em pH &lt; 6,9 com instabilidade.</p>
-      </div>
-      <div class="evidencia-card red">
-        <span class="badge badge-red">FRACA</span>
-        <h3>Acidose lática</h3>
-        <p>Evidência de que NaHCO₃ melhora desfechos na acidose lática tipo A é fraca. Pode piorar prognóstico ao mascarar a gravidade. Uso apenas como ponte em UCI.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Fontes -->
-  <section id="fontes">
+<section id="fontes">
     <h2>Fontes</h2>
     <p class="section-lead">Esta ficha é sintetizada a partir de três monografias — os documentos-fonte completos.</p>
     <div class="fontes-grid">
@@ -903,19 +927,6 @@ footer .mono{
     </div>
   </section>
 
-  <!-- Guardrail Final -->
-  <section class="guardrail-final">
-    <h2>⚠ Guardrail de Segurança</h2>
-    <div class="content">
-      <p><strong>Alcalose metabólica iatrogénica</strong> é o risco central do uso excessivo ou prolongado de bicarbonato de sódio. Consequências: hipoventilação compensatória, hipocalemia (arritmias), hipocalcemia funcional (tetania, parestesias, espasmo carpopedal).</p>
-      <p><strong>Sobrecarga de sódio:</strong> cada grama de NaHCO₃ contém 273 mg de Na⁺. Doses terapêuticas (3 g/dia) adicionam ~820 mg de sódio — 35% acima da ingestão diária recomendada. Risco de descompensação em ICC, HAS não controlada, cirrose com ascite, síndrome nefrótica.</p>
-      <p><strong>Contraindicações absolutas:</strong> alcalose respiratória, alcalose metabólica preexistente, hipocalemia não corrigida, ICC descompensada.</p>
-      <p><strong>Interações graves:</strong> incompatível com sais de cálcio (precipitação CaCO₃ — risco de embolia), catecolaminas, insulina. Reduz absorção de tetraciclinas, fluoroquinolonas, azólicos, ferro. Aumenta excreção de lítio e salicilatos. Potencializa anfetaminas.</p>
-      <p><strong>Uso IV:</strong> exclusivamente hospitalar, com acesso venoso calibroso, monitorização gasométrica e electrolítica contínua. Risco de necrose por extravasamento.</p>
-      <p><strong>Uso doméstico:</strong> uso oral ocasional como antiácido é de baixo risco em adultos saudáveis. Uso crónico sem monitorização é contraindicado. Não automedicar para acidose clínica.</p>
-      <p><em>Consulte profissional de saúde habilitado antes de qualquer uso terapêutico continuado. Esta ficha é material educativo, não prescrição médica.</em></p>
-    </div>
-  </section>
 </main>
 
 <footer class="container">

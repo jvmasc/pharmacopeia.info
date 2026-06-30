@@ -296,9 +296,9 @@
     .axis-card small {
       display: block;
       margin-top: 12px;
-      color: var(--ink-3);
+      color: var(--ink-2);
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 13px;
       text-transform: uppercase;
       letter-spacing: .06em;
       line-height: 1.45;
@@ -410,6 +410,66 @@
       border-top: 1px solid var(--rule);
     }
 
+    
+    /* ─── BREADCRUMB ─────────────────────────────────── */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 14px 0;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--ink-3);
+    }
+    .breadcrumb a { color: var(--ink-3); }
+    .breadcrumb a:hover { color: var(--solar); }
+    .breadcrumb .bc-name { color: var(--ink-2); }
+    .breadcrumb .bc-sep { color: var(--rule-heavy); margin: 0 1px; }
+    
+    /* ─── MOBILE NAV ────────────────────────────────── */
+    .mobile-nav { display: none; }
+      .mobile-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 18px;
+      }
+      .mobile-nav a {
+        font-family: var(--mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: .10em;
+        color: var(--ink-3);
+        border: 1px solid var(--rule);
+        padding: 5px 11px;
+        border-radius: 999px;
+        transition: color .12s, border-color .12s;
+      }
+      .mobile-nav a:hover { color: var(--ink); border-color: var(--ink-2); }
+
+      .mobile-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 18px;
+      }
+      .mobile-nav a {
+        font-family: var(--mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: .10em;
+        color: var(--ink-3);
+        border: 1px solid var(--rule);
+        padding: 5px 11px;
+        border-radius: 999px;
+        transition: color .12s, border-color .12s;
+      }
+      .mobile-nav a:hover { color: var(--ink); border-color: var(--ink-2); }
+
     /* ─── RESPONSIVE ─────────────────────────────────── */
     @media (max-width: 1000px) {
       .axis-grid { grid-template-columns: repeat(2, 1fr); }
@@ -439,9 +499,8 @@
       <nav aria-label="Navegação principal">
         <a href="#biofisica">Biofísica</a>
         <a href="#bioquimica">Bioquímica</a>
-        <a href="#biofisica">Biofísica</a>
-        <a href="#bioquimica">Bioquímica</a>
         <a href="#evidencia">Evidência</a>
+        <a href="#janela">Janela</a>
         <a href="#fontes">Fontes</a>
       </nav>
       <button id="themeToggle" class="theme-btn" type="button" aria-label="Mudar para tema escuro">
@@ -451,6 +510,13 @@
   </header>
 
   <main>
+    <nav class="breadcrumb shell" aria-label="Caminho da página">
+      <a href="../../index.html">Pharmacopeia.info</a>
+      <span class="bc-sep" aria-hidden="true">/</span>
+      <a href="../../index.html#moleculas">Moléculas</a>
+      <span class="bc-sep" aria-hidden="true">/</span>
+      <span class="bc-name">Nitrofurantoína</span>
+    </nav>
     <section class="hero shell">
       <div class="kicker">Ficha · molécula</div>
       <h1>Nitrofurantoína</h1>
@@ -459,6 +525,13 @@
         <a class="button" href="#biofisica">BLOCO 1 — Biofísica</a>
         <a class="button secondary" href="#bioquimica">BLOCO 2 — Bioquímica</a>
       </div>
+      <nav class="mobile-nav" aria-label="Navegação por seção">
+        <a href="#biofisica">Biofísica</a>
+        <a href="#bioquimica">Bioquímica</a>
+        <a href="#evidencia">Evidência</a>
+        <a href="#janela">Janela</a>
+        <a href="#fontes">Fontes</a>
+      </nav>
     </section>
 
     <section class="shell">
@@ -495,33 +568,6 @@
     </section>
 
     <!-- ━━━━━━━━━━━━━━━━ FIGURAS DIDÁTICAS ━━━━━━━━━━━━━━━━ -->
-    <section id="figuras" class="shell">
-      <div class="section-head">
-        <div>
-          <div class="kicker">Figuras didáticas</div>
-          <h2>Fundo branco, traço limpo, leitura farmacológica.</h2>
-        </div>
-        <p>Imagens minimalistas para apoiar a ficha: arquitectura molecular, mecanismo clássico, mapa farmacológico e interface biofísica. São esquemas educacionais, não estruturas químicas completas nem protocolo clínico.</p>
-      </div>
-      <div class="figure-grid">
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/nitrofurantoina/gpt/01-molecula-gpt.png" alt="Estrutura molecular da nitrofurantoína em fundo branco" loading="lazy" />
-          <figcaption>Molécula da nitrofurantoína: cromóforo push-pull, furano→azometina→hidantoína, absorção UV-A.</figcaption>
-        </figure>
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/nitrofurantoina/gpt/02-mecanismo-gpt.png" alt="Mecanismo clássico da nitrofurantoína com nitroredutase e ciclo redox fútil" loading="lazy" />
-          <figcaption>Mecanismo clássico: ativação por NfsA/NfsB, radical ânion nitro, ROS e dano ao DNA.</figcaption>
-        </figure>
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/nitrofurantoina/gpt/03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico ADME da nitrofurantoína" loading="lazy" />
-          <figcaption>Mapa farmacológico: absorção oral, excreção renal, contraindicações e gate duplo de função renal.</figcaption>
-        </figure>
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/nitrofurantoina/gpt/04-interface-biofisica-gpt.png" alt="Interface biofísica da nitrofurantoína com luz, água e campo magnético" loading="lazy" />
-          <figcaption>Interface biofísica: luz UV-A, água EZ, spin/CISS, campo magnético e Anomalia do Atlântico Sul.</figcaption>
-        </figure>
-      </div>
-    </section>
 
     <section id="biofisica" class="shell">
       <div class="section-head">
@@ -621,28 +667,31 @@
       </div>
     </section>
 
-    <section id="janela" class="shell">
+    <section id="figuras" class="shell">
       <div class="section-head">
         <div>
-          <div class="kicker">Janela de uso</div>
-          <h2>Terreno, sequência e limites.</h2>
+          <div class="kicker">Figuras didáticas</div>
+          <h2>Fundo branco, traço limpo, leitura farmacológica.</h2>
         </div>
-        <p>A nitrofurantoína é uma ferramenta de nicho preciso — eficaz dentro do trato urinário baixo, inútil fora dele, com perfil de toxicidade real que escala com a duração.</p>
+        <p>Imagens minimalistas para apoiar a ficha: arquitectura molecular, mecanismo clássico, mapa farmacológico e interface biofísica. São esquemas educacionais, não estruturas químicas completas nem protocolo clínico.</p>
       </div>
-      <div class="grid-2">
-        <article class="panel">
-          <h2>Pré-requisitos de terreno (leitura biofísica)</h2>
-          <p><strong>Reserva redox cheia:</strong> glutationa, ascorbato, hidratação EZ adequada — o organismo precisa de capacidade tampão para gerir os radicais que a molécula vai inevitavelmente gerar durante o ciclo redox.</p>
-          <p><strong>Janela noturna / fora do UV-A:</strong> à noite, longe da janela solar que excita o estado tripleto fototóxico. Não empilhar com exposição solar como se faz com a doxiciclina — aqui a regra é inversa.</p>
-          <p><strong>Função renal preservada:</strong> o gate duplo que determina simultaneamente eficácia e segurança. Sem confirmar ClCr/eGFR, a decisão está incompleta.</p>
-          <p><strong>Separar do nnEMF e campo baixo:</strong> em ambiente de campo geomagnético degradado (Anomalia do Atlântico Sul, ambiente urbano com nnEMF elevado), a química de spin da molécula opera sem calibração — risco de ROS não filtrado sobe.</p>
-        </article>
-        <article class="panel">
-          <h2>Limites absolutos</h2>
-          <p>Independentemente do enquadramento biofísico, os seguintes contextos exigem avaliação profissional obrigatória antes de qualquer uso:</p>
-          <p>Insuficiência renal significativa (confirmar limiar) · Gravidez a termo / trabalho de parto / parto / recém-nascido (~&lt;1 mês) · Deficiência de G6PD · Uso prolongado/profilático sem vigilância de toxicidade pulmonar e hepática · Qualquer infeção fora do trato urinário baixo (pielonefrite, prostatite, sistémica) · Exposição solar intensa sem separação temporal do fármaco.</p>
-          <p><strong>A ficha pública não transforma molécula em protocolo individual.</strong> Dose, duração, forma farmacêutica e indicação pertencem à avaliação clínica com contexto individual.</p>
-        </article>
+      <div class="figure-grid">
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/nitrofurantoina/gpt/01-molecula-gpt.png" alt="Estrutura molecular da nitrofurantoína em fundo branco" loading="lazy" />
+          <figcaption>Molécula da nitrofurantoína: cromóforo push-pull, furano→azometina→hidantoína, absorção UV-A.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/nitrofurantoina/gpt/02-mecanismo-gpt.png" alt="Mecanismo clássico da nitrofurantoína com nitroredutase e ciclo redox fútil" loading="lazy" />
+          <figcaption>Mecanismo clássico: ativação por NfsA/NfsB, radical ânion nitro, ROS e dano ao DNA.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/nitrofurantoina/gpt/03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico ADME da nitrofurantoína" loading="lazy" />
+          <figcaption>Mapa farmacológico: absorção oral, excreção renal, contraindicações e gate duplo de função renal.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/nitrofurantoina/gpt/04-interface-biofisica-gpt.png" alt="Interface biofísica da nitrofurantoína com luz, água e campo magnético" loading="lazy" />
+          <figcaption>Interface biofísica: luz UV-A, água EZ, spin/CISS, campo magnético e Anomalia do Atlântico Sul.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -664,6 +713,31 @@
           <h2>Nota metodológica</h2>
           <p>A divisão editorial entre BLOCO 1 (biofísica de fronteira) e BLOCO 2 (farmacologia estabelecida) é deliberada. A maioria dos estudos clínicos e de toxicidade não controla campo magnético, estado de hidratação EZ, carga isotópica ou janela circadiana — o que sistematicamente limita a compreensão do perfil real da molécula em condições biofísicas variáveis.</p>
           <p>A distinção crítica para esta molécula: a nitrofurantoína tem física real de transferência monoeletrônica (estabelecida), mas ao contrário de moléculas quirais de linhagem (doxiciclina), não tem rota de saída quiral própria. A consequência prática — ROS em terreno típico — é compatível com as toxicidades bem documentadas. A Pharmacopeia mantém as duas narrativas separadas sem deixar o entusiasmo biofísico contaminar a prudência clínica.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="janela" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Janela de uso</div>
+          <h2>Terreno, sequência e limites.</h2>
+        </div>
+        <p>A nitrofurantoína é uma ferramenta de nicho preciso — eficaz dentro do trato urinário baixo, inútil fora dele, com perfil de toxicidade real que escala com a duração.</p>
+      </div>
+      <div class="grid-2">
+        <article class="panel">
+          <h2>Pré-requisitos de terreno (leitura biofísica)</h2>
+          <p><strong>Reserva redox cheia:</strong> glutationa, ascorbato, hidratação EZ adequada — o organismo precisa de capacidade tampão para gerir os radicais que a molécula vai inevitavelmente gerar durante o ciclo redox.</p>
+          <p><strong>Janela noturna / fora do UV-A:</strong> à noite, longe da janela solar que excita o estado tripleto fototóxico. Não empilhar com exposição solar como se faz com a doxiciclina — aqui a regra é inversa.</p>
+          <p><strong>Função renal preservada:</strong> o gate duplo que determina simultaneamente eficácia e segurança. Sem confirmar ClCr/eGFR, a decisão está incompleta.</p>
+          <p><strong>Separar do nnEMF e campo baixo:</strong> em ambiente de campo geomagnético degradado (Anomalia do Atlântico Sul, ambiente urbano com nnEMF elevado), a química de spin da molécula opera sem calibração — risco de ROS não filtrado sobe.</p>
+        </article>
+        <article class="panel">
+          <h2>Limites absolutos</h2>
+          <p>Independentemente do enquadramento biofísico, os seguintes contextos exigem avaliação profissional obrigatória antes de qualquer uso:</p>
+          <p>Insuficiência renal significativa (confirmar limiar) · Gravidez a termo / trabalho de parto / parto / recém-nascido (~&lt;1 mês) · Deficiência de G6PD · Uso prolongado/profilático sem vigilância de toxicidade pulmonar e hepática · Qualquer infeção fora do trato urinário baixo (pielonefrite, prostatite, sistémica) · Exposição solar intensa sem separação temporal do fármaco.</p>
+          <p><strong>A ficha pública não transforma molécula em protocolo individual.</strong> Dose, duração, forma farmacêutica e indicação pertencem à avaliação clínica com contexto individual.</p>
         </article>
       </div>
     </section>
@@ -703,13 +777,6 @@
       </div>
     </section>
 
-    <section class="shell">
-      <aside class="notice warning">
-        <h2>Guardrail clínico — leia antes</h2>
-        <p><strong>Esta página é educacional. Não é prescrição.</strong> A Pharmacopeia.info publica leitura biofísica e farmacológica de substâncias para estudo e contexto — não fornece dose, posologia, ciclo, indicação individual, nem recomenda compra, uso ou substituição de qualquer tratamento. Nada aqui diagnostica, trata, cura ou previne doença, nem substitui consulta, anamnese, exame ou a decisão de um profissional de saúde habilitado. Medicamentos têm riscos, interações e contraindicações que dependem do seu terreno, da sua história clínica, da sua geografia e dos medicamentos que já usa. Antes de qualquer uso, fale com o seu médico ou farmacêutico.</p>
-        <p><strong>Nitrofurantoína — específico:</strong> contraindicada em insuficiência renal significativa (perde eficácia urinária <em>e</em> acumula toxicidade sistémica — consultar bula/diretriz vigente para o limiar de ClCr/eGFR). Contraindicada em gravidez a termo, trabalho de parto, parto e recém-nascido (~&lt;1 mês) por risco de anemia hemolítica neonatal por imaturidade enzimática. Deficiência de G6PD aumenta o risco hemolítico. Uso prolongado/profilático exige vigilância ativa de toxicidade pulmonar (fibrose potencialmente irreversível) e hepática. Fototoxicidade real sob UV-A: evitar exposição solar intensa durante o tratamento e privilegiar administração noturna.</p>
-      </aside>
-    </section>
   </main>
 
   <footer>

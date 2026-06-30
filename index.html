@@ -299,7 +299,7 @@
     }
     .foundation-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1fr);
+      grid-template-columns: 1fr auto;
       gap: 22px;
       align-items: stretch;
     }
@@ -398,6 +398,7 @@
 
     /* tooltip lateral / abaixo do SVG */
     .flow-tooltip {
+      width: 280px;
       align-self: stretch;
       min-height: 0;
       padding: 18px 22px;
@@ -750,6 +751,7 @@
       .detail-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 760px) {
+      .foundation-grid { grid-template-columns: 1fr; }
       .masthead-nav { display: none; }
       .boundary-grid { grid-template-columns: 1fr; }
       .boundary-item { border-right: none; border-bottom: 1px solid var(--rule); }

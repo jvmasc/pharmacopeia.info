@@ -296,9 +296,9 @@
     .axis-card small {
       display: block;
       margin-top: 12px;
-      color: var(--ink-3);
+      color: var(--ink-2);
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 13px;
       text-transform: uppercase;
       letter-spacing: .06em;
       line-height: 1.45;
@@ -388,6 +388,66 @@
     footer strong { color: var(--ink-2); font-weight: 700; }
     footer code   { font-family: var(--mono); color: var(--ink-3); font-size: 11px; }
 
+    
+    /* ─── BREADCRUMB ─────────────────────────────────── */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 14px 0;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--ink-3);
+    }
+    .breadcrumb a { color: var(--ink-3); }
+    .breadcrumb a:hover { color: var(--solar); }
+    .breadcrumb .bc-name { color: var(--ink-2); }
+    .breadcrumb .bc-sep { color: var(--rule-heavy); margin: 0 1px; }
+    
+    /* ─── MOBILE NAV ────────────────────────────────── */
+    .mobile-nav { display: none; }
+      .mobile-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 18px;
+      }
+      .mobile-nav a {
+        font-family: var(--mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: .10em;
+        color: var(--ink-3);
+        border: 1px solid var(--rule);
+        padding: 5px 11px;
+        border-radius: 999px;
+        transition: color .12s, border-color .12s;
+      }
+      .mobile-nav a:hover { color: var(--ink); border-color: var(--ink-2); }
+
+      .mobile-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 18px;
+      }
+      .mobile-nav a {
+        font-family: var(--mono);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: .10em;
+        color: var(--ink-3);
+        border: 1px solid var(--rule);
+        padding: 5px 11px;
+        border-radius: 999px;
+        transition: color .12s, border-color .12s;
+      }
+      .mobile-nav a:hover { color: var(--ink); border-color: var(--ink-2); }
+
     /* ─── RESPONSIVE ─────────────────────────────────── */
     @media (max-width: 1000px) {
       .axis-grid { grid-template-columns: repeat(2, 1fr); }
@@ -417,6 +477,7 @@
         <a href="#biofisica">Biofísica</a>
         <a href="#bioquimica">Bioquímica</a>
         <a href="#evidencia">Evidência</a>
+        <a href="#janela">Janela</a>
         <a href="#fontes">Fontes</a>
       </nav>
       <button id="themeToggle" class="theme-btn" type="button" aria-label="Mudar para tema escuro">
@@ -426,6 +487,13 @@
   </header>
 
   <main>
+    <nav class="breadcrumb shell" aria-label="Caminho da página">
+      <a href="../../index.html">Pharmacopeia.info</a>
+      <span class="bc-sep" aria-hidden="true">/</span>
+      <a href="../../index.html#moleculas">Moléculas</a>
+      <span class="bc-sep" aria-hidden="true">/</span>
+      <span class="bc-name">Lugol 5%</span>
+    </nav>
     <section class="hero shell">
       <div class="kicker">Ficha · molécula · framework biofísica → bioquímica</div>
       <h1>Lugol 5%</h1>
@@ -434,6 +502,13 @@
         <a class="button" href="#biofisica">BLOCO 1 — Biofísica</a>
         <a class="button secondary" href="#bioquimica">BLOCO 2 — Bioquímica</a>
       </div>
+      <nav class="mobile-nav" aria-label="Navegação por seção">
+        <a href="#biofisica">Biofísica</a>
+        <a href="#bioquimica">Bioquímica</a>
+        <a href="#evidencia">Evidência</a>
+        <a href="#janela">Janela</a>
+        <a href="#fontes">Fontes</a>
+      </nav>
     </section>
 
     <section class="shell">
@@ -466,34 +541,6 @@
         <article class="summary-card"><span class="status established">estabelecido · BLOCO 2</span><b>Eixo NIS / TPO / T3-T4</b><p>Iodeto captado pelo NIS (simportador Na⁺/I⁻), oxidado e organificado pela TPO com H₂O₂ → tireoglobulina → T4 e T3. Conversão periférica T4→T3 via desiodinases selênio-dependentes. Metabolismo basal, termogênese, neurodesenvolvimento.</p></article>
         <article class="summary-card"><span class="status established">estabelecido · BLOCO 2</span><b>Dose farmacológica</b><p>Referência de ingestão ~150 µg/dia. Uma gota de Lugol 5% carrega da ordem de ~6 mg — milhares de vezes acima. Esta não é diferença de grau: é a fronteira entre nutriente-traço e intervenção farmacológica de halogênio.</p></article>
         <article class="summary-card"><span class="status guarded">prudência · ambos</span><b>Amplificador cego</b><p>Construção em terreno são (selênio, glândula sã, excreção competente); dano em terreno esgotado (Hashimoto, sem selênio, rim comprometido, Graves). Mesma física, resultado oposto — o terreno decide, não a dose.</p></article>
-      </div>
-    </section>
-
-    <section id="figuras" class="shell">
-      <div class="section-head">
-        <div>
-          <div class="kicker">Figuras didáticas</div>
-          <h2>Fundo branco, traço limpo, leitura farmacológica.</h2>
-        </div>
-        <p>Imagens minimalistas para apoiar a ficha: arquitetura molecular, mecanismo clássico, mapa farmacológico e interface biofísica. São esquemas educacionais, não estruturas químicas completas nem protocolo clínico.</p>
-      </div>
-      <div class="figure-grid">
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/lugol-5/gpt/lugol-5-01-molecula-gpt.png" alt="Estrutura do Lugol 5%: iodo molecular (I₂) e iodeto (I⁻) com complexo triiodeto (I₃⁻), sobre fundo branco." loading="lazy" />
-          <figcaption>Molécula do Lugol 5%: iodo molecular, iodeto e triiodeto — figura editorial GPT/OpenAI.</figcaption>
-        </figure>
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/lugol-5/gpt/lugol-5-02-mecanismo-tireoide-gpt.png" alt="Diagrama do mecanismo clássico do iodo na tireoide: NIS, TPO, organificação e T3/T4." loading="lazy" />
-          <figcaption>Mecanismo clássico: eixo NIS → TPO → organificação → T3/T4.</figcaption>
-        </figure>
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/lugol-5/gpt/lugol-5-03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico: absorção oral, distribuição tecidual (tireoide, mama, glândulas salivares), excreção renal." loading="lazy" />
-          <figcaption>Mapa farmacológico: absorção, distribuição e excreção do iodo.</figcaption>
-        </figure>
-        <figure class="figure-card">
-          <img src="../../assets/moleculas/lugol-5/gpt/lugol-5-04-interface-biofisica-gpt.png" alt="Diagrama conceitual da leitura biofísica do iodo: átomo pesado (Z=53), caótropo EZ, par redox, Wolff-Chaikoff." loading="lazy" />
-          <figcaption>Interface biofísica: átomo pesado, EZ, redox e hipóteses de fronteira.</figcaption>
-        </figure>
       </div>
     </section>
 
@@ -581,28 +628,31 @@
       </div>
     </section>
 
-    <section id="janela" class="shell">
+    <section id="figuras" class="shell">
       <div class="section-head">
         <div>
-          <div class="kicker">Janela de uso</div>
-          <h2>Terreno, sequência e limites.</h2>
+          <div class="kicker">Figuras didáticas</div>
+          <h2>Fundo branco, traço limpo, leitura farmacológica.</h2>
         </div>
-        <p>O Lugol é honesto: amplifica o que já está. A sequência importa — prepara o terreno antes de adicionar o substrato.</p>
+        <p>Imagens minimalistas para apoiar a ficha: arquitetura molecular, mecanismo clássico, mapa farmacológico e interface biofísica. São esquemas educacionais, não estruturas químicas completas nem protocolo clínico.</p>
       </div>
-      <div class="grid-2">
-        <article class="panel">
-          <h2>Quando constrói / quando desorganiza</h2>
-          <p><strong>Constrói</strong> quando há deficiência real de iodo, terreno nutricional pronto (selênio, glutationa, cofatores), glândula sem autoimunidade ativa, excreção renal competente, contexto e dose conservadores, e campo/luz/hidratação razoáveis: aí o substrato reacende o metabólico e encontra uma cadeia que tampona o fluxo — mais T3/T4 é mais trabalho útil.</p>
-          <p><strong>Desorganiza</strong> em Hashimoto ativo, Graves/nódulo autônomo, ausência de selênio, pool redox exausto, terreno deuterado/indoor e insuficiência renal: aí, ao acelerar a tireoide, amplifica ROS e dano — a face clínica é o flare autoimune e a tireotoxicose induzida. O mesmo amplificador redox que constrói no terreno limpo <strong>queima</strong> no terreno esgotado.</p>
-          <p>O iodo entra ainda numa <strong>competição de halogênios</strong>: desloca brometo, fluoreto e perclorato dos sítios e do NIS. Em organismo carregado desses competidores, iniciar iodo despeja-os na circulação antes da excreção — a função renal decide se é limpeza ou intoxicação.</p>
-        </article>
-        <article class="panel">
-          <h2>Limites absolutos</h2>
-          <p>Independentemente do enquadramento biofísico, os seguintes contextos exigem avaliação profissional obrigatória antes de qualquer uso:</p>
-          <p>Autoimunidade tireoidiana ativa (Hashimoto) · Hipertireoidismo / Graves / nódulos autônomos (risco de Jod-Basedow) · Gestação e lactação (risco fetal/neonatal) · Crianças · Doença renal (risco de acúmulo) · Uso concomitante de lítio, amiodarona, antitireoidianos ou levotiroxina · Qualquer contexto de alta dose crônica popular sem acompanhamento.</p>
-          <p><strong>Distinção obrigatória:</strong> Lugol oral ≠ antisséptico iodado tópico ≠ KI de emergência nuclear. Microgramagem nutricional ≠ miligramagem farmacológica. Uso médico pontual ≠ suplementação popular crônica.</p>
-          <p><strong>A ficha pública não transforma substrato em protocolo individual.</strong> Dose, forma farmacêutica, duração e indicação pertencem à avaliação clínica individual.</p>
-        </article>
+      <div class="figure-grid">
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/lugol-5/gpt/lugol-5-01-molecula-gpt.png" alt="Estrutura do Lugol 5%: iodo molecular (I₂) e iodeto (I⁻) com complexo triiodeto (I₃⁻), sobre fundo branco." loading="lazy" />
+          <figcaption>Molécula do Lugol 5%: iodo molecular, iodeto e triiodeto — figura editorial GPT/OpenAI.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/lugol-5/gpt/lugol-5-02-mecanismo-tireoide-gpt.png" alt="Diagrama do mecanismo clássico do iodo na tireoide: NIS, TPO, organificação e T3/T4." loading="lazy" />
+          <figcaption>Mecanismo clássico: eixo NIS → TPO → organificação → T3/T4.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/lugol-5/gpt/lugol-5-03-mapa-farmacologico-gpt.png" alt="Mapa farmacológico: absorção oral, distribuição tecidual (tireoide, mama, glândulas salivares), excreção renal." loading="lazy" />
+          <figcaption>Mapa farmacológico: absorção, distribuição e excreção do iodo.</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="../../assets/moleculas/lugol-5/gpt/lugol-5-04-interface-biofisica-gpt.png" alt="Diagrama conceitual da leitura biofísica do iodo: átomo pesado (Z=53), caótropo EZ, par redox, Wolff-Chaikoff." loading="lazy" />
+          <figcaption>Interface biofísica: átomo pesado, EZ, redox e hipóteses de fronteira.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -626,6 +676,31 @@
           <p>A literatura popular de ortoiodossuplementação de alta dose (corrente Abraham / Brownstein / Flechas — doses de 12,5–50 mg/dia, "teste de absorção na pele" como diagnóstico, "96% da população deficiente") não é validada pela endocrinologia mainstream e é citada aqui <strong>apenas como contexto histórico e cultural</strong>, não como consenso. A Pharmacopeia distingue explicitamente o material desta corrente do que a evidência convencional sustenta.</p>
           <p>A distinção editorial mais crítica desta substância: uso médico convencional (curto prazo, dose definida, contexto hospitalar) ≠ suplementação popular crônica de alta dose. Os riscos (Hashimoto, Jod-Basedow, Wolff-Chaikoff) são reais, documentados e dependentes do terreno tireoidiano prévio — não são exageros da indústria; são a física do amplificador redox cego num tecido endócrino sensível.</p>
           <p>Para esta substância especificamente: o selênio como co-fator irredutível (desiodinases + glutationa peroxidase na glândula) e o estado imune da tireoide são as variáveis de terreno mais críticas — mais ainda do que luz/campo. A Pharmacopeia não endossa nem desestimula uso; organiza a evidência para que o utilizador e o profissional tomem decisões informadas.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="janela" class="shell">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Janela de uso</div>
+          <h2>Terreno, sequência e limites.</h2>
+        </div>
+        <p>O Lugol é honesto: amplifica o que já está. A sequência importa — prepara o terreno antes de adicionar o substrato.</p>
+      </div>
+      <div class="grid-2">
+        <article class="panel">
+          <h2>Quando constrói / quando desorganiza</h2>
+          <p><strong>Constrói</strong> quando há deficiência real de iodo, terreno nutricional pronto (selênio, glutationa, cofatores), glândula sem autoimunidade ativa, excreção renal competente, contexto e dose conservadores, e campo/luz/hidratação razoáveis: aí o substrato reacende o metabólico e encontra uma cadeia que tampona o fluxo — mais T3/T4 é mais trabalho útil.</p>
+          <p><strong>Desorganiza</strong> em Hashimoto ativo, Graves/nódulo autônomo, ausência de selênio, pool redox exausto, terreno deuterado/indoor e insuficiência renal: aí, ao acelerar a tireoide, amplifica ROS e dano — a face clínica é o flare autoimune e a tireotoxicose induzida. O mesmo amplificador redox que constrói no terreno limpo <strong>queima</strong> no terreno esgotado.</p>
+          <p>O iodo entra ainda numa <strong>competição de halogênios</strong>: desloca brometo, fluoreto e perclorato dos sítios e do NIS. Em organismo carregado desses competidores, iniciar iodo despeja-os na circulação antes da excreção — a função renal decide se é limpeza ou intoxicação.</p>
+        </article>
+        <article class="panel">
+          <h2>Limites absolutos</h2>
+          <p>Independentemente do enquadramento biofísico, os seguintes contextos exigem avaliação profissional obrigatória antes de qualquer uso:</p>
+          <p>Autoimunidade tireoidiana ativa (Hashimoto) · Hipertireoidismo / Graves / nódulos autônomos (risco de Jod-Basedow) · Gestação e lactação (risco fetal/neonatal) · Crianças · Doença renal (risco de acúmulo) · Uso concomitante de lítio, amiodarona, antitireoidianos ou levotiroxina · Qualquer contexto de alta dose crônica popular sem acompanhamento.</p>
+          <p><strong>Distinção obrigatória:</strong> Lugol oral ≠ antisséptico iodado tópico ≠ KI de emergência nuclear. Microgramagem nutricional ≠ miligramagem farmacológica. Uso médico pontual ≠ suplementação popular crônica.</p>
+          <p><strong>A ficha pública não transforma substrato em protocolo individual.</strong> Dose, forma farmacêutica, duração e indicação pertencem à avaliação clínica individual.</p>
         </article>
       </div>
     </section>
@@ -665,13 +740,6 @@
       </div>
     </section>
 
-    <section class="shell">
-      <aside class="notice warning">
-        <h2>Guardrail clínico — leia antes</h2>
-        <p><strong>Esta página é educacional. Não é prescrição.</strong> A Pharmacopeia.info publica leitura biofísica e farmacológica de substâncias para estudo e contexto — não fornece dose, posologia, ciclo, indicação individual, nem recomenda compra, uso ou substituição de qualquer tratamento. Nada aqui diagnostica, trata, cura ou previne doença, nem substitui consulta, anamnese, exame ou a decisão de um profissional de saúde habilitado. Medicamentos têm riscos, interações e contraindicações que dependem do seu terreno, da sua história clínica, da sua geografia e dos medicamentos que já usa. Antes de qualquer uso, fale com o seu médico ou farmacêutico.</p>
-        <p><strong>Lugol 5% — específico:</strong> o Lugol é iodo em <strong>dose farmacológica</strong> (uma gota carrega milhares de vezes a referência nutricional diária) e <strong>não é suplemento inocente</strong>: pode precipitar ou agravar doença tireoidiana — hipotireoidismo autoimune (Hashimoto), hipertireoidismo induzido (Jod-Basedow), bloqueio Wolff-Chaikoff — e é contraindicado ou exige cautela absoluta na autoimunidade tireoidiana, em nódulos autônomos/Graves, na gestação, lactação e crianças, e na doença renal (risco de acúmulo pela excreção renal). Interage com lítio, amiodarona, antitireoidianos, levotiroxina, contraste iodado e outras fontes de iodo (kelp). <strong>Lugol oral não é o mesmo que antisséptico iodado tópico nem que iodeto de potássio (KI) de proteção contra radioiodo</strong> — finalidades, concentrações e riscos distintos. Nenhum uso sem avaliação de um profissional habilitado.</p>
-      </aside>
-    </section>
   </main>
 
   <footer>
